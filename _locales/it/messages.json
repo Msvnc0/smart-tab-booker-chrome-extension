@@ -1,0 +1,89 @@
+{
+    "extName": {
+        "message": "Smart Tab Booker"
+    },
+    "extDesc": {
+        "message": "Esegui il backup delle schede aperte nei segnalibri automaticamente o manualmente."
+    },
+    "selectStart": {
+        "message": "Caricamento cartelle..."
+    },
+    "selectDefault": {
+        "message": "Seleziona una cartella..."
+    },
+    "backupBtn": {
+        "message": "Esegui backup ora"
+    },
+    "backupBtnProgress": {
+        "message": "Backup in corso..."
+    },
+    "autoBackupTitle": {
+        "message": "Impostazioni backup automatico"
+    },
+    "intervalLabel": {
+        "message": "Intervallo:"
+    },
+    "daily": {
+        "message": "Giornaliero"
+    },
+    "weekly": {
+        "message": "Settimanale"
+    },
+    "monthly": {
+        "message": "Mensile"
+    },
+    "enableAutoBackup": {
+        "message": "Abilita backup automatico"
+    },
+    "darkMode": {
+        "message": "Modalità scura"
+    },
+    "custom": {
+        "message": "Personalizzato"
+    },
+    "backupTimeLabel": {
+        "message": "Ora backup (24h):"
+    },
+    "saveSettingsBtn": {
+        "message": "Salva impostazioni"
+    },
+    "saved": {
+        "message": "Salvato!"
+    },
+    "lastBackupLabel": {
+        "message": "Ultimo backup:"
+    },
+    "never": {
+        "message": "Mai"
+    },
+    "folderSaved": {
+        "message": "Cartella salvata!"
+    },
+    "selectFolderErr": {
+        "message": "Seleziona prima una cartella."
+    },
+    "backupSuccess": {
+        "message": "Backup completato!"
+    },
+    "backupFailed": {
+        "message": "Backup fallito: "
+    },
+    "invalidValue": {
+        "message": "Valore non valido."
+    },
+    "invalidTime": {
+        "message": "Ora non valida."
+    },
+    "minutes": {
+        "message": "Minuti"
+    },
+    "hours": {
+        "message": "Ore"
+    },
+    "days": {
+        "message": "Giorni"
+    },
+    "selectFolderLabel": {
+        "message": "Cartella di backup:"
+    }
+}

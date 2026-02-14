@@ -1,0 +1,112 @@
+{
+    "extName": {
+        "message": "Smart Tab Booker"
+    },
+    "extDesc": {
+        "message": "Açık sekmeleri otomatik veya manuel olarak yer imlerine yedekleyin."
+    },
+    "selectStart": {
+        "message": "Klasörler yükleniyor..."
+    },
+    "selectDefault": {
+        "message": "Bir klasör seçin..."
+    },
+    "backupBtn": {
+        "message": "Şimdi Yedekle"
+    },
+    "backupBtnProgress": {
+        "message": "Yedekleniyor..."
+    },
+    "autoBackupTitle": {
+        "message": "Otomatik Yedekleme Ayarları"
+    },
+    "intervalLabel": {
+        "message": "Aralık:"
+    },
+    "daily": {
+        "message": "Günlük"
+    },
+    "weekly": {
+        "message": "Haftalık"
+    },
+    "monthly": {
+        "message": "Aylık"
+    },
+    "enableAutoBackup": {
+        "message": "Otomatik Yedeklemeyi Etkinleştir"
+    },
+    "darkMode": {
+        "message": "Karanlık Mod"
+    },
+    "custom": {
+        "message": "Özel"
+    },
+    "backupTimeLabel": {
+        "message": "Yedekleme Saati (24s):"
+    },
+    "saveSettingsBtn": {
+        "message": "Ayarları Kaydet"
+    },
+    "saved": {
+        "message": "Kaydedildi!"
+    },
+    "lastBackupLabel": {
+        "message": "Son Yedekleme:"
+    },
+    "never": {
+        "message": "Hiç"
+    },
+    "folderSaved": {
+        "message": "Klasör kaydedildi!"
+    },
+    "selectFolderErr": {
+        "message": "Lütfen önce bir klasör seçin."
+    },
+    "backupSuccess": {
+        "message": "Yedekleme tamamlandı!"
+    },
+    "backupFailed": {
+        "message": "Yedekleme başarısız: "
+    },
+    "invalidValue": {
+        "message": "Geçersiz değer."
+    },
+    "invalidTime": {
+        "message": "Geçersiz saat."
+    },
+    "selectAll": {
+        "message": "Tümünü Seç"
+    },
+    "deselectAll": {
+        "message": "Seçimi Kaldır"
+    },
+    "tabCounter": {
+        "message": "Seçilen: $SELECTED$ / $TOTAL$",
+        "placeholders": {
+            "selected": {
+                "content": "$1"
+            },
+            "total": {
+                "content": "$2"
+            }
+        }
+    },
+    "bookmarksBar": {
+        "message": "Yer İmleri Çubuğu"
+    },
+    "otherBookmarks": {
+        "message": "Diğer Yer İmleri"
+    },
+    "minutes": {
+        "message": "Dakika"
+    },
+    "hours": {
+        "message": "Saat"
+    },
+    "days": {
+        "message": "Gün"
+    },
+    "selectFolderLabel": {
+        "message": "Yedekleme Klasörünü Seç:"
+    }
+}

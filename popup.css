@@ -1,0 +1,238 @@
+:root {
+    --bg-color: #f9f9f9;
+    --text-color: #333;
+    --card-bg: #fff;
+    --border-color: #eee;
+    --heading-color: #2c3e50;
+    --subheading-color: #555;
+    --input-border: #ddd;
+    --input-focus: #3498db;
+    --btn-primary: #3498db;
+    --btn-primary-hover: #2980b9;
+    --btn-secondary: #ecf0f1;
+    --btn-secondary-text: #2c3e50;
+    --btn-secondary-hover: #bdc3c7;
+    --status-color: #666;
+}
+
+body.dark-mode {
+    --bg-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --card-bg: #2d2d2d;
+    --border-color: #444;
+    --heading-color: #ecf0f1;
+    --subheading-color: #aaa;
+    --input-border: #555;
+    --input-focus: #5cb85c;
+    --btn-primary: #2980b9;
+    /* Slightly darker/different shade */
+    --btn-primary-hover: #3498db;
+    --btn-secondary: #444;
+    --btn-secondary-text: #e0e0e0;
+    --btn-secondary-hover: #555;
+    --status-color: #aaa;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 320px;
+    padding: 15px;
+    margin: 0;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Switch Styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(14px);
+    -ms-transform: translateX(14px);
+    transform: translateX(14px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 20px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+h1 {
+    font-size: 18px;
+    margin: 0;
+    color: var(--heading-color);
+    text-align: left;
+    /* Changed to left for header layout */
+    flex-grow: 1;
+}
+
+h2 {
+    font-size: 14px;
+    margin: 0 0 8px 0;
+    color: var(--subheading-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 4px;
+}
+
+.section {
+    background: var(--card-bg);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+select,
+input[type="number"],
+input[type="time"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    font-size: 13px;
+    box-sizing: border-box;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    /* Ensure padding doesn't affect width */
+}
+
+select:focus,
+input:focus {
+    outline: none;
+    border-color: var(--input-focus);
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    font-size: 13px;
+}
+
+.primary-btn {
+    background-color: var(--btn-primary);
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: var(--btn-primary-hover);
+}
+
+.secondary-btn {
+    background-color: var(--btn-secondary);
+    color: var(--btn-secondary-text);
+    margin-top: 10px;
+}
+
+.secondary-btn:hover {
+    background-color: var(--btn-secondary-hover);
+}
+
+.flex-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.flex-row input,
+.flex-row select {
+    margin: 0;
+}
+
+.status {
+    font-size: 12px;
+    margin-top: 8px;
+    text-align: center;
+    color: var(--status-color);
+    min-height: 1.2em;
+}
+
+.hidden {
+    display: none;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 5px 0;
+}
+
+.footer {
+    font-size: 11px;
+    color: var(--status-color);
+    /* Reuse status color or define another var */
+    text-align: center;
+    margin-top: 5px;
+}

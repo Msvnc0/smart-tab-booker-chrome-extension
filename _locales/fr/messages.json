@@ -1,0 +1,89 @@
+{
+    "extName": {
+        "message": "Smart Tab Booker"
+    },
+    "extDesc": {
+        "message": "Sauvegardez les onglets ouverts dans les favoris automatiquement ou manuellement."
+    },
+    "selectStart": {
+        "message": "Chargement des dossiers..."
+    },
+    "selectDefault": {
+        "message": "Sélectionnez un dossier..."
+    },
+    "backupBtn": {
+        "message": "Sauvegarder maintenant"
+    },
+    "backupBtnProgress": {
+        "message": "Sauvegarde en cours..."
+    },
+    "autoBackupTitle": {
+        "message": "Paramètres de sauvegarde automatique"
+    },
+    "intervalLabel": {
+        "message": "Intervalle :"
+    },
+    "daily": {
+        "message": "Quotidien"
+    },
+    "weekly": {
+        "message": "Hebdomadaire"
+    },
+    "monthly": {
+        "message": "Mensuel"
+    },
+    "enableAutoBackup": {
+        "message": "Activer la sauvegarde automatique"
+    },
+    "darkMode": {
+        "message": "Mode sombre"
+    },
+    "custom": {
+        "message": "Personnalisé"
+    },
+    "backupTimeLabel": {
+        "message": "Heure de sauvegarde (24h) :"
+    },
+    "saveSettingsBtn": {
+        "message": "Enregistrer les paramètres"
+    },
+    "saved": {
+        "message": "Enregistré !"
+    },
+    "lastBackupLabel": {
+        "message": "Dernière sauvegarde :"
+    },
+    "never": {
+        "message": "Jamais"
+    },
+    "folderSaved": {
+        "message": "Dossier enregistré !"
+    },
+    "selectFolderErr": {
+        "message": "Veuillez d'abord sélectionner un dossier."
+    },
+    "backupSuccess": {
+        "message": "Sauvegarde terminée !"
+    },
+    "backupFailed": {
+        "message": "Échec de la sauvegarde : "
+    },
+    "invalidValue": {
+        "message": "Valeur invalide."
+    },
+    "invalidTime": {
+        "message": "Heure invalide."
+    },
+    "minutes": {
+        "message": "Minutes"
+    },
+    "hours": {
+        "message": "Heures"
+    },
+    "days": {
+        "message": "Jours"
+    },
+    "selectFolderLabel": {
+        "message": "Dossier de sauvegarde :"
+    }
+}

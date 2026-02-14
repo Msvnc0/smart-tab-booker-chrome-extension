@@ -1,0 +1,89 @@
+{
+    "extName": {
+        "message": "Smart Tab Booker"
+    },
+    "extDesc": {
+        "message": "Realice copias de seguridad de las pestañas abiertas en marcadores de forma automática o manual."
+    },
+    "selectStart": {
+        "message": "Cargando carpetas..."
+    },
+    "selectDefault": {
+        "message": "Seleccione una carpeta..."
+    },
+    "backupBtn": {
+        "message": "Respaldar ahora"
+    },
+    "backupBtnProgress": {
+        "message": "Respaldando..."
+    },
+    "autoBackupTitle": {
+        "message": "Configuración de respaldo automático"
+    },
+    "intervalLabel": {
+        "message": "Intervalo:"
+    },
+    "daily": {
+        "message": "Diario"
+    },
+    "weekly": {
+        "message": "Semanal"
+    },
+    "monthly": {
+        "message": "Mensual"
+    },
+    "enableAutoBackup": {
+        "message": "Habilitar copia de seguridad automática"
+    },
+    "darkMode": {
+        "message": "Modo oscuro"
+    },
+    "custom": {
+        "message": "Personalizado"
+    },
+    "backupTimeLabel": {
+        "message": "Hora de respaldo (24h):"
+    },
+    "saveSettingsBtn": {
+        "message": "Guardar configuración"
+    },
+    "saved": {
+        "message": "¡Guardado!"
+    },
+    "lastBackupLabel": {
+        "message": "Último respaldo:"
+    },
+    "never": {
+        "message": "Nunca"
+    },
+    "folderSaved": {
+        "message": "¡Carpeta guardada!"
+    },
+    "selectFolderErr": {
+        "message": "Por favor seleccione una carpeta primero."
+    },
+    "backupSuccess": {
+        "message": "¡Respaldo completado!"
+    },
+    "backupFailed": {
+        "message": "Fallo en el respaldo: "
+    },
+    "invalidValue": {
+        "message": "Valor inválido."
+    },
+    "invalidTime": {
+        "message": "Hora inválida."
+    },
+    "minutes": {
+        "message": "Minutos"
+    },
+    "hours": {
+        "message": "Horas"
+    },
+    "days": {
+        "message": "Días"
+    },
+    "selectFolderLabel": {
+        "message": "Carpeta de respaldo:"
+    }
+}

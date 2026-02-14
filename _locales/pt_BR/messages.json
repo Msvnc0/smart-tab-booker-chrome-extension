@@ -1,0 +1,89 @@
+{
+    "extName": {
+        "message": "Smart Tab Booker"
+    },
+    "extDesc": {
+        "message": "Faça backup das abas abertas nos favoritos automaticamente ou manualmente."
+    },
+    "selectStart": {
+        "message": "Carregando pastas..."
+    },
+    "selectDefault": {
+        "message": "Selecione uma pasta..."
+    },
+    "backupBtn": {
+        "message": "Fazer Backup Agora"
+    },
+    "backupBtnProgress": {
+        "message": "Fazendo backup..."
+    },
+    "autoBackupTitle": {
+        "message": "Configurações de Backup Automático"
+    },
+    "intervalLabel": {
+        "message": "Intervalo:"
+    },
+    "daily": {
+        "message": "Diário"
+    },
+    "weekly": {
+        "message": "Semanal"
+    },
+    "monthly": {
+        "message": "Mensal"
+    },
+    "enableAutoBackup": {
+        "message": "Ativar backup automático"
+    },
+    "darkMode": {
+        "message": "Modo escuro"
+    },
+    "custom": {
+        "message": "Personalizado"
+    },
+    "backupTimeLabel": {
+        "message": "Hora do Backup (24h):"
+    },
+    "saveSettingsBtn": {
+        "message": "Salvar Configurações"
+    },
+    "saved": {
+        "message": "Salvo!"
+    },
+    "lastBackupLabel": {
+        "message": "Último Backup:"
+    },
+    "never": {
+        "message": "Nunca"
+    },
+    "folderSaved": {
+        "message": "Pasta salva!"
+    },
+    "selectFolderErr": {
+        "message": "Por favor, selecione uma pasta primeiro."
+    },
+    "backupSuccess": {
+        "message": "Backup concluído!"
+    },
+    "backupFailed": {
+        "message": "Falha no backup: "
+    },
+    "invalidValue": {
+        "message": "Valor inválido."
+    },
+    "invalidTime": {
+        "message": "Hora inválida."
+    },
+    "minutes": {
+        "message": "Minutos"
+    },
+    "hours": {
+        "message": "Horas"
+    },
+    "days": {
+        "message": "Dias"
+    },
+    "selectFolderLabel": {
+        "message": "Pasta de Backup:"
+    }
+}

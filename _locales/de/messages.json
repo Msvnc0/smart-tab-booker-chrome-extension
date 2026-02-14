@@ -1,0 +1,89 @@
+{
+    "extName": {
+        "message": "Smart Tab Booker"
+    },
+    "extDesc": {
+        "message": "Sichern Sie offene Tabs automatisch oder manuell in Lesezeichen."
+    },
+    "selectStart": {
+        "message": "Ordner werden geladen..."
+    },
+    "selectDefault": {
+        "message": "Wählen Sie einen Ordner..."
+    },
+    "backupBtn": {
+        "message": "Jetzt sichern"
+    },
+    "backupBtnProgress": {
+        "message": "Sicherung läuft..."
+    },
+    "autoBackupTitle": {
+        "message": "Einstellungen für automatische Sicherung"
+    },
+    "intervalLabel": {
+        "message": "Intervall:"
+    },
+    "daily": {
+        "message": "Täglich"
+    },
+    "weekly": {
+        "message": "Wöchentlich"
+    },
+    "monthly": {
+        "message": "Monatlich"
+    },
+    "enableAutoBackup": {
+        "message": "Automatisches Backup aktivieren"
+    },
+    "darkMode": {
+        "message": "Dunkelmodus"
+    },
+    "custom": {
+        "message": "Benutzerdefiniert"
+    },
+    "backupTimeLabel": {
+        "message": "Sicherungszeit (24h):"
+    },
+    "saveSettingsBtn": {
+        "message": "Einstellungen speichern"
+    },
+    "saved": {
+        "message": "Gespeichert!"
+    },
+    "lastBackupLabel": {
+        "message": "Letzte Sicherung:"
+    },
+    "never": {
+        "message": "Nie"
+    },
+    "folderSaved": {
+        "message": "Ordner gespeichert!"
+    },
+    "selectFolderErr": {
+        "message": "Bitte wählen Sie zuerst einen Ordner aus."
+    },
+    "backupSuccess": {
+        "message": "Sicherung abgeschlossen!"
+    },
+    "backupFailed": {
+        "message": "Sicherung fehlgeschlagen: "
+    },
+    "invalidValue": {
+        "message": "Ungültiger Wert."
+    },
+    "invalidTime": {
+        "message": "Ungültige Zeit."
+    },
+    "minutes": {
+        "message": "Minuten"
+    },
+    "hours": {
+        "message": "Stunden"
+    },
+    "days": {
+        "message": "Tage"
+    },
+    "selectFolderLabel": {
+        "message": "Sicherungsordner auswählen:"
+    }
+}

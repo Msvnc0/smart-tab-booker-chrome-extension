@@ -1,0 +1,136 @@
+{
+    "extName": {
+        "message": "Smart Tab Booker",
+        "description": "Extension name"
+    },
+    "extDesc": {
+        "message": "Backup open tabs to bookmarks automatically or manually.",
+        "description": "Extension description"
+    },
+    "selectStart": {
+        "message": "Loading folders...",
+        "description": "Initial select option"
+    },
+    "selectDefault": {
+        "message": "Select a folder...",
+        "description": "Default select option"
+    },
+    "backupBtn": {
+        "message": "Backup Now",
+        "description": "Button text"
+    },
+    "backupBtnProgress": {
+        "message": "Backing up...",
+        "description": "Button text during backup"
+    },
+    "autoBackupTitle": {
+        "message": "Auto Backup Settings",
+        "description": "Section title"
+    },
+    "intervalLabel": {
+        "message": "Interval:",
+        "description": "Label for interval"
+    },
+    "daily": {
+        "message": "Daily",
+        "description": "Option"
+    },
+    "weekly": {
+        "message": "Weekly",
+        "description": "Option"
+    },
+    "monthly": {
+        "message": "Monthly",
+        "description": "Option"
+    },
+    "enableAutoBackup": {
+        "message": "Enable Auto Backup"
+    },
+    "darkMode": {
+        "message": "Dark Mode"
+    },
+    "custom": {
+        "message": "Custom",
+        "description": "Option"
+    },
+    "selectAll": {
+        "message": "Select All",
+        "description": "Button text"
+    },
+    "deselectAll": {
+        "message": "Deselect All",
+        "description": "Button text"
+    },
+    "tabCounter": {
+        "message": "Selected: $SELECTED$ / $TOTAL$",
+        "description": "Tab counter text",
+        "placeholders": {
+            "selected": {
+                "content": "$1"
+            },
+            "total": {
+                "content": "$2"
+            }
+        }
+    },
+    "backupTimeLabel": {
+        "message": "Backup Time (24h):",
+        "description": "Label"
+    },
+    "saveSettingsBtn": {
+        "message": "Save Settings",
+        "description": "Button"
+    },
+    "saved": {
+        "message": "Saved!",
+        "description": "Status"
+    },
+    "lastBackupLabel": {
+        "message": "Last Backup:",
+        "description": "Label"
+    },
+    "never": {
+        "message": "Never",
+        "description": "Time"
+    },
+    "folderSaved": {
+        "message": "Folder saved!",
+        "description": "Status"
+    },
+    "selectFolderErr": {
+        "message": "Please select a folder first.",
+        "description": "Error"
+    },
+    "backupSuccess": {
+        "message": "Backup completed!",
+        "description": "Success"
+    },
+    "backupFailed": {
+        "message": "Backup failed: ",
+        "description": "Error prefix"
+    },
+    "invalidValue": {
+        "message": "Invalid value.",
+        "description": "Error"
+    },
+    "invalidTime": {
+        "message": "Invalid time.",
+        "description": "Error"
+    },
+    "minutes": {
+        "message": "Minutes",
+        "description": "Unit"
+    },
+    "hours": {
+        "message": "Hours",
+        "description": "Unit"
+    },
+    "days": {
+        "message": "Days",
+        "description": "Unit"
+    },
+    "selectFolderLabel": {
+        "message": "Select Backup Folder:",
+        "description": "Label"
+    }
+}

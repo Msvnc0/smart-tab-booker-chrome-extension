@@ -1,0 +1,89 @@
+{
+    "extName": {
+        "message": "Smart Tab Booker"
+    },
+    "extDesc": {
+        "message": "自动或手动将打开的标签页备份到书签。"
+    },
+    "selectStart": {
+        "message": "正在加载文件夹..."
+    },
+    "selectDefault": {
+        "message": "选择文件夹..."
+    },
+    "backupBtn": {
+        "message": "立即备份"
+    },
+    "backupBtnProgress": {
+        "message": "正在备份..."
+    },
+    "autoBackupTitle": {
+        "message": "自动备份设置"
+    },
+    "intervalLabel": {
+        "message": "间隔："
+    },
+    "daily": {
+        "message": "每天"
+    },
+    "weekly": {
+        "message": "每周"
+    },
+    "monthly": {
+        "message": "每月"
+    },
+    "enableAutoBackup": {
+        "message": "启用自动备份"
+    },
+    "darkMode": {
+        "message": "深色模式"
+    },
+    "custom": {
+        "message": "自定义"
+    },
+    "backupTimeLabel": {
+        "message": "备份时间 (24小时)："
+    },
+    "saveSettingsBtn": {
+        "message": "保存设置"
+    },
+    "saved": {
+        "message": "已保存！"
+    },
+    "lastBackupLabel": {
+        "message": "上次备份："
+    },
+    "never": {
+        "message": "从不"
+    },
+    "folderSaved": {
+        "message": "文件夹已保存！"
+    },
+    "selectFolderErr": {
+        "message": "请先选择一个文件夹。"
+    },
+    "backupSuccess": {
+        "message": "备份完成！"
+    },
+    "backupFailed": {
+        "message": "备份失败： "
+    },
+    "invalidValue": {
+        "message": "无效值。"
+    },
+    "invalidTime": {
+        "message": "无效时间。"
+    },
+    "minutes": {
+        "message": "分钟"
+    },
+    "hours": {
+        "message": "小时"
+    },
+    "days": {
+        "message": "天"
+    },
+    "selectFolderLabel": {
+        "message": "选择备份文件夹："
+    }
+}

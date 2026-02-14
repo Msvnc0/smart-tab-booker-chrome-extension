@@ -1,0 +1,89 @@
+{
+    "extName": {
+        "message": "Smart Tab Booker"
+    },
+    "extDesc": {
+        "message": "Автоматическое или ручное сохранение открытых вкладок в закладки."
+    },
+    "selectStart": {
+        "message": "Загрузка папок..."
+    },
+    "selectDefault": {
+        "message": "Выберите папку..."
+    },
+    "backupBtn": {
+        "message": "Создать резервную копию"
+    },
+    "backupBtnProgress": {
+        "message": "Выполняется резервное копирование..."
+    },
+    "autoBackupTitle": {
+        "message": "Настройки автосохранения"
+    },
+    "intervalLabel": {
+        "message": "Интервал:"
+    },
+    "daily": {
+        "message": "Ежедневно"
+    },
+    "weekly": {
+        "message": "Еженедельно"
+    },
+    "monthly": {
+        "message": "Ежемесячно"
+    },
+    "enableAutoBackup": {
+        "message": "Включить авто-резервное копирование"
+    },
+    "darkMode": {
+        "message": "Темный режим"
+    },
+    "custom": {
+        "message": "Пользовательский"
+    },
+    "backupTimeLabel": {
+        "message": "Время (24ч):"
+    },
+    "saveSettingsBtn": {
+        "message": "Сохранить настройки"
+    },
+    "saved": {
+        "message": "Сохранено!"
+    },
+    "lastBackupLabel": {
+        "message": "Последнее сохранение:"
+    },
+    "never": {
+        "message": "Никогда"
+    },
+    "folderSaved": {
+        "message": "Папка сохранена!"
+    },
+    "selectFolderErr": {
+        "message": "Пожалуйста, выберите папку."
+    },
+    "backupSuccess": {
+        "message": "Резервное копирование завершено!"
+    },
+    "backupFailed": {
+        "message": "Ошибка: "
+    },
+    "invalidValue": {
+        "message": "Неверное значение."
+    },
+    "invalidTime": {
+        "message": "Неверное время."
+    },
+    "minutes": {
+        "message": "Минуты"
+    },
+    "hours": {
+        "message": "Часы"
+    },
+    "days": {
+        "message": "Дни"
+    },
+    "selectFolderLabel": {
+        "message": "Папка для сохранения:"
+    }
+}

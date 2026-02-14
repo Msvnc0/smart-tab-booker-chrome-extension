@@ -1,0 +1,89 @@
+{
+    "extName": {
+        "message": "Smart Tab Booker"
+    },
+    "extDesc": {
+        "message": "開いているタブをブックマークに自動または手動でバックアップします。"
+    },
+    "selectStart": {
+        "message": "フォルダを読み込み中..."
+    },
+    "selectDefault": {
+        "message": "フォルダを選択..."
+    },
+    "backupBtn": {
+        "message": "今すぐバックアップ"
+    },
+    "backupBtnProgress": {
+        "message": "バックアップ中..."
+    },
+    "autoBackupTitle": {
+        "message": "自動バックアップ設定"
+    },
+    "intervalLabel": {
+        "message": "間隔:"
+    },
+    "daily": {
+        "message": "毎日"
+    },
+    "weekly": {
+        "message": "毎週"
+    },
+    "monthly": {
+        "message": "毎月"
+    },
+    "enableAutoBackup": {
+        "message": "自動バックアップを有効にする"
+    },
+    "darkMode": {
+        "message": "ダークモード"
+    },
+    "custom": {
+        "message": "カスタム"
+    },
+    "backupTimeLabel": {
+        "message": "バックアップ時間 (24時間):"
+    },
+    "saveSettingsBtn": {
+        "message": "設定を保存"
+    },
+    "saved": {
+        "message": "保存しました！"
+    },
+    "lastBackupLabel": {
+        "message": "前回のバックアップ:"
+    },
+    "never": {
+        "message": "なし"
+    },
+    "folderSaved": {
+        "message": "フォルダを保存しました！"
+    },
+    "selectFolderErr": {
+        "message": "フォルダを選択してください。"
+    },
+    "backupSuccess": {
+        "message": "バックアップ完了！"
+    },
+    "backupFailed": {
+        "message": "バックアップ失敗: "
+    },
+    "invalidValue": {
+        "message": "無効な値です。"
+    },
+    "invalidTime": {
+        "message": "無効な時間です。"
+    },
+    "minutes": {
+        "message": "分"
+    },
+    "hours": {
+        "message": "時間"
+    },
+    "days": {
+        "message": "日"
+    },
+    "selectFolderLabel": {
+        "message": "バックアップ先フォルダ:"
+    }
+}
