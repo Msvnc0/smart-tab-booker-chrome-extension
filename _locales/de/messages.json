@@ -74,6 +74,25 @@
     "invalidTime": {
         "message": "Ungültige Zeit."
     },
+    "selectAll": {
+        "message": "Alle auswählen"
+    },
+    "deselectAll": {
+        "message": "Auswahl aufheben"
+    },
+    "tabCounter": {
+        "message": "Ausgewählt: $SELECTED$ / $TOTAL$",
+        "placeholders": {
+            "selected": { "content": "$1" },
+            "total": { "content": "$2" }
+        }
+    },
+    "bookmarksBar": {
+        "message": "Lesezeichenleiste"
+    },
+    "otherBookmarks": {
+        "message": "Andere Lesezeichen"
+    },
     "minutes": {
         "message": "Minuten"
     },
@@ -85,5 +104,44 @@
     },
     "selectFolderLabel": {
         "message": "Sicherungsordner auswählen:"
+    },
+    "selectTabsLabel": {
+        "message": "Tabs zum Sichern auswählen:"
+    },
+    "noTabsSelected": {
+        "message": "Keine Tabs ausgewählt!"
+    },
+    "preserveGroups": {
+        "message": "Tab-Gruppen als Ordner beibehalten"
+    },
+    "autoCleanup": {
+        "message": "Alte Backups automatisch löschen"
+    },
+    "cleanupDaysLabel": {
+        "message": "Backups löschen älter als"
+    },
+    "daysLabel": {
+        "message": "Tage"
+    },
+    "addTimeBtn": {
+        "message": "+ Zeit hinzufügen"
+    },
+    "multiTimeLabel": {
+        "message": "Sicherungszeiten (max 5):"
+    },
+    "quickBackupDesc": {
+        "message": "Schnellbackup aller Tabs"
+    },
+    "shortcutLabel": {
+        "message": "Tastenkombination:"
+    },
+    "changeShortcut": {
+        "message": "Ändern"
+    },
+    "duplicateWarning": {
+        "message": "Duplikat(e)"
+    },
+    "includeDuplicates": {
+        "message": "Doppelte URLs einschließen"
     }
 }

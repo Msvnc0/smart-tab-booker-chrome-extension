@@ -74,6 +74,25 @@
     "invalidTime": {
         "message": "Hora inválida."
     },
+    "selectAll": {
+        "message": "Selecionar tudo"
+    },
+    "deselectAll": {
+        "message": "Desmarcar tudo"
+    },
+    "tabCounter": {
+        "message": "Selecionados: $SELECTED$ / $TOTAL$",
+        "placeholders": {
+            "selected": { "content": "$1" },
+            "total": { "content": "$2" }
+        }
+    },
+    "bookmarksBar": {
+        "message": "Barra de favoritos"
+    },
+    "otherBookmarks": {
+        "message": "Outros favoritos"
+    },
     "minutes": {
         "message": "Minutos"
     },
@@ -85,5 +104,44 @@
     },
     "selectFolderLabel": {
         "message": "Pasta de Backup:"
+    },
+    "selectTabsLabel": {
+        "message": "Abas para backup:"
+    },
+    "noTabsSelected": {
+        "message": "Nenhuma aba selecionada!"
+    },
+    "preserveGroups": {
+        "message": "Preservar grupos de abas como pastas"
+    },
+    "autoCleanup": {
+        "message": "Limpeza automática de backups antigos"
+    },
+    "cleanupDaysLabel": {
+        "message": "Excluir backups mais antigos que"
+    },
+    "daysLabel": {
+        "message": "dias"
+    },
+    "addTimeBtn": {
+        "message": "+ Adicionar hora"
+    },
+    "multiTimeLabel": {
+        "message": "Horários de backup (máx 5):"
+    },
+    "quickBackupDesc": {
+        "message": "Backup rápido de todas as abas"
+    },
+    "shortcutLabel": {
+        "message": "Atalho de teclado:"
+    },
+    "changeShortcut": {
+        "message": "Alterar"
+    },
+    "duplicateWarning": {
+        "message": "duplicado(s)"
+    },
+    "includeDuplicates": {
+        "message": "Incluir URLs duplicadas"
     }
 }

@@ -13,18 +13,29 @@
         <div class="header">
             <h1 data-i18n="extName">Smart Tab Booker</h1>
             <div style="display: flex; gap: 10px; align-items: center;">
-                <select id="languageSelect" style="padding: 2px; font-size: 12px;">
-                    <option value="en">English</option>
-                    <option value="tr">Türkçe</option>
-                    <option value="de">Deutsch</option>
-                    <option value="fr">Français</option>
-                    <option value="es">Español</option>
-                    <option value="it">Italiano</option>
-                    <option value="pt_BR">Português (BR)</option>
-                    <option value="ru">Русский</option>
-                    <option value="ja">日本語</option>
-                    <option value="zh_CN">简体中文</option>
-                </select>
+                <div class="language-selector">
+                    <span class="language-icon">🌐</span>
+                    <select id="languageSelect" style="padding: 2px; font-size: 12px;">
+                        <option value="ar">Arabic (العربية)</option>
+                        <option value="zh_CN">Chinese Simplified (简体中文)</option>
+                        <option value="nl">Dutch (Nederlands)</option>
+                        <option value="en">English</option>
+                        <option value="fr">French (Français)</option>
+                        <option value="de">German (Deutsch)</option>
+                        <option value="hi">Hindi (हिन्दी)</option>
+                        <option value="id">Indonesian (Bahasa Indonesia)</option>
+                        <option value="it">Italian (Italiano)</option>
+                        <option value="ja">Japanese (日本語)</option>
+                        <option value="ko">Korean (한국어)</option>
+                        <option value="pl">Polish (Polski)</option>
+                        <option value="pt_BR">Portuguese (BR) (Português)</option>
+                        <option value="ru">Russian (Русский)</option>
+                        <option value="es">Spanish (Español)</option>
+                        <option value="th">Thai (ไทย)</option>
+                        <option value="tr">Turkish (Türkçe)</option>
+                        <option value="vi">Vietnamese (Tiếng Việt)</option>
+                    </select>
+                </div>
                 <div style="display: flex; align-items: center; gap: 5px;">
                     <span data-i18n="darkMode" style="font-size: 12px;">Dark Mode</span>
                     <label class="switch" title="Toggle Dark Mode">
@@ -45,7 +56,12 @@
         <div class="section">
             <label data-i18n="selectTabsLabel">Select Tabs to Backup:</label>
             <div id="tabListContainer" style="margin-bottom: 10px;">
-                <!-- Tabs will be injected here -->
+            </div>
+            <div class="setting-row" style="margin-bottom: 8px;">
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                    <input type="checkbox" id="includeDuplicatesToggle" style="margin-right: 8px;">
+                    <span data-i18n="includeDuplicates">Include Duplicate URLs</span>
+                </label>
             </div>
             <button id="backupBtn" class="primary-btn" data-i18n="backupBtn">Backup Now</button>
             <p id="statusMessage" class="status"></p>
@@ -73,11 +89,10 @@
                 </select>
 
                 <div id="timeContainer">
-                    <label data-i18n="backupTimeLabel">Backup Time (24h):</label>
-                    <div class="flex-row">
-                        <select id="backupTimeHour" style="width: 48%;"></select>
-                        <span style="align-self: center; font-weight: bold;">:</span>
-                        <select id="backupTimeMinute" style="width: 48%;"></select>
+                    <div id="multiTimeContainer">
+                        <label data-i18n="multiTimeLabel">Backup Times (max 5):</label>
+                        <div id="timeList"></div>
+                        <button id="addTimeBtn" class="small-btn" data-i18n="addTimeBtn">+ Add Time</button>
                     </div>
                 </div>
 
@@ -91,10 +106,39 @@
                         </select>
                     </div>
                 </div>
+
+                <hr style="margin: 10px 0;">
+
+                <div class="setting-row">
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" id="preserveGroupsToggle" style="margin-right: 8px;">
+                        <span data-i18n="preserveGroups">Preserve Tab Groups as Folders</span>
+                    </label>
+                </div>
+
+                <div class="setting-row">
+                    <label style="display: flex; align-items: center; cursor: pointer; margin-bottom: 5px;">
+                        <input type="checkbox" id="autoCleanupToggle" style="margin-right: 8px;">
+                        <span data-i18n="autoCleanup">Auto Cleanup Old Backups</span>
+                    </label>
+                    <div id="cleanupSettings" class="hidden">
+                        <div class="flex-row" style="align-items: center;">
+                            <span data-i18n="cleanupDaysLabel" style="font-size: 12px;">Delete backups older than</span>
+                            <input type="number" id="cleanupDays" min="1" max="365" value="30" style="width: 60px;">
+                            <span data-i18n="daysLabel" style="font-size: 12px;">days</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <button id="saveSettingsBtn" class="secondary-btn" data-i18n="saveSettingsBtn">Save Settings</button>
+
+        <div class="shortcut-info">
+            <span data-i18n="shortcutLabel">Keyboard Shortcut:</span>
+            <span class="shortcut-key">Ctrl+Shift+B</span>
+            <a href="#" id="shortcutLink" data-i18n="changeShortcut">Change</a>
+        </div>
     </div>
 
     <div class="footer">

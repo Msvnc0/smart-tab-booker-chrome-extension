@@ -74,6 +74,25 @@
     "invalidTime": {
         "message": "无效时间。"
     },
+    "selectAll": {
+        "message": "全选"
+    },
+    "deselectAll": {
+        "message": "取消全选"
+    },
+    "tabCounter": {
+        "message": "已选: $SELECTED$ / $TOTAL$",
+        "placeholders": {
+            "selected": { "content": "$1" },
+            "total": { "content": "$2" }
+        }
+    },
+    "bookmarksBar": {
+        "message": "书签栏"
+    },
+    "otherBookmarks": {
+        "message": "其他书签"
+    },
     "minutes": {
         "message": "分钟"
     },
@@ -85,5 +104,44 @@
     },
     "selectFolderLabel": {
         "message": "选择备份文件夹："
+    },
+    "selectTabsLabel": {
+        "message": "选择要备份的标签页："
+    },
+    "noTabsSelected": {
+        "message": "未选择标签页！"
+    },
+    "preserveGroups": {
+        "message": "将标签页组保存为文件夹"
+    },
+    "autoCleanup": {
+        "message": "自动清理旧备份"
+    },
+    "cleanupDaysLabel": {
+        "message": "删除超过以下天数的备份"
+    },
+    "daysLabel": {
+        "message": "天"
+    },
+    "addTimeBtn": {
+        "message": "+ 添加时间"
+    },
+    "multiTimeLabel": {
+        "message": "备份时间（最多5个）："
+    },
+    "quickBackupDesc": {
+        "message": "快速备份所有标签页"
+    },
+    "shortcutLabel": {
+        "message": "快捷键："
+    },
+    "changeShortcut": {
+        "message": "更改"
+    },
+    "duplicateWarning": {
+        "message": "重复"
+    },
+    "includeDuplicates": {
+        "message": "包含重复URL"
     }
 }

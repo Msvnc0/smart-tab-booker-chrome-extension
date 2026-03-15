@@ -108,5 +108,44 @@
     },
     "selectFolderLabel": {
         "message": "Yedekleme Klasörünü Seç:"
+    },
+    "selectTabsLabel": {
+        "message": "Yedeklenecek Sekmeleri Seç:"
+    },
+    "noTabsSelected": {
+        "message": "Sekme seçilmedi!"
+    },
+    "preserveGroups": {
+        "message": "Sekme Gruplarını Klasör Olarak Koru"
+    },
+    "autoCleanup": {
+        "message": "Eski Yedekleri Otomatik Temizle"
+    },
+    "cleanupDaysLabel": {
+        "message": "Şu kadar günden eski yedekleri sil:"
+    },
+    "daysLabel": {
+        "message": "gün"
+    },
+    "addTimeBtn": {
+        "message": "+ Zaman Ekle"
+    },
+    "multiTimeLabel": {
+        "message": "Yedekleme Zamanları (maks 5):"
+    },
+    "quickBackupDesc": {
+        "message": "Tüm sekmeleri hızlı yedekle"
+    },
+    "shortcutLabel": {
+        "message": "Klavye Kısayolu:"
+    },
+    "changeShortcut": {
+        "message": "Değiştir"
+    },
+    "duplicateWarning": {
+        "message": "kopya"
+    },
+    "includeDuplicates": {
+        "message": "Kopya URL'leri de Yedekle"
     }
 }

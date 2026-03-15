@@ -1,0 +1,147 @@
+{
+    "extName": {
+        "message": "Smart Tab Booker"
+    },
+    "extDesc": {
+        "message": "Cadangkan tab terbuka ke bookmark secara otomatis atau manual."
+    },
+    "selectStart": {
+        "message": "Memuat folder..."
+    },
+    "selectDefault": {
+        "message": "Pilih folder..."
+    },
+    "backupBtn": {
+        "message": "Cadangkan Sekarang"
+    },
+    "backupBtnProgress": {
+        "message": "Mencadangkan..."
+    },
+    "autoBackupTitle": {
+        "message": "Pengaturan Pencadangan Otomatis"
+    },
+    "intervalLabel": {
+        "message": "Interval:"
+    },
+    "daily": {
+        "message": "Harian"
+    },
+    "weekly": {
+        "message": "Mingguan"
+    },
+    "monthly": {
+        "message": "Bulanan"
+    },
+    "enableAutoBackup": {
+        "message": "Aktifkan Pencadangan Otomatis"
+    },
+    "darkMode": {
+        "message": "Mode Gelap"
+    },
+    "custom": {
+        "message": "Kustom"
+    },
+    "backupTimeLabel": {
+        "message": "Waktu Pencadangan (24 jam):"
+    },
+    "saveSettingsBtn": {
+        "message": "Simpan Pengaturan"
+    },
+    "saved": {
+        "message": "Tersimpan!"
+    },
+    "lastBackupLabel": {
+        "message": "Pencadangan Terakhir:"
+    },
+    "never": {
+        "message": "Tidak Pernah"
+    },
+    "folderSaved": {
+        "message": "Folder tersimpan!"
+    },
+    "selectFolderErr": {
+        "message": "Silakan pilih folder terlebih dahulu."
+    },
+    "backupSuccess": {
+        "message": "Pencadangan selesai!"
+    },
+    "backupFailed": {
+        "message": "Pencadangan gagal: "
+    },
+    "invalidValue": {
+        "message": "Nilai tidak valid."
+    },
+    "invalidTime": {
+        "message": "Waktu tidak valid."
+    },
+    "selectAll": {
+        "message": "Pilih Semua"
+    },
+    "deselectAll": {
+        "message": "Batal Pilih Semua"
+    },
+    "tabCounter": {
+        "message": "Dipilih: $SELECTED$ / $TOTAL$",
+        "placeholders": {
+            "selected": { "content": "$1" },
+            "total": { "content": "$2" }
+        }
+    },
+    "bookmarksBar": {
+        "message": "Bilah Bookmark"
+    },
+    "otherBookmarks": {
+        "message": "Bookmark Lainnya"
+    },
+    "minutes": {
+        "message": "Menit"
+    },
+    "hours": {
+        "message": "Jam"
+    },
+    "days": {
+        "message": "Hari"
+    },
+    "selectFolderLabel": {
+        "message": "Pilih Folder Pencadangan:"
+    },
+    "selectTabsLabel": {
+        "message": "Pilih Tab untuk Dicadangkan:"
+    },
+    "noTabsSelected": {
+        "message": "Tidak ada tab yang dipilih!"
+    },
+    "preserveGroups": {
+        "message": "Pertahankan Grup Tab sebagai Folder"
+    },
+    "autoCleanup": {
+        "message": "Bersihkan Cadangan Lama Secara Otomatis"
+    },
+    "cleanupDaysLabel": {
+        "message": "Hapus cadangan yang lebih lama dari"
+    },
+    "daysLabel": {
+        "message": "hari"
+    },
+    "addTimeBtn": {
+        "message": "+ Tambah Waktu"
+    },
+    "multiTimeLabel": {
+        "message": "Waktu Pencadangan (maks 5):"
+    },
+    "quickBackupDesc": {
+        "message": "Cadangkan semua tab dengan cepat"
+    },
+    "shortcutLabel": {
+        "message": "Pintasan Keyboard:"
+    },
+    "changeShortcut": {
+        "message": "Ubah"
+    },
+    "duplicateWarning": {
+        "message": "duplikat"
+    },
+    "includeDuplicates": {
+        "message": "Sertakan URL Duplikat"
+    }
+}

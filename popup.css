@@ -13,6 +13,8 @@
     --btn-secondary-text: #2c3e50;
     --btn-secondary-hover: #bdc3c7;
     --status-color: #666;
+    --duplicate-bg: #fff3cd;
+    --duplicate-badge: #856404;
 }
 
 body.dark-mode {
@@ -25,12 +27,13 @@ body.dark-mode {
     --input-border: #555;
     --input-focus: #5cb85c;
     --btn-primary: #2980b9;
-    /* Slightly darker/different shade */
     --btn-primary-hover: #3498db;
     --btn-secondary: #444;
     --btn-secondary-text: #e0e0e0;
     --btn-secondary-hover: #555;
     --status-color: #aaa;
+    --duplicate-bg: #3d3800;
+    --duplicate-badge: #ffc107;
 }
 
 body {
@@ -56,7 +59,6 @@ body {
     margin-bottom: 15px;
 }
 
-/* Switch Styles */
 .switch {
     position: relative;
     display: inline-block;
@@ -108,7 +110,6 @@ input:checked+.slider:before {
     transform: translateX(14px);
 }
 
-/* Rounded sliders */
 .slider.round {
     border-radius: 20px;
 }
@@ -122,7 +123,6 @@ h1 {
     margin: 0;
     color: var(--heading-color);
     text-align: left;
-    /* Changed to left for header layout */
     flex-grow: 1;
 }
 
@@ -161,7 +161,6 @@ input[type="time"] {
     box-sizing: border-box;
     background-color: var(--bg-color);
     color: var(--text-color);
-    /* Ensure padding doesn't affect width */
 }
 
 select:focus,
@@ -200,10 +199,20 @@ button {
     background-color: var(--btn-secondary-hover);
 }
 
+.small-btn {
+    width: auto;
+    padding: 5px 10px;
+    font-size: 12px;
+    background-color: var(--btn-primary);
+    color: white;
+    margin-top: 5px;
+}
+
 .flex-row {
     display: flex;
     gap: 8px;
     margin-top: 5px;
+    align-items: center;
 }
 
 .flex-row input,
@@ -232,7 +241,218 @@ hr {
 .footer {
     font-size: 11px;
     color: var(--status-color);
-    /* Reuse status color or define another var */
     text-align: center;
     margin-top: 5px;
+}
+
+.tab-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    padding: 0 5px;
+    font-size: 12px;
+    width: auto;
+}
+
+.action-btn:hover {
+    text-decoration: underline;
+}
+
+.tab-scroll-container {
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.tab-row {
+    display: flex;
+    align-items: center;
+    padding: 2px 0;
+}
+
+.tab-row.duplicate {
+    background-color: var(--duplicate-bg);
+    border-radius: 3px;
+    padding: 2px 4px;
+    margin: 1px 0;
+}
+
+.tab-checkbox {
+    margin-right: 8px;
+}
+
+.favicon {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+.tab-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    cursor: default;
+    flex: 1;
+}
+
+.duplicate-badge {
+    background-color: var(--duplicate-badge);
+    color: white;
+    font-size: 10px;
+    padding: 1px 4px;
+    border-radius: 3px;
+    margin-left: 5px;
+}
+
+.duplicate-info {
+    color: var(--duplicate-badge);
+    font-size: 11px;
+}
+
+.setting-row {
+    margin-bottom: 10px;
+}
+
+.time-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.time-select {
+    width: 60px !important;
+    padding: 5px !important;
+}
+
+.remove-time-btn {
+    width: auto;
+    padding: 2px 8px;
+    font-size: 14px;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 3px;
+    line-height: 1;
+}
+
+.remove-time-btn:hover {
+    background-color: #c82333;
+}
+
+.shortcut-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--status-color);
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.shortcut-key {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+.shortcut-info a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.shortcut-info a:hover {
+    text-decoration: underline;
+}
+
+.language-selector {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.language-icon {
+    font-size: 14px;
+}
+
+/* === RTL Support === */
+html[dir="rtl"] {
+    direction: rtl;
+}
+
+html[dir="rtl"] .header {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .tab-controls {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .tab-row {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .tab-checkbox {
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+html[dir="rtl"] .favicon {
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+html[dir="rtl"] .tab-label {
+    text-align: right;
+}
+
+html[dir="rtl"] .duplicate-badge {
+    margin-left: 0;
+    margin-right: 5px;
+}
+
+html[dir="rtl"] .setting-row label {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] input[type="checkbox"] {
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+html[dir="rtl"] .shortcut-info {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .time-row {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .flex-row {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] select,
+html[dir="rtl"] input[type="number"],
+html[dir="rtl"] input[type="time"] {
+    text-align: right;
+}
+
+html[dir="rtl"] .footer {
+    text-align: right;
+}
+
+html[dir="rtl"] h1 {
+    text-align: right;
 }

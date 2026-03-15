@@ -1,0 +1,147 @@
+{
+    "extName": {
+        "message": "Smart Tab Booker"
+    },
+    "extDesc": {
+        "message": "احفظ علامات التبويب المفتوحة في الإشارات المرجعية تلقائيًا أو يدويًا."
+    },
+    "selectStart": {
+        "message": "جاري تحميل المجلدات..."
+    },
+    "selectDefault": {
+        "message": "اختر مجلدًا..."
+    },
+    "backupBtn": {
+        "message": "إنشاء نسخة احتياطية الآن"
+    },
+    "backupBtnProgress": {
+        "message": "جاري إنشاء النسخة الاحتياطية..."
+    },
+    "autoBackupTitle": {
+        "message": "إعدادات النسخ الاحتياطي التلقائي"
+    },
+    "intervalLabel": {
+        "message": "الفاصل الزمني:"
+    },
+    "daily": {
+        "message": "يوميًا"
+    },
+    "weekly": {
+        "message": "أسبوعيًا"
+    },
+    "monthly": {
+        "message": "شهريًا"
+    },
+    "enableAutoBackup": {
+        "message": "تفعيل النسخ الاحتياطي التلقائي"
+    },
+    "darkMode": {
+        "message": "الوضع الداكن"
+    },
+    "custom": {
+        "message": "مخصص"
+    },
+    "backupTimeLabel": {
+        "message": "وقت النسخ الاحتياطي (24 ساعة):"
+    },
+    "saveSettingsBtn": {
+        "message": "حفظ الإعدادات"
+    },
+    "saved": {
+        "message": "تم الحفظ!"
+    },
+    "lastBackupLabel": {
+        "message": "آخر نسخة احتياطية:"
+    },
+    "never": {
+        "message": "أبدًا"
+    },
+    "folderSaved": {
+        "message": "تم حفظ المجلد!"
+    },
+    "selectFolderErr": {
+        "message": "يرجى اختيار مجلد أولاً."
+    },
+    "backupSuccess": {
+        "message": "تم إنشاء النسخة الاحتياطية!"
+    },
+    "backupFailed": {
+        "message": "فشل إنشاء النسخة الاحتياطية: "
+    },
+    "invalidValue": {
+        "message": "قيمة غير صالحة."
+    },
+    "invalidTime": {
+        "message": "وقت غير صالح."
+    },
+    "selectAll": {
+        "message": "تحديد الكل"
+    },
+    "deselectAll": {
+        "message": "إلغاء تحديد الكل"
+    },
+    "tabCounter": {
+        "message": "المحدد: $SELECTED$ / $TOTAL$",
+        "placeholders": {
+            "selected": { "content": "$1" },
+            "total": { "content": "$2" }
+        }
+    },
+    "bookmarksBar": {
+        "message": "شريط الإشارات المرجعية"
+    },
+    "otherBookmarks": {
+        "message": "إشارات مرجعية أخرى"
+    },
+    "minutes": {
+        "message": "دقائق"
+    },
+    "hours": {
+        "message": "ساعات"
+    },
+    "days": {
+        "message": "أيام"
+    },
+    "selectFolderLabel": {
+        "message": "اختر مجلد النسخ الاحتياطي:"
+    },
+    "selectTabsLabel": {
+        "message": "اختر علامات التبويب للنسخ الاحتياطي:"
+    },
+    "noTabsSelected": {
+        "message": "لم يتم تحديد أي علامات تبويب!"
+    },
+    "preserveGroups": {
+        "message": "الحفاظ على مجموعات علامات التبويب كمجلدات"
+    },
+    "autoCleanup": {
+        "message": "التنظيف التلقائي للنسخ الاحتياطية القديمة"
+    },
+    "cleanupDaysLabel": {
+        "message": "حذف النسخ الاحتياطية الأقدم من"
+    },
+    "daysLabel": {
+        "message": "يوم"
+    },
+    "addTimeBtn": {
+        "message": "+ إضافة وقت"
+    },
+    "multiTimeLabel": {
+        "message": "أوقات النسخ الاحتياطي (حد أقصى 5):"
+    },
+    "quickBackupDesc": {
+        "message": "نسخ احتياطي سريع لجميع علامات التبويب"
+    },
+    "shortcutLabel": {
+        "message": "اختصار لوحة المفاتيح:"
+    },
+    "changeShortcut": {
+        "message": "تغيير"
+    },
+    "duplicateWarning": {
+        "message": "مكرر/مكررات"
+    },
+    "includeDuplicates": {
+        "message": "تضمين عناوين URL المكررة"
+    }
+}

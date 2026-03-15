@@ -74,6 +74,25 @@
     "invalidTime": {
         "message": "無効な時間です。"
     },
+    "selectAll": {
+        "message": "すべて選択"
+    },
+    "deselectAll": {
+        "message": "選択解除"
+    },
+    "tabCounter": {
+        "message": "選択: $SELECTED$ / $TOTAL$",
+        "placeholders": {
+            "selected": { "content": "$1" },
+            "total": { "content": "$2" }
+        }
+    },
+    "bookmarksBar": {
+        "message": "ブックマークバー"
+    },
+    "otherBookmarks": {
+        "message": "その他のブックマーク"
+    },
     "minutes": {
         "message": "分"
     },
@@ -85,5 +104,44 @@
     },
     "selectFolderLabel": {
         "message": "バックアップ先フォルダ:"
+    },
+    "selectTabsLabel": {
+        "message": "バックアップするタブ:"
+    },
+    "noTabsSelected": {
+        "message": "タブが選択されていません！"
+    },
+    "preserveGroups": {
+        "message": "タブグループをフォルダとして保持"
+    },
+    "autoCleanup": {
+        "message": "古いバックアップを自動削除"
+    },
+    "cleanupDaysLabel": {
+        "message": "以下の日数より古いバックアップを削除"
+    },
+    "daysLabel": {
+        "message": "日"
+    },
+    "addTimeBtn": {
+        "message": "+ 時間を追加"
+    },
+    "multiTimeLabel": {
+        "message": "バックアップ時間 (最大5):"
+    },
+    "quickBackupDesc": {
+        "message": "すべてのタブをクイックバックアップ"
+    },
+    "shortcutLabel": {
+        "message": "キーボードショートカット:"
+    },
+    "changeShortcut": {
+        "message": "変更"
+    },
+    "duplicateWarning": {
+        "message": "重複"
+    },
+    "includeDuplicates": {
+        "message": "重複URLを含める"
     }
 }

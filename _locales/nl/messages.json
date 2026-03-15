@@ -1,0 +1,147 @@
+{
+    "extName": {
+        "message": "Smart Tab Booker"
+    },
+    "extDesc": {
+        "message": "Maak automatisch of handmatig een back-up van open tabbladen naar bladwijzers."
+    },
+    "selectStart": {
+        "message": "Mappen laden..."
+    },
+    "selectDefault": {
+        "message": "Selecteer een map..."
+    },
+    "backupBtn": {
+        "message": "Nu back-uppen"
+    },
+    "backupBtnProgress": {
+        "message": "Back-uppen..."
+    },
+    "autoBackupTitle": {
+        "message": "Instellingen voor automatische back-up"
+    },
+    "intervalLabel": {
+        "message": "Interval:"
+    },
+    "daily": {
+        "message": "Dagelijks"
+    },
+    "weekly": {
+        "message": "Wekelijks"
+    },
+    "monthly": {
+        "message": "Maandelijks"
+    },
+    "enableAutoBackup": {
+        "message": "Automatische back-up inschakelen"
+    },
+    "darkMode": {
+        "message": "Donkere modus"
+    },
+    "custom": {
+        "message": "Aangepast"
+    },
+    "backupTimeLabel": {
+        "message": "Back-uptijd (24u):"
+    },
+    "saveSettingsBtn": {
+        "message": "Instellingen opslaan"
+    },
+    "saved": {
+        "message": "Opgeslagen!"
+    },
+    "lastBackupLabel": {
+        "message": "Laatste back-up:"
+    },
+    "never": {
+        "message": "Nooit"
+    },
+    "folderSaved": {
+        "message": "Map opgeslagen!"
+    },
+    "selectFolderErr": {
+        "message": "Selecteer eerst een map."
+    },
+    "backupSuccess": {
+        "message": "Back-up voltooid!"
+    },
+    "backupFailed": {
+        "message": "Back-up mislukt: "
+    },
+    "invalidValue": {
+        "message": "Ongeldige waarde."
+    },
+    "invalidTime": {
+        "message": "Ongeldige tijd."
+    },
+    "selectAll": {
+        "message": "Alles selecteren"
+    },
+    "deselectAll": {
+        "message": "Alles deselecteren"
+    },
+    "tabCounter": {
+        "message": "Geselecteerd: $SELECTED$ / $TOTAL$",
+        "placeholders": {
+            "selected": { "content": "$1" },
+            "total": { "content": "$2" }
+        }
+    },
+    "bookmarksBar": {
+        "message": "Bladwijzerbalk"
+    },
+    "otherBookmarks": {
+        "message": "Andere bladwijzers"
+    },
+    "minutes": {
+        "message": "Minuten"
+    },
+    "hours": {
+        "message": "Uren"
+    },
+    "days": {
+        "message": "Dagen"
+    },
+    "selectFolderLabel": {
+        "message": "Selecteer back-upmap:"
+    },
+    "selectTabsLabel": {
+        "message": "Selecteer tabbladen om te back-uppen:"
+    },
+    "noTabsSelected": {
+        "message": "Geen tabbladen geselecteerd!"
+    },
+    "preserveGroups": {
+        "message": "Tabbladgroepen behouden als mappen"
+    },
+    "autoCleanup": {
+        "message": "Oude back-ups automatisch opschonen"
+    },
+    "cleanupDaysLabel": {
+        "message": "Verwijder back-ups ouder dan"
+    },
+    "daysLabel": {
+        "message": "dagen"
+    },
+    "addTimeBtn": {
+        "message": "+ Tijd toevoegen"
+    },
+    "multiTimeLabel": {
+        "message": "Back-uptijden (max 5):"
+    },
+    "quickBackupDesc": {
+        "message": "Snelle back-up van alle tabbladen"
+    },
+    "shortcutLabel": {
+        "message": "Sneltoets:"
+    },
+    "changeShortcut": {
+        "message": "Wijzigen"
+    },
+    "duplicateWarning": {
+        "message": "duplicaat(en)"
+    },
+    "includeDuplicates": {
+        "message": "Dubbele URL's opnemen"
+    }
+}

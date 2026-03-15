@@ -1,0 +1,147 @@
+{
+    "extName": {
+        "message": "Smart Tab Booker"
+    },
+    "extDesc": {
+        "message": "खुले टैब को बुकमार्क में स्वचालित या मैन्युअल रूप से बैकअप करें।"
+    },
+    "selectStart": {
+        "message": "फ़ोल्डर लोड हो रहे हैं..."
+    },
+    "selectDefault": {
+        "message": "एक फ़ोल्डर चुनें..."
+    },
+    "backupBtn": {
+        "message": "अभी बैकअप करें"
+    },
+    "backupBtnProgress": {
+        "message": "बैकअप हो रहा है..."
+    },
+    "autoBackupTitle": {
+        "message": "स्वचालित बैकअप सेटिंग्स"
+    },
+    "intervalLabel": {
+        "message": "अंतराल:"
+    },
+    "daily": {
+        "message": "दैनिक"
+    },
+    "weekly": {
+        "message": "साप्ताहिक"
+    },
+    "monthly": {
+        "message": "मासिक"
+    },
+    "enableAutoBackup": {
+        "message": "स्वचालित बैकअप सक्षम करें"
+    },
+    "darkMode": {
+        "message": "डार्क मोड"
+    },
+    "custom": {
+        "message": "कस्टम"
+    },
+    "backupTimeLabel": {
+        "message": "बैकअप समय (24 घंटे):"
+    },
+    "saveSettingsBtn": {
+        "message": "सेटिंग्स सहेजें"
+    },
+    "saved": {
+        "message": "सहेजा गया!"
+    },
+    "lastBackupLabel": {
+        "message": "अंतिम बैकअप:"
+    },
+    "never": {
+        "message": "कभी नहीं"
+    },
+    "folderSaved": {
+        "message": "फ़ोल्डर सहेजा गया!"
+    },
+    "selectFolderErr": {
+        "message": "कृपया पहले एक फ़ोल्डर चुनें।"
+    },
+    "backupSuccess": {
+        "message": "बैकअप पूर्ण हो गया!"
+    },
+    "backupFailed": {
+        "message": "बैकअप विफल: "
+    },
+    "invalidValue": {
+        "message": "अमान्य मान।"
+    },
+    "invalidTime": {
+        "message": "अमान्य समय।"
+    },
+    "selectAll": {
+        "message": "सभी चुनें"
+    },
+    "deselectAll": {
+        "message": "सभी अचयनित करें"
+    },
+    "tabCounter": {
+        "message": "चयनित: $SELECTED$ / $TOTAL$",
+        "placeholders": {
+            "selected": { "content": "$1" },
+            "total": { "content": "$2" }
+        }
+    },
+    "bookmarksBar": {
+        "message": "बुकमार्क बार"
+    },
+    "otherBookmarks": {
+        "message": "अन्य बुकमार्क"
+    },
+    "minutes": {
+        "message": "मिनट"
+    },
+    "hours": {
+        "message": "घंटे"
+    },
+    "days": {
+        "message": "दिन"
+    },
+    "selectFolderLabel": {
+        "message": "बैकअप फ़ोल्डर चुनें:"
+    },
+    "selectTabsLabel": {
+        "message": "बैकअप के लिए टैब चुनें:"
+    },
+    "noTabsSelected": {
+        "message": "कोई टैब चयनित नहीं!"
+    },
+    "preserveGroups": {
+        "message": "टैब समूहों को फ़ोल्डर के रूप में संरक्षित करें"
+    },
+    "autoCleanup": {
+        "message": "पुराने बैकअप का स्वचालित सफायन"
+    },
+    "cleanupDaysLabel": {
+        "message": "इससे पुराने बैकअप हटाएं"
+    },
+    "daysLabel": {
+        "message": "दिन"
+    },
+    "addTimeBtn": {
+        "message": "+ समय जोड़ें"
+    },
+    "multiTimeLabel": {
+        "message": "बैकअप समय (अधिकतम 5):"
+    },
+    "quickBackupDesc": {
+        "message": "सभी टैब का त्वरित बैकअप"
+    },
+    "shortcutLabel": {
+        "message": "कीबोर्ड शॉर्टकट:"
+    },
+    "changeShortcut": {
+        "message": "बदलें"
+    },
+    "duplicateWarning": {
+        "message": "डुप्लिकेट"
+    },
+    "includeDuplicates": {
+        "message": "डुप्लिकेट URL शामिल करें"
+    }
+}

@@ -18,7 +18,16 @@ const CONSTANTS = {
         CUSTOM_INTERVAL_UNIT: 'customIntervalUnit',
         SAVE_SETTINGS_BTN: 'saveSettingsBtn',
         CUSTOM_INTERVAL_CONTAINER: 'customIntervalContainer',
-        TIME_CONTAINER: 'timeContainer'
+        TIME_CONTAINER: 'timeContainer',
+        MULTI_TIME_CONTAINER: 'multiTimeContainer',
+        TIME_LIST: 'timeList',
+        ADD_TIME_BTN: 'addTimeBtn',
+        PRESERVE_GROUPS_TOGGLE: 'preserveGroupsToggle',
+        AUTO_CLEANUP_TOGGLE: 'autoCleanupToggle',
+        CLEANUP_SETTINGS: 'cleanupSettings',
+        CLEANUP_DAYS: 'cleanupDays',
+        SHORTCUT_LINK: 'shortcutLink',
+        INCLUDE_DUPLICATES_TOGGLE: 'includeDuplicatesToggle'
     },
     STORAGE: {
         BACKUP_FOLDER_ID: 'backupFolderId',
@@ -29,8 +38,14 @@ const CONSTANTS = {
         BACKUP_TIME: 'backupTime',
         LAST_BACKUP_TIME: 'lastBackupTime',
         DARK_MODE: 'darkMode',
-        SELECTED_LANGUAGE: 'selectedLanguage'
-    }
+        SELECTED_LANGUAGE: 'selectedLanguage',
+        PRESERVE_TAB_GROUPS: 'preserveTabGroups',
+        AUTO_CLEANUP_ENABLED: 'autoCleanupEnabled',
+        AUTO_CLEANUP_DAYS: 'autoCleanupDays',
+        BACKUP_TIMES: 'backupTimes',
+        INCLUDE_DUPLICATES: 'includeDuplicates'
+    },
+    MAX_BACKUP_TIMES: 5
 };
 
 const DOM = {
@@ -38,8 +53,6 @@ const DOM = {
     getAll: (selector) => document.querySelectorAll(selector),
     create: (tag) => document.createElement(tag)
 };
-
-// --- Modules ---
 
 const Localization = {
     translations: {},
@@ -54,11 +67,11 @@ const Localization = {
 
     detectLanguage() {
         const uiLang = chrome.i18n.getUILanguage();
-        let lang = uiLang.split('-')[0];
-        const supported = ['en', 'tr', 'de', 'fr', 'es', 'it', 'pt_BR', 'ru', 'ja', 'zh_CN'];
+        let lang = uiLang.split('-')[0].toLowerCase();
+        const supported = ['en', 'tr', 'de', 'fr', 'es', 'it', 'pt_BR', 'ru', 'ja', 'zh_CN', 'ko', 'pl', 'nl', 'id', 'vi', 'ar', 'hi', 'th'];
 
-        if (uiLang.startsWith('pt')) lang = 'pt_BR';
-        if (uiLang.startsWith('zh')) lang = 'zh_CN';
+        if (uiLang.toLowerCase().startsWith('pt')) lang = 'pt_BR';
+        if (uiLang.toLowerCase().startsWith('zh')) lang = 'zh_CN';
 
         return supported.includes(lang) ? lang : 'en';
     },
@@ -69,6 +82,10 @@ const Localization = {
             const response = await fetch(url);
             this.translations = await response.json();
             this.updateUI();
+
+            const direction = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.setAttribute('dir', direction);
+            document.documentElement.setAttribute('lang', lang);
 
             const langSelect = DOM.get(CONSTANTS.SELECTORS.LANGUAGE_SELECT);
             if (langSelect) langSelect.value = lang;
@@ -109,7 +126,10 @@ const SettingsManager = {
 };
 
 const TabManager = {
-    init() {
+    includeDuplicates: false,
+
+    init(includeDuplicates = false) {
+        this.includeDuplicates = includeDuplicates;
         this.loadOpenTabs();
     },
 
@@ -123,71 +143,126 @@ const TabManager = {
                 return;
             }
 
-            container.appendChild(this.createControls(tabs.length));
-            container.appendChild(this.createTabList(tabs));
+            const duplicates = this.includeDuplicates ? new Set() : this.findDuplicates(tabs);
+            container.appendChild(this.createControls(tabs.length, duplicates));
+            container.appendChild(this.createTabList(tabs, duplicates));
             this.updateCounter(tabs.length);
         });
     },
 
-    createControls(totalTabs) {
+    findDuplicates(tabs) {
+        const urlCounts = new Map();
+        const duplicates = new Set();
+
+        tabs.forEach(tab => {
+            if (tab.url) {
+                const count = urlCounts.get(tab.url) || 0;
+                urlCounts.set(tab.url, count + 1);
+                if (count >= 1) {
+                    duplicates.add(tab.url);
+                }
+            }
+        });
+
+        return duplicates;
+    },
+
+    createControls(totalTabs, duplicates) {
         const controlDiv = DOM.create('div');
-        controlDiv.style.cssText = 'display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #ccc; padding-bottom: 5px;';
+        controlDiv.className = 'tab-controls';
 
         const btnGroup = DOM.create('div');
         const selectAll = this.createActionBtn(Localization.get("selectAll"), () => this.toggleAll(true));
         const deselectAll = this.createActionBtn(Localization.get("deselectAll"), () => this.toggleAll(false));
 
-        btnGroup.append(selectAll, document.createTextNode('|'), deselectAll);
+        btnGroup.append(selectAll, document.createTextNode(' | '), deselectAll);
 
         const counter = DOM.create('span');
         counter.id = 'tabCounterSpan';
-        counter.style.cssText = 'font-size: 12px; font-weight: bold;';
 
-        controlDiv.append(btnGroup, counter);
+        let dupInfo = '';
+        if (duplicates.size > 0) {
+            dupInfo = ` <span class="duplicate-info">(${duplicates.size} ${Localization.get("duplicateWarning")})</span>`;
+        }
+
+        controlDiv.innerHTML = btnGroup.outerHTML + `<span id="tabCounterSpan"></span>${dupInfo}`;
         return controlDiv;
     },
 
     createActionBtn(text, onClick) {
         const btn = DOM.create('button');
         btn.textContent = text;
-        btn.style.cssText = 'background: none; border: none; color: #007bff; cursor: pointer; padding: 0 5px; font-size: 12px;';
+        btn.className = 'action-btn';
         btn.addEventListener('click', onClick);
         return btn;
     },
 
-    createTabList(tabs) {
+    createTabList(tabs, duplicates) {
         const scrollContainer = DOM.create('div');
-        scrollContainer.style.cssText = 'max-height: 150px; overflow-y: auto;';
-        scrollContainer.id = 'tabScrollContainer';
+        scrollContainer.className = 'tab-scroll-container';
 
-        tabs.forEach(tab => {
-            const row = DOM.create('div');
-            row.style.cssText = 'display: flex; align-items: center; padding: 2px 0;';
+        if (this.includeDuplicates) {
+            tabs.forEach(tab => {
+                if (!tab.url) return;
+                const row = this.createTabRow(tab, false, 0);
+                scrollContainer.appendChild(row);
+            });
+        } else {
+            const urlGroups = new Map();
+            tabs.forEach(tab => {
+                if (!tab.url) return;
+                if (!urlGroups.has(tab.url)) {
+                    urlGroups.set(tab.url, []);
+                }
+                urlGroups.get(tab.url).push(tab);
+            });
 
-            const checkbox = DOM.create('input');
-            checkbox.type = 'checkbox';
-            checkbox.checked = true;
-            checkbox.className = 'tab-checkbox';
-            checkbox.dataset.title = tab.title;
-            checkbox.dataset.url = tab.url;
-            checkbox.style.marginRight = '8px';
-            checkbox.addEventListener('change', () => this.updateCounter(tabs.length));
+            urlGroups.forEach((groupTabs, url) => {
+                const isDuplicate = duplicates.has(url);
 
-            const icon = this.createFavicon(tab.favIconUrl);
-            const label = this.createLabel(tab);
-
-            row.append(checkbox, icon, label);
-            scrollContainer.appendChild(row);
-        });
+                groupTabs.forEach((tab, index) => {
+                    const row = this.createTabRow(tab, isDuplicate, index, groupTabs.length);
+                    scrollContainer.appendChild(row);
+                });
+            });
+        }
 
         return scrollContainer;
+    },
+
+    createTabRow(tab, isDuplicate, index, groupSize = 1) {
+        const row = DOM.create('div');
+        row.className = isDuplicate ? 'tab-row duplicate' : 'tab-row';
+
+        const checkbox = DOM.create('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = this.includeDuplicates ? true : (index === 0 || !isDuplicate);
+        checkbox.className = 'tab-checkbox';
+        checkbox.dataset.title = tab.title;
+        checkbox.dataset.url = tab.url;
+        checkbox.addEventListener('change', () => this.updateCounter());
+
+        const icon = this.createFavicon(tab.favIconUrl);
+        const label = this.createLabel(tab);
+
+        row.append(checkbox, icon, label);
+
+        if (!this.includeDuplicates && isDuplicate && index === 0) {
+            const badge = DOM.create('span');
+            badge.className = 'duplicate-badge';
+            badge.textContent = `${groupSize}x`;
+            badge.title = `${groupSize} tabs with same URL`;
+            row.appendChild(badge);
+        }
+
+        return row;
     },
 
     createFavicon(url) {
         if (!url) return document.createTextNode('');
         const img = DOM.create('img');
         img.src = url;
-        img.style.cssText = 'width: 16px; height: 16px; margin-right: 5px;';
+        img.className = 'favicon';
         img.onerror = () => { img.style.display = 'none'; };
         return img;
     },
@@ -196,19 +271,17 @@ const TabManager = {
         const label = DOM.create('span');
         label.textContent = tab.title;
         label.title = tab.url;
-        label.style.cssText = 'white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12px; cursor: default; flex: 1;';
+        label.className = 'tab-label';
         return label;
     },
 
     toggleAll(checked) {
         DOM.getAll('.tab-checkbox').forEach(cb => cb.checked = checked);
-        // We need total count, best to pull from container or store state. 
-        // Simple way: count checkboxes
-        const total = DOM.getAll('.tab-checkbox').length;
-        this.updateCounter(total);
+        this.updateCounter();
     },
 
-    updateCounter(total) {
+    updateCounter() {
+        const total = DOM.getAll('.tab-checkbox').length;
         const selected = DOM.getAll('.tab-checkbox:checked').length;
         const span = DOM.get('tabCounterSpan');
         if (!span) return;
@@ -273,30 +346,111 @@ const BookmarkManager = {
     }
 };
 
-const UI = {
-    init() {
-        this.populateTimeDropdowns();
+const TimeManager = {
+    times: ['09:00'],
+
+    init(savedTimes) {
+        this.times = savedTimes && savedTimes.length > 0 ? savedTimes : ['09:00'];
+        this.render();
         this.setupEventListeners();
     },
 
-    populateTimeDropdowns() {
-        const hourSelect = DOM.get(CONSTANTS.SELECTORS.HOUR_SELECT);
-        const minuteSelect = DOM.get(CONSTANTS.SELECTORS.MINUTE_SELECT);
+    setupEventListeners() {
+        DOM.get(CONSTANTS.SELECTORS.ADD_TIME_BTN).addEventListener('click', () => this.addTime());
+    },
 
+    render() {
+        const container = DOM.get(CONSTANTS.SELECTORS.TIME_LIST);
+        container.innerHTML = '';
+
+        this.times.forEach((time, index) => {
+            const row = DOM.create('div');
+            row.className = 'time-row';
+
+            const hourSelect = this.createHourSelect(time);
+            const minuteSelect = this.createMinuteSelect(time);
+            
+            hourSelect.addEventListener('change', (e) => this.updateTime(index, e.target.value, minuteSelect.value));
+            minuteSelect.addEventListener('change', (e) => this.updateTime(index, hourSelect.value, e.target.value));
+
+            row.appendChild(hourSelect);
+            row.appendChild(document.createTextNode(':'));
+            row.appendChild(minuteSelect);
+
+            if (this.times.length > 1) {
+                const removeBtn = DOM.create('button');
+                removeBtn.textContent = '×';
+                removeBtn.className = 'remove-time-btn';
+                removeBtn.addEventListener('click', () => this.removeTime(index));
+                row.appendChild(removeBtn);
+            }
+
+            container.appendChild(row);
+        });
+
+        const addBtn = DOM.get(CONSTANTS.SELECTORS.ADD_TIME_BTN);
+        if (this.times.length >= CONSTANTS.MAX_BACKUP_TIMES) {
+            addBtn.classList.add('hidden');
+        } else {
+            addBtn.classList.remove('hidden');
+        }
+    },
+
+    createHourSelect(time) {
+        const select = DOM.create('select');
+        select.className = 'time-select';
+        const [h] = time.split(':');
+        
         for (let i = 0; i < 24; i++) {
             const val = i.toString().padStart(2, '0');
             const opt = DOM.create('option');
             opt.value = val;
             opt.textContent = val;
-            hourSelect.appendChild(opt);
+            if (val === h) opt.selected = true;
+            select.appendChild(opt);
         }
+        return select;
+    },
+
+    createMinuteSelect(time) {
+        const select = DOM.create('select');
+        select.className = 'time-select';
+        const [, m] = time.split(':');
+        
         for (let i = 0; i < 60; i++) {
             const val = i.toString().padStart(2, '0');
             const opt = DOM.create('option');
             opt.value = val;
             opt.textContent = val;
-            minuteSelect.appendChild(opt);
+            if (val === m) opt.selected = true;
+            select.appendChild(opt);
         }
+        return select;
+    },
+
+    addTime() {
+        if (this.times.length >= CONSTANTS.MAX_BACKUP_TIMES) return;
+        this.times.push('12:00');
+        this.render();
+    },
+
+    removeTime(index) {
+        this.times.splice(index, 1);
+        this.render();
+    },
+
+    updateTime(index, hour, minute) {
+        this.times[index] = `${hour}:${minute}`;
+    },
+
+    getTimes() {
+        return this.times;
+    }
+};
+
+const UI = {
+    init() {
+        this.setupEventListeners();
     },
 
     setupEventListeners() {
@@ -304,7 +458,7 @@ const UI = {
             const newLang = e.target.value;
             await SettingsManager.save({ [CONSTANTS.STORAGE.SELECTED_LANGUAGE]: newLang });
             await Localization.load(newLang);
-            TabManager.loadOpenTabs(); // Reload to translate "Selected"
+            TabManager.loadOpenTabs();
         });
 
         DOM.get(CONSTANTS.SELECTORS.DARK_MODE_TOGGLE).addEventListener('change', (e) => {
@@ -320,8 +474,32 @@ const UI = {
             this.toggleIntervalUI(e.target.value);
         });
 
+        DOM.get(CONSTANTS.SELECTORS.PRESERVE_GROUPS_TOGGLE).addEventListener('change', (e) => {
+            SettingsManager.save({ [CONSTANTS.STORAGE.PRESERVE_TAB_GROUPS]: e.target.checked });
+        });
+
+        DOM.get(CONSTANTS.SELECTORS.AUTO_CLEANUP_TOGGLE).addEventListener('change', (e) => {
+            this.toggleCleanupUI(e.target.checked);
+        });
+
+        DOM.get(CONSTANTS.SELECTORS.CLEANUP_DAYS).addEventListener('change', (e) => {
+            SettingsManager.save({ [CONSTANTS.STORAGE.AUTO_CLEANUP_DAYS]: parseInt(e.target.value) || 30 });
+        });
+
         DOM.get(CONSTANTS.SELECTORS.BACKUP_BTN).addEventListener('click', this.handleBackupClick.bind(this));
         DOM.get(CONSTANTS.SELECTORS.SAVE_SETTINGS_BTN).addEventListener('click', this.handleSaveSettings.bind(this));
+
+        DOM.get(CONSTANTS.SELECTORS.SHORTCUT_LINK).addEventListener('click', (e) => {
+            e.preventDefault();
+            chrome.tabs.create({ url: 'chrome://extensions/shortcuts' });
+        });
+
+        DOM.get(CONSTANTS.SELECTORS.INCLUDE_DUPLICATES_TOGGLE).addEventListener('change', (e) => {
+            const include = e.target.checked;
+            TabManager.includeDuplicates = include;
+            TabManager.loadOpenTabs();
+            SettingsManager.save({ [CONSTANTS.STORAGE.INCLUDE_DUPLICATES]: include });
+        });
     },
 
     toggleDarkMode(isDark) {
@@ -346,6 +524,12 @@ const UI = {
             customContainer.classList.add('hidden');
             timeContainer.classList.remove('hidden');
         }
+    },
+
+    toggleCleanupUI(enabled) {
+        const cleanupSettings = DOM.get(CONSTANTS.SELECTORS.CLEANUP_SETTINGS);
+        if (enabled) cleanupSettings.classList.remove('hidden');
+        else cleanupSettings.classList.add('hidden');
     },
 
     handleBackupClick() {
@@ -385,12 +569,16 @@ const UI = {
         const interval = DOM.get(CONSTANTS.SELECTORS.INTERVAL_SELECT).value;
         const customVal = DOM.get(CONSTANTS.SELECTORS.CUSTOM_INTERVAL_INPUT).value;
         const customUnit = DOM.get(CONSTANTS.SELECTORS.CUSTOM_INTERVAL_UNIT).value;
-        const hour = DOM.get(CONSTANTS.SELECTORS.HOUR_SELECT).value;
-        const minute = DOM.get(CONSTANTS.SELECTORS.MINUTE_SELECT).value;
+        const preserveGroups = DOM.get(CONSTANTS.SELECTORS.PRESERVE_GROUPS_TOGGLE).checked;
+        const autoCleanup = DOM.get(CONSTANTS.SELECTORS.AUTO_CLEANUP_TOGGLE).checked;
+        const cleanupDays = parseInt(DOM.get(CONSTANTS.SELECTORS.CLEANUP_DAYS).value) || 30;
 
         const settings = {
             [CONSTANTS.STORAGE.BACKUP_ENABLED]: enabled,
-            [CONSTANTS.STORAGE.BACKUP_INTERVAL]: interval
+            [CONSTANTS.STORAGE.BACKUP_INTERVAL]: interval,
+            [CONSTANTS.STORAGE.PRESERVE_TAB_GROUPS]: preserveGroups,
+            [CONSTANTS.STORAGE.AUTO_CLEANUP_ENABLED]: autoCleanup,
+            [CONSTANTS.STORAGE.AUTO_CLEANUP_DAYS]: cleanupDays
         };
 
         if (interval === 'custom') {
@@ -400,8 +588,11 @@ const UI = {
             }
             settings[CONSTANTS.STORAGE.CUSTOM_INTERVAL] = parseInt(customVal);
             settings[CONSTANTS.STORAGE.CUSTOM_UNIT] = customUnit;
+        } else if (interval === 'daily') {
+            settings[CONSTANTS.STORAGE.BACKUP_TIMES] = TimeManager.getTimes();
+            settings[CONSTANTS.STORAGE.BACKUP_TIME] = TimeManager.getTimes()[0];
         } else {
-            settings[CONSTANTS.STORAGE.BACKUP_TIME] = `${hour}:${minute}`;
+            settings[CONSTANTS.STORAGE.BACKUP_TIME] = TimeManager.getTimes()[0];
         }
 
         SettingsManager.save(settings).then(() => {
@@ -434,20 +625,16 @@ const UI = {
     },
 
     restoreState(settings) {
-        // Restore Dark Mode
         if (settings[CONSTANTS.STORAGE.DARK_MODE]) {
             this.toggleDarkMode(true);
             DOM.get(CONSTANTS.SELECTORS.DARK_MODE_TOGGLE).checked = true;
         }
 
-        // Restore Auto Backup Toggle
         const isEnabled = settings[CONSTANTS.STORAGE.BACKUP_ENABLED] !== false;
         DOM.get(CONSTANTS.SELECTORS.AUTO_BACKUP_TOGGLE).checked = isEnabled;
         this.toggleAutoBackupUI(isEnabled);
 
-        // Restore Interval
         const interval = settings[CONSTANTS.STORAGE.BACKUP_INTERVAL] || 'daily';
-        // Handle legacy 'off' if present in storage, default to daily if off (since we utilize toggle now)
         const safeInterval = interval === 'off' ? 'daily' : interval;
 
         DOM.get(CONSTANTS.SELECTORS.INTERVAL_SELECT).value = safeInterval;
@@ -457,17 +644,23 @@ const UI = {
             DOM.get(CONSTANTS.SELECTORS.CUSTOM_INTERVAL_INPUT).value = settings[CONSTANTS.STORAGE.CUSTOM_INTERVAL] || '';
             DOM.get(CONSTANTS.SELECTORS.CUSTOM_INTERVAL_UNIT).value = settings[CONSTANTS.STORAGE.CUSTOM_UNIT] || 'minutes';
         } else {
-            const savedTime = settings[CONSTANTS.STORAGE.BACKUP_TIME] || '09:00';
-            const [h, m] = savedTime.split(':');
-            DOM.get(CONSTANTS.SELECTORS.HOUR_SELECT).value = h;
-            DOM.get(CONSTANTS.SELECTORS.MINUTE_SELECT).value = m;
+            const savedTimes = settings[CONSTANTS.STORAGE.BACKUP_TIMES] || [settings[CONSTANTS.STORAGE.BACKUP_TIME] || '09:00'];
+            TimeManager.init(savedTimes);
         }
 
-        this.updateLastBackupTime(); // Initial load
+        DOM.get(CONSTANTS.SELECTORS.PRESERVE_GROUPS_TOGGLE).checked = settings[CONSTANTS.STORAGE.PRESERVE_TAB_GROUPS] || false;
+
+        const cleanupEnabled = settings[CONSTANTS.STORAGE.AUTO_CLEANUP_ENABLED] || false;
+        DOM.get(CONSTANTS.SELECTORS.AUTO_CLEANUP_TOGGLE).checked = cleanupEnabled;
+        this.toggleCleanupUI(cleanupEnabled);
+        DOM.get(CONSTANTS.SELECTORS.CLEANUP_DAYS).value = settings[CONSTANTS.STORAGE.AUTO_CLEANUP_DAYS] || 30;
+
+        const includeDuplicates = settings[CONSTANTS.STORAGE.INCLUDE_DUPLICATES] || false;
+        DOM.get(CONSTANTS.SELECTORS.INCLUDE_DUPLICATES_TOGGLE).checked = includeDuplicates;
+
+        this.updateLastBackupTime();
     }
 };
-
-// --- Main ---
 
 document.addEventListener('DOMContentLoaded', async () => {
     UI.init();
@@ -478,5 +671,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     UI.restoreState(settings);
 
     BookmarkManager.init(settings[CONSTANTS.STORAGE.BACKUP_FOLDER_ID]);
-    TabManager.init();
+    TabManager.init(settings[CONSTANTS.STORAGE.INCLUDE_DUPLICATES] || false);
 });

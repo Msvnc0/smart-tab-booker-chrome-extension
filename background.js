@@ -1,6 +1,7 @@
 const CONSTANTS = {
     ALARM: {
         NAME: 'autoBackup',
+        NAME_PREFIX: 'autoBackup_',
         DEFAULT_TIME: '09:00'
     },
     STORAGE: {
@@ -10,7 +11,12 @@ const CONSTANTS = {
         CUSTOM_UNIT: 'customUnit',
         BACKUP_TIME: 'backupTime',
         BACKUP_FOLDER_ID: 'backupFolderId',
-        LAST_BACKUP_TIME: 'lastBackupTime'
+        LAST_BACKUP_TIME: 'lastBackupTime',
+        PRESERVE_TAB_GROUPS: 'preserveTabGroups',
+        AUTO_CLEANUP_ENABLED: 'autoCleanupEnabled',
+        AUTO_CLEANUP_DAYS: 'autoCleanupDays',
+        BACKUP_TIMES: 'backupTimes',
+        INCLUDE_DUPLICATES: 'includeDuplicates'
     },
     INTERVALS: {
         DAILY: 1440,
@@ -21,7 +27,8 @@ const CONSTANTS = {
         HOURS: 'hours',
         DAYS: 'days',
         MINUTES: 'minutes'
-    }
+    },
+    MAX_BACKUP_TIMES: 5
 };
 
 console.log('Background service worker loaded');
@@ -29,6 +36,7 @@ console.log('Background service worker loaded');
 chrome.runtime.onInstalled.addListener(handleInstalled);
 chrome.alarms.onAlarm.addListener(handleAlarm);
 chrome.runtime.onMessage.addListener(handleMessage);
+chrome.commands.onCommand.addListener(handleCommand);
 
 function handleInstalled() {
     console.log('Smart Tab Booker installed');
@@ -41,8 +49,8 @@ function handleInstalled() {
 }
 
 function handleAlarm(alarm) {
-    if (alarm.name === CONSTANTS.ALARM.NAME) {
-        console.log('Auto backup alarm triggered');
+    if (alarm.name === CONSTANTS.ALARM.NAME || alarm.name.startsWith(CONSTANTS.ALARM.NAME_PREFIX)) {
+        console.log('Auto backup alarm triggered:', alarm.name);
         performAutoBackup();
     }
 }
@@ -52,28 +60,59 @@ function handleMessage(request, sender, sendResponse) {
         performBackup(request.folderId, request.tabs)
             .then(() => sendResponse({ success: true }))
             .catch((err) => sendResponse({ success: false, error: err.message }));
-        return true; // Async response
+        return true;
     } else if (request.action === 'updateSchedule') {
         setupAlarm();
         sendResponse({ success: true });
     }
 }
 
+function handleCommand(command) {
+    if (command === 'quick-backup') {
+        console.log('Quick backup shortcut triggered');
+        performQuickBackup();
+    }
+}
+
+// --- Quick Backup ---
+
+async function performQuickBackup() {
+    const result = await chrome.storage.local.get([CONSTANTS.STORAGE.BACKUP_FOLDER_ID]);
+    const folderId = result[CONSTANTS.STORAGE.BACKUP_FOLDER_ID];
+    
+    if (!folderId) {
+        console.warn('No backup folder selected for quick backup.');
+        return;
+    }
+    
+    try {
+        await performBackup(folderId);
+        console.log('Quick backup completed successfully');
+    } catch (err) {
+        console.error('Quick backup failed:', err);
+    }
+}
+
 // --- Alarm Management ---
 
 function setupAlarm() {
-    chrome.alarms.clear(CONSTANTS.ALARM.NAME, (wasCleared) => {
+    chrome.alarms.clearAll(() => {
         getBackupSettings((settings) => {
             if (!isBackupEnabled(settings)) {
                 console.log('Auto backup is disabled.');
                 return;
             }
 
-            const alarmInfo = calculateAlarmInfo(settings);
-            if (alarmInfo) {
-                console.log(`Setting alarm:`, alarmInfo);
-                chrome.alarms.create(CONSTANTS.ALARM.NAME, alarmInfo);
-            }
+            const alarmInfos = calculateAlarmInfos(settings);
+            alarmInfos.forEach((alarmInfo, index) => {
+                if (alarmInfo) {
+                    const alarmName = alarmInfos.length > 1 
+                        ? `${CONSTANTS.ALARM.NAME_PREFIX}${index}` 
+                        : CONSTANTS.ALARM.NAME;
+                    console.log(`Setting alarm [${alarmName}]:`, alarmInfo);
+                    chrome.alarms.create(alarmName, alarmInfo);
+                }
+            });
         });
     });
 }
@@ -84,7 +123,8 @@ function getBackupSettings(callback) {
         CONSTANTS.STORAGE.BACKUP_INTERVAL,
         CONSTANTS.STORAGE.CUSTOM_INTERVAL,
         CONSTANTS.STORAGE.CUSTOM_UNIT,
-        CONSTANTS.STORAGE.BACKUP_TIME
+        CONSTANTS.STORAGE.BACKUP_TIME,
+        CONSTANTS.STORAGE.BACKUP_TIMES
     ];
     chrome.storage.local.get(keys, callback);
 }
@@ -95,14 +135,32 @@ function isBackupEnabled(settings) {
     return isEnabled && interval !== 'off';
 }
 
-function calculateAlarmInfo(settings) {
+function calculateAlarmInfos(settings) {
     const interval = settings[CONSTANTS.STORAGE.BACKUP_INTERVAL];
 
     if (interval === 'custom') {
-        return calculateCustomAlarm(settings);
+        return [calculateCustomAlarm(settings)];
+    } else if (interval === 'daily') {
+        return calculateDailyAlarms(settings);
     } else {
-        return calculateStandardAlarm(settings);
+        return [calculateStandardAlarm(settings)];
     }
+}
+
+function calculateDailyAlarms(settings) {
+    const backupTimes = settings[CONSTANTS.STORAGE.BACKUP_TIMES];
+    
+    if (backupTimes && Array.isArray(backupTimes) && backupTimes.length > 0) {
+        return backupTimes.map(timeStr => {
+            const nextFireTime = calculateNextFireTime(timeStr);
+            return {
+                when: nextFireTime,
+                periodInMinutes: CONSTANTS.INTERVALS.DAILY
+            };
+        });
+    }
+    
+    return [calculateStandardAlarm(settings)];
 }
 
 function calculateCustomAlarm(settings) {
@@ -118,7 +176,7 @@ function calculateCustomAlarm(settings) {
 }
 
 function calculateStandardAlarm(settings) {
-    let periodInMinutes = CONSTANTS.INTERVALS.WEEKLY; // Default
+    let periodInMinutes = CONSTANTS.INTERVALS.WEEKLY;
 
     switch (settings[CONSTANTS.STORAGE.BACKUP_INTERVAL]) {
         case 'daily': periodInMinutes = CONSTANTS.INTERVALS.DAILY; break;
@@ -166,8 +224,26 @@ function performAutoBackup() {
 async function performBackup(parentId, explicitTabs) {
     if (!parentId) throw new Error('No folder selected');
 
-    const tabs = explicitTabs || await chrome.tabs.query({});
+    const settings = await chrome.storage.local.get([
+        CONSTANTS.STORAGE.PRESERVE_TAB_GROUPS,
+        CONSTANTS.STORAGE.INCLUDE_DUPLICATES
+    ]);
+
+    let tabs;
+    
+    if (explicitTabs && settings[CONSTANTS.STORAGE.PRESERVE_TAB_GROUPS]) {
+        const selectedUrls = new Set(explicitTabs.map(t => t.url));
+        tabs = await chrome.tabs.query({});
+        tabs = tabs.filter(tab => selectedUrls.has(tab.url));
+    } else {
+        tabs = explicitTabs || await chrome.tabs.query({});
+    }
+    
     if (!tabs || tabs.length === 0) throw new Error('No open tabs to backup');
+
+    if (!settings[CONSTANTS.STORAGE.INCLUDE_DUPLICATES]) {
+        tabs = filterDuplicateTabs(tabs);
+    }
 
     const folderName = generateBackupFolderName();
     const backupFolder = await chrome.bookmarks.create({
@@ -175,14 +251,38 @@ async function performBackup(parentId, explicitTabs) {
         title: folderName
     });
 
-    await saveTabsAsBookmarks(backupFolder.id, tabs);
+    if (settings[CONSTANTS.STORAGE.PRESERVE_TAB_GROUPS]) {
+        await saveTabsWithGroups(backupFolder.id, tabs);
+    } else {
+        await saveTabsAsBookmarks(backupFolder.id, tabs);
+    }
 
     await updateLastBackupTime();
+    await cleanupOldBackups(parentId);
+}
+
+function filterDuplicateTabs(tabs) {
+    const seenUrls = new Set();
+    const filtered = [];
+
+    for (const tab of tabs) {
+        if (tab.url && tab.url.startsWith('http')) {
+            if (!seenUrls.has(tab.url)) {
+                seenUrls.add(tab.url);
+                filtered.push(tab);
+            }
+        } else {
+            filtered.push(tab);
+        }
+    }
+
+    console.log(`Filtered ${tabs.length - filtered.length} duplicate tabs`);
+    return filtered;
 }
 
 function generateBackupFolderName() {
     const now = new Date();
-    const dateStr = now.toISOString().split('T')[0]; // YYYY-MM-DD
+    const dateStr = now.toISOString().split('T')[0];
     const timeStr = `${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}`;
     return `Backup_${dateStr}_${timeStr}`;
 }
@@ -197,6 +297,81 @@ async function saveTabsAsBookmarks(parentId, tabs) {
         }));
 
     await Promise.all(bookmarkPromises);
+}
+
+async function saveTabsWithGroups(parentId, tabs) {
+    const groups = await chrome.tabGroups.query({});
+    const tabGroupMap = new Map();
+    
+    groups.forEach(group => {
+        tabGroupMap.set(group.id, group.title || 'Unnamed Group');
+    });
+
+    const groupedTabs = new Map();
+    const ungroupedTabs = [];
+
+    tabs.forEach(tab => {
+        if (tab.url && tab.url.startsWith('http')) {
+            if (tab.groupId && tab.groupId !== chrome.tabGroups.TAB_GROUP_ID_NONE) {
+                const groupTitle = tabGroupMap.get(tab.groupId) || 'Unnamed Group';
+                if (!groupedTabs.has(groupTitle)) {
+                    groupedTabs.set(groupTitle, []);
+                }
+                groupedTabs.get(groupTitle).push(tab);
+            } else {
+                ungroupedTabs.push(tab);
+            }
+        }
+    });
+
+    for (const [groupTitle, groupTabs] of groupedTabs) {
+        const groupFolder = await chrome.bookmarks.create({
+            parentId: parentId,
+            title: groupTitle
+        });
+        await saveTabsAsBookmarks(groupFolder.id, groupTabs);
+    }
+
+    if (ungroupedTabs.length > 0) {
+        await saveTabsAsBookmarks(parentId, ungroupedTabs);
+    }
+}
+
+// --- Auto Cleanup ---
+
+async function cleanupOldBackups(parentId) {
+    const settings = await chrome.storage.local.get([
+        CONSTANTS.STORAGE.AUTO_CLEANUP_ENABLED,
+        CONSTANTS.STORAGE.AUTO_CLEANUP_DAYS
+    ]);
+
+    if (!settings[CONSTANTS.STORAGE.AUTO_CLEANUP_ENABLED]) {
+        return;
+    }
+
+    const cleanupDays = settings[CONSTANTS.STORAGE.AUTO_CLEANUP_DAYS] || 30;
+    const cutoffDate = new Date();
+    cutoffDate.setDate(cutoffDate.getDate() - cleanupDays);
+
+    const children = await chrome.bookmarks.getChildren(parentId);
+    
+    for (const child of children) {
+        if (child.title && child.title.startsWith('Backup_')) {
+            const folderDate = extractDateFromFolderName(child.title);
+            if (folderDate && folderDate < cutoffDate) {
+                await chrome.bookmarks.removeTree(child.id);
+                console.log(`Cleaned up old backup: ${child.title}`);
+            }
+        }
+    }
+}
+
+function extractDateFromFolderName(folderName) {
+    const match = folderName.match(/Backup_(\d{4}-\d{2}-\d{2})/);
+    if (match) {
+        return new Date(match[1]);
+    }
+    return null;
 }
 
 async function updateLastBackupTime() {

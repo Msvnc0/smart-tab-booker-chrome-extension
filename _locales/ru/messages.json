@@ -74,6 +74,25 @@
     "invalidTime": {
         "message": "Неверное время."
     },
+    "selectAll": {
+        "message": "Выбрать все"
+    },
+    "deselectAll": {
+        "message": "Снять выделение"
+    },
+    "tabCounter": {
+        "message": "Выбрано: $SELECTED$ / $TOTAL$",
+        "placeholders": {
+            "selected": { "content": "$1" },
+            "total": { "content": "$2" }
+        }
+    },
+    "bookmarksBar": {
+        "message": "Панель закладок"
+    },
+    "otherBookmarks": {
+        "message": "Другие закладки"
+    },
     "minutes": {
         "message": "Минуты"
     },
@@ -85,5 +104,44 @@
     },
     "selectFolderLabel": {
         "message": "Папка для сохранения:"
+    },
+    "selectTabsLabel": {
+        "message": "Вкладки для резервного копирования:"
+    },
+    "noTabsSelected": {
+        "message": "Вкладки не выбраны!"
+    },
+    "preserveGroups": {
+        "message": "Сохранять группы вкладок как папки"
+    },
+    "autoCleanup": {
+        "message": "Автоочистка старых резервных копий"
+    },
+    "cleanupDaysLabel": {
+        "message": "Удалять резервные копии старше"
+    },
+    "daysLabel": {
+        "message": "дней"
+    },
+    "addTimeBtn": {
+        "message": "+ Добавить время"
+    },
+    "multiTimeLabel": {
+        "message": "Время резервного копирования (макс 5):"
+    },
+    "quickBackupDesc": {
+        "message": "Быстрое резервное копирование всех вкладок"
+    },
+    "shortcutLabel": {
+        "message": "Горячая клавиша:"
+    },
+    "changeShortcut": {
+        "message": "Изменить"
+    },
+    "duplicateWarning": {
+        "message": "дубликат(ов)"
+    },
+    "includeDuplicates": {
+        "message": "Включить дубликаты URL"
     }
 }

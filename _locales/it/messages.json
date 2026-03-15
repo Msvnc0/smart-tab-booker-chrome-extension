@@ -74,6 +74,25 @@
     "invalidTime": {
         "message": "Ora non valida."
     },
+    "selectAll": {
+        "message": "Seleziona tutto"
+    },
+    "deselectAll": {
+        "message": "Deseleziona tutto"
+    },
+    "tabCounter": {
+        "message": "Selezionati: $SELECTED$ / $TOTAL$",
+        "placeholders": {
+            "selected": { "content": "$1" },
+            "total": { "content": "$2" }
+        }
+    },
+    "bookmarksBar": {
+        "message": "Barra dei segnalibri"
+    },
+    "otherBookmarks": {
+        "message": "Altri segnalibri"
+    },
     "minutes": {
         "message": "Minuti"
     },
@@ -85,5 +104,44 @@
     },
     "selectFolderLabel": {
         "message": "Cartella di backup:"
+    },
+    "selectTabsLabel": {
+        "message": "Schede da salvare:"
+    },
+    "noTabsSelected": {
+        "message": "Nessuna scheda selezionata!"
+    },
+    "preserveGroups": {
+        "message": "Mantieni gruppi di schede come cartelle"
+    },
+    "autoCleanup": {
+        "message": "Pulizia automatica vecchi backup"
+    },
+    "cleanupDaysLabel": {
+        "message": "Elimina backup più vecchi di"
+    },
+    "daysLabel": {
+        "message": "giorni"
+    },
+    "addTimeBtn": {
+        "message": "+ Aggiungi orario"
+    },
+    "multiTimeLabel": {
+        "message": "Orari backup (max 5):"
+    },
+    "quickBackupDesc": {
+        "message": "Backup rapido di tutte le schede"
+    },
+    "shortcutLabel": {
+        "message": "Scorciatoia da tastiera:"
+    },
+    "changeShortcut": {
+        "message": "Modifica"
+    },
+    "duplicateWarning": {
+        "message": "duplicato/i"
+    },
+    "includeDuplicates": {
+        "message": "Includi URL duplicati"
     }
 }

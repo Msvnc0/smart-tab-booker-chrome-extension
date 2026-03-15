@@ -74,6 +74,25 @@
     "invalidTime": {
         "message": "Hora inválida."
     },
+    "selectAll": {
+        "message": "Seleccionar todo"
+    },
+    "deselectAll": {
+        "message": "Deseleccionar todo"
+    },
+    "tabCounter": {
+        "message": "Seleccionados: $SELECTED$ / $TOTAL$",
+        "placeholders": {
+            "selected": { "content": "$1" },
+            "total": { "content": "$2" }
+        }
+    },
+    "bookmarksBar": {
+        "message": "Barra de marcadores"
+    },
+    "otherBookmarks": {
+        "message": "Otros marcadores"
+    },
     "minutes": {
         "message": "Minutos"
     },
@@ -85,5 +104,44 @@
     },
     "selectFolderLabel": {
         "message": "Carpeta de respaldo:"
+    },
+    "selectTabsLabel": {
+        "message": "Pestañas a respaldar:"
+    },
+    "noTabsSelected": {
+        "message": "¡Ninguna pestaña seleccionada!"
+    },
+    "preserveGroups": {
+        "message": "Conservar grupos de pestañas como carpetas"
+    },
+    "autoCleanup": {
+        "message": "Limpieza automática de respaldos antiguos"
+    },
+    "cleanupDaysLabel": {
+        "message": "Eliminar respaldos anteriores a"
+    },
+    "daysLabel": {
+        "message": "días"
+    },
+    "addTimeBtn": {
+        "message": "+ Agregar hora"
+    },
+    "multiTimeLabel": {
+        "message": "Horas de respaldo (máx 5):"
+    },
+    "quickBackupDesc": {
+        "message": "Respaldo rápido de todas las pestañas"
+    },
+    "shortcutLabel": {
+        "message": "Atajo de teclado:"
+    },
+    "changeShortcut": {
+        "message": "Cambiar"
+    },
+    "duplicateWarning": {
+        "message": "duplicado(s)"
+    },
+    "includeDuplicates": {
+        "message": "Incluir URLs duplicadas"
     }
 }

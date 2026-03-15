@@ -1,0 +1,147 @@
+{
+    "extName": {
+        "message": "Smart Tab Booker"
+    },
+    "extDesc": {
+        "message": "Twórz kopie zapasowe otwartych kart w zakładkach automatycznie lub ręcznie."
+    },
+    "selectStart": {
+        "message": "Wczytywanie folderów..."
+    },
+    "selectDefault": {
+        "message": "Wybierz folder..."
+    },
+    "backupBtn": {
+        "message": "Utwórz kopię teraz"
+    },
+    "backupBtnProgress": {
+        "message": "Tworzenie kopii..."
+    },
+    "autoBackupTitle": {
+        "message": "Ustawienia automatycznej kopii"
+    },
+    "intervalLabel": {
+        "message": "Interwał:"
+    },
+    "daily": {
+        "message": "Codziennie"
+    },
+    "weekly": {
+        "message": "Co tydzień"
+    },
+    "monthly": {
+        "message": "Co miesiąc"
+    },
+    "enableAutoBackup": {
+        "message": "Włącz automatyczną kopię zapasową"
+    },
+    "darkMode": {
+        "message": "Tryb ciemny"
+    },
+    "custom": {
+        "message": "Niestandardowy"
+    },
+    "backupTimeLabel": {
+        "message": "Czas kopii (24h):"
+    },
+    "saveSettingsBtn": {
+        "message": "Zapisz ustawienia"
+    },
+    "saved": {
+        "message": "Zapisano!"
+    },
+    "lastBackupLabel": {
+        "message": "Ostatnia kopia:"
+    },
+    "never": {
+        "message": "Nigdy"
+    },
+    "folderSaved": {
+        "message": "Folder zapisany!"
+    },
+    "selectFolderErr": {
+        "message": "Najpierw wybierz folder."
+    },
+    "backupSuccess": {
+        "message": "Kopia zapasowa utworzona!"
+    },
+    "backupFailed": {
+        "message": "Błąd kopii zapasowej: "
+    },
+    "invalidValue": {
+        "message": "Nieprawidłowa wartość."
+    },
+    "invalidTime": {
+        "message": "Nieprawidłowy czas."
+    },
+    "selectAll": {
+        "message": "Zaznacz wszystko"
+    },
+    "deselectAll": {
+        "message": "Odznacz wszystko"
+    },
+    "tabCounter": {
+        "message": "Zaznaczono: $SELECTED$ / $TOTAL$",
+        "placeholders": {
+            "selected": { "content": "$1" },
+            "total": { "content": "$2" }
+        }
+    },
+    "bookmarksBar": {
+        "message": "Pasek zakładek"
+    },
+    "otherBookmarks": {
+        "message": "Inne zakładki"
+    },
+    "minutes": {
+        "message": "Minuty"
+    },
+    "hours": {
+        "message": "Godziny"
+    },
+    "days": {
+        "message": "Dni"
+    },
+    "selectFolderLabel": {
+        "message": "Wybierz folder kopii zapasowej:"
+    },
+    "selectTabsLabel": {
+        "message": "Wybierz karty do kopii zapasowej:"
+    },
+    "noTabsSelected": {
+        "message": "Nie wybrano kart!"
+    },
+    "preserveGroups": {
+        "message": "Zachowaj grupy kart jako foldery"
+    },
+    "autoCleanup": {
+        "message": "Automatyczne czyszczenie starych kopii"
+    },
+    "cleanupDaysLabel": {
+        "message": "Usuń kopie starsze niż"
+    },
+    "daysLabel": {
+        "message": "dni"
+    },
+    "addTimeBtn": {
+        "message": "+ Dodaj czas"
+    },
+    "multiTimeLabel": {
+        "message": "Czasy kopii zapasowych (maks 5):"
+    },
+    "quickBackupDesc": {
+        "message": "Szybka kopia zapasowa wszystkich kart"
+    },
+    "shortcutLabel": {
+        "message": "Skrót klawiszowy:"
+    },
+    "changeShortcut": {
+        "message": "Zmień"
+    },
+    "duplicateWarning": {
+        "message": "duplikat(y)"
+    },
+    "includeDuplicates": {
+        "message": "Uwzględnij zduplikowane adresy URL"
+    }
+}

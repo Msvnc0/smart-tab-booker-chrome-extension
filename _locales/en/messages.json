@@ -1,47 +1,36 @@
 {
     "extName": {
-        "message": "Smart Tab Booker",
-        "description": "Extension name"
+        "message": "Smart Tab Booker"
     },
     "extDesc": {
-        "message": "Backup open tabs to bookmarks automatically or manually.",
-        "description": "Extension description"
+        "message": "Backup open tabs to bookmarks automatically or manually."
     },
     "selectStart": {
-        "message": "Loading folders...",
-        "description": "Initial select option"
+        "message": "Loading folders..."
     },
     "selectDefault": {
-        "message": "Select a folder...",
-        "description": "Default select option"
+        "message": "Select a folder..."
     },
     "backupBtn": {
-        "message": "Backup Now",
-        "description": "Button text"
+        "message": "Backup Now"
     },
     "backupBtnProgress": {
-        "message": "Backing up...",
-        "description": "Button text during backup"
+        "message": "Backing up..."
     },
     "autoBackupTitle": {
-        "message": "Auto Backup Settings",
-        "description": "Section title"
+        "message": "Auto Backup Settings"
     },
     "intervalLabel": {
-        "message": "Interval:",
-        "description": "Label for interval"
+        "message": "Interval:"
     },
     "daily": {
-        "message": "Daily",
-        "description": "Option"
+        "message": "Daily"
     },
     "weekly": {
-        "message": "Weekly",
-        "description": "Option"
+        "message": "Weekly"
     },
     "monthly": {
-        "message": "Monthly",
-        "description": "Option"
+        "message": "Monthly"
     },
     "enableAutoBackup": {
         "message": "Enable Auto Backup"
@@ -50,20 +39,49 @@
         "message": "Dark Mode"
     },
     "custom": {
-        "message": "Custom",
-        "description": "Option"
+        "message": "Custom"
+    },
+    "backupTimeLabel": {
+        "message": "Backup Time (24h):"
+    },
+    "saveSettingsBtn": {
+        "message": "Save Settings"
+    },
+    "saved": {
+        "message": "Saved!"
+    },
+    "lastBackupLabel": {
+        "message": "Last Backup:"
+    },
+    "never": {
+        "message": "Never"
+    },
+    "folderSaved": {
+        "message": "Folder saved!"
+    },
+    "selectFolderErr": {
+        "message": "Please select a folder first."
+    },
+    "backupSuccess": {
+        "message": "Backup completed!"
+    },
+    "backupFailed": {
+        "message": "Backup failed: "
+    },
+    "invalidValue": {
+        "message": "Invalid value."
+    },
+    "invalidTime": {
+        "message": "Invalid time."
     },
     "selectAll": {
-        "message": "Select All",
-        "description": "Button text"
+        "message": "Select All"
     },
     "deselectAll": {
-        "message": "Deselect All",
-        "description": "Button text"
+        "message": "Deselect All"
     },
     "tabCounter": {
         "message": "Selected: $SELECTED$ / $TOTAL$",
-        "description": "Tab counter text",
         "placeholders": {
             "selected": {
                 "content": "$1"
@@ -73,64 +91,61 @@
             }
         }
     },
-    "backupTimeLabel": {
-        "message": "Backup Time (24h):",
-        "description": "Label"
+    "bookmarksBar": {
+        "message": "Bookmarks Bar"
     },
-    "saveSettingsBtn": {
-        "message": "Save Settings",
-        "description": "Button"
-    },
-    "saved": {
-        "message": "Saved!",
-        "description": "Status"
-    },
-    "lastBackupLabel": {
-        "message": "Last Backup:",
-        "description": "Label"
-    },
-    "never": {
-        "message": "Never",
-        "description": "Time"
-    },
-    "folderSaved": {
-        "message": "Folder saved!",
-        "description": "Status"
-    },
-    "selectFolderErr": {
-        "message": "Please select a folder first.",
-        "description": "Error"
-    },
-    "backupSuccess": {
-        "message": "Backup completed!",
-        "description": "Success"
-    },
-    "backupFailed": {
-        "message": "Backup failed: ",
-        "description": "Error prefix"
-    },
-    "invalidValue": {
-        "message": "Invalid value.",
-        "description": "Error"
-    },
-    "invalidTime": {
-        "message": "Invalid time.",
-        "description": "Error"
+    "otherBookmarks": {
+        "message": "Other Bookmarks"
     },
     "minutes": {
-        "message": "Minutes",
-        "description": "Unit"
+        "message": "Minutes"
     },
     "hours": {
-        "message": "Hours",
-        "description": "Unit"
+        "message": "Hours"
     },
     "days": {
-        "message": "Days",
-        "description": "Unit"
+        "message": "Days"
     },
     "selectFolderLabel": {
-        "message": "Select Backup Folder:",
-        "description": "Label"
+        "message": "Select Backup Folder:"
+    },
+    "selectTabsLabel": {
+        "message": "Select Tabs to Backup:"
+    },
+    "noTabsSelected": {
+        "message": "No tabs selected!"
+    },
+    "preserveGroups": {
+        "message": "Preserve Tab Groups as Folders"
+    },
+    "autoCleanup": {
+        "message": "Auto Cleanup Old Backups"
+    },
+    "cleanupDaysLabel": {
+        "message": "Delete backups older than"
+    },
+    "daysLabel": {
+        "message": "days"
+    },
+    "addTimeBtn": {
+        "message": "+ Add Time"
+    },
+    "multiTimeLabel": {
+        "message": "Backup Times (max 5):"
+    },
+    "quickBackupDesc": {
+        "message": "Quick backup all tabs"
+    },
+    "shortcutLabel": {
+        "message": "Keyboard Shortcut:"
+    },
+    "changeShortcut": {
+        "message": "Change"
+    },
+    "duplicateWarning": {
+        "message": "duplicate(s)"
+    },
+    "includeDuplicates": {
+        "message": "Include Duplicate URLs"
     }
 }

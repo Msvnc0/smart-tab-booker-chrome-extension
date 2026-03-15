@@ -74,6 +74,25 @@
     "invalidTime": {
         "message": "Heure invalide."
     },
+    "selectAll": {
+        "message": "Tout sélectionner"
+    },
+    "deselectAll": {
+        "message": "Tout désélectionner"
+    },
+    "tabCounter": {
+        "message": "Sélectionnés : $SELECTED$ / $TOTAL$",
+        "placeholders": {
+            "selected": { "content": "$1" },
+            "total": { "content": "$2" }
+        }
+    },
+    "bookmarksBar": {
+        "message": "Barre de favoris"
+    },
+    "otherBookmarks": {
+        "message": "Autres favoris"
+    },
     "minutes": {
         "message": "Minutes"
     },
@@ -85,5 +104,44 @@
     },
     "selectFolderLabel": {
         "message": "Dossier de sauvegarde :"
+    },
+    "selectTabsLabel": {
+        "message": "Onglets à sauvegarder :"
+    },
+    "noTabsSelected": {
+        "message": "Aucun onglet sélectionné !"
+    },
+    "preserveGroups": {
+        "message": "Conserver les groupes d'onglets comme dossiers"
+    },
+    "autoCleanup": {
+        "message": "Nettoyage automatique des anciennes sauvegardes"
+    },
+    "cleanupDaysLabel": {
+        "message": "Supprimer les sauvegardes de plus de"
+    },
+    "daysLabel": {
+        "message": "jours"
+    },
+    "addTimeBtn": {
+        "message": "+ Ajouter une heure"
+    },
+    "multiTimeLabel": {
+        "message": "Heures de sauvegarde (max 5) :"
+    },
+    "quickBackupDesc": {
+        "message": "Sauvegarde rapide de tous les onglets"
+    },
+    "shortcutLabel": {
+        "message": "Raccourci clavier :"
+    },
+    "changeShortcut": {
+        "message": "Modifier"
+    },
+    "duplicateWarning": {
+        "message": "doublon(s)"
+    },
+    "includeDuplicates": {
+        "message": "Inclure les URL en double"
     }
 }

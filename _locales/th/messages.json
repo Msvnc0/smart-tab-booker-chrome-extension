@@ -1,0 +1,147 @@
+{
+    "extName": {
+        "message": "Smart Tab Booker"
+    },
+    "extDesc": {
+        "message": "สำรองแท็บที่เปิดอยู่ไปยังบุ๊คมาร์กโดยอัตโนมัติหรือด้วยตนเอง"
+    },
+    "selectStart": {
+        "message": "กำลังโหลดโฟลเดอร์..."
+    },
+    "selectDefault": {
+        "message": "เลือกโฟลเดอร์..."
+    },
+    "backupBtn": {
+        "message": "สำรองข้อมูลเดี๋ยวนี้"
+    },
+    "backupBtnProgress": {
+        "message": "กำลังสำรองข้อมูล..."
+    },
+    "autoBackupTitle": {
+        "message": "การตั้งค่าการสำรองข้อมูลอัตโนมัติ"
+    },
+    "intervalLabel": {
+        "message": "ช่วงเวลา:"
+    },
+    "daily": {
+        "message": "รายวัน"
+    },
+    "weekly": {
+        "message": "รายสัปดาห์"
+    },
+    "monthly": {
+        "message": "รายเดือน"
+    },
+    "enableAutoBackup": {
+        "message": "เปิดใช้งานการสำรองข้อมูลอัตโนมัติ"
+    },
+    "darkMode": {
+        "message": "โหมดมืด"
+    },
+    "custom": {
+        "message": "กำหนดเอง"
+    },
+    "backupTimeLabel": {
+        "message": "เวลาสำรองข้อมูล (24 ชั่วโมง):"
+    },
+    "saveSettingsBtn": {
+        "message": "บันทึกการตั้งค่า"
+    },
+    "saved": {
+        "message": "บันทึกแล้ว!"
+    },
+    "lastBackupLabel": {
+        "message": "การสำรองข้อมูลครั้งล่าสุด:"
+    },
+    "never": {
+        "message": "ไม่เคย"
+    },
+    "folderSaved": {
+        "message": "บันทึกโฟลเดอร์แล้ว!"
+    },
+    "selectFolderErr": {
+        "message": "กรุณาเลือกโฟลเดอร์ก่อน"
+    },
+    "backupSuccess": {
+        "message": "สำรองข้อมูลเสร็จสมบูรณ์!"
+    },
+    "backupFailed": {
+        "message": "การสำรองข้อมูลล้มเหลว: "
+    },
+    "invalidValue": {
+        "message": "ค่าไม่ถูกต้อง"
+    },
+    "invalidTime": {
+        "message": "เวลาไม่ถูกต้อง"
+    },
+    "selectAll": {
+        "message": "เลือกทั้งหมด"
+    },
+    "deselectAll": {
+        "message": "ยกเลิกการเลือกทั้งหมด"
+    },
+    "tabCounter": {
+        "message": "เลือกแล้ว: $SELECTED$ / $TOTAL$",
+        "placeholders": {
+            "selected": { "content": "$1" },
+            "total": { "content": "$2" }
+        }
+    },
+    "bookmarksBar": {
+        "message": "แถบบุ๊คมาร์ก"
+    },
+    "otherBookmarks": {
+        "message": "บุ๊คมาร์กอื่นๆ"
+    },
+    "minutes": {
+        "message": "นาที"
+    },
+    "hours": {
+        "message": "ชั่วโมง"
+    },
+    "days": {
+        "message": "วัน"
+    },
+    "selectFolderLabel": {
+        "message": "เลือกโฟลเดอร์สำรองข้อมูล:"
+    },
+    "selectTabsLabel": {
+        "message": "เลือกแท็บที่จะสำรองข้อมูล:"
+    },
+    "noTabsSelected": {
+        "message": "ไม่มีแท็บที่เลือก!"
+    },
+    "preserveGroups": {
+        "message": "รักษากลุ่มแท็บเป็นโฟลเดอร์"
+    },
+    "autoCleanup": {
+        "message": "ล้างการสำรองข้อมูลเก่าโดยอัตโนมัติ"
+    },
+    "cleanupDaysLabel": {
+        "message": "ลบการสำรองข้อมูลที่เก่ากว่า"
+    },
+    "daysLabel": {
+        "message": "วัน"
+    },
+    "addTimeBtn": {
+        "message": "+ เพิ่มเวลา"
+    },
+    "multiTimeLabel": {
+        "message": "เวลาสำรองข้อมูล (สูงสุด 5):"
+    },
+    "quickBackupDesc": {
+        "message": "สำรองข้อมูลแท็บทั้งหมดอย่างรวดเร็ว"
+    },
+    "shortcutLabel": {
+        "message": "ทางลัดแป้นพิมพ์:"
+    },
+    "changeShortcut": {
+        "message": "เปลี่ยน"
+    },
+    "duplicateWarning": {
+        "message": "ซ้ำ"
+    },
+    "includeDuplicates": {
+        "message": "รวม URL ที่ซ้ำกัน"
+    }
+}
