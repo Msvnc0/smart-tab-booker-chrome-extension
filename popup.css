@@ -456,3 +456,138 @@ html[dir="rtl"] .footer {
 html[dir="rtl"] h1 {
     text-align: right;
 }
+
+.tab-container {
+    display: flex;
+    border-bottom: 1px solid var(--border-color, #ddd);
+    margin-bottom: 12px;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 10px 16px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary, #666);
+    transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+    color: var(--primary-color, #4285f4);
+}
+
+.tab-button.active {
+    color: var(--primary-color, #4285f4);
+    border-bottom-color: var(--primary-color, #4285f4);
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+.restore-list {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color, #ddd);
+    border-radius: 6px;
+}
+
+.restore-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border-color, #eee);
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.restore-item:last-child {
+    border-bottom: none;
+}
+
+.restore-item:hover {
+    background: var(--hover-bg, #f5f5f5);
+}
+
+.restore-radio {
+    margin-right: 10px;
+}
+
+.restore-label {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.restore-title {
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.restore-count {
+    font-size: 11px;
+    color: var(--text-secondary, #888);
+    margin-top: 2px;
+}
+
+.no-backups {
+    padding: 20px;
+    text-align: center;
+    color: var(--text-secondary, #888);
+}
+
+.no-backups.error {
+    color: #d32f2f;
+}
+
+.button-group {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.dark-mode .tab-container {
+    border-bottom-color: var(--border-color, #444);
+}
+
+.dark-mode .tab-button {
+    color: var(--text-secondary, #aaa);
+}
+
+.dark-mode .tab-button:hover,
+.dark-mode .tab-button.active {
+    color: var(--primary-color, #8ab4f8);
+    border-bottom-color: var(--primary-color, #8ab4f8);
+}
+
+.dark-mode .restore-list {
+    border-color: var(--border-color, #444);
+}
+
+.dark-mode .restore-item {
+    border-bottom-color: var(--border-color, #333);
+}
+
+.dark-mode .restore-item:hover {
+    background: var(--hover-bg, #2a2a2a);
+}
+
+.dark-mode .restore-count {
+    color: var(--text-secondary, #888);
+}
+
+.dark-mode .no-backups {
+    color: var(--text-secondary, #888);
+}
+
+.dark-mode .no-backups.error {
+    color: #f44336;
+}
