@@ -27,7 +27,12 @@ const CONSTANTS = {
         CLEANUP_SETTINGS: 'cleanupSettings',
         CLEANUP_DAYS: 'cleanupDays',
         SHORTCUT_LINK: 'shortcutLink',
-        INCLUDE_DUPLICATES_TOGGLE: 'includeDuplicatesToggle'
+        INCLUDE_DUPLICATES_TOGGLE: 'includeDuplicatesToggle',
+        RESTORE_TAB: 'restoreTab',
+        RESTORE_FOLDER_SELECT: 'restoreFolderSelect',
+        RESTORE_LIST: 'restoreList',
+        RESTORE_ALL_BTN: 'restoreAllBtn',
+        RESTORE_SELECTED_BTN: 'restoreSelectedBtn'
     },
     STORAGE: {
         BACKUP_FOLDER_ID: 'backupFolderId',
