@@ -147,5 +147,51 @@
     },
     "includeDuplicates": {
         "message": "Include Duplicate URLs"
+    },
+    "backupTab": {
+        "message": "Backup"
+    },
+    "restoreTab": {
+        "message": "Restore"
+    },
+    "selectBackupFolder": {
+        "message": "Select Backup Folder:"
+    },
+    "restoreAll": {
+        "message": "Restore All"
+    },
+    "noBackupsFound": {
+        "message": "No backups found in this folder"
+    },
+    "restoreSuccess": {
+        "message": "$count$ tabs opened",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "restoreFailed": {
+        "message": "Restore failed"
+    },
+    "tabsCount": {
+        "message": "tabs"
+    },
+    "restoring": {
+        "message": "Restoring..."
+    },
+    "selectFolderFirst": {
+        "message": "Select a folder to view backups"
+    },
+    "manyTabsWarning": {
+        "message": "$count$ tabs will be opened. Continue?",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "folderDeleted": {
+        "message": "Selected folder has been deleted"
     }
 }

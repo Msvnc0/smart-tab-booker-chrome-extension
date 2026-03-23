@@ -83,8 +83,12 @@
     "tabCounter": {
         "message": "Selecionados: $SELECTED$ / $TOTAL$",
         "placeholders": {
-            "selected": { "content": "$1" },
-            "total": { "content": "$2" }
+            "selected": {
+                "content": "$1"
+            },
+            "total": {
+                "content": "$2"
+            }
         }
     },
     "bookmarksBar": {
@@ -143,5 +147,51 @@
     },
     "includeDuplicates": {
         "message": "Incluir URLs duplicadas"
+    },
+    "backupTab": {
+        "message": "Backup"
+    },
+    "restoreTab": {
+        "message": "Restaurar"
+    },
+    "selectBackupFolder": {
+        "message": "Pasta de backup:"
+    },
+    "restoreAll": {
+        "message": "Restaurar tudo"
+    },
+    "noBackupsFound": {
+        "message": "Nenhum backup nesta pasta"
+    },
+    "restoreSuccess": {
+        "message": "$count$ abas abertas",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "restoreFailed": {
+        "message": "Falha na restauração"
+    },
+    "tabsCount": {
+        "message": "abas"
+    },
+    "restoring": {
+        "message": "Restaurando..."
+    },
+    "selectFolderFirst": {
+        "message": "Selecione uma pasta"
+    },
+    "manyTabsWarning": {
+        "message": "$count$ abas serão abertas. Continuar?",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "folderDeleted": {
+        "message": "A pasta selecionada foi excluída"
     }
 }

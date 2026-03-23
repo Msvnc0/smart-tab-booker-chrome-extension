@@ -147,5 +147,51 @@
     },
     "includeDuplicates": {
         "message": "Kopya URL'leri de Yedekle"
+    },
+    "backupTab": {
+        "message": "Yedekle"
+    },
+    "restoreTab": {
+        "message": "Geri Yükle"
+    },
+    "selectBackupFolder": {
+        "message": "Yedek Klasörü Seç:"
+    },
+    "restoreAll": {
+        "message": "Tümünü Aç"
+    },
+    "noBackupsFound": {
+        "message": "Bu klasörde yedek bulunamadı"
+    },
+    "restoreSuccess": {
+        "message": "$count$ sekme açıldı",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "restoreFailed": {
+        "message": "Geri yükleme başarısız"
+    },
+    "tabsCount": {
+        "message": "sekme"
+    },
+    "restoring": {
+        "message": "Yükleniyor..."
+    },
+    "selectFolderFirst": {
+        "message": "Yedekleri görmek için klasör seçin"
+    },
+    "manyTabsWarning": {
+        "message": "$count$ sekme açılacak. Devam edilsin mi?",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "folderDeleted": {
+        "message": "Seçili klasör silinmiş"
     }
 }

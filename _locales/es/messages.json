@@ -83,8 +83,12 @@
     "tabCounter": {
         "message": "Seleccionados: $SELECTED$ / $TOTAL$",
         "placeholders": {
-            "selected": { "content": "$1" },
-            "total": { "content": "$2" }
+            "selected": {
+                "content": "$1"
+            },
+            "total": {
+                "content": "$2"
+            }
         }
     },
     "bookmarksBar": {
@@ -143,5 +147,51 @@
     },
     "includeDuplicates": {
         "message": "Incluir URLs duplicadas"
+    },
+    "backupTab": {
+        "message": "Respaldar"
+    },
+    "restoreTab": {
+        "message": "Restaurer"
+    },
+    "selectBackupFolder": {
+        "message": "Carpeta de respaldo:"
+    },
+    "restoreAll": {
+        "message": "Restaurar todo"
+    },
+    "noBackupsFound": {
+        "message": "Sin respaldos en esta carpeta"
+    },
+    "restoreSuccess": {
+        "message": "$count$ pestañas abiertas",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "restoreFailed": {
+        "message": "Error al restaurar"
+    },
+    "tabsCount": {
+        "message": "pestañas"
+    },
+    "restoring": {
+        "message": "Restaurando..."
+    },
+    "selectFolderFirst": {
+        "message": "Selecciona una carpeta"
+    },
+    "manyTabsWarning": {
+        "message": "Se abrirán $count$ pestañas. ¿Continuar?",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "folderDeleted": {
+        "message": "La carpeta seleccionada ha sido eliminada"
     }
 }

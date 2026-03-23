@@ -83,8 +83,12 @@
     "tabCounter": {
         "message": "Выбрано: $SELECTED$ / $TOTAL$",
         "placeholders": {
-            "selected": { "content": "$1" },
-            "total": { "content": "$2" }
+            "selected": {
+                "content": "$1"
+            },
+            "total": {
+                "content": "$2"
+            }
         }
     },
     "bookmarksBar": {
@@ -143,5 +147,51 @@
     },
     "includeDuplicates": {
         "message": "Включить дубликаты URL"
+    },
+    "backupTab": {
+        "message": "Резерв. копия"
+    },
+    "restoreTab": {
+        "message": "Восстановить"
+    },
+    "selectBackupFolder": {
+        "message": "Папка резерв. копии:"
+    },
+    "restoreAll": {
+        "message": "Восстановить всё"
+    },
+    "noBackupsFound": {
+        "message": "Нет резервных копий"
+    },
+    "restoreSuccess": {
+        "message": "Открыто $count$ вкладок",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "restoreFailed": {
+        "message": "Ошибка восстановления"
+    },
+    "tabsCount": {
+        "message": "вкладок"
+    },
+    "restoring": {
+        "message": "Восстановление..."
+    },
+    "selectFolderFirst": {
+        "message": "Выберите папку"
+    },
+    "manyTabsWarning": {
+        "message": "Откроется $count$ вкладок. Продолжить?",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "folderDeleted": {
+        "message": "Выбранная папка удалена"
     }
 }

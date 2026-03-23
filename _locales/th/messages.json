@@ -83,8 +83,12 @@
     "tabCounter": {
         "message": "เลือกแล้ว: $SELECTED$ / $TOTAL$",
         "placeholders": {
-            "selected": { "content": "$1" },
-            "total": { "content": "$2" }
+            "selected": {
+                "content": "$1"
+            },
+            "total": {
+                "content": "$2"
+            }
         }
     },
     "bookmarksBar": {
@@ -143,5 +147,51 @@
     },
     "includeDuplicates": {
         "message": "รวม URL ที่ซ้ำกัน"
+    },
+    "backupTab": {
+        "message": "สำรองข้อมูล"
+    },
+    "restoreTab": {
+        "message": "กู้คืน"
+    },
+    "selectBackupFolder": {
+        "message": "เลือกโฟลเดอร์สำรอง:"
+    },
+    "restoreAll": {
+        "message": "กู้คืนทั้งหมด"
+    },
+    "noBackupsFound": {
+        "message": "ไม่พบข้อมูลสำรอง"
+    },
+    "restoreSuccess": {
+        "message": "เปิด $count$ แท็บแล้ว",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "restoreFailed": {
+        "message": "กู้คืนล้มเหลว"
+    },
+    "tabsCount": {
+        "message": "แท็บ"
+    },
+    "restoring": {
+        "message": "กำลังกู้คืน..."
+    },
+    "selectFolderFirst": {
+        "message": "เลือกโฟลเดอร์"
+    },
+    "manyTabsWarning": {
+        "message": "จะเปิด $count$ แท็บ ดำเนินการต่อ?",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "folderDeleted": {
+        "message": "โฟลเดอร์ที่เลือกถูกลบแล้ว"
     }
 }

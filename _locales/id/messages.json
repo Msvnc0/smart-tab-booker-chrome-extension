@@ -83,8 +83,12 @@
     "tabCounter": {
         "message": "Dipilih: $SELECTED$ / $TOTAL$",
         "placeholders": {
-            "selected": { "content": "$1" },
-            "total": { "content": "$2" }
+            "selected": {
+                "content": "$1"
+            },
+            "total": {
+                "content": "$2"
+            }
         }
     },
     "bookmarksBar": {
@@ -143,5 +147,51 @@
     },
     "includeDuplicates": {
         "message": "Sertakan URL Duplikat"
+    },
+    "backupTab": {
+        "message": "Cadangkan"
+    },
+    "restoreTab": {
+        "message": "Pulihkan"
+    },
+    "selectBackupFolder": {
+        "message": "Pilih Folder Cadangan:"
+    },
+    "restoreAll": {
+        "message": "Pulihkan Semua"
+    },
+    "noBackupsFound": {
+        "message": "Tidak ada cadangan"
+    },
+    "restoreSuccess": {
+        "message": "$count$ tab dibuka",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "restoreFailed": {
+        "message": "Pemulihan gagal"
+    },
+    "tabsCount": {
+        "message": "tab"
+    },
+    "restoring": {
+        "message": "Memulihkan..."
+    },
+    "selectFolderFirst": {
+        "message": "Pilih folder"
+    },
+    "manyTabsWarning": {
+        "message": "$count$ tab akan dibuka. Lanjutkan?",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "folderDeleted": {
+        "message": "Folder yang dipilih telah dihapus"
     }
 }

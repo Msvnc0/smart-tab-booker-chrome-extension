@@ -83,8 +83,12 @@
     "tabCounter": {
         "message": "चयनित: $SELECTED$ / $TOTAL$",
         "placeholders": {
-            "selected": { "content": "$1" },
-            "total": { "content": "$2" }
+            "selected": {
+                "content": "$1"
+            },
+            "total": {
+                "content": "$2"
+            }
         }
     },
     "bookmarksBar": {
@@ -143,5 +147,51 @@
     },
     "includeDuplicates": {
         "message": "डुप्लिकेट URL शामिल करें"
+    },
+    "backupTab": {
+        "message": "बैकअप"
+    },
+    "restoreTab": {
+        "message": "पुनर्स्थापन"
+    },
+    "selectBackupFolder": {
+        "message": "बैकअप फ़ोल्डर चुनें:"
+    },
+    "restoreAll": {
+        "message": "सभी पुनर्स्थापित करें"
+    },
+    "noBackupsFound": {
+        "message": "कोई बैकअप नहीं मिला"
+    },
+    "restoreSuccess": {
+        "message": "$count$ टैब खुले",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "restoreFailed": {
+        "message": "पुनर्स्थापना विफल"
+    },
+    "tabsCount": {
+        "message": "टैब"
+    },
+    "restoring": {
+        "message": "पुनर्स्थापना हो रही है..."
+    },
+    "selectFolderFirst": {
+        "message": "फ़ोल्डर चुनें"
+    },
+    "manyTabsWarning": {
+        "message": "$count$ टैब खुलेंगे। जारी रखें?",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "folderDeleted": {
+        "message": "चयनित फ़ोल्डर हटा दिया गया"
     }
 }

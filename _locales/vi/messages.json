@@ -83,8 +83,12 @@
     "tabCounter": {
         "message": "Đã chọn: $SELECTED$ / $TOTAL$",
         "placeholders": {
-            "selected": { "content": "$1" },
-            "total": { "content": "$2" }
+            "selected": {
+                "content": "$1"
+            },
+            "total": {
+                "content": "$2"
+            }
         }
     },
     "bookmarksBar": {
@@ -143,5 +147,51 @@
     },
     "includeDuplicates": {
         "message": "Bao Gồm URL Trùng Lặp"
+    },
+    "backupTab": {
+        "message": "Sao lưu"
+    },
+    "restoreTab": {
+        "message": "Khôi phục"
+    },
+    "selectBackupFolder": {
+        "message": "Chọn Thư mục Sao lưu:"
+    },
+    "restoreAll": {
+        "message": "Khôi phục tất cả"
+    },
+    "noBackupsFound": {
+        "message": "Không tìm thấy bản sao lưu"
+    },
+    "restoreSuccess": {
+        "message": "Đã mở $count$ tab",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "restoreFailed": {
+        "message": "Khôi phục thất bại"
+    },
+    "tabsCount": {
+        "message": "tab"
+    },
+    "restoring": {
+        "message": "Đang khôi phục..."
+    },
+    "selectFolderFirst": {
+        "message": "Chọn thư mục"
+    },
+    "manyTabsWarning": {
+        "message": "$count$ tab sẽ được mở. Tiếp tục?",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "folderDeleted": {
+        "message": "Thư mục đã chọn đã bị xóa"
     }
 }

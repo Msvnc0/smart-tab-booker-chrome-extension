@@ -83,8 +83,12 @@
     "tabCounter": {
         "message": "Geselecteerd: $SELECTED$ / $TOTAL$",
         "placeholders": {
-            "selected": { "content": "$1" },
-            "total": { "content": "$2" }
+            "selected": {
+                "content": "$1"
+            },
+            "total": {
+                "content": "$2"
+            }
         }
     },
     "bookmarksBar": {
@@ -143,5 +147,51 @@
     },
     "includeDuplicates": {
         "message": "Dubbele URL's opnemen"
+    },
+    "backupTab": {
+        "message": "Back-up"
+    },
+    "restoreTab": {
+        "message": "Herstellen"
+    },
+    "selectBackupFolder": {
+        "message": "Back-upmap selecteren:"
+    },
+    "restoreAll": {
+        "message": "Alles herstellen"
+    },
+    "noBackupsFound": {
+        "message": "Geen back-ups gevonden"
+    },
+    "restoreSuccess": {
+        "message": "$count$ tabbladen geopend",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "restoreFailed": {
+        "message": "Herstellen mislukt"
+    },
+    "tabsCount": {
+        "message": "tabbladen"
+    },
+    "restoring": {
+        "message": "Herstellen..."
+    },
+    "selectFolderFirst": {
+        "message": "Selecteer een map"
+    },
+    "manyTabsWarning": {
+        "message": "$count$ tabbladen worden geopend. Doorgaan?",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "folderDeleted": {
+        "message": "Geselecteerde map is verwijderd"
     }
 }

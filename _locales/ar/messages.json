@@ -83,8 +83,12 @@
     "tabCounter": {
         "message": "المحدد: $SELECTED$ / $TOTAL$",
         "placeholders": {
-            "selected": { "content": "$1" },
-            "total": { "content": "$2" }
+            "selected": {
+                "content": "$1"
+            },
+            "total": {
+                "content": "$2"
+            }
         }
     },
     "bookmarksBar": {
@@ -143,5 +147,51 @@
     },
     "includeDuplicates": {
         "message": "تضمين عناوين URL المكررة"
+    },
+    "backupTab": {
+        "message": "نسخ احتياطي"
+    },
+    "restoreTab": {
+        "message": "استعادة"
+    },
+    "selectBackupFolder": {
+        "message": "اختر مجلد النسخ الاحتياطي:"
+    },
+    "restoreAll": {
+        "message": "استعادة الكل"
+    },
+    "noBackupsFound": {
+        "message": "لم يتم العثور على نسخ احتياطية"
+    },
+    "restoreSuccess": {
+        "message": "تم فتح $count$ علامة تبويب",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "restoreFailed": {
+        "message": "فشلت الاستعادة"
+    },
+    "tabsCount": {
+        "message": "علامات تبويب"
+    },
+    "restoring": {
+        "message": "جاري الاستعادة..."
+    },
+    "selectFolderFirst": {
+        "message": "اختر مجلدًا"
+    },
+    "manyTabsWarning": {
+        "message": "سيتم فتح $count$ علامة تبويب. متابعة؟",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "folderDeleted": {
+        "message": "تم حذف المجلد المحدد"
     }
 }

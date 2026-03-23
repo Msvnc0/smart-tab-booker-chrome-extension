@@ -83,8 +83,12 @@
     "tabCounter": {
         "message": "選択: $SELECTED$ / $TOTAL$",
         "placeholders": {
-            "selected": { "content": "$1" },
-            "total": { "content": "$2" }
+            "selected": {
+                "content": "$1"
+            },
+            "total": {
+                "content": "$2"
+            }
         }
     },
     "bookmarksBar": {
@@ -143,5 +147,51 @@
     },
     "includeDuplicates": {
         "message": "重複URLを含める"
+    },
+    "backupTab": {
+        "message": "バックアップ"
+    },
+    "restoreTab": {
+        "message": "復元"
+    },
+    "selectBackupFolder": {
+        "message": "バックアップフォルダ:"
+    },
+    "restoreAll": {
+        "message": "すべて復元"
+    },
+    "noBackupsFound": {
+        "message": "バックアップが見つかりません"
+    },
+    "restoreSuccess": {
+        "message": "$count$個のタブを開きました",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "restoreFailed": {
+        "message": "復元に失敗しました"
+    },
+    "tabsCount": {
+        "message": "タブ"
+    },
+    "restoring": {
+        "message": "復元中..."
+    },
+    "selectFolderFirst": {
+        "message": "フォルダを選択"
+    },
+    "manyTabsWarning": {
+        "message": "$count$個のタブが開きます。続けますか？",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "folderDeleted": {
+        "message": "選択したフォルダが削除されました"
     }
 }

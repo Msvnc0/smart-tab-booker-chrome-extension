@@ -83,8 +83,12 @@
     "tabCounter": {
         "message": "Selezionati: $SELECTED$ / $TOTAL$",
         "placeholders": {
-            "selected": { "content": "$1" },
-            "total": { "content": "$2" }
+            "selected": {
+                "content": "$1"
+            },
+            "total": {
+                "content": "$2"
+            }
         }
     },
     "bookmarksBar": {
@@ -143,5 +147,51 @@
     },
     "includeDuplicates": {
         "message": "Includi URL duplicati"
+    },
+    "backupTab": {
+        "message": "Backup"
+    },
+    "restoreTab": {
+        "message": "Ripristina"
+    },
+    "selectBackupFolder": {
+        "message": "Cartella backup:"
+    },
+    "restoreAll": {
+        "message": "Ripristina tutto"
+    },
+    "noBackupsFound": {
+        "message": "Nessun backup in questa cartella"
+    },
+    "restoreSuccess": {
+        "message": "$count$ schede aperte",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "restoreFailed": {
+        "message": "Ripristino fallito"
+    },
+    "tabsCount": {
+        "message": "schede"
+    },
+    "restoring": {
+        "message": "Ripristino..."
+    },
+    "selectFolderFirst": {
+        "message": "Seleziona una cartella"
+    },
+    "manyTabsWarning": {
+        "message": "Verranno aperte $count$ schede. Continuare?",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "folderDeleted": {
+        "message": "La cartella selezionata è stata eliminata"
     }
 }

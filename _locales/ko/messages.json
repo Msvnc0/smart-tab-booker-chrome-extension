@@ -83,8 +83,12 @@
     "tabCounter": {
         "message": "선택됨: $SELECTED$ / $TOTAL$",
         "placeholders": {
-            "selected": { "content": "$1" },
-            "total": { "content": "$2" }
+            "selected": {
+                "content": "$1"
+            },
+            "total": {
+                "content": "$2"
+            }
         }
     },
     "bookmarksBar": {
@@ -143,5 +147,51 @@
     },
     "includeDuplicates": {
         "message": "중복 URL 포함"
+    },
+    "backupTab": {
+        "message": "백업"
+    },
+    "restoreTab": {
+        "message": "복원"
+    },
+    "selectBackupFolder": {
+        "message": "백업 폴더 선택:"
+    },
+    "restoreAll": {
+        "message": "모두 복원"
+    },
+    "noBackupsFound": {
+        "message": "백업 없음"
+    },
+    "restoreSuccess": {
+        "message": "$count$개 탭 열림",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "restoreFailed": {
+        "message": "복원 실패"
+    },
+    "tabsCount": {
+        "message": "탭"
+    },
+    "restoring": {
+        "message": "복원 중..."
+    },
+    "selectFolderFirst": {
+        "message": "폴더 선택"
+    },
+    "manyTabsWarning": {
+        "message": "$count$개 탭이 열립니다. 계속하시겠습니까?",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "folderDeleted": {
+        "message": "선택한 폴더가 삭제됨"
     }
 }

@@ -83,8 +83,12 @@
     "tabCounter": {
         "message": "Sélectionnés : $SELECTED$ / $TOTAL$",
         "placeholders": {
-            "selected": { "content": "$1" },
-            "total": { "content": "$2" }
+            "selected": {
+                "content": "$1"
+            },
+            "total": {
+                "content": "$2"
+            }
         }
     },
     "bookmarksBar": {
@@ -143,5 +147,51 @@
     },
     "includeDuplicates": {
         "message": "Inclure les URL en double"
+    },
+    "backupTab": {
+        "message": "Sauvegarder"
+    },
+    "restoreTab": {
+        "message": "Restaurer"
+    },
+    "selectBackupFolder": {
+        "message": "Dossier de sauvegarde:"
+    },
+    "restoreAll": {
+        "message": "Tout restaurer"
+    },
+    "noBackupsFound": {
+        "message": "Aucune sauvegarde dans ce dossier"
+    },
+    "restoreSuccess": {
+        "message": "$count$ onglets ouverts",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "restoreFailed": {
+        "message": "Échec de la restauration"
+    },
+    "tabsCount": {
+        "message": "onglets"
+    },
+    "restoring": {
+        "message": "Restauration..."
+    },
+    "selectFolderFirst": {
+        "message": "Sélectionnez un dossier"
+    },
+    "manyTabsWarning": {
+        "message": "$count$ onglets seront ouverts. Continuer?",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "folderDeleted": {
+        "message": "Le dossier sélectionné a été supprimé"
     }
 }

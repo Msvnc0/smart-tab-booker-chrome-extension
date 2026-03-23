@@ -83,8 +83,12 @@
     "tabCounter": {
         "message": "Zaznaczono: $SELECTED$ / $TOTAL$",
         "placeholders": {
-            "selected": { "content": "$1" },
-            "total": { "content": "$2" }
+            "selected": {
+                "content": "$1"
+            },
+            "total": {
+                "content": "$2"
+            }
         }
     },
     "bookmarksBar": {
@@ -143,5 +147,51 @@
     },
     "includeDuplicates": {
         "message": "Uwzględnij zduplikowane adresy URL"
+    },
+    "backupTab": {
+        "message": "Kopia zapas."
+    },
+    "restoreTab": {
+        "message": "Przywróć"
+    },
+    "selectBackupFolder": {
+        "message": "Wybierz folder kopii:"
+    },
+    "restoreAll": {
+        "message": "Przywróć wszystko"
+    },
+    "noBackupsFound": {
+        "message": "Brak kopii zapasowych"
+    },
+    "restoreSuccess": {
+        "message": "Otwarto $count$ kart",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "restoreFailed": {
+        "message": "Przywracanie nie powiodło się"
+    },
+    "tabsCount": {
+        "message": "kart"
+    },
+    "restoring": {
+        "message": "Przywracanie..."
+    },
+    "selectFolderFirst": {
+        "message": "Wybierz folder"
+    },
+    "manyTabsWarning": {
+        "message": "Zostanie otwartych $count$ kart. Kontynuować?",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "folderDeleted": {
+        "message": "Wybrany folder został usunięty"
     }
 }

@@ -83,8 +83,12 @@
     "tabCounter": {
         "message": "已选: $SELECTED$ / $TOTAL$",
         "placeholders": {
-            "selected": { "content": "$1" },
-            "total": { "content": "$2" }
+            "selected": {
+                "content": "$1"
+            },
+            "total": {
+                "content": "$2"
+            }
         }
     },
     "bookmarksBar": {
@@ -143,5 +147,51 @@
     },
     "includeDuplicates": {
         "message": "包含重复URL"
+    },
+    "backupTab": {
+        "message": "备份"
+    },
+    "restoreTab": {
+        "message": "恢复"
+    },
+    "selectBackupFolder": {
+        "message": "选择备份文件夹："
+    },
+    "restoreAll": {
+        "message": "全部恢复"
+    },
+    "noBackupsFound": {
+        "message": "此文件夹中未找到备份"
+    },
+    "restoreSuccess": {
+        "message": "已打开 $count$ 个标签页",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "restoreFailed": {
+        "message": "恢复失败"
+    },
+    "tabsCount": {
+        "message": "个标签页"
+    },
+    "restoring": {
+        "message": "恢复中..."
+    },
+    "selectFolderFirst": {
+        "message": "选择文件夹以查看备份"
+    },
+    "manyTabsWarning": {
+        "message": "将打开 $count$ 个标签页。继续？",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "folderDeleted": {
+        "message": "所选文件夹已删除"
     }
 }

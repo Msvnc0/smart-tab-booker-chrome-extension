@@ -83,8 +83,12 @@
     "tabCounter": {
         "message": "Ausgewählt: $SELECTED$ / $TOTAL$",
         "placeholders": {
-            "selected": { "content": "$1" },
-            "total": { "content": "$2" }
+            "selected": {
+                "content": "$1"
+            },
+            "total": {
+                "content": "$2"
+            }
         }
     },
     "bookmarksBar": {
@@ -143,5 +147,51 @@
     },
     "includeDuplicates": {
         "message": "Doppelte URLs einschließen"
+    },
+    "backupTab": {
+        "message": "Sichern"
+    },
+    "restoreTab": {
+        "message": "Wiederherstellen"
+    },
+    "selectBackupFolder": {
+        "message": "Sicherungsordner wählen:"
+    },
+    "restoreAll": {
+        "message": "Alle wiederherstellen"
+    },
+    "noBackupsFound": {
+        "message": "Keine Backups in diesem Ordner"
+    },
+    "restoreSuccess": {
+        "message": "$count$ Tabs geöffnet",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "restoreFailed": {
+        "message": "Wiederherstellung fehlgeschlagen"
+    },
+    "tabsCount": {
+        "message": "Tabs"
+    },
+    "restoring": {
+        "message": "Wiederherstellung..."
+    },
+    "selectFolderFirst": {
+        "message": "Ordner wählen um Backups zu sehen"
+    },
+    "manyTabsWarning": {
+        "message": "$count$ Tabs werden geöffnet. Fortfahren?",
+        "placeholders": {
+            "count": {
+                "content": "$1"
+            }
+        }
+    },
+    "folderDeleted": {
+        "message": "Ausgewählter Ordner wurde gelöscht"
     }
 }
