@@ -33,6 +33,15 @@ const CONSTANTS = {
 
 console.log('Background service worker loaded');
 
+function isValidUrl(url) {
+    if (!url) return false;
+    if (url.startsWith('chrome://')) return false;
+    if (url.startsWith('chrome-extension://')) return false;
+    if (url.startsWith('about:')) return false;
+    if (url.startsWith('file://')) return false;
+    return url.startsWith('http://') || url.startsWith('https://');
+}
+
 chrome.runtime.onInstalled.addListener(handleInstalled);
 chrome.alarms.onAlarm.addListener(handleAlarm);
 chrome.runtime.onMessage.addListener(handleMessage);
@@ -64,6 +73,11 @@ function handleMessage(request, sender, sendResponse) {
     } else if (request.action === 'updateSchedule') {
         setupAlarm();
         sendResponse({ success: true });
+    } else if (request.action === 'restoreBackup') {
+        restoreFromBookmarks(request.backupId, request.options)
+            .then(result => sendResponse(result))
+            .catch(err => sendResponse({ success: false, error: err.message }));
+        return true;
     }
 }
 
@@ -376,4 +390,97 @@ function extractDateFromFolderName(folderName) {
 
 async function updateLastBackupTime() {
     await chrome.storage.local.set({ [CONSTANTS.STORAGE.LAST_BACKUP_TIME]: Date.now() });
+}
+
+async function restoreFromBookmarks(folderId, options = {}) {
+    const { newWindow = true, preserveTabGroups = true } = options;
+
+    try {
+        const children = await chrome.bookmarks.getChildren(folderId);
+        if (children.length === 0) {
+            return { success: false, error: 'noBookmarks' };
+        }
+
+        const window = await chrome.windows.create({ focused: true });
+        let groupsCreated = 0;
+        let tabsOpened = 0;
+
+        if (preserveTabGroups) {
+            const result = await restoreTabsWithGroups(window.id, children);
+            groupsCreated = result.groupsCreated;
+            tabsOpened = result.tabsOpened;
+        } else {
+            const validBookmarks = children.filter(b => b.url && isValidUrl(b.url));
+            tabsOpened = validBookmarks.length;
+            await restoreTabsFlat(window.id, validBookmarks);
+        }
+
+        const tabs = await chrome.tabs.query({ windowId: window.id });
+        const newTab = tabs.find(t => t.url === 'chrome://newtab/');
+        if (newTab) {
+            await chrome.tabs.remove(newTab.id);
+        }
+
+        return { success: true, tabsOpened, groupsCreated };
+    } catch (err) {
+        console.error('Restore failed:', err);
+        return { success: false, error: err.message };
+    }
+}
+
+async function restoreTabsFlat(windowId, bookmarks) {
+    for (const bm of bookmarks) {
+        try {
+            await chrome.tabs.create({ windowId, url: bm.url });
+        } catch (e) {
+            console.warn('Failed to create tab:', bm.url, e);
+        }
+    }
+}
+
+async function restoreTabsWithGroups(windowId, bookmarks) {
+    const folders = bookmarks.filter(b => !b.url);
+    const singleBookmarks = bookmarks.filter(b => b.url && isValidUrl(b.url));
+
+    let groupsCreated = 0;
+    let tabsOpened = 0;
+
+    for (const folder of folders) {
+        try {
+            const folderBookmarks = await chrome.bookmarks.getChildren(folder.id);
+            const validTabs = folderBookmarks.filter(b => b.url && isValidUrl(b.url));
+
+            if (validTabs.length === 0) continue;
+
+            const tabIds = [];
+            for (const bm of validTabs) {
+                try {
+                    const tab = await chrome.tabs.create({ windowId, url: bm.url });
+                    tabIds.push(tab.id);
+                    tabsOpened++;
+                } catch (e) {
+                    console.warn('Failed to create tab:', bm.url, e);
+                }
+            }
+
+            if (tabIds.length > 0) {
+                try {
+                    const groupId = await chrome.tabs.group({ tabIds });
+                    await chrome.tabGroups.update(groupId, { title: folder.title });
+                    groupsCreated++;
+                } catch (e) {
+                    console.warn('Failed to create tab group:', e);
+                }
+            }
+        } catch (e) {
+            console.warn('Failed to process folder:', folder.title, e);
+        }
+    }
+
+    if (singleBookmarks.length > 0) {
+        await restoreTabsFlat(windowId, singleBookmarks);
+        tabsOpened += singleBookmarks.length;
+    }
+
+    return { groupsCreated, tabsOpened };
 }
