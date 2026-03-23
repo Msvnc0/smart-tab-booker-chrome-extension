@@ -351,6 +351,206 @@ const BookmarkManager = {
     }
 };
 
+const RestoreManager = {
+    selectedBackup: null,
+    tabCount: 0,
+
+    init(savedFolderId) {
+        this.loadBackupFolders(savedFolderId);
+        this.setupEventListeners();
+        this.updateButtonStates(false);
+    },
+
+    loadBackupFolders(savedFolderId) {
+        chrome.bookmarks.getTree((nodes) => {
+            const select = DOM.get(CONSTANTS.SELECTORS.RESTORE_FOLDER_SELECT);
+            const defaultText = Localization.get("selectBackupFolder");
+            select.innerHTML = `<option value="" disabled selected>${defaultText}</option>`;
+            this.processFolderNodes(nodes, 0, savedFolderId, select);
+        });
+    },
+
+    processFolderNodes(nodes, depth, savedId, select) {
+        for (const node of nodes) {
+            if (!node.url && node.id !== '0') {
+                const option = DOM.create('option');
+                option.value = node.id;
+                option.textContent = this.formatFolderTitle(node, depth);
+                if (node.id === savedId) option.selected = true;
+                select.appendChild(option);
+            }
+            if (node.children) {
+                this.processFolderNodes(node.children, depth + 1, savedId, select);
+            }
+        }
+    },
+
+    formatFolderTitle(node, depth) {
+        let title = node.title;
+        if (node.id === '1') title = Localization.get("bookmarksBar") || 'Bookmarks Bar';
+        if (node.id === '2') title = Localization.get("otherBookmarks") || 'Other Bookmarks';
+        const indent = '\u00A0\u00A0'.repeat(depth * 2);
+        const prefix = depth > 0 ? '└─ ' : '';
+        return indent + prefix + title;
+    },
+
+    setupEventListeners() {
+        DOM.get(CONSTANTS.SELECTORS.RESTORE_FOLDER_SELECT).addEventListener('change', (e) => {
+            this.loadBackups(e.target.value);
+        });
+
+        DOM.get(CONSTANTS.SELECTORS.RESTORE_ALL_BTN).addEventListener('click', () => {
+            if (this.selectedBackup) {
+                this.confirmAndRestore(this.selectedBackup.id, this.tabCount);
+            }
+        });
+    },
+
+    updateButtonStates(hasSelection) {
+        const allBtn = DOM.get(CONSTANTS.SELECTORS.RESTORE_ALL_BTN);
+        allBtn.disabled = !hasSelection;
+    },
+
+    loadBackups(folderId) {
+        if (!folderId) {
+            this.updateButtonStates(false);
+            return;
+        }
+
+        chrome.bookmarks.getChildren(folderId, (children) => {
+            if (chrome.runtime.lastError) {
+                this.showFolderDeletedError();
+                return;
+            }
+
+            const container = DOM.get(CONSTANTS.SELECTORS.RESTORE_LIST);
+            container.innerHTML = '';
+
+            const backups = children.filter(c => !c.url && c.title && c.title.startsWith('Backup_'));
+
+            if (backups.length === 0) {
+                container.innerHTML = `<div class="no-backups">${Localization.get("noBackupsFound")}</div>`;
+                this.updateButtonStates(false);
+                return;
+            }
+
+            this.updateButtonStates(true);
+            this.renderBackups(container, backups);
+        });
+    },
+
+    async renderBackups(container, backups) {
+        for (const backup of backups) {
+            const count = await this.countBookmarks(backup.id);
+            const item = this.createBackupItem(backup, count);
+            container.appendChild(item);
+        }
+    },
+
+    countBookmarks(folderId) {
+        return new Promise((resolve) => {
+            chrome.bookmarks.getChildren(folderId, async (children) => {
+                let count = children.filter(c => c.url && c.url.startsWith('http')).length;
+                
+                const subfolders = children.filter(c => !c.url);
+                for (const subfolder of subfolders) {
+                    const subCount = await this.countBookmarks(subfolder.id);
+                    count += subCount;
+                }
+                
+                resolve(count);
+            });
+        });
+    },
+
+    createBackupItem(backup, count) {
+        const item = DOM.create('div');
+        item.className = 'restore-item';
+        item.dataset.id = backup.id;
+        item.dataset.count = count;
+
+        const radio = DOM.create('input');
+        radio.type = 'radio';
+        radio.name = 'backupSelect';
+        radio.className = 'restore-radio';
+        radio.value = backup.id;
+
+        const label = DOM.create('label');
+        label.className = 'restore-label';
+
+        const title = DOM.create('span');
+        title.className = 'restore-title';
+        title.textContent = backup.title;
+
+        const countSpan = DOM.create('span');
+        countSpan.className = 'restore-count';
+        countSpan.textContent = `${count} ${Localization.get("tabsCount")}`;
+
+        label.append(title, countSpan);
+        item.append(radio, label);
+
+        item.addEventListener('click', () => {
+            radio.checked = true;
+            this.selectedBackup = backup;
+            this.tabCount = count;
+            this.updateButtonStates(true);
+        });
+
+        return item;
+    },
+
+    confirmAndRestore(backupId, tabCount) {
+        if (tabCount >= 50) {
+            const warning = Localization.get("manyTabsWarning").replace('$count$', tabCount);
+            if (!confirm(warning)) {
+                return;
+            }
+        }
+        this.restoreBackup(backupId);
+    },
+
+    restoreBackup(backupId) {
+        this.showProgress(true);
+        chrome.runtime.sendMessage({
+            action: 'restoreBackup',
+            backupId: backupId,
+            options: { newWindow: true, preserveTabGroups: true }
+        }, (response) => {
+            this.showProgress(false);
+            this.handleResponse(response);
+        });
+    },
+
+    showProgress(show) {
+        const allBtn = DOM.get(CONSTANTS.SELECTORS.RESTORE_ALL_BTN);
+        allBtn.disabled = show;
+        if (show) {
+            allBtn.textContent = Localization.get("restoring") || 'Restoring...';
+        } else {
+            allBtn.textContent = Localization.get("restoreAll");
+        }
+    },
+
+    handleResponse(response) {
+        if (chrome.runtime.lastError) {
+            UI.showStatus(Localization.get("restoreFailed"), 'error');
+            return;
+        }
+        if (response && response.success) {
+            const msg = Localization.get("restoreSuccess").replace('$count$', response.tabsOpened);
+            UI.showStatus(msg, 'success');
+        } else {
+            UI.showStatus(Localization.get("restoreFailed") + (response ? ': ' + response.error : ''), 'error');
+        }
+    },
+
+    showFolderDeletedError() {
+        const container = DOM.get(CONSTANTS.SELECTORS.RESTORE_LIST);
+        container.innerHTML = `<div class="no-backups error">${Localization.get("folderDeleted")}</div>`;
+        this.updateButtonStates(false);
+    }
+};
+
 const TimeManager = {
     times: ['09:00'],
 
