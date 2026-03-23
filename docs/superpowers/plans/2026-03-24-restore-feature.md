@@ -393,7 +393,11 @@ async function restoreTabsWithGroups(windowId, bookmarks) {
 }
 ```
 
-- [ ] **Step 3: Update handleMessage function**
+- [ ] **Step 3: Verify current handleMessage content**
+
+Read the current `handleMessage` function (around line 58). Verify it contains `manualBackup` and `updateSchedule` actions before proceeding.
+
+- [ ] **Step 4: Update handleMessage function**
 
 Find `handleMessage` function (around line 58). Replace with:
 
@@ -416,7 +420,7 @@ function handleMessage(request, sender, sendResponse) {
 }
 ```
 
-- [ ] **Step 4: Commit**
+- [ ] **Step 5: Commit**
 
 ```bash
 git add background.js
@@ -473,18 +477,15 @@ Find line 47 (`</div>` that closes `.header`). Insert AFTER line 47, BEFORE line
 
 - [ ] **Step 2: Wrap backup content in panel div**
 
-After adding tabs, the structure should be:
-- Line 47: `</div>` (closes `.header`)
-- NEW: tab-container
-- Line 49-141: existing sections (folder select, tab list, auto backup settings, etc.)
+After adding the tab-container, wrap all existing sections (folder select, tab list, auto backup settings, backup button, status message) in a panel div.
 
-Wrap lines 49-141 in a panel div. Add BEFORE line 49:
+Add BEFORE the first `<div class="section">` (the one with `for="folderSelect"`):
 
 ```html
         <div id="backupPanel" class="tab-panel active">
 ```
 
-Add AFTER line 141 (before `<button id="saveSettingsBtn"`):
+Find the `<button id="saveSettingsBtn"` element. Add the closing div BEFORE it:
 
 ```html
         </div>
@@ -492,7 +493,7 @@ Add AFTER line 141 (before `<button id="saveSettingsBtn"`):
 
 - [ ] **Step 3: Add restore panel after backup panel**
 
-Find `</div>` that closes `#backupPanel` (after line ~141). Add AFTER it, BEFORE `<button id="saveSettingsBtn"`:
+Find the closing `</div>` that closes `#backupPanel` (the panel you just wrapped). Add AFTER it, BEFORE `<button id="saveSettingsBtn"`:
 
 ```html
         <div id="restorePanel" class="tab-panel">
