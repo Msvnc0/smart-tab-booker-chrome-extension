@@ -659,6 +659,13 @@ const UI = {
     },
 
     setupEventListeners() {
+        DOM.getAll('.tab-button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const tabName = e.currentTarget.dataset.tab;
+                this.switchTab(tabName);
+            });
+        });
+
         DOM.get(CONSTANTS.SELECTORS.LANGUAGE_SELECT).addEventListener('change', async (e) => {
             const newLang = e.target.value;
             await SettingsManager.save({ [CONSTANTS.STORAGE.SELECTED_LANGUAGE]: newLang });
@@ -705,6 +712,22 @@ const UI = {
             TabManager.loadOpenTabs();
             SettingsManager.save({ [CONSTANTS.STORAGE.INCLUDE_DUPLICATES]: include });
         });
+    },
+
+    switchTab(tabName) {
+        DOM.getAll('.tab-button').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.tab === tabName);
+        });
+
+        DOM.getAll('.tab-panel').forEach(panel => {
+            panel.classList.toggle('active', panel.id === `${tabName}Panel`);
+        });
+
+        if (tabName === 'restore') {
+            chrome.storage.local.get([CONSTANTS.STORAGE.BACKUP_FOLDER_ID], (result) => {
+                RestoreManager.init(result[CONSTANTS.STORAGE.BACKUP_FOLDER_ID]);
+            });
+        }
     },
 
     toggleDarkMode(isDark) {
