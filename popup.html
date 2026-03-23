@@ -46,6 +46,16 @@
             </div>
         </div>
 
+        <div class="tab-container">
+            <button id="backupTab" class="tab-button active" data-tab="backup">
+                <span data-i18n="backupTab">Backup</span>
+            </button>
+            <button id="restoreTab" class="tab-button" data-tab="restore">
+                <span data-i18n="restoreTab">Restore</span>
+            </button>
+        </div>
+
+        <div id="backupPanel" class="tab-panel active">
         <div class="section">
             <label for="folderSelect" data-i18n="selectFolderLabel">Select Backup Folder:</label>
             <select id="folderSelect">
@@ -130,6 +140,28 @@
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
+
+        <div id="restorePanel" class="tab-panel">
+            <div class="section">
+                <label data-i18n="selectBackupFolder">Select Backup Folder:</label>
+                <select id="restoreFolderSelect" class="folder-select">
+                    <option value="" disabled selected>Loading...</option>
+                </select>
+            </div>
+            
+            <div class="section">
+                <div id="restoreList" class="restore-list">
+                    <div class="no-backups" data-i18n="selectFolderFirst">Select a folder to view backups</div>
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <button id="restoreAllBtn" class="primary-btn" disabled data-i18n="restoreAll">Restore All</button>
+            </div>
+            
+            <div id="restoreStatusMessage" class="status-message"></div>
         </div>
 
         <button id="saveSettingsBtn" class="secondary-btn" data-i18n="saveSettingsBtn">Save Settings</button>
