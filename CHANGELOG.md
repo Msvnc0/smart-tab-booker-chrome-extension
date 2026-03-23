@@ -2,6 +2,20 @@
 
 All notable changes to Smart Tab Booker will be documented in this file.
 
+## [1.4.0] - 2026-03-24
+
+### Added
+- **Restore Feature** - Reopen backed up tabs from bookmarks with a single click
+- **Tab Groups Preservation** - Tab groups are recreated when restoring backups
+- **Two-Tab UI** - Easy switching between Backup and Restore modes
+- **50+ Tab Warning** - Confirmation dialog when restoring large backups
+- **Restore Folder Selection** - Choose which backup folder to restore from
+
+### Improved
+- Updated translations for all 18 languages with restore feature strings
+
+---
+
 ## [1.3.0] - 2026-03-15
 
 ### Added
