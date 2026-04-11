@@ -1,197 +1,373 @@
 {
-    "extName": {
-        "message": "Smart Tab Booker"
-    },
-    "extDesc": {
-        "message": "Sauvegardez les onglets ouverts dans les favoris automatiquement ou manuellement."
-    },
-    "selectStart": {
-        "message": "Chargement des dossiers..."
-    },
-    "selectDefault": {
-        "message": "Sélectionnez un dossier..."
-    },
-    "backupBtn": {
-        "message": "Sauvegarder maintenant"
-    },
-    "backupBtnProgress": {
-        "message": "Sauvegarde en cours..."
-    },
-    "autoBackupTitle": {
-        "message": "Paramètres de sauvegarde automatique"
-    },
-    "intervalLabel": {
-        "message": "Intervalle :"
-    },
-    "daily": {
-        "message": "Quotidien"
-    },
-    "weekly": {
-        "message": "Hebdomadaire"
-    },
-    "monthly": {
-        "message": "Mensuel"
-    },
-    "enableAutoBackup": {
-        "message": "Activer la sauvegarde automatique"
-    },
-    "darkMode": {
-        "message": "Mode sombre"
-    },
-    "custom": {
-        "message": "Personnalisé"
-    },
-    "backupTimeLabel": {
-        "message": "Heure de sauvegarde (24h) :"
-    },
-    "saveSettingsBtn": {
-        "message": "Enregistrer les paramètres"
-    },
-    "saved": {
-        "message": "Enregistré !"
-    },
-    "lastBackupLabel": {
-        "message": "Dernière sauvegarde :"
-    },
-    "never": {
-        "message": "Jamais"
-    },
-    "folderSaved": {
-        "message": "Dossier enregistré !"
-    },
-    "selectFolderErr": {
-        "message": "Veuillez d'abord sélectionner un dossier."
-    },
-    "backupSuccess": {
-        "message": "Sauvegarde terminée !"
-    },
-    "backupFailed": {
-        "message": "Échec de la sauvegarde : "
-    },
-    "invalidValue": {
-        "message": "Valeur invalide."
-    },
-    "invalidTime": {
-        "message": "Heure invalide."
-    },
-    "selectAll": {
-        "message": "Tout sélectionner"
-    },
-    "deselectAll": {
-        "message": "Tout désélectionner"
-    },
-    "tabCounter": {
-        "message": "Sélectionnés : $SELECTED$ / $TOTAL$",
-        "placeholders": {
-            "selected": {
-                "content": "$1"
-            },
-            "total": {
-                "content": "$2"
-            }
-        }
-    },
-    "bookmarksBar": {
-        "message": "Barre de favoris"
-    },
-    "otherBookmarks": {
-        "message": "Autres favoris"
-    },
-    "minutes": {
-        "message": "Minutes"
-    },
-    "hours": {
-        "message": "Heures"
-    },
-    "days": {
-        "message": "Jours"
-    },
-    "selectFolderLabel": {
-        "message": "Dossier de sauvegarde :"
-    },
-    "selectTabsLabel": {
-        "message": "Onglets à sauvegarder :"
-    },
-    "noTabsSelected": {
-        "message": "Aucun onglet sélectionné !"
-    },
-    "preserveGroups": {
-        "message": "Conserver les groupes d'onglets comme dossiers"
-    },
-    "autoCleanup": {
-        "message": "Nettoyage automatique des anciennes sauvegardes"
-    },
-    "cleanupDaysLabel": {
-        "message": "Supprimer les sauvegardes de plus de"
-    },
-    "daysLabel": {
-        "message": "jours"
-    },
-    "addTimeBtn": {
-        "message": "+ Ajouter une heure"
-    },
-    "multiTimeLabel": {
-        "message": "Heures de sauvegarde (max 5) :"
-    },
-    "quickBackupDesc": {
-        "message": "Sauvegarde rapide de tous les onglets"
-    },
-    "shortcutLabel": {
-        "message": "Raccourci clavier :"
-    },
-    "changeShortcut": {
-        "message": "Modifier"
-    },
-    "duplicateWarning": {
-        "message": "doublon(s)"
-    },
-    "includeDuplicates": {
-        "message": "Inclure les URL en double"
-    },
-    "backupTab": {
-        "message": "Sauvegarder"
-    },
-    "restoreTab": {
-        "message": "Restaurer"
-    },
-    "selectBackupFolder": {
-        "message": "Dossier de sauvegarde:"
-    },
-    "restoreAll": {
-        "message": "Tout restaurer"
-    },
-    "noBackupsFound": {
-        "message": "Aucune sauvegarde dans ce dossier"
-    },
-    "restoreSuccess": {
-        "message": "$count$ onglets ouverts",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "restoreFailed": {
-        "message": "Échec de la restauration"
-    },
-    "tabsCount": {
-        "message": "onglets"
-    },
-    "restoring": {
-        "message": "Restauration..."
-    },
-    "selectFolderFirst": {
-        "message": "Sélectionnez un dossier"
-    },
-    "manyTabsWarning": {
-        "message": "$count$ onglets seront ouverts. Continuer?",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "folderDeleted": {
-        "message": "Le dossier sélectionné a été supprimé"
+  "extName": {
+    "message": "Smart Tab Booker"
+  },
+  "extDesc": {
+    "message": "Sauvegardez les onglets ouverts dans les favoris automatiquement ou manuellement."
+  },
+  "selectStart": {
+    "message": "Chargement des dossiers..."
+  },
+  "selectDefault": {
+    "message": "Sélectionnez un dossier..."
+  },
+  "backupBtn": {
+    "message": "Sauvegarder maintenant"
+  },
+  "backupBtnProgress": {
+    "message": "Sauvegarde en cours..."
+  },
+  "autoBackupTitle": {
+    "message": "Paramètres de sauvegarde automatique"
+  },
+  "intervalLabel": {
+    "message": "Intervalle :"
+  },
+  "daily": {
+    "message": "Quotidien"
+  },
+  "weekly": {
+    "message": "Hebdomadaire"
+  },
+  "monthly": {
+    "message": "Mensuel"
+  },
+  "enableAutoBackup": {
+    "message": "Activer la sauvegarde automatique"
+  },
+  "darkMode": {
+    "message": "Mode sombre"
+  },
+  "custom": {
+    "message": "Personnalisé"
+  },
+  "backupTimeLabel": {
+    "message": "Heure de sauvegarde (24h) :"
+  },
+  "saveSettingsBtn": {
+    "message": "Enregistrer les paramètres"
+  },
+  "saved": {
+    "message": "Enregistré !"
+  },
+  "lastBackupLabel": {
+    "message": "Dernière sauvegarde :"
+  },
+  "never": {
+    "message": "Jamais"
+  },
+  "folderSaved": {
+    "message": "Dossier enregistré !"
+  },
+  "selectFolderErr": {
+    "message": "Veuillez d'abord sélectionner un dossier."
+  },
+  "backupSuccess": {
+    "message": "Sauvegarde terminée !"
+  },
+  "backupInProgress": {
+    "message": "Sauvegarde déjà en cours"
+  },
+  "backupFailed": {
+    "message": "Échec de la sauvegarde : "
+  },
+  "invalidValue": {
+    "message": "Valeur invalide."
+  },
+  "invalidTime": {
+    "message": "Heure invalide."
+  },
+  "selectAll": {
+    "message": "Tout sélectionner"
+  },
+  "deselectAll": {
+    "message": "Tout désélectionner"
+  },
+  "tabCounter": {
+    "message": "Sélectionnés : $SELECTED$ / $TOTAL$",
+    "placeholders": {
+      "selected": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
     }
+  },
+  "bookmarksBar": {
+    "message": "Barre de favoris"
+  },
+  "otherBookmarks": {
+    "message": "Autres favoris"
+  },
+  "minutes": {
+    "message": "Minutes"
+  },
+  "hours": {
+    "message": "Heures"
+  },
+  "days": {
+    "message": "Jours"
+  },
+  "selectFolderLabel": {
+    "message": "Dossier de sauvegarde :"
+  },
+  "selectTabsLabel": {
+    "message": "Onglets à sauvegarder :"
+  },
+  "noTabsSelected": {
+    "message": "Aucun onglet sélectionné !"
+  },
+  "preserveGroups": {
+    "message": "Conserver les groupes d'onglets comme dossiers"
+  },
+  "autoCleanup": {
+    "message": "Nettoyage automatique des anciennes sauvegardes"
+  },
+  "cleanupDaysLabel": {
+    "message": "Supprimer les sauvegardes de plus de"
+  },
+  "daysLabel": {
+    "message": "jours"
+  },
+  "addTimeBtn": {
+    "message": "+ Ajouter une heure"
+  },
+  "multiTimeLabel": {
+    "message": "Heures de sauvegarde (max 5) :"
+  },
+  "quickBackupDesc": {
+    "message": "Sauvegarde rapide de tous les onglets"
+  },
+  "shortcutLabel": {
+    "message": "Raccourci clavier :"
+  },
+  "changeShortcut": {
+    "message": "Modifier"
+  },
+  "duplicateWarning": {
+    "message": "doublon(s)"
+  },
+  "includeDuplicates": {
+    "message": "Inclure les URL en double"
+  },
+  "backupTab": {
+    "message": "Sauvegarder"
+  },
+  "restoreTab": {
+    "message": "Restaurer"
+  },
+  "selectBackupFolder": {
+    "message": "Dossier de sauvegarde:"
+  },
+  "selectBackupDefault": {
+    "message": "-- Select a backup --"
+  },
+  "restoreAll": {
+    "message": "Tout restaurer"
+  },
+  "noBackupsFound": {
+    "message": "Aucune sauvegarde dans ce dossier"
+  },
+  "restoreSuccess": {
+    "message": "$count$ onglets ouverts",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreFailed": {
+    "message": "Échec de la restauration"
+  },
+  "tabsCount": {
+    "message": "onglets"
+  },
+  "restoring": {
+    "message": "Restauration..."
+  },
+  "selectFolderFirst": {
+    "message": "Sélectionnez un dossier"
+  },
+  "manyTabsWarning": {
+    "message": "$count$ onglets seront ouverts. Continuer?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "folderDeleted": {
+    "message": "Le dossier sélectionné a été supprimé"
+  },
+  "restorePreserveGroups": {
+    "message": "Préserver les groupes d'onglets"
+  },
+  "contextMenuBackupTab": {
+    "message": "Sauvegarder cet onglet"
+  },
+  "contextMenuBackupAll": {
+    "message": "Sauvegarder tous les onglets"
+  },
+  "allWindows": {
+    "message": "Toutes les fenêtres"
+  },
+  "windowLabel": {
+    "message": "Fenêtre"
+  },
+  "pinnedTab": {
+    "message": "Épinglé"
+  },
+  "backupNotePlaceholder": {
+    "message": "Ajouter une note..."
+  },
+  "domainFilterPlaceholder": {
+    "message": "Filtrer par domaine..."
+  },
+  "clearFilter": {
+    "message": "Effacer"
+  },
+  "restoreSelected": {
+    "message": "Restaurer la sélection"
+  },
+  "previewHint": {
+    "message": "Double-cliquer pour aperçu"
+  },
+  "searchPlaceholder": {
+    "message": "Rechercher des sauvegardes..."
+  },
+  "compareTitle": {
+    "message": "Comparer les sauvegardes"
+  },
+  "compareSelect1": {
+    "message": "Sauvegarde A"
+  },
+  "compareSelect2": {
+    "message": "Sauvegarde B"
+  },
+  "compareBtn": {
+    "message": "Comparer"
+  },
+  "added": {
+    "message": "Ajouté"
+  },
+  "removed": {
+    "message": "Supprimé"
+  },
+  "common": {
+    "message": "Commun"
+  },
+  "toolsTab": {
+    "message": "Outils"
+  },
+  "exportImportTitle": {
+    "message": "Export / Import"
+  },
+  "exportJson": {
+    "message": "Exporter JSON"
+  },
+  "exportCsv": {
+    "message": "Exporter CSV"
+  },
+  "importLabel": {
+    "message": "Importer depuis un fichier :"
+  },
+  "importBtn": {
+    "message": "Importer"
+  },
+  "importSuccess": {
+    "message": "$count$ onglets importés",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "importFailed": {
+    "message": "Échec de l'importation"
+  },
+  "statsTitle": {
+    "message": "Statistiques"
+  },
+  "totalBackups": {
+    "message": "Total des sauvegardes"
+  },
+  "totalTabs": {
+    "message": "Total onglets sauvegardés"
+  },
+  "topDomains": {
+    "message": "Domaines principaux"
+  },
+  "noStats": {
+    "message": "Pas encore de statistiques"
+  },
+  "smartTriggersTitle": {
+    "message": "Déclencheurs intelligents"
+  },
+  "tabThreshold": {
+    "message": "Seuil d'onglets"
+  },
+  "reminderLabel": {
+    "message": "Rappel"
+  },
+  "noBackupSelected": {
+    "message": "Aucune sauvegarde sélectionnée"
+  },
+  "exportSelectBackup": {
+    "message": "Sélectionner une sauvegarde à exporter"
+  },
+  "exportSelectFolder": {
+    "message": "Sélectionnez d'abord un dossier de sauvegarde."
+  },
+  "exportComplete": {
+    "message": "Export terminé !"
+  },
+  "exportFailedMsg": {
+    "message": "Échec de l'export"
+  },
+  "importSelectFolder": {
+    "message": "Sélectionnez d'abord un dossier."
+  },
+  "importSelectFile": {
+    "message": "Sélectionnez un fichier à importer."
+  },
+  "noTabsRestore": {
+    "message": "Aucun onglet sélectionné pour la restauration."
+  },
+  "compareAdded": {
+    "message": "Ajouté (dans B, pas dans A)"
+  },
+  "compareRemoved": {
+    "message": "Supprimé (dans A, pas dans B)"
+  },
+  "compareCommonLabel": {
+    "message": "Commun"
+  },
+  "lastUpdated": {
+    "message": "Dernière mise à jour"
+  },
+  "noBookmarksPreview": {
+    "message": "Aucun favori trouvé."
+  },
+  "backupCountLabel": {
+    "message": "favoris :"
+  },
+  "selectTwoBackups": {
+    "message": "Sélectionnez deux sauvegardes à comparer."
+  },
+  "selectDiffBackups": {
+    "message": "Sélectionnez deux sauvegardes différentes."
+  },
+  "noOpenTabs": {
+    "message": "Aucun onglet ouvert."
+  },
+  "duplicateGroupTooltip": {
+    "message": "Onglets avec la même URL"
+  },
+  "loadingPreview": {
+    "message": "Chargement..."
+  },
+  "unknownError": {
+    "message": "Unknown error"
+  }
 }

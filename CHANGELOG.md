@@ -2,17 +2,36 @@
 
 All notable changes to Smart Tab Booker will be documented in this file.
 
-## [1.4.0] - 2026-03-24
+## [1.4.0] - 2026-04-01
 
 ### Added
 - **Restore Feature** - Reopen backed up tabs from bookmarks with a single click
 - **Tab Groups Preservation** - Tab groups are recreated when restoring backups
-- **Two-Tab UI** - Easy switching between Backup and Restore modes
+- **Three-Tab UI** - Easy switching between Backup, Restore, and Tools modes
 - **50+ Tab Warning** - Confirmation dialog when restoring large backups
 - **Restore Folder Selection** - Choose which backup folder to restore from
+- **Backup Search & Filter** - Search backups by name in the Restore panel
+- **Backup Comparison** - Compare two backups to see added, removed, and common URLs
+- **Backup Preview** - Double-click a backup to preview and selectively restore individual tabs
+- **Export JSON/CSV** - Export backups as JSON or CSV files from the Tools panel
+- **Import from File** - Import backup data from JSON files
+- **Backup Statistics** - View total backups, total tabs, and top domains
+- **Smart Triggers** - Tab threshold auto-backup and backup reminders
+- **Context Menu** - Right-click to backup current tab or all tabs
+- **Backup Notes** - Add notes to manual backups
+
+### Fixed
+- **Restore panel not loading backups** - Backups now load automatically when a saved folder is selected
+- **Restore buttons not working** - Fixed selectedBackup not being set when entering the Restore tab
+- **Stale backup selection** - Changing the restore folder now properly resets the selection and disables buttons
+- **Subfolder bookmarks lost on restore** - When "Preserve Tab Groups" is disabled, bookmarks inside subfolders are no longer silently dropped during restore
+- **Pinned tab state lost in preview** - Preview now correctly parses [PIN] prefix and preserves pinned state when restoring selected tabs
+- **Compare dropdown stale data** - Switching to an empty folder now clears the compare dropdowns
+- **Export/Import broken in Tools** - Tools panel now has its own folder and backup selectors, no longer depends on Restore panel state
 
 ### Improved
-- Updated translations for all 18 languages with restore feature strings
+- Updated translations for all 18 languages with restore, tools, and smart trigger strings
+- Independent Tools panel with dedicated folder/backup selection for export and import
 
 ---
 

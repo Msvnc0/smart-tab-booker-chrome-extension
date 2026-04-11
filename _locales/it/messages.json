@@ -1,197 +1,373 @@
 {
-    "extName": {
-        "message": "Smart Tab Booker"
-    },
-    "extDesc": {
-        "message": "Esegui il backup delle schede aperte nei segnalibri automaticamente o manualmente."
-    },
-    "selectStart": {
-        "message": "Caricamento cartelle..."
-    },
-    "selectDefault": {
-        "message": "Seleziona una cartella..."
-    },
-    "backupBtn": {
-        "message": "Esegui backup ora"
-    },
-    "backupBtnProgress": {
-        "message": "Backup in corso..."
-    },
-    "autoBackupTitle": {
-        "message": "Impostazioni backup automatico"
-    },
-    "intervalLabel": {
-        "message": "Intervallo:"
-    },
-    "daily": {
-        "message": "Giornaliero"
-    },
-    "weekly": {
-        "message": "Settimanale"
-    },
-    "monthly": {
-        "message": "Mensile"
-    },
-    "enableAutoBackup": {
-        "message": "Abilita backup automatico"
-    },
-    "darkMode": {
-        "message": "Modalità scura"
-    },
-    "custom": {
-        "message": "Personalizzato"
-    },
-    "backupTimeLabel": {
-        "message": "Ora backup (24h):"
-    },
-    "saveSettingsBtn": {
-        "message": "Salva impostazioni"
-    },
-    "saved": {
-        "message": "Salvato!"
-    },
-    "lastBackupLabel": {
-        "message": "Ultimo backup:"
-    },
-    "never": {
-        "message": "Mai"
-    },
-    "folderSaved": {
-        "message": "Cartella salvata!"
-    },
-    "selectFolderErr": {
-        "message": "Seleziona prima una cartella."
-    },
-    "backupSuccess": {
-        "message": "Backup completato!"
-    },
-    "backupFailed": {
-        "message": "Backup fallito: "
-    },
-    "invalidValue": {
-        "message": "Valore non valido."
-    },
-    "invalidTime": {
-        "message": "Ora non valida."
-    },
-    "selectAll": {
-        "message": "Seleziona tutto"
-    },
-    "deselectAll": {
-        "message": "Deseleziona tutto"
-    },
-    "tabCounter": {
-        "message": "Selezionati: $SELECTED$ / $TOTAL$",
-        "placeholders": {
-            "selected": {
-                "content": "$1"
-            },
-            "total": {
-                "content": "$2"
-            }
-        }
-    },
-    "bookmarksBar": {
-        "message": "Barra dei segnalibri"
-    },
-    "otherBookmarks": {
-        "message": "Altri segnalibri"
-    },
-    "minutes": {
-        "message": "Minuti"
-    },
-    "hours": {
-        "message": "Ore"
-    },
-    "days": {
-        "message": "Giorni"
-    },
-    "selectFolderLabel": {
-        "message": "Cartella di backup:"
-    },
-    "selectTabsLabel": {
-        "message": "Schede da salvare:"
-    },
-    "noTabsSelected": {
-        "message": "Nessuna scheda selezionata!"
-    },
-    "preserveGroups": {
-        "message": "Mantieni gruppi di schede come cartelle"
-    },
-    "autoCleanup": {
-        "message": "Pulizia automatica vecchi backup"
-    },
-    "cleanupDaysLabel": {
-        "message": "Elimina backup più vecchi di"
-    },
-    "daysLabel": {
-        "message": "giorni"
-    },
-    "addTimeBtn": {
-        "message": "+ Aggiungi orario"
-    },
-    "multiTimeLabel": {
-        "message": "Orari backup (max 5):"
-    },
-    "quickBackupDesc": {
-        "message": "Backup rapido di tutte le schede"
-    },
-    "shortcutLabel": {
-        "message": "Scorciatoia da tastiera:"
-    },
-    "changeShortcut": {
-        "message": "Modifica"
-    },
-    "duplicateWarning": {
-        "message": "duplicato/i"
-    },
-    "includeDuplicates": {
-        "message": "Includi URL duplicati"
-    },
-    "backupTab": {
-        "message": "Backup"
-    },
-    "restoreTab": {
-        "message": "Ripristina"
-    },
-    "selectBackupFolder": {
-        "message": "Cartella backup:"
-    },
-    "restoreAll": {
-        "message": "Ripristina tutto"
-    },
-    "noBackupsFound": {
-        "message": "Nessun backup in questa cartella"
-    },
-    "restoreSuccess": {
-        "message": "$count$ schede aperte",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "restoreFailed": {
-        "message": "Ripristino fallito"
-    },
-    "tabsCount": {
-        "message": "schede"
-    },
-    "restoring": {
-        "message": "Ripristino..."
-    },
-    "selectFolderFirst": {
-        "message": "Seleziona una cartella"
-    },
-    "manyTabsWarning": {
-        "message": "Verranno aperte $count$ schede. Continuare?",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "folderDeleted": {
-        "message": "La cartella selezionata è stata eliminata"
+  "extName": {
+    "message": "Smart Tab Booker"
+  },
+  "extDesc": {
+    "message": "Esegui il backup delle schede aperte nei segnalibri automaticamente o manualmente."
+  },
+  "selectStart": {
+    "message": "Caricamento cartelle..."
+  },
+  "selectDefault": {
+    "message": "Seleziona una cartella..."
+  },
+  "backupBtn": {
+    "message": "Esegui backup ora"
+  },
+  "backupBtnProgress": {
+    "message": "Backup in corso..."
+  },
+  "autoBackupTitle": {
+    "message": "Impostazioni backup automatico"
+  },
+  "intervalLabel": {
+    "message": "Intervallo:"
+  },
+  "daily": {
+    "message": "Giornaliero"
+  },
+  "weekly": {
+    "message": "Settimanale"
+  },
+  "monthly": {
+    "message": "Mensile"
+  },
+  "enableAutoBackup": {
+    "message": "Abilita backup automatico"
+  },
+  "darkMode": {
+    "message": "Modalità scura"
+  },
+  "custom": {
+    "message": "Personalizzato"
+  },
+  "backupTimeLabel": {
+    "message": "Ora backup (24h):"
+  },
+  "saveSettingsBtn": {
+    "message": "Salva impostazioni"
+  },
+  "saved": {
+    "message": "Salvato!"
+  },
+  "lastBackupLabel": {
+    "message": "Ultimo backup:"
+  },
+  "never": {
+    "message": "Mai"
+  },
+  "folderSaved": {
+    "message": "Cartella salvata!"
+  },
+  "selectFolderErr": {
+    "message": "Seleziona prima una cartella."
+  },
+  "backupSuccess": {
+    "message": "Backup completato!"
+  },
+  "backupInProgress": {
+    "message": "Backup già in corso"
+  },
+  "backupFailed": {
+    "message": "Backup fallito: "
+  },
+  "invalidValue": {
+    "message": "Valore non valido."
+  },
+  "invalidTime": {
+    "message": "Ora non valida."
+  },
+  "selectAll": {
+    "message": "Seleziona tutto"
+  },
+  "deselectAll": {
+    "message": "Deseleziona tutto"
+  },
+  "tabCounter": {
+    "message": "Selezionati: $SELECTED$ / $TOTAL$",
+    "placeholders": {
+      "selected": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
     }
+  },
+  "bookmarksBar": {
+    "message": "Barra dei segnalibri"
+  },
+  "otherBookmarks": {
+    "message": "Altri segnalibri"
+  },
+  "minutes": {
+    "message": "Minuti"
+  },
+  "hours": {
+    "message": "Ore"
+  },
+  "days": {
+    "message": "Giorni"
+  },
+  "selectFolderLabel": {
+    "message": "Cartella di backup:"
+  },
+  "selectTabsLabel": {
+    "message": "Schede da salvare:"
+  },
+  "noTabsSelected": {
+    "message": "Nessuna scheda selezionata!"
+  },
+  "preserveGroups": {
+    "message": "Mantieni gruppi di schede come cartelle"
+  },
+  "autoCleanup": {
+    "message": "Pulizia automatica vecchi backup"
+  },
+  "cleanupDaysLabel": {
+    "message": "Elimina backup più vecchi di"
+  },
+  "daysLabel": {
+    "message": "giorni"
+  },
+  "addTimeBtn": {
+    "message": "+ Aggiungi orario"
+  },
+  "multiTimeLabel": {
+    "message": "Orari backup (max 5):"
+  },
+  "quickBackupDesc": {
+    "message": "Backup rapido di tutte le schede"
+  },
+  "shortcutLabel": {
+    "message": "Scorciatoia da tastiera:"
+  },
+  "changeShortcut": {
+    "message": "Modifica"
+  },
+  "duplicateWarning": {
+    "message": "duplicato/i"
+  },
+  "includeDuplicates": {
+    "message": "Includi URL duplicati"
+  },
+  "backupTab": {
+    "message": "Backup"
+  },
+  "restoreTab": {
+    "message": "Ripristina"
+  },
+  "selectBackupFolder": {
+    "message": "Cartella backup:"
+  },
+  "selectBackupDefault": {
+    "message": "-- Select a backup --"
+  },
+  "restoreAll": {
+    "message": "Ripristina tutto"
+  },
+  "noBackupsFound": {
+    "message": "Nessun backup in questa cartella"
+  },
+  "restoreSuccess": {
+    "message": "$count$ schede aperte",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreFailed": {
+    "message": "Ripristino fallito"
+  },
+  "tabsCount": {
+    "message": "schede"
+  },
+  "restoring": {
+    "message": "Ripristino..."
+  },
+  "selectFolderFirst": {
+    "message": "Seleziona una cartella"
+  },
+  "manyTabsWarning": {
+    "message": "Verranno aperte $count$ schede. Continuare?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "folderDeleted": {
+    "message": "La cartella selezionata è stata eliminata"
+  },
+  "restorePreserveGroups": {
+    "message": "Preserva gruppi di schede"
+  },
+  "contextMenuBackupTab": {
+    "message": "Salva questa scheda"
+  },
+  "contextMenuBackupAll": {
+    "message": "Salva tutte le schede"
+  },
+  "allWindows": {
+    "message": "Tutte le finestre"
+  },
+  "windowLabel": {
+    "message": "Finestra"
+  },
+  "pinnedTab": {
+    "message": "Fissata"
+  },
+  "backupNotePlaceholder": {
+    "message": "Aggiungi una nota..."
+  },
+  "domainFilterPlaceholder": {
+    "message": "Filtra per dominio..."
+  },
+  "clearFilter": {
+    "message": "Cancella"
+  },
+  "restoreSelected": {
+    "message": "Ripristina selezione"
+  },
+  "previewHint": {
+    "message": "Doppio clic per anteprima"
+  },
+  "searchPlaceholder": {
+    "message": "Cerca backup..."
+  },
+  "compareTitle": {
+    "message": "Confronta backup"
+  },
+  "compareSelect1": {
+    "message": "Backup A"
+  },
+  "compareSelect2": {
+    "message": "Backup B"
+  },
+  "compareBtn": {
+    "message": "Confronta"
+  },
+  "added": {
+    "message": "Aggiunto"
+  },
+  "removed": {
+    "message": "Rimosso"
+  },
+  "common": {
+    "message": "Comune"
+  },
+  "toolsTab": {
+    "message": "Strumenti"
+  },
+  "exportImportTitle": {
+    "message": "Esporta / Importa"
+  },
+  "exportJson": {
+    "message": "Esporta JSON"
+  },
+  "exportCsv": {
+    "message": "Esporta CSV"
+  },
+  "importLabel": {
+    "message": "Importa da file:"
+  },
+  "importBtn": {
+    "message": "Importa"
+  },
+  "importSuccess": {
+    "message": "$count$ schede importate",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "importFailed": {
+    "message": "Importazione fallita"
+  },
+  "statsTitle": {
+    "message": "Statistiche"
+  },
+  "totalBackups": {
+    "message": "Backup totali"
+  },
+  "totalTabs": {
+    "message": "Schede totali salvate"
+  },
+  "topDomains": {
+    "message": "Domini principali"
+  },
+  "noStats": {
+    "message": "Nessuna statistica"
+  },
+  "smartTriggersTitle": {
+    "message": "Trigger intelligenti"
+  },
+  "tabThreshold": {
+    "message": "Soglia schede"
+  },
+  "reminderLabel": {
+    "message": "Promemoria"
+  },
+  "noBackupSelected": {
+    "message": "Nessun backup selezionato"
+  },
+  "exportSelectBackup": {
+    "message": "Seleziona backup da esportare"
+  },
+  "exportSelectFolder": {
+    "message": "Seleziona prima una cartella di backup."
+  },
+  "exportComplete": {
+    "message": "Esportazione completata!"
+  },
+  "exportFailedMsg": {
+    "message": "Esportazione fallita"
+  },
+  "importSelectFolder": {
+    "message": "Seleziona prima una cartella."
+  },
+  "importSelectFile": {
+    "message": "Seleziona un file da importare."
+  },
+  "noTabsRestore": {
+    "message": "Nessuna scheda selezionata per il ripristino."
+  },
+  "compareAdded": {
+    "message": "Aggiunto (in B, non in A)"
+  },
+  "compareRemoved": {
+    "message": "Rimosso (in A, non in B)"
+  },
+  "compareCommonLabel": {
+    "message": "Comune"
+  },
+  "lastUpdated": {
+    "message": "Ultimo aggiornamento"
+  },
+  "noBookmarksPreview": {
+    "message": "Nessun segnalibro trovato."
+  },
+  "backupCountLabel": {
+    "message": "segnalibri:"
+  },
+  "selectTwoBackups": {
+    "message": "Seleziona due backup da confrontare."
+  },
+  "selectDiffBackups": {
+    "message": "Seleziona due backup diversi."
+  },
+  "noOpenTabs": {
+    "message": "Nessuna scheda aperta."
+  },
+  "duplicateGroupTooltip": {
+    "message": "Schede con lo stesso URL"
+  },
+  "loadingPreview": {
+    "message": "Caricamento..."
+  },
+  "unknownError": {
+    "message": "Unknown error"
+  }
 }

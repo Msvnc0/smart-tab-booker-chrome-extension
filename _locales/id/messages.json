@@ -1,197 +1,373 @@
 {
-    "extName": {
-        "message": "Smart Tab Booker"
-    },
-    "extDesc": {
-        "message": "Cadangkan tab terbuka ke bookmark secara otomatis atau manual."
-    },
-    "selectStart": {
-        "message": "Memuat folder..."
-    },
-    "selectDefault": {
-        "message": "Pilih folder..."
-    },
-    "backupBtn": {
-        "message": "Cadangkan Sekarang"
-    },
-    "backupBtnProgress": {
-        "message": "Mencadangkan..."
-    },
-    "autoBackupTitle": {
-        "message": "Pengaturan Pencadangan Otomatis"
-    },
-    "intervalLabel": {
-        "message": "Interval:"
-    },
-    "daily": {
-        "message": "Harian"
-    },
-    "weekly": {
-        "message": "Mingguan"
-    },
-    "monthly": {
-        "message": "Bulanan"
-    },
-    "enableAutoBackup": {
-        "message": "Aktifkan Pencadangan Otomatis"
-    },
-    "darkMode": {
-        "message": "Mode Gelap"
-    },
-    "custom": {
-        "message": "Kustom"
-    },
-    "backupTimeLabel": {
-        "message": "Waktu Pencadangan (24 jam):"
-    },
-    "saveSettingsBtn": {
-        "message": "Simpan Pengaturan"
-    },
-    "saved": {
-        "message": "Tersimpan!"
-    },
-    "lastBackupLabel": {
-        "message": "Pencadangan Terakhir:"
-    },
-    "never": {
-        "message": "Tidak Pernah"
-    },
-    "folderSaved": {
-        "message": "Folder tersimpan!"
-    },
-    "selectFolderErr": {
-        "message": "Silakan pilih folder terlebih dahulu."
-    },
-    "backupSuccess": {
-        "message": "Pencadangan selesai!"
-    },
-    "backupFailed": {
-        "message": "Pencadangan gagal: "
-    },
-    "invalidValue": {
-        "message": "Nilai tidak valid."
-    },
-    "invalidTime": {
-        "message": "Waktu tidak valid."
-    },
-    "selectAll": {
-        "message": "Pilih Semua"
-    },
-    "deselectAll": {
-        "message": "Batal Pilih Semua"
-    },
-    "tabCounter": {
-        "message": "Dipilih: $SELECTED$ / $TOTAL$",
-        "placeholders": {
-            "selected": {
-                "content": "$1"
-            },
-            "total": {
-                "content": "$2"
-            }
-        }
-    },
-    "bookmarksBar": {
-        "message": "Bilah Bookmark"
-    },
-    "otherBookmarks": {
-        "message": "Bookmark Lainnya"
-    },
-    "minutes": {
-        "message": "Menit"
-    },
-    "hours": {
-        "message": "Jam"
-    },
-    "days": {
-        "message": "Hari"
-    },
-    "selectFolderLabel": {
-        "message": "Pilih Folder Pencadangan:"
-    },
-    "selectTabsLabel": {
-        "message": "Pilih Tab untuk Dicadangkan:"
-    },
-    "noTabsSelected": {
-        "message": "Tidak ada tab yang dipilih!"
-    },
-    "preserveGroups": {
-        "message": "Pertahankan Grup Tab sebagai Folder"
-    },
-    "autoCleanup": {
-        "message": "Bersihkan Cadangan Lama Secara Otomatis"
-    },
-    "cleanupDaysLabel": {
-        "message": "Hapus cadangan yang lebih lama dari"
-    },
-    "daysLabel": {
-        "message": "hari"
-    },
-    "addTimeBtn": {
-        "message": "+ Tambah Waktu"
-    },
-    "multiTimeLabel": {
-        "message": "Waktu Pencadangan (maks 5):"
-    },
-    "quickBackupDesc": {
-        "message": "Cadangkan semua tab dengan cepat"
-    },
-    "shortcutLabel": {
-        "message": "Pintasan Keyboard:"
-    },
-    "changeShortcut": {
-        "message": "Ubah"
-    },
-    "duplicateWarning": {
-        "message": "duplikat"
-    },
-    "includeDuplicates": {
-        "message": "Sertakan URL Duplikat"
-    },
-    "backupTab": {
-        "message": "Cadangkan"
-    },
-    "restoreTab": {
-        "message": "Pulihkan"
-    },
-    "selectBackupFolder": {
-        "message": "Pilih Folder Cadangan:"
-    },
-    "restoreAll": {
-        "message": "Pulihkan Semua"
-    },
-    "noBackupsFound": {
-        "message": "Tidak ada cadangan"
-    },
-    "restoreSuccess": {
-        "message": "$count$ tab dibuka",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "restoreFailed": {
-        "message": "Pemulihan gagal"
-    },
-    "tabsCount": {
-        "message": "tab"
-    },
-    "restoring": {
-        "message": "Memulihkan..."
-    },
-    "selectFolderFirst": {
-        "message": "Pilih folder"
-    },
-    "manyTabsWarning": {
-        "message": "$count$ tab akan dibuka. Lanjutkan?",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "folderDeleted": {
-        "message": "Folder yang dipilih telah dihapus"
+  "extName": {
+    "message": "Smart Tab Booker"
+  },
+  "extDesc": {
+    "message": "Cadangkan tab terbuka ke bookmark secara otomatis atau manual."
+  },
+  "selectStart": {
+    "message": "Memuat folder..."
+  },
+  "selectDefault": {
+    "message": "Pilih folder..."
+  },
+  "backupBtn": {
+    "message": "Cadangkan Sekarang"
+  },
+  "backupBtnProgress": {
+    "message": "Mencadangkan..."
+  },
+  "autoBackupTitle": {
+    "message": "Pengaturan Pencadangan Otomatis"
+  },
+  "intervalLabel": {
+    "message": "Interval:"
+  },
+  "daily": {
+    "message": "Harian"
+  },
+  "weekly": {
+    "message": "Mingguan"
+  },
+  "monthly": {
+    "message": "Bulanan"
+  },
+  "enableAutoBackup": {
+    "message": "Aktifkan Pencadangan Otomatis"
+  },
+  "darkMode": {
+    "message": "Mode Gelap"
+  },
+  "custom": {
+    "message": "Kustom"
+  },
+  "backupTimeLabel": {
+    "message": "Waktu Pencadangan (24 jam):"
+  },
+  "saveSettingsBtn": {
+    "message": "Simpan Pengaturan"
+  },
+  "saved": {
+    "message": "Tersimpan!"
+  },
+  "lastBackupLabel": {
+    "message": "Pencadangan Terakhir:"
+  },
+  "never": {
+    "message": "Tidak Pernah"
+  },
+  "folderSaved": {
+    "message": "Folder tersimpan!"
+  },
+  "selectFolderErr": {
+    "message": "Silakan pilih folder terlebih dahulu."
+  },
+  "backupSuccess": {
+    "message": "Pencadangan selesai!"
+  },
+  "backupInProgress": {
+    "message": "Backup sedang berlangsung"
+  },
+  "backupFailed": {
+    "message": "Pencadangan gagal: "
+  },
+  "invalidValue": {
+    "message": "Nilai tidak valid."
+  },
+  "invalidTime": {
+    "message": "Waktu tidak valid."
+  },
+  "selectAll": {
+    "message": "Pilih Semua"
+  },
+  "deselectAll": {
+    "message": "Batal Pilih Semua"
+  },
+  "tabCounter": {
+    "message": "Dipilih: $SELECTED$ / $TOTAL$",
+    "placeholders": {
+      "selected": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
     }
+  },
+  "bookmarksBar": {
+    "message": "Bilah Bookmark"
+  },
+  "otherBookmarks": {
+    "message": "Bookmark Lainnya"
+  },
+  "minutes": {
+    "message": "Menit"
+  },
+  "hours": {
+    "message": "Jam"
+  },
+  "days": {
+    "message": "Hari"
+  },
+  "selectFolderLabel": {
+    "message": "Pilih Folder Pencadangan:"
+  },
+  "selectTabsLabel": {
+    "message": "Pilih Tab untuk Dicadangkan:"
+  },
+  "noTabsSelected": {
+    "message": "Tidak ada tab yang dipilih!"
+  },
+  "preserveGroups": {
+    "message": "Pertahankan Grup Tab sebagai Folder"
+  },
+  "autoCleanup": {
+    "message": "Bersihkan Cadangan Lama Secara Otomatis"
+  },
+  "cleanupDaysLabel": {
+    "message": "Hapus cadangan yang lebih lama dari"
+  },
+  "daysLabel": {
+    "message": "hari"
+  },
+  "addTimeBtn": {
+    "message": "+ Tambah Waktu"
+  },
+  "multiTimeLabel": {
+    "message": "Waktu Pencadangan (maks 5):"
+  },
+  "quickBackupDesc": {
+    "message": "Cadangkan semua tab dengan cepat"
+  },
+  "shortcutLabel": {
+    "message": "Pintasan Keyboard:"
+  },
+  "changeShortcut": {
+    "message": "Ubah"
+  },
+  "duplicateWarning": {
+    "message": "duplikat"
+  },
+  "includeDuplicates": {
+    "message": "Sertakan URL Duplikat"
+  },
+  "backupTab": {
+    "message": "Cadangkan"
+  },
+  "restoreTab": {
+    "message": "Pulihkan"
+  },
+  "selectBackupFolder": {
+    "message": "Pilih Folder Cadangan:"
+  },
+  "selectBackupDefault": {
+    "message": "-- Select a backup --"
+  },
+  "restoreAll": {
+    "message": "Pulihkan Semua"
+  },
+  "noBackupsFound": {
+    "message": "Tidak ada cadangan"
+  },
+  "restoreSuccess": {
+    "message": "$count$ tab dibuka",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreFailed": {
+    "message": "Pemulihan gagal"
+  },
+  "tabsCount": {
+    "message": "tab"
+  },
+  "restoring": {
+    "message": "Memulihkan..."
+  },
+  "selectFolderFirst": {
+    "message": "Pilih folder"
+  },
+  "manyTabsWarning": {
+    "message": "$count$ tab akan dibuka. Lanjutkan?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "folderDeleted": {
+    "message": "Folder yang dipilih telah dihapus"
+  },
+  "restorePreserveGroups": {
+    "message": "Pertahankan Grup Tab"
+  },
+  "contextMenuBackupTab": {
+    "message": "Backup tab ini"
+  },
+  "contextMenuBackupAll": {
+    "message": "Backup semua tab"
+  },
+  "allWindows": {
+    "message": "Semua jendela"
+  },
+  "windowLabel": {
+    "message": "Jendela"
+  },
+  "pinnedTab": {
+    "message": "Dipasangi pin"
+  },
+  "backupNotePlaceholder": {
+    "message": "Tambahkan catatan..."
+  },
+  "domainFilterPlaceholder": {
+    "message": "Filter berdasarkan domain..."
+  },
+  "clearFilter": {
+    "message": "Hapus"
+  },
+  "restoreSelected": {
+    "message": "Pulihkan pilihan"
+  },
+  "previewHint": {
+    "message": "Klik ganda untuk pratinjau"
+  },
+  "searchPlaceholder": {
+    "message": "Cari backup..."
+  },
+  "compareTitle": {
+    "message": "Bandingkan backup"
+  },
+  "compareSelect1": {
+    "message": "Backup A"
+  },
+  "compareSelect2": {
+    "message": "Backup B"
+  },
+  "compareBtn": {
+    "message": "Bandingkan"
+  },
+  "added": {
+    "message": "Ditambahkan"
+  },
+  "removed": {
+    "message": "Dihapus"
+  },
+  "common": {
+    "message": "Umum"
+  },
+  "toolsTab": {
+    "message": "Alat"
+  },
+  "exportImportTitle": {
+    "message": "Ekspor / Impor"
+  },
+  "exportJson": {
+    "message": "Ekspor JSON"
+  },
+  "exportCsv": {
+    "message": "Ekspor CSV"
+  },
+  "importLabel": {
+    "message": "Impor dari file:"
+  },
+  "importBtn": {
+    "message": "Impor"
+  },
+  "importSuccess": {
+    "message": "$count$ tab diimpor",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "importFailed": {
+    "message": "Impor gagal"
+  },
+  "statsTitle": {
+    "message": "Statistik"
+  },
+  "totalBackups": {
+    "message": "Total backup"
+  },
+  "totalTabs": {
+    "message": "Total tab di-backup"
+  },
+  "topDomains": {
+    "message": "Domain teratas"
+  },
+  "noStats": {
+    "message": "Belum ada statistik"
+  },
+  "smartTriggersTitle": {
+    "message": "Pemicu cerdas"
+  },
+  "tabThreshold": {
+    "message": "Ambang batas tab"
+  },
+  "reminderLabel": {
+    "message": "Pengingat"
+  },
+  "noBackupSelected": {
+    "message": "Backup tidak dipilih"
+  },
+  "exportSelectBackup": {
+    "message": "Pilih backup untuk diekspor"
+  },
+  "exportSelectFolder": {
+    "message": "Pilih folder cadangan terlebih dahulu."
+  },
+  "exportComplete": {
+    "message": "Ekspor selesai!"
+  },
+  "exportFailedMsg": {
+    "message": "Ekspor gagal"
+  },
+  "importSelectFolder": {
+    "message": "Pilih folder terlebih dahulu."
+  },
+  "importSelectFile": {
+    "message": "Pilih file untuk diimpor."
+  },
+  "noTabsRestore": {
+    "message": "Tidak ada tab dipilih untuk dipulihkan."
+  },
+  "compareAdded": {
+    "message": "Ditambahkan (di B, tidak di A)"
+  },
+  "compareRemoved": {
+    "message": "Dihapus (di A, tidak di B)"
+  },
+  "compareCommonLabel": {
+    "message": "Umum"
+  },
+  "lastUpdated": {
+    "message": "Terakhir diperbarui"
+  },
+  "noBookmarksPreview": {
+    "message": "Tidak ada bookmark ditemukan."
+  },
+  "backupCountLabel": {
+    "message": "bookmark:"
+  },
+  "selectTwoBackups": {
+    "message": "Pilih dua backup untuk dibandingkan."
+  },
+  "selectDiffBackups": {
+    "message": "Pilih dua backup yang berbeda."
+  },
+  "noOpenTabs": {
+    "message": "Tidak ada tab terbuka."
+  },
+  "duplicateGroupTooltip": {
+    "message": "Tab dengan URL yang sama"
+  },
+  "loadingPreview": {
+    "message": "Memuat..."
+  },
+  "unknownError": {
+    "message": "Unknown error"
+  }
 }

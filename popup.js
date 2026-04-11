@@ -9,8 +9,6 @@ const CONSTANTS = {
         DARK_MODE_TOGGLE: 'darkModeToggle',
         AUTO_BACKUP_TOGGLE: 'autoBackupToggle',
         AUTO_BACKUP_SETTINGS: 'autoBackupSettings',
-        HOUR_SELECT: 'backupTimeHour',
-        MINUTE_SELECT: 'backupTimeMinute',
         LANGUAGE_SELECT: 'languageSelect',
         TAB_LIST_CONTAINER: 'tabListContainer',
         INTERVAL_SELECT: 'intervalSelect',
@@ -19,7 +17,6 @@ const CONSTANTS = {
         SAVE_SETTINGS_BTN: 'saveSettingsBtn',
         CUSTOM_INTERVAL_CONTAINER: 'customIntervalContainer',
         TIME_CONTAINER: 'timeContainer',
-        MULTI_TIME_CONTAINER: 'multiTimeContainer',
         TIME_LIST: 'timeList',
         ADD_TIME_BTN: 'addTimeBtn',
         PRESERVE_GROUPS_TOGGLE: 'preserveGroupsToggle',
@@ -28,11 +25,38 @@ const CONSTANTS = {
         CLEANUP_DAYS: 'cleanupDays',
         SHORTCUT_LINK: 'shortcutLink',
         INCLUDE_DUPLICATES_TOGGLE: 'includeDuplicatesToggle',
-        RESTORE_TAB: 'restoreTab',
         RESTORE_FOLDER_SELECT: 'restoreFolderSelect',
         RESTORE_LIST: 'restoreList',
         RESTORE_ALL_BTN: 'restoreAllBtn',
-        RESTORE_SELECTED_BTN: 'restoreSelectedBtn'
+        RESTORE_SELECTED_BTN: 'restoreSelectedBtn',
+        RESTORE_PRESERVE_GROUPS_TOGGLE: 'restorePreserveGroupsToggle',
+        ALL_WINDOWS_TOGGLE: 'allWindowsToggle',
+        BACKUP_NOTE_INPUT: 'backupNoteInput',
+        DOMAIN_FILTER_INPUT: 'domainFilterInput',
+        CLEAR_FILTER_BTN: 'clearFilterBtn',
+        SEARCH_INPUT: 'searchInput',
+        RESTORE_PREVIEW: 'restorePreview',
+        COMPARE_SELECT1: 'compareSelect1',
+        COMPARE_SELECT2: 'compareSelect2',
+        COMPARE_BTN: 'compareBtn',
+        COMPARE_RESULT: 'compareResult',
+        EXPORT_JSON_BTN: 'exportJsonBtn',
+        EXPORT_CSV_BTN: 'exportCsvBtn',
+        TOOLS_FOLDER_SELECT: 'toolsFolderSelect',
+        TOOLS_BACKUP_SELECT: 'toolsBackupSelect',
+        EXPORT_STATUS: 'exportStatus',
+        IMPORT_FILE: 'importFile',
+        IMPORT_BTN: 'importBtn',
+        IMPORT_STATUS: 'importStatus',
+        STATS_CONTAINER: 'statsContainer',
+        TAB_THRESHOLD_TOGGLE: 'tabThresholdToggle',
+        TAB_THRESHOLD_INPUT: 'tabThresholdInput',
+        REMINDER_TOGGLE: 'reminderToggle',
+        REMINDER_DAYS_INPUT: 'reminderDaysInput',
+        RESTORE_STATUS_MESSAGE: 'restoreStatusMessage',
+        AUTO_BACKUP_HEADER: 'autoBackupHeader',
+        AUTO_BACKUP_BODY: 'autoBackupBody',
+        TAB_COUNTER_SPAN: 'tabCounterSpan'
     },
     STORAGE: {
         BACKUP_FOLDER_ID: 'backupFolderId',
@@ -48,9 +72,16 @@ const CONSTANTS = {
         AUTO_CLEANUP_ENABLED: 'autoCleanupEnabled',
         AUTO_CLEANUP_DAYS: 'autoCleanupDays',
         BACKUP_TIMES: 'backupTimes',
-        INCLUDE_DUPLICATES: 'includeDuplicates'
+        INCLUDE_DUPLICATES: 'includeDuplicates',
+        ALL_WINDOWS: 'allWindows',
+        TAB_THRESHOLD: 'tabThreshold',
+        TAB_THRESHOLD_ENABLED: 'tabThresholdEnabled',
+        REMINDER_ENABLED: 'reminderEnabled',
+        REMINDER_DAYS: 'reminderDays',
+        BACKUP_STATS: 'backupStats'
     },
-    MAX_BACKUP_TIMES: 5
+    MAX_BACKUP_TIMES: 5,
+    MANY_TABS_THRESHOLD: 50
 };
 
 const DOM = {
@@ -105,6 +136,11 @@ const Localization = {
             const key = element.getAttribute('data-i18n');
             element.textContent = this.get(key);
         });
+
+        DOM.getAll('[data-i18n-placeholder]').forEach(element => {
+            const key = element.getAttribute('data-i18n-placeholder');
+            element.placeholder = this.get(key);
+        });
     },
 
     get(key) {
@@ -139,12 +175,28 @@ const TabManager = {
     },
 
     loadOpenTabs() {
-        chrome.tabs.query({ currentWindow: true }, (tabs) => {
+        const allWindowsToggle = DOM.get(CONSTANTS.SELECTORS.ALL_WINDOWS_TOGGLE);
+        const domainFilterInput = DOM.get(CONSTANTS.SELECTORS.DOMAIN_FILTER_INPUT);
+        const queryOpts = allWindowsToggle && allWindowsToggle.checked ? {} : { currentWindow: true };
+        const domainFilter = domainFilterInput ? domainFilterInput.value.trim().toLowerCase() : '';
+
+        chrome.tabs.query(queryOpts, (tabs) => {
+            if (domainFilter) {
+                tabs = tabs.filter(tab => {
+                    try {
+                        const hostname = new URL(tab.url).hostname.toLowerCase();
+                        return hostname.includes(domainFilter);
+                    } catch (e) {
+                        return false;
+                    }
+                });
+            }
+
             const container = DOM.get(CONSTANTS.SELECTORS.TAB_LIST_CONTAINER);
             container.innerHTML = '';
 
             if (tabs.length === 0) {
-                container.textContent = "No open tabs.";
+                container.textContent = Localization.get("noOpenTabs");
                 return;
             }
 
@@ -177,20 +229,24 @@ const TabManager = {
         controlDiv.className = 'tab-controls';
 
         const btnGroup = DOM.create('div');
-        const selectAll = this.createActionBtn(Localization.get("selectAll"), () => this.toggleAll(true));
-        const deselectAll = this.createActionBtn(Localization.get("deselectAll"), () => this.toggleAll(false));
-
-        btnGroup.append(selectAll, document.createTextNode(' | '), deselectAll);
+        btnGroup.append(
+            this.createActionBtn(Localization.get("selectAll"), () => this.toggleAll(true)),
+            document.createTextNode(' | '),
+            this.createActionBtn(Localization.get("deselectAll"), () => this.toggleAll(false))
+        );
 
         const counter = DOM.create('span');
         counter.id = 'tabCounterSpan';
 
-        let dupInfo = '';
+        controlDiv.append(btnGroup, counter);
+
         if (duplicates.size > 0) {
-            dupInfo = ` <span class="duplicate-info">(${duplicates.size} ${Localization.get("duplicateWarning")})</span>`;
+            const dupInfo = DOM.create('span');
+            dupInfo.className = 'duplicate-info';
+            dupInfo.textContent = ` (${duplicates.size} ${Localization.get("duplicateWarning")})`;
+            controlDiv.appendChild(dupInfo);
         }
 
-        controlDiv.innerHTML = btnGroup.outerHTML + `<span id="tabCounterSpan"></span>${dupInfo}`;
         return controlDiv;
     },
 
@@ -245,18 +301,32 @@ const TabManager = {
         checkbox.className = 'tab-checkbox';
         checkbox.dataset.title = tab.title;
         checkbox.dataset.url = tab.url;
+        checkbox.dataset.pinned = tab.pinned ? 'true' : 'false';
+        checkbox.dataset.tabId = tab.id || '';
+        checkbox.dataset.groupId = tab.groupId != null ? String(tab.groupId) : '';
         checkbox.addEventListener('change', () => this.updateCounter());
 
         const icon = this.createFavicon(tab.favIconUrl);
-        const label = this.createLabel(tab);
 
-        row.append(checkbox, icon, label);
+        if (tab.pinned) {
+            const pinIndicator = DOM.create('span');
+            pinIndicator.textContent = '\uD83D\uDCCC';
+            pinIndicator.className = 'pin-indicator';
+            pinIndicator.style.marginRight = '4px';
+            pinIndicator.style.fontSize = '12px';
+            row.append(checkbox, pinIndicator, icon);
+        } else {
+            row.append(checkbox, icon);
+        }
+
+        const label = this.createLabel(tab);
+        row.appendChild(label);
 
         if (!this.includeDuplicates && isDuplicate && index === 0) {
             const badge = DOM.create('span');
             badge.className = 'duplicate-badge';
             badge.textContent = `${groupSize}x`;
-            badge.title = `${groupSize} tabs with same URL`;
+                    badge.title = `${groupSize} ${Localization.get("duplicateGroupTooltip")}`;
             row.appendChild(badge);
         }
 
@@ -288,7 +358,7 @@ const TabManager = {
     updateCounter() {
         const total = DOM.getAll('.tab-checkbox').length;
         const selected = DOM.getAll('.tab-checkbox:checked').length;
-        const span = DOM.get('tabCounterSpan');
+        const span = DOM.get(CONSTANTS.SELECTORS.TAB_COUNTER_SPAN);
         if (!span) return;
 
         let msg = Localization.get("tabCounter");
@@ -303,7 +373,12 @@ const TabManager = {
     getSelectedTabs() {
         const selected = [];
         DOM.getAll('.tab-checkbox:checked').forEach(cb => {
-            selected.push({ title: cb.dataset.title, url: cb.dataset.url });
+            selected.push({
+                title: cb.dataset.title,
+                url: cb.dataset.url,
+                pinned: cb.dataset.pinned === 'true',
+                groupId: cb.dataset.groupId ? parseInt(cb.dataset.groupId, 10) : chrome.tabGroups.TAB_GROUP_ID_NONE
+            });
         });
         return selected;
     }
@@ -326,65 +401,11 @@ const BookmarkManager = {
 
     processNodes(nodes, depth, savedId) {
         const select = DOM.get(CONSTANTS.SELECTORS.FOLDER_SELECT);
-        for (const node of nodes) {
-            if (!node.url && node.id !== '0') {
-                const option = DOM.create('option');
-                option.value = node.id;
-                option.textContent = this.formatTitle(node, depth);
-                if (node.id === savedId) option.selected = true;
-                select.appendChild(option);
-            }
-            if (node.children) {
-                this.processNodes(node.children, depth + 1, savedId);
-            }
-        }
-    },
-
-    formatTitle(node, depth) {
-        let title = node.title;
-        if (node.id === '1') title = Localization.get("bookmarksBar") || 'Bookmarks Bar';
-        if (node.id === '2') title = Localization.get("otherBookmarks") || 'Other Bookmarks';
-
-        const indent = '\u00A0\u00A0'.repeat(depth * 2);
-        const prefix = depth > 0 ? '└─ ' : '';
-        return indent + prefix + title;
+        BookmarkTreeHelper.populateFolderSelect(select, nodes, depth, savedId);
     }
 };
 
-const RestoreManager = {
-    selectedBackup: null,
-    tabCount: 0,
-
-    init(savedFolderId) {
-        this.loadBackupFolders(savedFolderId);
-        this.setupEventListeners();
-        this.updateButtonStates(false);
-    },
-
-    loadBackupFolders(savedFolderId) {
-        chrome.bookmarks.getTree((nodes) => {
-            const select = DOM.get(CONSTANTS.SELECTORS.RESTORE_FOLDER_SELECT);
-            const defaultText = Localization.get("selectBackupFolder");
-            select.innerHTML = `<option value="" disabled selected>${defaultText}</option>`;
-            this.processFolderNodes(nodes, 0, savedFolderId, select);
-        });
-    },
-
-    processFolderNodes(nodes, depth, savedId, select) {
-        for (const node of nodes) {
-            if (!node.url && node.id !== '0') {
-                const option = DOM.create('option');
-                option.value = node.id;
-                option.textContent = this.formatFolderTitle(node, depth);
-                if (node.id === savedId) option.selected = true;
-                select.appendChild(option);
-            }
-            if (node.children) {
-                this.processFolderNodes(node.children, depth + 1, savedId, select);
-            }
-        }
-    },
-
+const BookmarkTreeHelper = {
     formatFolderTitle(node, depth) {
         let title = node.title;
         if (node.id === '1') title = Localization.get("bookmarksBar") || 'Bookmarks Bar';
@@ -394,9 +415,68 @@ const RestoreManager = {
         return indent + prefix + title;
     },
 
+    populateFolderSelect(select, nodes, depth, savedId) {
+        for (const node of nodes) {
+            if (!node.url && node.id !== '0') {
+                const option = DOM.create('option');
+                option.value = node.id;
+                option.textContent = this.formatFolderTitle(node, depth);
+                if (node.id === savedId) option.selected = true;
+                select.appendChild(option);
+            }
+            if (node.children) {
+                this.populateFolderSelect(select, node.children, depth + 1, savedId);
+            }
+        }
+    }
+};
+
+function parsePreviewTitle(title) {
+    if (!title || typeof title !== 'string') return { pinned: false, cleanTitle: '' };
+    const pinned = title.startsWith('[PIN] ');
+    const cleanTitle = pinned ? title.replace(/^\[PIN\] /, '') : title;
+    return { pinned, cleanTitle };
+}
+
+const RestoreManager = {
+    selectedBackup: null,
+    tabCount: 0,
+    _initialized: false,
+    _backups: [],
+
+    init(savedFolderId) {
+        this.selectedBackup = null;
+        this.tabCount = 0;
+        this.loadBackupFolders(savedFolderId);
+        if (!this._initialized) {
+            this.setupEventListeners();
+            this._initialized = true;
+        }
+        this.updateButtonStates(false);
+    },
+
+    loadBackupFolders(savedFolderId) {
+        chrome.bookmarks.getTree((nodes) => {
+            const select = DOM.get(CONSTANTS.SELECTORS.RESTORE_FOLDER_SELECT);
+            const defaultText = Localization.get("selectBackupFolder");
+            select.innerHTML = `<option value="" disabled selected>${defaultText}</option>`;
+            this.processFolderNodes(nodes, 0, savedFolderId, select);
+
+            if (savedFolderId) {
+                this.loadBackups(savedFolderId);
+            }
+        });
+    },
+
+    processFolderNodes(nodes, depth, savedId, select) {
+        BookmarkTreeHelper.populateFolderSelect(select, nodes, depth, savedId);
+    },
+
     setupEventListeners() {
-        DOM.get(CONSTANTS.SELECTORS.RESTORE_FOLDER_SELECT).addEventListener('change', (e) => {
-            this.loadBackups(e.target.value);
+        document.addEventListener('change', (e) => {
+            if (e.target.id === CONSTANTS.SELECTORS.RESTORE_FOLDER_SELECT) {
+                this.loadBackups(e.target.value);
+            }
         });
 
         DOM.get(CONSTANTS.SELECTORS.RESTORE_ALL_BTN).addEventListener('click', () => {
@@ -404,11 +484,29 @@ const RestoreManager = {
                 this.confirmAndRestore(this.selectedBackup.id, this.tabCount);
             }
         });
+
+        DOM.get(CONSTANTS.SELECTORS.RESTORE_SELECTED_BTN).addEventListener('click', () => {
+            this.restoreSelected();
+        });
+
+        DOM.get(CONSTANTS.SELECTORS.COMPARE_BTN).addEventListener('click', () => {
+            this.compareBackups();
+        });
+
+        let searchDebounce = null;
+        DOM.get(CONSTANTS.SELECTORS.SEARCH_INPUT).addEventListener('input', (e) => {
+            clearTimeout(searchDebounce);
+            searchDebounce = setTimeout(() => {
+                this.filterBackups(e.target.value);
+            }, 300);
+        });
     },
 
     updateButtonStates(hasSelection) {
         const allBtn = DOM.get(CONSTANTS.SELECTORS.RESTORE_ALL_BTN);
+        const selectedBtn = DOM.get(CONSTANTS.SELECTORS.RESTORE_SELECTED_BTN);
         allBtn.disabled = !hasSelection;
+        selectedBtn.disabled = !hasSelection;
     },
 
     loadBackups(folderId) {
@@ -416,6 +514,10 @@ const RestoreManager = {
             this.updateButtonStates(false);
             return;
         }
+
+        this.selectedBackup = null;
+        this.tabCount = 0;
+        this.updateButtonStates(false);
 
         chrome.bookmarks.getChildren(folderId, (children) => {
             if (chrome.runtime.lastError) {
@@ -428,14 +530,17 @@ const RestoreManager = {
 
             const backups = children.filter(c => !c.url && c.title && c.title.startsWith('Backup_'));
 
+            this._backups = backups;
+
             if (backups.length === 0) {
                 container.innerHTML = `<div class="no-backups">${Localization.get("noBackupsFound")}</div>`;
                 this.updateButtonStates(false);
+                this.loadCompareOptions([]);
                 return;
             }
 
-            this.updateButtonStates(true);
             this.renderBackups(container, backups);
+            this.loadCompareOptions(backups);
         });
     },
 
@@ -450,14 +555,14 @@ const RestoreManager = {
     countBookmarks(folderId) {
         return new Promise((resolve) => {
             chrome.bookmarks.getChildren(folderId, async (children) => {
-                let count = children.filter(c => c.url && c.url.startsWith('http')).length;
-                
+                let count = children.filter(c => c.url && (c.url.startsWith('http://') || c.url.startsWith('https://'))).length;
+
                 const subfolders = children.filter(c => !c.url);
                 for (const subfolder of subfolders) {
                     const subCount = await this.countBookmarks(subfolder.id);
                     count += subCount;
                 }
-                
+
                 resolve(count);
             });
         });
@@ -468,6 +573,7 @@ const RestoreManager = {
         item.className = 'restore-item';
         item.dataset.id = backup.id;
         item.dataset.count = count;
+        item.dataset.title = (backup.title || '').toLowerCase();
 
         const radio = DOM.create('input');
         radio.type = 'radio';
@@ -496,12 +602,271 @@ const RestoreManager = {
             this.updateButtonStates(true);
         });
 
+        item.addEventListener('dblclick', () => {
+            this.togglePreview(backup.id);
+        });
+
         return item;
     },
 
+    togglePreview(backupId) {
+        const preview = DOM.get(CONSTANTS.SELECTORS.RESTORE_PREVIEW);
+        const existingId = preview.dataset.backupId;
+
+        if (existingId === backupId && !preview.classList.contains('hidden')) {
+            preview.classList.add('hidden');
+            preview.innerHTML = '';
+            preview.dataset.backupId = '';
+            return;
+        }
+
+        preview.classList.remove('hidden');
+        preview.dataset.backupId = backupId;
+        preview.innerHTML = `<div style="font-size:12px;color:#888;">${Localization.get("loadingPreview")}</div>`;
+
+        this.loadBackupPreview(backupId, preview);
+    },
+
+    loadBackupPreview(backupId, container) {
+        chrome.bookmarks.getChildren(backupId, (children) => {
+            container.innerHTML = '';
+
+            const items = [];
+
+            const processChildren = (nodes, callback) => {
+                let pending = nodes.length;
+                if (pending === 0) { callback(items); return; }
+
+                nodes.forEach(child => {
+                    if (child.url) {
+                        if (child.url.startsWith('http://') || child.url.startsWith('https://')) {
+                            const parsed = parsePreviewTitle(child.title);
+                            items.push({ title: parsed.cleanTitle, url: child.url, pinned: parsed.pinned });
+                        }
+                        pending--;
+                        if (pending === 0) callback(items);
+                    } else {
+                        chrome.bookmarks.getChildren(child.id, (subChildren) => {
+                            if (subChildren && subChildren.length > 0) {
+                                processChildren(subChildren, () => {
+                                    pending--;
+                                    if (pending === 0) callback(items);
+                                });
+                            } else {
+                                pending--;
+                                if (pending === 0) callback(items);
+                            }
+                        });
+                    }
+                });
+            };
+
+            processChildren(children, (allItems) => {
+                if (allItems.length === 0) {
+                    container.innerHTML = `<div style="font-size:12px;color:#888;">${Localization.get("noBookmarksPreview")}</div>`;
+                    return;
+                }
+
+                const header = DOM.create('div');
+                header.style.cssText = 'font-size:12px;margin-bottom:6px;font-weight:bold;';
+                header.textContent = `${allItems.length} ${Localization.get("backupCountLabel")}`;
+                container.appendChild(header);
+
+                allItems.forEach(item => {
+                    const row = DOM.create('div');
+                    row.className = 'restore-preview-row';
+
+                    const cb = DOM.create('input');
+                    cb.type = 'checkbox';
+                    cb.className = 'restore-select-cb';
+                    cb.dataset.url = item.url;
+                    cb.dataset.title = item.title;
+                    cb.dataset.pinned = item.pinned ? 'true' : 'false';
+                    cb.checked = true;
+
+                    const span = DOM.create('span');
+                    span.textContent = (item.pinned ? '\uD83D\uDCCC ' : '') + (item.title || item.url);
+                    span.title = item.url;
+                    span.style.cssText = 'font-size:11px;margin-left:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;max-width:280px;';
+
+                    row.append(cb, span);
+                    container.appendChild(row);
+                });
+            });
+        });
+    },
+
+    restoreSelected() {
+        const checkboxes = DOM.getAll('.restore-select-cb:checked');
+        if (checkboxes.length === 0) {
+            this.showStatus(Localization.get("noTabsRestore"), 'error');
+            return;
+        }
+
+        const tabs = [];
+        checkboxes.forEach(cb => {
+            tabs.push({ url: cb.dataset.url, title: cb.dataset.title, pinned: cb.dataset.pinned === 'true' });
+        });
+
+        this.showProgress(true);
+
+        chrome.runtime.sendMessage({ action: 'restoreTabs', tabs }, (response) => {
+            this.showProgress(false);
+            this.handleResponse(response);
+        });
+    },
+
+    filterBackups(query) {
+        const q = query.trim().toLowerCase();
+        const items = DOM.getAll('.restore-item');
+        items.forEach(item => {
+            const title = item.dataset.title || '';
+            if (!q || title.includes(q)) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    },
+
+    compareBackups() {
+        const id1 = DOM.get(CONSTANTS.SELECTORS.COMPARE_SELECT1).value;
+        const id2 = DOM.get(CONSTANTS.SELECTORS.COMPARE_SELECT2).value;
+
+        if (!id1 || !id2) {
+            const result = DOM.get(CONSTANTS.SELECTORS.COMPARE_RESULT);
+            result.innerHTML = `<div style="color:red;">${Localization.get("selectTwoBackups")}</div>`;
+            return;
+        }
+
+        if (id1 === id2) {
+            const result = DOM.get(CONSTANTS.SELECTORS.COMPARE_RESULT);
+            result.innerHTML = `<div style="color:red;">${Localization.get("selectDiffBackups")}</div>`;
+            return;
+        }
+
+        Promise.all([
+            this.getAllBookmarkUrls(id1),
+            this.getAllBookmarkUrls(id2)
+        ]).then(([urls1, urls2]) => {
+            const set1 = new Set(urls1);
+            const set2 = new Set(urls2);
+
+            const added = [...set2].filter(u => !set1.has(u));
+            const removed = [...set1].filter(u => !set2.has(u));
+            const common = [...set1].filter(u => set2.has(u));
+
+            const result = DOM.get(CONSTANTS.SELECTORS.COMPARE_RESULT);
+            result.innerHTML = '';
+
+            const renderSection = (title, items, color) => {
+                const section = DOM.create('div');
+                section.style.marginBottom = '8px';
+
+                const heading = DOM.create('div');
+                heading.style.cssText = `font-weight:bold;color:${color};font-size:12px;margin-bottom:4px;`;
+                heading.textContent = `${title} (${items.length})`;
+                section.appendChild(heading);
+
+                const list = DOM.create('div');
+                list.style.cssText = 'max-height:100px;overflow-y:auto;';
+                items.forEach(url => {
+                    const row = DOM.create('div');
+                    row.style.cssText = 'font-size:11px;padding:2px 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
+                    row.textContent = url;
+                    row.title = url;
+                    list.appendChild(row);
+                });
+                section.appendChild(list);
+                result.appendChild(section);
+            };
+
+            renderSection(Localization.get("compareAdded"), added, '#4CAF50');
+            renderSection(Localization.get("compareRemoved"), removed, '#F44336');
+            renderSection(Localization.get("compareCommonLabel"), common, '#2196F3');
+        });
+    },
+
+    loadCompareOptions(backups) {
+        const select1 = DOM.get(CONSTANTS.SELECTORS.COMPARE_SELECT1);
+        const select2 = DOM.get(CONSTANTS.SELECTORS.COMPARE_SELECT2);
+        const compareBtn = DOM.get(CONSTANTS.SELECTORS.COMPARE_BTN);
+
+        const label1 = select1.querySelector('option[disabled]');
+        const label2 = select2.querySelector('option[disabled]');
+
+        select1.innerHTML = '';
+        select2.innerHTML = '';
+
+        const opt1 = DOM.create('option');
+        opt1.value = '';
+        opt1.disabled = true;
+        opt1.selected = true;
+        opt1.textContent = label1 ? label1.textContent : 'Backup A';
+        select1.appendChild(opt1);
+
+        const opt2 = DOM.create('option');
+        opt2.value = '';
+        opt2.disabled = true;
+        opt2.selected = true;
+        opt2.textContent = label2 ? label2.textContent : 'Backup B';
+        select2.appendChild(opt2);
+
+        backups.forEach(backup => {
+            const o1 = DOM.create('option');
+            o1.value = backup.id;
+            o1.textContent = backup.title;
+            select1.appendChild(o1);
+
+            const o2 = DOM.create('option');
+            o2.value = backup.id;
+            o2.textContent = backup.title;
+            select2.appendChild(o2);
+        });
+
+        if (backups.length >= 2) {
+            compareBtn.disabled = false;
+        } else {
+            compareBtn.disabled = true;
+        }
+    },
+
+    getAllBookmarkUrls(backupId) {
+        return new Promise((resolve) => {
+            const urls = [];
+
+            const collect = (id, callback) => {
+                chrome.bookmarks.getChildren(id, (children) => {
+                    if (!children || children.length === 0) {
+                        callback();
+                        return;
+                    }
+
+                    let pending = children.length;
+                    children.forEach(child => {
+                        if (child.url) {
+                            if (child.url.startsWith('http://') || child.url.startsWith('https://')) {
+                                urls.push(child.url);
+                            }
+                            pending--;
+                            if (pending === 0) callback();
+                        } else {
+                            collect(child.id, () => {
+                                pending--;
+                                if (pending === 0) callback();
+                            });
+                        }
+                    });
+                });
+            };
+
+            collect(backupId, () => resolve(urls));
+        });
+    },
+
     confirmAndRestore(backupId, tabCount) {
-        if (tabCount >= 50) {
-            const warning = Localization.get("manyTabsWarning").replace('$count$', tabCount);
+        if (tabCount >= CONSTANTS.MANY_TABS_THRESHOLD) {
+            const warning = Localization.get("manyTabsWarning", [tabCount]);
             if (!confirm(warning)) {
                 return;
             }
@@ -511,10 +876,11 @@ const RestoreManager = {
 
     restoreBackup(backupId) {
         this.showProgress(true);
+        const preserveGroups = DOM.get(CONSTANTS.SELECTORS.RESTORE_PRESERVE_GROUPS_TOGGLE).checked;
         chrome.runtime.sendMessage({
             action: 'restoreBackup',
             backupId: backupId,
-            options: { newWindow: true, preserveTabGroups: true }
+            options: { newWindow: true, preserveTabGroups: preserveGroups }
         }, (response) => {
             this.showProgress(false);
             this.handleResponse(response);
@@ -523,25 +889,36 @@ const RestoreManager = {
 
     showProgress(show) {
         const allBtn = DOM.get(CONSTANTS.SELECTORS.RESTORE_ALL_BTN);
+        const selectedBtn = DOM.get(CONSTANTS.SELECTORS.RESTORE_SELECTED_BTN);
         allBtn.disabled = show;
+        selectedBtn.disabled = show;
         if (show) {
             allBtn.textContent = Localization.get("restoring") || 'Restoring...';
+            selectedBtn.textContent = Localization.get("restoring") || 'Restoring...';
         } else {
             allBtn.textContent = Localization.get("restoreAll");
+            selectedBtn.textContent = Localization.get("restoreSelected");
         }
     },
 
     handleResponse(response) {
         if (chrome.runtime.lastError) {
-            UI.showStatus(Localization.get("restoreFailed"), 'error');
+            this.showStatus(Localization.get("restoreFailed"), 'error');
             return;
         }
         if (response && response.success) {
-            const msg = Localization.get("restoreSuccess").replace('$count$', response.tabsOpened);
-            UI.showStatus(msg, 'success');
+            const msg = Localization.get("restoreSuccess", [response.tabsOpened]);
+            this.showStatus(msg, 'success');
         } else {
-            UI.showStatus(Localization.get("restoreFailed") + (response ? ': ' + response.error : ''), 'error');
+            this.showStatus(Localization.get("restoreFailed") + (response ? ': ' + response.error : ''), 'error');
         }
+    },
+
+    showStatus(msg, type) {
+        const el = DOM.get(CONSTANTS.SELECTORS.RESTORE_STATUS_MESSAGE);
+        el.textContent = msg;
+        el.style.color = type === 'error' ? 'red' : 'green';
+        setTimeout(() => el.textContent = '', 4000);
     },
 
     showFolderDeletedError() {
@@ -553,11 +930,15 @@ const RestoreManager = {
 
 const TimeManager = {
     times: ['09:00'],
+    _initialized: false,
 
     init(savedTimes) {
         this.times = savedTimes && savedTimes.length > 0 ? savedTimes : ['09:00'];
         this.render();
-        this.setupEventListeners();
+        if (!this._initialized) {
+            this.setupEventListeners();
+            this._initialized = true;
+        }
     },
 
     setupEventListeners() {
@@ -574,7 +955,7 @@ const TimeManager = {
 
             const hourSelect = this.createHourSelect(time);
             const minuteSelect = this.createMinuteSelect(time);
-            
+
             hourSelect.addEventListener('change', (e) => this.updateTime(index, e.target.value, minuteSelect.value));
             minuteSelect.addEventListener('change', (e) => this.updateTime(index, hourSelect.value, e.target.value));
 
@@ -605,7 +986,7 @@ const TimeManager = {
         const select = DOM.create('select');
         select.className = 'time-select';
         const [h] = time.split(':');
-        
+
         for (let i = 0; i < 24; i++) {
             const val = i.toString().padStart(2, '0');
             const opt = DOM.create('option');
@@ -621,7 +1002,7 @@ const TimeManager = {
         const select = DOM.create('select');
         select.className = 'time-select';
         const [, m] = time.split(':');
-        
+
         for (let i = 0; i < 60; i++) {
             const val = i.toString().padStart(2, '0');
             const opt = DOM.create('option');
@@ -650,6 +1031,170 @@ const TimeManager = {
 
     getTimes() {
         return this.times;
+    }
+};
+
+const ToolsManager = {
+    _initialized: false,
+
+    init(savedFolderId) {
+        this.loadFolderTree(savedFolderId);
+        if (!this._initialized) {
+            this.setupEventListeners();
+            this._initialized = true;
+        }
+    },
+
+    loadFolderTree(savedFolderId) {
+        chrome.bookmarks.getTree((nodes) => {
+            const select = DOM.get(CONSTANTS.SELECTORS.TOOLS_FOLDER_SELECT);
+            const defaultText = Localization.get("selectBackupFolder") || 'Select Backup Folder';
+            select.innerHTML = `<option value="" disabled selected>${defaultText}</option>`;
+            this.processNodes(nodes, 0, savedFolderId, select);
+
+            if (savedFolderId) {
+                this.loadBackups(savedFolderId);
+            }
+        });
+    },
+
+    processNodes(nodes, depth, savedId, select) {
+        BookmarkTreeHelper.populateFolderSelect(select, nodes, depth, savedId);
+    },
+
+    loadBackups(folderId) {
+        const select = DOM.get(CONSTANTS.SELECTORS.TOOLS_BACKUP_SELECT);
+        const defaultText = Localization.get("selectBackupDefault") || '-- Select a backup --';
+        select.innerHTML = `<option value="" disabled selected>${defaultText}</option>`;
+
+        if (!folderId) return;
+
+        chrome.bookmarks.getChildren(folderId, (children) => {
+            if (chrome.runtime.lastError) {
+                const opt = DOM.create('option');
+                opt.disabled = true;
+                opt.textContent = Localization.get("folderDeleted") || 'Error loading backups';
+                select.appendChild(opt);
+                return;
+            }
+
+            const backups = children.filter(c => !c.url && c.title && c.title.startsWith('Backup_'));
+            if (backups.length === 0) {
+                const opt = DOM.create('option');
+                opt.disabled = true;
+                opt.textContent = Localization.get("noBackupsFound") || 'No backups found';
+                select.appendChild(opt);
+                return;
+            }
+
+            backups.forEach(backup => {
+                const opt = DOM.create('option');
+                opt.value = backup.id;
+                opt.textContent = backup.title;
+                select.appendChild(opt);
+            });
+        });
+    },
+
+    setupEventListeners() {
+        document.addEventListener('change', (e) => {
+            if (e.target.id === CONSTANTS.SELECTORS.TOOLS_FOLDER_SELECT) {
+                this.loadBackups(e.target.value);
+            }
+        });
+
+        DOM.get(CONSTANTS.SELECTORS.EXPORT_JSON_BTN).addEventListener('click', () => {
+            this.exportBackup('json');
+        });
+
+        DOM.get(CONSTANTS.SELECTORS.EXPORT_CSV_BTN).addEventListener('click', () => {
+            this.exportBackup('csv');
+        });
+
+        DOM.get(CONSTANTS.SELECTORS.IMPORT_BTN).addEventListener('click', () => {
+            this.importBackup();
+        });
+    },
+
+    exportBackup(format) {
+        const backupId = DOM.get(CONSTANTS.SELECTORS.TOOLS_BACKUP_SELECT).value;
+        if (!backupId) {
+            this.showExportStatus(Localization.get("exportSelectBackup") || 'Please select a backup first', 'error');
+            return;
+        }
+
+        chrome.runtime.sendMessage({ action: 'exportBackup', backupId, format }, (response) => {
+            if (chrome.runtime.lastError) {
+                this.showExportStatus(Localization.get("exportFailedMsg") + ': ' + chrome.runtime.lastError.message, 'error');
+                return;
+            }
+            if (response && response.success) {
+                const mimeType = format === 'csv' ? 'text/csv' : 'application/json';
+                const extension = format === 'csv' ? '.csv' : '.json';
+                const blob = new Blob([response.data], { type: mimeType });
+                const url = URL.createObjectURL(blob);
+                const a = DOM.create('a');
+                a.href = url;
+                const backupSelect = DOM.get(CONSTANTS.SELECTORS.TOOLS_BACKUP_SELECT);
+                const selected = backupSelect.selectedIndex;
+                const backupTitle = selected >= 0 ? backupSelect.options[selected].textContent : backupId;
+                a.download = `${backupTitle}${extension}`;
+                a.click();
+                URL.revokeObjectURL(url);
+                this.showExportStatus(Localization.get("exportComplete") || 'Export complete', 'success');
+            } else {
+                this.showExportStatus(Localization.get("exportFailedMsg") + ': ' + (response ? response.error : ''), 'error');
+            }
+        });
+    },
+
+    importBackup() {
+        const fileInput = DOM.get(CONSTANTS.SELECTORS.IMPORT_FILE);
+        const statusEl = DOM.get(CONSTANTS.SELECTORS.IMPORT_STATUS);
+        const folderId = DOM.get(CONSTANTS.SELECTORS.TOOLS_FOLDER_SELECT).value;
+
+        if (!folderId) {
+            statusEl.textContent = Localization.get("importSelectFolder") || 'Please select a folder';
+            statusEl.style.color = 'red';
+            return;
+        }
+
+        const file = fileInput.files[0];
+        if (!file) {
+            statusEl.textContent = Localization.get("importSelectFile") || 'Please select a file';
+            statusEl.style.color = 'red';
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const data = e.target.result;
+            chrome.runtime.sendMessage({ action: 'importBackup', data, folderId }, (response) => {
+                if (chrome.runtime.lastError) {
+                    statusEl.textContent = (Localization.get("importFailed") || 'Import failed') + ': ' + chrome.runtime.lastError.message;
+                    statusEl.style.color = 'red';
+                    return;
+                }
+                if (response && response.success) {
+                    const msg = (Localization.get("importSuccess") || 'Imported $count$ tabs').replace('$count$', response.count);
+                    statusEl.textContent = msg;
+                    statusEl.style.color = 'green';
+                } else {
+                    statusEl.textContent = (Localization.get("importFailed") || 'Import failed') + ': ' + (response ? response.error : '');
+                    statusEl.style.color = 'red';
+                }
+                setTimeout(() => statusEl.textContent = '', 4000);
+            });
+        };
+        reader.readAsText(file);
+    },
+
+    showExportStatus(msg, type) {
+        const el = DOM.get(CONSTANTS.SELECTORS.EXPORT_STATUS);
+        if (!el) return;
+        el.textContent = msg;
+        el.style.color = type === 'error' ? 'red' : 'green';
+        setTimeout(() => el.textContent = '', 4000);
     }
 };
 
@@ -695,7 +1240,10 @@ const UI = {
         });
 
         DOM.get(CONSTANTS.SELECTORS.CLEANUP_DAYS).addEventListener('change', (e) => {
-            SettingsManager.save({ [CONSTANTS.STORAGE.AUTO_CLEANUP_DAYS]: parseInt(e.target.value) || 30 });
+            let val = parseInt(e.target.value) || 30;
+            val = Math.max(1, Math.min(365, val));
+            e.target.value = val;
+            SettingsManager.save({ [CONSTANTS.STORAGE.AUTO_CLEANUP_DAYS]: val });
         });
 
         DOM.get(CONSTANTS.SELECTORS.BACKUP_BTN).addEventListener('click', this.handleBackupClick.bind(this));
@@ -712,6 +1260,54 @@ const UI = {
             TabManager.loadOpenTabs();
             SettingsManager.save({ [CONSTANTS.STORAGE.INCLUDE_DUPLICATES]: include });
         });
+
+        DOM.get(CONSTANTS.SELECTORS.ALL_WINDOWS_TOGGLE).addEventListener('change', (e) => {
+            SettingsManager.save({ [CONSTANTS.STORAGE.ALL_WINDOWS]: e.target.checked });
+            TabManager.loadOpenTabs();
+        });
+
+        let domainFilterDebounce = null;
+        DOM.get(CONSTANTS.SELECTORS.DOMAIN_FILTER_INPUT).addEventListener('input', () => {
+            clearTimeout(domainFilterDebounce);
+            domainFilterDebounce = setTimeout(() => {
+                TabManager.loadOpenTabs();
+            }, 300);
+        });
+
+        DOM.get(CONSTANTS.SELECTORS.CLEAR_FILTER_BTN).addEventListener('click', () => {
+            DOM.get(CONSTANTS.SELECTORS.DOMAIN_FILTER_INPUT).value = '';
+            TabManager.loadOpenTabs();
+        });
+
+        DOM.get(CONSTANTS.SELECTORS.TAB_THRESHOLD_TOGGLE).addEventListener('change', (e) => {
+            SettingsManager.save({ [CONSTANTS.STORAGE.TAB_THRESHOLD_ENABLED]: e.target.checked });
+        });
+
+        DOM.get(CONSTANTS.SELECTORS.TAB_THRESHOLD_INPUT).addEventListener('change', (e) => {
+            let val = parseInt(e.target.value) || 20;
+            val = Math.max(5, Math.min(100, val));
+            e.target.value = val;
+            SettingsManager.save({ [CONSTANTS.STORAGE.TAB_THRESHOLD]: val });
+        });
+
+        DOM.get(CONSTANTS.SELECTORS.REMINDER_TOGGLE).addEventListener('change', (e) => {
+            SettingsManager.save({ [CONSTANTS.STORAGE.REMINDER_ENABLED]: e.target.checked });
+        });
+
+        DOM.get(CONSTANTS.SELECTORS.REMINDER_DAYS_INPUT).addEventListener('change', (e) => {
+            let val = parseInt(e.target.value) || 3;
+            val = Math.max(1, Math.min(30, val));
+            e.target.value = val;
+            SettingsManager.save({ [CONSTANTS.STORAGE.REMINDER_DAYS]: val });
+        });
+
+        DOM.get(CONSTANTS.SELECTORS.AUTO_BACKUP_HEADER).addEventListener('click', () => {
+            const body = DOM.get(CONSTANTS.SELECTORS.AUTO_BACKUP_BODY);
+            const header = DOM.get(CONSTANTS.SELECTORS.AUTO_BACKUP_HEADER);
+            const icon = header.querySelector('.collapse-icon');
+            body.classList.toggle('hidden');
+            if (icon) icon.textContent = body.classList.contains('hidden') ? '▸' : '▾';
+        });
     },
 
     switchTab(tabName) {
@@ -727,6 +1323,13 @@ const UI = {
             chrome.storage.local.get([CONSTANTS.STORAGE.BACKUP_FOLDER_ID], (result) => {
                 RestoreManager.init(result[CONSTANTS.STORAGE.BACKUP_FOLDER_ID]);
             });
+        }
+
+        if (tabName === 'tools') {
+            chrome.storage.local.get([CONSTANTS.STORAGE.BACKUP_FOLDER_ID], (result) => {
+                ToolsManager.init(result[CONSTANTS.STORAGE.BACKUP_FOLDER_ID]);
+            });
+            this.loadStats();
         }
     },
 
@@ -751,6 +1354,9 @@ const UI = {
         } else {
             customContainer.classList.add('hidden');
             timeContainer.classList.remove('hidden');
+            if (!TimeManager._initialized) {
+                TimeManager.init(TimeManager.times.length > 0 ? TimeManager.times : ['09:00']);
+            }
         }
     },
 
@@ -773,11 +1379,13 @@ const UI = {
             return;
         }
 
+        const note = DOM.get(CONSTANTS.SELECTORS.BACKUP_NOTE_INPUT).value || '';
+
         const btn = DOM.get(CONSTANTS.SELECTORS.BACKUP_BTN);
         btn.disabled = true;
         btn.textContent = Localization.get("backupBtnProgress");
 
-        chrome.runtime.sendMessage({ action: 'manualBackup', folderId, tabs }, (response) => {
+        chrome.runtime.sendMessage({ action: 'manualBackup', folderId, tabs, note }, (response) => {
             btn.disabled = false;
             btn.textContent = Localization.get("backupBtn");
 
@@ -786,8 +1394,10 @@ const UI = {
             } else if (response && response.success) {
                 this.showStatus(Localization.get("backupSuccess"), 'success');
                 this.updateLastBackupTime();
+            } else if (response && response.error === 'Backup already in progress') {
+                this.showStatus(Localization.get("backupInProgress") || 'Backup already in progress', 'error');
             } else {
-                this.showStatus(Localization.get("backupFailed") + (response ? response.error : 'Unknown error'), 'error');
+                this.showStatus(Localization.get("backupFailed") + (response ? response.error : Localization.get("unknownError")), 'error');
             }
         });
     },
@@ -800,13 +1410,25 @@ const UI = {
         const preserveGroups = DOM.get(CONSTANTS.SELECTORS.PRESERVE_GROUPS_TOGGLE).checked;
         const autoCleanup = DOM.get(CONSTANTS.SELECTORS.AUTO_CLEANUP_TOGGLE).checked;
         const cleanupDays = parseInt(DOM.get(CONSTANTS.SELECTORS.CLEANUP_DAYS).value) || 30;
+        const includeDuplicates = DOM.get(CONSTANTS.SELECTORS.INCLUDE_DUPLICATES_TOGGLE).checked;
+        const allWindows = DOM.get(CONSTANTS.SELECTORS.ALL_WINDOWS_TOGGLE).checked;
+        const tabThresholdEnabled = DOM.get(CONSTANTS.SELECTORS.TAB_THRESHOLD_TOGGLE).checked;
+        const tabThreshold = parseInt(DOM.get(CONSTANTS.SELECTORS.TAB_THRESHOLD_INPUT).value) || 20;
+        const reminderEnabled = DOM.get(CONSTANTS.SELECTORS.REMINDER_TOGGLE).checked;
+        const reminderDays = parseInt(DOM.get(CONSTANTS.SELECTORS.REMINDER_DAYS_INPUT).value) || 3;
 
         const settings = {
             [CONSTANTS.STORAGE.BACKUP_ENABLED]: enabled,
             [CONSTANTS.STORAGE.BACKUP_INTERVAL]: interval,
             [CONSTANTS.STORAGE.PRESERVE_TAB_GROUPS]: preserveGroups,
             [CONSTANTS.STORAGE.AUTO_CLEANUP_ENABLED]: autoCleanup,
-            [CONSTANTS.STORAGE.AUTO_CLEANUP_DAYS]: cleanupDays
+            [CONSTANTS.STORAGE.AUTO_CLEANUP_DAYS]: cleanupDays,
+            [CONSTANTS.STORAGE.INCLUDE_DUPLICATES]: includeDuplicates,
+            [CONSTANTS.STORAGE.ALL_WINDOWS]: allWindows,
+            [CONSTANTS.STORAGE.TAB_THRESHOLD_ENABLED]: tabThresholdEnabled,
+            [CONSTANTS.STORAGE.TAB_THRESHOLD]: tabThreshold,
+            [CONSTANTS.STORAGE.REMINDER_ENABLED]: reminderEnabled,
+            [CONSTANTS.STORAGE.REMINDER_DAYS]: reminderDays
         };
 
         if (interval === 'custom') {
@@ -862,6 +1484,20 @@ const UI = {
         DOM.get(CONSTANTS.SELECTORS.AUTO_BACKUP_TOGGLE).checked = isEnabled;
         this.toggleAutoBackupUI(isEnabled);
 
+        if (isEnabled) {
+            const body = DOM.get(CONSTANTS.SELECTORS.AUTO_BACKUP_BODY);
+            const header = DOM.get(CONSTANTS.SELECTORS.AUTO_BACKUP_HEADER);
+            const icon = header.querySelector('.collapse-icon');
+            body.classList.remove('hidden');
+            if (icon) icon.textContent = '▾';
+        } else {
+            const body = DOM.get(CONSTANTS.SELECTORS.AUTO_BACKUP_BODY);
+            const header = DOM.get(CONSTANTS.SELECTORS.AUTO_BACKUP_HEADER);
+            const icon = header.querySelector('.collapse-icon');
+            body.classList.add('hidden');
+            if (icon) icon.textContent = '▸';
+        }
+
         const interval = settings[CONSTANTS.STORAGE.BACKUP_INTERVAL] || 'daily';
         const safeInterval = interval === 'off' ? 'daily' : interval;
 
@@ -886,7 +1522,81 @@ const UI = {
         const includeDuplicates = settings[CONSTANTS.STORAGE.INCLUDE_DUPLICATES] || false;
         DOM.get(CONSTANTS.SELECTORS.INCLUDE_DUPLICATES_TOGGLE).checked = includeDuplicates;
 
+        const allWindows = settings[CONSTANTS.STORAGE.ALL_WINDOWS] || false;
+        DOM.get(CONSTANTS.SELECTORS.ALL_WINDOWS_TOGGLE).checked = allWindows;
+
+        const tabThresholdEnabled = settings[CONSTANTS.STORAGE.TAB_THRESHOLD_ENABLED] || false;
+        DOM.get(CONSTANTS.SELECTORS.TAB_THRESHOLD_TOGGLE).checked = tabThresholdEnabled;
+
+        const tabThreshold = settings[CONSTANTS.STORAGE.TAB_THRESHOLD] || 20;
+        DOM.get(CONSTANTS.SELECTORS.TAB_THRESHOLD_INPUT).value = tabThreshold;
+
+        const reminderEnabled = settings[CONSTANTS.STORAGE.REMINDER_ENABLED] || false;
+        DOM.get(CONSTANTS.SELECTORS.REMINDER_TOGGLE).checked = reminderEnabled;
+
+        const reminderDays = settings[CONSTANTS.STORAGE.REMINDER_DAYS] || 3;
+        DOM.get(CONSTANTS.SELECTORS.REMINDER_DAYS_INPUT).value = reminderDays;
+
         this.updateLastBackupTime();
+    },
+
+    loadStats() {
+        chrome.runtime.sendMessage({ action: 'getStats' }, (stats) => {
+            const container = DOM.get(CONSTANTS.SELECTORS.STATS_CONTAINER);
+            if (!container) return;
+
+            container.innerHTML = '';
+
+            if (!stats || Object.keys(stats).length === 0) {
+                container.innerHTML = `<div style="font-size:12px;color:#888;">${Localization.get("noStats")}</div>`;
+                return;
+            }
+
+            const addRow = (label, value) => {
+                const row = DOM.create('div');
+                row.className = 'stat-row';
+                row.style.cssText = 'display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--input-border, #ddd);font-size:12px;';
+
+                const labelEl = DOM.create('span');
+                labelEl.textContent = label;
+                labelEl.style.fontWeight = 'bold';
+
+                const valueEl = DOM.create('span');
+                valueEl.textContent = value;
+
+                row.append(labelEl, valueEl);
+                container.appendChild(row);
+            };
+
+            addRow(Localization.get("totalBackups"), stats.totalBackups || 0);
+            addRow(Localization.get("totalTabs"), stats.totalTabs || 0);
+
+            if (stats.updatedAt) {
+                addRow(Localization.get("lastUpdated"), new Date(stats.updatedAt).toLocaleString());
+            }
+
+            if (stats.topDomains && stats.topDomains.length > 0) {
+                const domainHeader = DOM.create('div');
+                domainHeader.style.cssText = 'font-weight:bold;font-size:12px;margin-top:8px;margin-bottom:4px;';
+                domainHeader.textContent = Localization.get("topDomains") + ':';
+                container.appendChild(domainHeader);
+
+                stats.topDomains.forEach(d => {
+                    const row = DOM.create('div');
+                    row.className = 'stat-row';
+                    row.style.cssText = 'display:flex;justify-content:space-between;padding:2px 0;font-size:11px;color:#666;';
+
+                    const labelEl = DOM.create('span');
+                    labelEl.textContent = d.domain;
+
+                    const valueEl = DOM.create('span');
+                    valueEl.textContent = d.count;
+
+                    row.append(labelEl, valueEl);
+                    container.appendChild(row);
+                });
+            }
+        });
     }
 };
 

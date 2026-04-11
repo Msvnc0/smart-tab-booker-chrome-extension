@@ -1,197 +1,373 @@
 {
-    "extName": {
-        "message": "Smart Tab Booker"
-    },
-    "extDesc": {
-        "message": "Maak automatisch of handmatig een back-up van open tabbladen naar bladwijzers."
-    },
-    "selectStart": {
-        "message": "Mappen laden..."
-    },
-    "selectDefault": {
-        "message": "Selecteer een map..."
-    },
-    "backupBtn": {
-        "message": "Nu back-uppen"
-    },
-    "backupBtnProgress": {
-        "message": "Back-uppen..."
-    },
-    "autoBackupTitle": {
-        "message": "Instellingen voor automatische back-up"
-    },
-    "intervalLabel": {
-        "message": "Interval:"
-    },
-    "daily": {
-        "message": "Dagelijks"
-    },
-    "weekly": {
-        "message": "Wekelijks"
-    },
-    "monthly": {
-        "message": "Maandelijks"
-    },
-    "enableAutoBackup": {
-        "message": "Automatische back-up inschakelen"
-    },
-    "darkMode": {
-        "message": "Donkere modus"
-    },
-    "custom": {
-        "message": "Aangepast"
-    },
-    "backupTimeLabel": {
-        "message": "Back-uptijd (24u):"
-    },
-    "saveSettingsBtn": {
-        "message": "Instellingen opslaan"
-    },
-    "saved": {
-        "message": "Opgeslagen!"
-    },
-    "lastBackupLabel": {
-        "message": "Laatste back-up:"
-    },
-    "never": {
-        "message": "Nooit"
-    },
-    "folderSaved": {
-        "message": "Map opgeslagen!"
-    },
-    "selectFolderErr": {
-        "message": "Selecteer eerst een map."
-    },
-    "backupSuccess": {
-        "message": "Back-up voltooid!"
-    },
-    "backupFailed": {
-        "message": "Back-up mislukt: "
-    },
-    "invalidValue": {
-        "message": "Ongeldige waarde."
-    },
-    "invalidTime": {
-        "message": "Ongeldige tijd."
-    },
-    "selectAll": {
-        "message": "Alles selecteren"
-    },
-    "deselectAll": {
-        "message": "Alles deselecteren"
-    },
-    "tabCounter": {
-        "message": "Geselecteerd: $SELECTED$ / $TOTAL$",
-        "placeholders": {
-            "selected": {
-                "content": "$1"
-            },
-            "total": {
-                "content": "$2"
-            }
-        }
-    },
-    "bookmarksBar": {
-        "message": "Bladwijzerbalk"
-    },
-    "otherBookmarks": {
-        "message": "Andere bladwijzers"
-    },
-    "minutes": {
-        "message": "Minuten"
-    },
-    "hours": {
-        "message": "Uren"
-    },
-    "days": {
-        "message": "Dagen"
-    },
-    "selectFolderLabel": {
-        "message": "Selecteer back-upmap:"
-    },
-    "selectTabsLabel": {
-        "message": "Selecteer tabbladen om te back-uppen:"
-    },
-    "noTabsSelected": {
-        "message": "Geen tabbladen geselecteerd!"
-    },
-    "preserveGroups": {
-        "message": "Tabbladgroepen behouden als mappen"
-    },
-    "autoCleanup": {
-        "message": "Oude back-ups automatisch opschonen"
-    },
-    "cleanupDaysLabel": {
-        "message": "Verwijder back-ups ouder dan"
-    },
-    "daysLabel": {
-        "message": "dagen"
-    },
-    "addTimeBtn": {
-        "message": "+ Tijd toevoegen"
-    },
-    "multiTimeLabel": {
-        "message": "Back-uptijden (max 5):"
-    },
-    "quickBackupDesc": {
-        "message": "Snelle back-up van alle tabbladen"
-    },
-    "shortcutLabel": {
-        "message": "Sneltoets:"
-    },
-    "changeShortcut": {
-        "message": "Wijzigen"
-    },
-    "duplicateWarning": {
-        "message": "duplicaat(en)"
-    },
-    "includeDuplicates": {
-        "message": "Dubbele URL's opnemen"
-    },
-    "backupTab": {
-        "message": "Back-up"
-    },
-    "restoreTab": {
-        "message": "Herstellen"
-    },
-    "selectBackupFolder": {
-        "message": "Back-upmap selecteren:"
-    },
-    "restoreAll": {
-        "message": "Alles herstellen"
-    },
-    "noBackupsFound": {
-        "message": "Geen back-ups gevonden"
-    },
-    "restoreSuccess": {
-        "message": "$count$ tabbladen geopend",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "restoreFailed": {
-        "message": "Herstellen mislukt"
-    },
-    "tabsCount": {
-        "message": "tabbladen"
-    },
-    "restoring": {
-        "message": "Herstellen..."
-    },
-    "selectFolderFirst": {
-        "message": "Selecteer een map"
-    },
-    "manyTabsWarning": {
-        "message": "$count$ tabbladen worden geopend. Doorgaan?",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "folderDeleted": {
-        "message": "Geselecteerde map is verwijderd"
+  "extName": {
+    "message": "Smart Tab Booker"
+  },
+  "extDesc": {
+    "message": "Maak automatisch of handmatig een back-up van open tabbladen naar bladwijzers."
+  },
+  "selectStart": {
+    "message": "Mappen laden..."
+  },
+  "selectDefault": {
+    "message": "Selecteer een map..."
+  },
+  "backupBtn": {
+    "message": "Nu back-uppen"
+  },
+  "backupBtnProgress": {
+    "message": "Back-uppen..."
+  },
+  "autoBackupTitle": {
+    "message": "Instellingen voor automatische back-up"
+  },
+  "intervalLabel": {
+    "message": "Interval:"
+  },
+  "daily": {
+    "message": "Dagelijks"
+  },
+  "weekly": {
+    "message": "Wekelijks"
+  },
+  "monthly": {
+    "message": "Maandelijks"
+  },
+  "enableAutoBackup": {
+    "message": "Automatische back-up inschakelen"
+  },
+  "darkMode": {
+    "message": "Donkere modus"
+  },
+  "custom": {
+    "message": "Aangepast"
+  },
+  "backupTimeLabel": {
+    "message": "Back-uptijd (24u):"
+  },
+  "saveSettingsBtn": {
+    "message": "Instellingen opslaan"
+  },
+  "saved": {
+    "message": "Opgeslagen!"
+  },
+  "lastBackupLabel": {
+    "message": "Laatste back-up:"
+  },
+  "never": {
+    "message": "Nooit"
+  },
+  "folderSaved": {
+    "message": "Map opgeslagen!"
+  },
+  "selectFolderErr": {
+    "message": "Selecteer eerst een map."
+  },
+  "backupSuccess": {
+    "message": "Back-up voltooid!"
+  },
+  "backupInProgress": {
+    "message": "Backup is al bezig"
+  },
+  "backupFailed": {
+    "message": "Back-up mislukt: "
+  },
+  "invalidValue": {
+    "message": "Ongeldige waarde."
+  },
+  "invalidTime": {
+    "message": "Ongeldige tijd."
+  },
+  "selectAll": {
+    "message": "Alles selecteren"
+  },
+  "deselectAll": {
+    "message": "Alles deselecteren"
+  },
+  "tabCounter": {
+    "message": "Geselecteerd: $SELECTED$ / $TOTAL$",
+    "placeholders": {
+      "selected": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
     }
+  },
+  "bookmarksBar": {
+    "message": "Bladwijzerbalk"
+  },
+  "otherBookmarks": {
+    "message": "Andere bladwijzers"
+  },
+  "minutes": {
+    "message": "Minuten"
+  },
+  "hours": {
+    "message": "Uren"
+  },
+  "days": {
+    "message": "Dagen"
+  },
+  "selectFolderLabel": {
+    "message": "Selecteer back-upmap:"
+  },
+  "selectTabsLabel": {
+    "message": "Selecteer tabbladen om te back-uppen:"
+  },
+  "noTabsSelected": {
+    "message": "Geen tabbladen geselecteerd!"
+  },
+  "preserveGroups": {
+    "message": "Tabbladgroepen behouden als mappen"
+  },
+  "autoCleanup": {
+    "message": "Oude back-ups automatisch opschonen"
+  },
+  "cleanupDaysLabel": {
+    "message": "Verwijder back-ups ouder dan"
+  },
+  "daysLabel": {
+    "message": "dagen"
+  },
+  "addTimeBtn": {
+    "message": "+ Tijd toevoegen"
+  },
+  "multiTimeLabel": {
+    "message": "Back-uptijden (max 5):"
+  },
+  "quickBackupDesc": {
+    "message": "Snelle back-up van alle tabbladen"
+  },
+  "shortcutLabel": {
+    "message": "Sneltoets:"
+  },
+  "changeShortcut": {
+    "message": "Wijzigen"
+  },
+  "duplicateWarning": {
+    "message": "duplicaat(en)"
+  },
+  "includeDuplicates": {
+    "message": "Dubbele URL's opnemen"
+  },
+  "backupTab": {
+    "message": "Back-up"
+  },
+  "restoreTab": {
+    "message": "Herstellen"
+  },
+  "selectBackupFolder": {
+    "message": "Back-upmap selecteren:"
+  },
+  "selectBackupDefault": {
+    "message": "-- Select a backup --"
+  },
+  "restoreAll": {
+    "message": "Alles herstellen"
+  },
+  "noBackupsFound": {
+    "message": "Geen back-ups gevonden"
+  },
+  "restoreSuccess": {
+    "message": "$count$ tabbladen geopend",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreFailed": {
+    "message": "Herstellen mislukt"
+  },
+  "tabsCount": {
+    "message": "tabbladen"
+  },
+  "restoring": {
+    "message": "Herstellen..."
+  },
+  "selectFolderFirst": {
+    "message": "Selecteer een map"
+  },
+  "manyTabsWarning": {
+    "message": "$count$ tabbladen worden geopend. Doorgaan?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "folderDeleted": {
+    "message": "Geselecteerde map is verwijderd"
+  },
+  "restorePreserveGroups": {
+    "message": "Tabgroepen behouden"
+  },
+  "contextMenuBackupTab": {
+    "message": "Deze tab back-uppen"
+  },
+  "contextMenuBackupAll": {
+    "message": "Alle tabs back-uppen"
+  },
+  "allWindows": {
+    "message": "Alle vensters"
+  },
+  "windowLabel": {
+    "message": "Venster"
+  },
+  "pinnedTab": {
+    "message": "Vastgemaakt"
+  },
+  "backupNotePlaceholder": {
+    "message": "Notitie toevoegen..."
+  },
+  "domainFilterPlaceholder": {
+    "message": "Filteren op domein..."
+  },
+  "clearFilter": {
+    "message": "Wissen"
+  },
+  "restoreSelected": {
+    "message": "Selectie herstellen"
+  },
+  "previewHint": {
+    "message": "Dubbelklik voor voorbeeld"
+  },
+  "searchPlaceholder": {
+    "message": "Back-ups zoeken..."
+  },
+  "compareTitle": {
+    "message": "Back-ups vergelijken"
+  },
+  "compareSelect1": {
+    "message": "Back-up A"
+  },
+  "compareSelect2": {
+    "message": "Back-up B"
+  },
+  "compareBtn": {
+    "message": "Vergelijken"
+  },
+  "added": {
+    "message": "Toegevoegd"
+  },
+  "removed": {
+    "message": "Verwijderd"
+  },
+  "common": {
+    "message": "Gemeenschappelijk"
+  },
+  "toolsTab": {
+    "message": "Hulpmiddelen"
+  },
+  "exportImportTitle": {
+    "message": "Export / Import"
+  },
+  "exportJson": {
+    "message": "JSON exporteren"
+  },
+  "exportCsv": {
+    "message": "CSV exporteren"
+  },
+  "importLabel": {
+    "message": "Importeren uit bestand:"
+  },
+  "importBtn": {
+    "message": "Importeren"
+  },
+  "importSuccess": {
+    "message": "$count$ tabs geïmporteerd",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "importFailed": {
+    "message": "Importeren mislukt"
+  },
+  "statsTitle": {
+    "message": "Statistieken"
+  },
+  "totalBackups": {
+    "message": "Totaal back-ups"
+  },
+  "totalTabs": {
+    "message": "Totaal back-up tabs"
+  },
+  "topDomains": {
+    "message": "Top domeinen"
+  },
+  "noStats": {
+    "message": "Nog geen statistieken"
+  },
+  "smartTriggersTitle": {
+    "message": "Slimme triggers"
+  },
+  "tabThreshold": {
+    "message": "Tab-drempel"
+  },
+  "reminderLabel": {
+    "message": "Herinnering"
+  },
+  "noBackupSelected": {
+    "message": "Geen back-up geselecteerd"
+  },
+  "exportSelectBackup": {
+    "message": "Selecteer back-up om te exporteren"
+  },
+  "exportSelectFolder": {
+    "message": "Selecteer eerst een back-upmap."
+  },
+  "exportComplete": {
+    "message": "Export voltooid!"
+  },
+  "exportFailedMsg": {
+    "message": "Export mislukt"
+  },
+  "importSelectFolder": {
+    "message": "Selecteer eerst een map."
+  },
+  "importSelectFile": {
+    "message": "Selecteer een bestand om te importeren."
+  },
+  "noTabsRestore": {
+    "message": "Geen tabbladen geselecteerd om te herstellen."
+  },
+  "compareAdded": {
+    "message": "Toegevoegd (in B, niet in A)"
+  },
+  "compareRemoved": {
+    "message": "Verwijderd (in A, niet in B)"
+  },
+  "compareCommonLabel": {
+    "message": "Gemeenschappelijk"
+  },
+  "lastUpdated": {
+    "message": "Laatst bijgewerkt"
+  },
+  "noBookmarksPreview": {
+    "message": "Geen bladwijzers gevonden."
+  },
+  "backupCountLabel": {
+    "message": "bladwijzers:"
+  },
+  "selectTwoBackups": {
+    "message": "Selecteer twee back-ups om te vergelijken."
+  },
+  "selectDiffBackups": {
+    "message": "Selecteer twee verschillende back-ups."
+  },
+  "noOpenTabs": {
+    "message": "Geen open tabbladen."
+  },
+  "duplicateGroupTooltip": {
+    "message": "Tabbladen met dezelfde URL"
+  },
+  "loadingPreview": {
+    "message": "Laden..."
+  },
+  "unknownError": {
+    "message": "Unknown error"
+  }
 }

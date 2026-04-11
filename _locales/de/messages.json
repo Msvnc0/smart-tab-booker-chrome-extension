@@ -1,197 +1,373 @@
 {
-    "extName": {
-        "message": "Smart Tab Booker"
-    },
-    "extDesc": {
-        "message": "Sichern Sie offene Tabs automatisch oder manuell in Lesezeichen."
-    },
-    "selectStart": {
-        "message": "Ordner werden geladen..."
-    },
-    "selectDefault": {
-        "message": "Wählen Sie einen Ordner..."
-    },
-    "backupBtn": {
-        "message": "Jetzt sichern"
-    },
-    "backupBtnProgress": {
-        "message": "Sicherung läuft..."
-    },
-    "autoBackupTitle": {
-        "message": "Einstellungen für automatische Sicherung"
-    },
-    "intervalLabel": {
-        "message": "Intervall:"
-    },
-    "daily": {
-        "message": "Täglich"
-    },
-    "weekly": {
-        "message": "Wöchentlich"
-    },
-    "monthly": {
-        "message": "Monatlich"
-    },
-    "enableAutoBackup": {
-        "message": "Automatisches Backup aktivieren"
-    },
-    "darkMode": {
-        "message": "Dunkelmodus"
-    },
-    "custom": {
-        "message": "Benutzerdefiniert"
-    },
-    "backupTimeLabel": {
-        "message": "Sicherungszeit (24h):"
-    },
-    "saveSettingsBtn": {
-        "message": "Einstellungen speichern"
-    },
-    "saved": {
-        "message": "Gespeichert!"
-    },
-    "lastBackupLabel": {
-        "message": "Letzte Sicherung:"
-    },
-    "never": {
-        "message": "Nie"
-    },
-    "folderSaved": {
-        "message": "Ordner gespeichert!"
-    },
-    "selectFolderErr": {
-        "message": "Bitte wählen Sie zuerst einen Ordner aus."
-    },
-    "backupSuccess": {
-        "message": "Sicherung abgeschlossen!"
-    },
-    "backupFailed": {
-        "message": "Sicherung fehlgeschlagen: "
-    },
-    "invalidValue": {
-        "message": "Ungültiger Wert."
-    },
-    "invalidTime": {
-        "message": "Ungültige Zeit."
-    },
-    "selectAll": {
-        "message": "Alle auswählen"
-    },
-    "deselectAll": {
-        "message": "Auswahl aufheben"
-    },
-    "tabCounter": {
-        "message": "Ausgewählt: $SELECTED$ / $TOTAL$",
-        "placeholders": {
-            "selected": {
-                "content": "$1"
-            },
-            "total": {
-                "content": "$2"
-            }
-        }
-    },
-    "bookmarksBar": {
-        "message": "Lesezeichenleiste"
-    },
-    "otherBookmarks": {
-        "message": "Andere Lesezeichen"
-    },
-    "minutes": {
-        "message": "Minuten"
-    },
-    "hours": {
-        "message": "Stunden"
-    },
-    "days": {
-        "message": "Tage"
-    },
-    "selectFolderLabel": {
-        "message": "Sicherungsordner auswählen:"
-    },
-    "selectTabsLabel": {
-        "message": "Tabs zum Sichern auswählen:"
-    },
-    "noTabsSelected": {
-        "message": "Keine Tabs ausgewählt!"
-    },
-    "preserveGroups": {
-        "message": "Tab-Gruppen als Ordner beibehalten"
-    },
-    "autoCleanup": {
-        "message": "Alte Backups automatisch löschen"
-    },
-    "cleanupDaysLabel": {
-        "message": "Backups löschen älter als"
-    },
-    "daysLabel": {
-        "message": "Tage"
-    },
-    "addTimeBtn": {
-        "message": "+ Zeit hinzufügen"
-    },
-    "multiTimeLabel": {
-        "message": "Sicherungszeiten (max 5):"
-    },
-    "quickBackupDesc": {
-        "message": "Schnellbackup aller Tabs"
-    },
-    "shortcutLabel": {
-        "message": "Tastenkombination:"
-    },
-    "changeShortcut": {
-        "message": "Ändern"
-    },
-    "duplicateWarning": {
-        "message": "Duplikat(e)"
-    },
-    "includeDuplicates": {
-        "message": "Doppelte URLs einschließen"
-    },
-    "backupTab": {
-        "message": "Sichern"
-    },
-    "restoreTab": {
-        "message": "Wiederherstellen"
-    },
-    "selectBackupFolder": {
-        "message": "Sicherungsordner wählen:"
-    },
-    "restoreAll": {
-        "message": "Alle wiederherstellen"
-    },
-    "noBackupsFound": {
-        "message": "Keine Backups in diesem Ordner"
-    },
-    "restoreSuccess": {
-        "message": "$count$ Tabs geöffnet",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "restoreFailed": {
-        "message": "Wiederherstellung fehlgeschlagen"
-    },
-    "tabsCount": {
-        "message": "Tabs"
-    },
-    "restoring": {
-        "message": "Wiederherstellung..."
-    },
-    "selectFolderFirst": {
-        "message": "Ordner wählen um Backups zu sehen"
-    },
-    "manyTabsWarning": {
-        "message": "$count$ Tabs werden geöffnet. Fortfahren?",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "folderDeleted": {
-        "message": "Ausgewählter Ordner wurde gelöscht"
+  "extName": {
+    "message": "Smart Tab Booker"
+  },
+  "extDesc": {
+    "message": "Sichern Sie offene Tabs automatisch oder manuell in Lesezeichen."
+  },
+  "selectStart": {
+    "message": "Ordner werden geladen..."
+  },
+  "selectDefault": {
+    "message": "Wählen Sie einen Ordner..."
+  },
+  "backupBtn": {
+    "message": "Jetzt sichern"
+  },
+  "backupBtnProgress": {
+    "message": "Sicherung läuft..."
+  },
+  "autoBackupTitle": {
+    "message": "Einstellungen für automatische Sicherung"
+  },
+  "intervalLabel": {
+    "message": "Intervall:"
+  },
+  "daily": {
+    "message": "Täglich"
+  },
+  "weekly": {
+    "message": "Wöchentlich"
+  },
+  "monthly": {
+    "message": "Monatlich"
+  },
+  "enableAutoBackup": {
+    "message": "Automatisches Backup aktivieren"
+  },
+  "darkMode": {
+    "message": "Dunkelmodus"
+  },
+  "custom": {
+    "message": "Benutzerdefiniert"
+  },
+  "backupTimeLabel": {
+    "message": "Sicherungszeit (24h):"
+  },
+  "saveSettingsBtn": {
+    "message": "Einstellungen speichern"
+  },
+  "saved": {
+    "message": "Gespeichert!"
+  },
+  "lastBackupLabel": {
+    "message": "Letzte Sicherung:"
+  },
+  "never": {
+    "message": "Nie"
+  },
+  "folderSaved": {
+    "message": "Ordner gespeichert!"
+  },
+  "selectFolderErr": {
+    "message": "Bitte wählen Sie zuerst einen Ordner aus."
+  },
+  "backupSuccess": {
+    "message": "Sicherung abgeschlossen!"
+  },
+  "backupInProgress": {
+    "message": "Backup bereits in Bearbeitung"
+  },
+  "backupFailed": {
+    "message": "Sicherung fehlgeschlagen: "
+  },
+  "invalidValue": {
+    "message": "Ungültiger Wert."
+  },
+  "invalidTime": {
+    "message": "Ungültige Zeit."
+  },
+  "selectAll": {
+    "message": "Alle auswählen"
+  },
+  "deselectAll": {
+    "message": "Auswahl aufheben"
+  },
+  "tabCounter": {
+    "message": "Ausgewählt: $SELECTED$ / $TOTAL$",
+    "placeholders": {
+      "selected": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
     }
+  },
+  "bookmarksBar": {
+    "message": "Lesezeichenleiste"
+  },
+  "otherBookmarks": {
+    "message": "Andere Lesezeichen"
+  },
+  "minutes": {
+    "message": "Minuten"
+  },
+  "hours": {
+    "message": "Stunden"
+  },
+  "days": {
+    "message": "Tage"
+  },
+  "selectFolderLabel": {
+    "message": "Sicherungsordner auswählen:"
+  },
+  "selectTabsLabel": {
+    "message": "Tabs zum Sichern auswählen:"
+  },
+  "noTabsSelected": {
+    "message": "Keine Tabs ausgewählt!"
+  },
+  "preserveGroups": {
+    "message": "Tab-Gruppen als Ordner beibehalten"
+  },
+  "autoCleanup": {
+    "message": "Alte Backups automatisch löschen"
+  },
+  "cleanupDaysLabel": {
+    "message": "Backups löschen älter als"
+  },
+  "daysLabel": {
+    "message": "Tage"
+  },
+  "addTimeBtn": {
+    "message": "+ Zeit hinzufügen"
+  },
+  "multiTimeLabel": {
+    "message": "Sicherungszeiten (max 5):"
+  },
+  "quickBackupDesc": {
+    "message": "Schnellbackup aller Tabs"
+  },
+  "shortcutLabel": {
+    "message": "Tastenkombination:"
+  },
+  "changeShortcut": {
+    "message": "Ändern"
+  },
+  "duplicateWarning": {
+    "message": "Duplikat(e)"
+  },
+  "includeDuplicates": {
+    "message": "Doppelte URLs einschließen"
+  },
+  "backupTab": {
+    "message": "Sichern"
+  },
+  "restoreTab": {
+    "message": "Wiederherstellen"
+  },
+  "selectBackupFolder": {
+    "message": "Sicherungsordner wählen:"
+  },
+  "selectBackupDefault": {
+    "message": "-- Select a backup --"
+  },
+  "restoreAll": {
+    "message": "Alle wiederherstellen"
+  },
+  "noBackupsFound": {
+    "message": "Keine Backups in diesem Ordner"
+  },
+  "restoreSuccess": {
+    "message": "$count$ Tabs geöffnet",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreFailed": {
+    "message": "Wiederherstellung fehlgeschlagen"
+  },
+  "tabsCount": {
+    "message": "Tabs"
+  },
+  "restoring": {
+    "message": "Wiederherstellung..."
+  },
+  "selectFolderFirst": {
+    "message": "Ordner wählen um Backups zu sehen"
+  },
+  "manyTabsWarning": {
+    "message": "$count$ Tabs werden geöffnet. Fortfahren?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "folderDeleted": {
+    "message": "Ausgewählter Ordner wurde gelöscht"
+  },
+  "restorePreserveGroups": {
+    "message": "Tab-Gruppen beibehalten"
+  },
+  "contextMenuBackupTab": {
+    "message": "Diesen Tab sichern"
+  },
+  "contextMenuBackupAll": {
+    "message": "Alle Tabs sichern"
+  },
+  "allWindows": {
+    "message": "Alle Fenster"
+  },
+  "windowLabel": {
+    "message": "Fenster"
+  },
+  "pinnedTab": {
+    "message": "Angeheftet"
+  },
+  "backupNotePlaceholder": {
+    "message": "Notiz für dieses Backup..."
+  },
+  "domainFilterPlaceholder": {
+    "message": "Nach Domain filtern..."
+  },
+  "clearFilter": {
+    "message": "Löschen"
+  },
+  "restoreSelected": {
+    "message": "Auswahl wiederherstellen"
+  },
+  "previewHint": {
+    "message": "Doppelklick für Vorschau"
+  },
+  "searchPlaceholder": {
+    "message": "Backups suchen..."
+  },
+  "compareTitle": {
+    "message": "Backups vergleichen"
+  },
+  "compareSelect1": {
+    "message": "Backup A"
+  },
+  "compareSelect2": {
+    "message": "Backup B"
+  },
+  "compareBtn": {
+    "message": "Vergleichen"
+  },
+  "added": {
+    "message": "Hinzugefügt"
+  },
+  "removed": {
+    "message": "Entfernt"
+  },
+  "common": {
+    "message": "Gemeinsam"
+  },
+  "toolsTab": {
+    "message": "Werkzeuge"
+  },
+  "exportImportTitle": {
+    "message": "Export / Import"
+  },
+  "exportJson": {
+    "message": "JSON exportieren"
+  },
+  "exportCsv": {
+    "message": "CSV exportieren"
+  },
+  "importLabel": {
+    "message": "Aus Datei importieren:"
+  },
+  "importBtn": {
+    "message": "Importieren"
+  },
+  "importSuccess": {
+    "message": "$count$ Tabs importiert",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "importFailed": {
+    "message": "Import fehlgeschlagen"
+  },
+  "statsTitle": {
+    "message": "Backup-Statistiken"
+  },
+  "totalBackups": {
+    "message": "Gesamt-Backups"
+  },
+  "totalTabs": {
+    "message": "Gesamt gesicherte Tabs"
+  },
+  "topDomains": {
+    "message": "Top-Domains"
+  },
+  "noStats": {
+    "message": "Noch keine Statistiken"
+  },
+  "smartTriggersTitle": {
+    "message": "Smarte Trigger"
+  },
+  "tabThreshold": {
+    "message": "Tab-Schwellenwert"
+  },
+  "reminderLabel": {
+    "message": "Erinnerung"
+  },
+  "noBackupSelected": {
+    "message": "Kein Backup ausgewählt"
+  },
+  "exportSelectBackup": {
+    "message": "Backup zum Exportieren wählen"
+  },
+  "exportSelectFolder": {
+    "message": "Wählen Sie zuerst einen Sicherungsordner."
+  },
+  "exportComplete": {
+    "message": "Export abgeschlossen!"
+  },
+  "exportFailedMsg": {
+    "message": "Export fehlgeschlagen"
+  },
+  "importSelectFolder": {
+    "message": "Wählen Sie zuerst einen Ordner."
+  },
+  "importSelectFile": {
+    "message": "Wählen Sie eine Datei zum Importieren."
+  },
+  "noTabsRestore": {
+    "message": "Keine Tabs zur Wiederherstellung ausgewählt."
+  },
+  "compareAdded": {
+    "message": "Hinzugefügt (in B, nicht in A)"
+  },
+  "compareRemoved": {
+    "message": "Entfernt (in A, nicht in B)"
+  },
+  "compareCommonLabel": {
+    "message": "Gemeinsam"
+  },
+  "lastUpdated": {
+    "message": "Zuletzt aktualisiert"
+  },
+  "noBookmarksPreview": {
+    "message": "Keine Lesezeichen gefunden."
+  },
+  "backupCountLabel": {
+    "message": "Lesezeichen:"
+  },
+  "selectTwoBackups": {
+    "message": "Wählen Sie zwei Backups zum Vergleichen."
+  },
+  "selectDiffBackups": {
+    "message": "Wählen Sie zwei verschiedene Backups."
+  },
+  "noOpenTabs": {
+    "message": "Keine offenen Tabs."
+  },
+  "duplicateGroupTooltip": {
+    "message": "Tabs mit gleicher URL"
+  },
+  "loadingPreview": {
+    "message": "Laden..."
+  },
+  "unknownError": {
+    "message": "Unknown error"
+  }
 }

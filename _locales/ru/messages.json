@@ -1,197 +1,373 @@
 {
-    "extName": {
-        "message": "Smart Tab Booker"
-    },
-    "extDesc": {
-        "message": "Автоматическое или ручное сохранение открытых вкладок в закладки."
-    },
-    "selectStart": {
-        "message": "Загрузка папок..."
-    },
-    "selectDefault": {
-        "message": "Выберите папку..."
-    },
-    "backupBtn": {
-        "message": "Создать резервную копию"
-    },
-    "backupBtnProgress": {
-        "message": "Выполняется резервное копирование..."
-    },
-    "autoBackupTitle": {
-        "message": "Настройки автосохранения"
-    },
-    "intervalLabel": {
-        "message": "Интервал:"
-    },
-    "daily": {
-        "message": "Ежедневно"
-    },
-    "weekly": {
-        "message": "Еженедельно"
-    },
-    "monthly": {
-        "message": "Ежемесячно"
-    },
-    "enableAutoBackup": {
-        "message": "Включить авто-резервное копирование"
-    },
-    "darkMode": {
-        "message": "Темный режим"
-    },
-    "custom": {
-        "message": "Пользовательский"
-    },
-    "backupTimeLabel": {
-        "message": "Время (24ч):"
-    },
-    "saveSettingsBtn": {
-        "message": "Сохранить настройки"
-    },
-    "saved": {
-        "message": "Сохранено!"
-    },
-    "lastBackupLabel": {
-        "message": "Последнее сохранение:"
-    },
-    "never": {
-        "message": "Никогда"
-    },
-    "folderSaved": {
-        "message": "Папка сохранена!"
-    },
-    "selectFolderErr": {
-        "message": "Пожалуйста, выберите папку."
-    },
-    "backupSuccess": {
-        "message": "Резервное копирование завершено!"
-    },
-    "backupFailed": {
-        "message": "Ошибка: "
-    },
-    "invalidValue": {
-        "message": "Неверное значение."
-    },
-    "invalidTime": {
-        "message": "Неверное время."
-    },
-    "selectAll": {
-        "message": "Выбрать все"
-    },
-    "deselectAll": {
-        "message": "Снять выделение"
-    },
-    "tabCounter": {
-        "message": "Выбрано: $SELECTED$ / $TOTAL$",
-        "placeholders": {
-            "selected": {
-                "content": "$1"
-            },
-            "total": {
-                "content": "$2"
-            }
-        }
-    },
-    "bookmarksBar": {
-        "message": "Панель закладок"
-    },
-    "otherBookmarks": {
-        "message": "Другие закладки"
-    },
-    "minutes": {
-        "message": "Минуты"
-    },
-    "hours": {
-        "message": "Часы"
-    },
-    "days": {
-        "message": "Дни"
-    },
-    "selectFolderLabel": {
-        "message": "Папка для сохранения:"
-    },
-    "selectTabsLabel": {
-        "message": "Вкладки для резервного копирования:"
-    },
-    "noTabsSelected": {
-        "message": "Вкладки не выбраны!"
-    },
-    "preserveGroups": {
-        "message": "Сохранять группы вкладок как папки"
-    },
-    "autoCleanup": {
-        "message": "Автоочистка старых резервных копий"
-    },
-    "cleanupDaysLabel": {
-        "message": "Удалять резервные копии старше"
-    },
-    "daysLabel": {
-        "message": "дней"
-    },
-    "addTimeBtn": {
-        "message": "+ Добавить время"
-    },
-    "multiTimeLabel": {
-        "message": "Время резервного копирования (макс 5):"
-    },
-    "quickBackupDesc": {
-        "message": "Быстрое резервное копирование всех вкладок"
-    },
-    "shortcutLabel": {
-        "message": "Горячая клавиша:"
-    },
-    "changeShortcut": {
-        "message": "Изменить"
-    },
-    "duplicateWarning": {
-        "message": "дубликат(ов)"
-    },
-    "includeDuplicates": {
-        "message": "Включить дубликаты URL"
-    },
-    "backupTab": {
-        "message": "Резерв. копия"
-    },
-    "restoreTab": {
-        "message": "Восстановить"
-    },
-    "selectBackupFolder": {
-        "message": "Папка резерв. копии:"
-    },
-    "restoreAll": {
-        "message": "Восстановить всё"
-    },
-    "noBackupsFound": {
-        "message": "Нет резервных копий"
-    },
-    "restoreSuccess": {
-        "message": "Открыто $count$ вкладок",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "restoreFailed": {
-        "message": "Ошибка восстановления"
-    },
-    "tabsCount": {
-        "message": "вкладок"
-    },
-    "restoring": {
-        "message": "Восстановление..."
-    },
-    "selectFolderFirst": {
-        "message": "Выберите папку"
-    },
-    "manyTabsWarning": {
-        "message": "Откроется $count$ вкладок. Продолжить?",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "folderDeleted": {
-        "message": "Выбранная папка удалена"
+  "extName": {
+    "message": "Smart Tab Booker"
+  },
+  "extDesc": {
+    "message": "Автоматическое или ручное сохранение открытых вкладок в закладки."
+  },
+  "selectStart": {
+    "message": "Загрузка папок..."
+  },
+  "selectDefault": {
+    "message": "Выберите папку..."
+  },
+  "backupBtn": {
+    "message": "Создать резервную копию"
+  },
+  "backupBtnProgress": {
+    "message": "Выполняется резервное копирование..."
+  },
+  "autoBackupTitle": {
+    "message": "Настройки автосохранения"
+  },
+  "intervalLabel": {
+    "message": "Интервал:"
+  },
+  "daily": {
+    "message": "Ежедневно"
+  },
+  "weekly": {
+    "message": "Еженедельно"
+  },
+  "monthly": {
+    "message": "Ежемесячно"
+  },
+  "enableAutoBackup": {
+    "message": "Включить авто-резервное копирование"
+  },
+  "darkMode": {
+    "message": "Темный режим"
+  },
+  "custom": {
+    "message": "Пользовательский"
+  },
+  "backupTimeLabel": {
+    "message": "Время (24ч):"
+  },
+  "saveSettingsBtn": {
+    "message": "Сохранить настройки"
+  },
+  "saved": {
+    "message": "Сохранено!"
+  },
+  "lastBackupLabel": {
+    "message": "Последнее сохранение:"
+  },
+  "never": {
+    "message": "Никогда"
+  },
+  "folderSaved": {
+    "message": "Папка сохранена!"
+  },
+  "selectFolderErr": {
+    "message": "Пожалуйста, выберите папку."
+  },
+  "backupSuccess": {
+    "message": "Резервное копирование завершено!"
+  },
+  "backupInProgress": {
+    "message": "Резервное копирование уже выполняется"
+  },
+  "backupFailed": {
+    "message": "Ошибка: "
+  },
+  "invalidValue": {
+    "message": "Неверное значение."
+  },
+  "invalidTime": {
+    "message": "Неверное время."
+  },
+  "selectAll": {
+    "message": "Выбрать все"
+  },
+  "deselectAll": {
+    "message": "Снять выделение"
+  },
+  "tabCounter": {
+    "message": "Выбрано: $SELECTED$ / $TOTAL$",
+    "placeholders": {
+      "selected": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
     }
+  },
+  "bookmarksBar": {
+    "message": "Панель закладок"
+  },
+  "otherBookmarks": {
+    "message": "Другие закладки"
+  },
+  "minutes": {
+    "message": "Минуты"
+  },
+  "hours": {
+    "message": "Часы"
+  },
+  "days": {
+    "message": "Дни"
+  },
+  "selectFolderLabel": {
+    "message": "Папка для сохранения:"
+  },
+  "selectTabsLabel": {
+    "message": "Вкладки для резервного копирования:"
+  },
+  "noTabsSelected": {
+    "message": "Вкладки не выбраны!"
+  },
+  "preserveGroups": {
+    "message": "Сохранять группы вкладок как папки"
+  },
+  "autoCleanup": {
+    "message": "Автоочистка старых резервных копий"
+  },
+  "cleanupDaysLabel": {
+    "message": "Удалять резервные копии старше"
+  },
+  "daysLabel": {
+    "message": "дней"
+  },
+  "addTimeBtn": {
+    "message": "+ Добавить время"
+  },
+  "multiTimeLabel": {
+    "message": "Время резервного копирования (макс 5):"
+  },
+  "quickBackupDesc": {
+    "message": "Быстрое резервное копирование всех вкладок"
+  },
+  "shortcutLabel": {
+    "message": "Горячая клавиша:"
+  },
+  "changeShortcut": {
+    "message": "Изменить"
+  },
+  "duplicateWarning": {
+    "message": "дубликат(ов)"
+  },
+  "includeDuplicates": {
+    "message": "Включить дубликаты URL"
+  },
+  "backupTab": {
+    "message": "Резерв. копия"
+  },
+  "restoreTab": {
+    "message": "Восстановить"
+  },
+  "selectBackupFolder": {
+    "message": "Папка резерв. копии:"
+  },
+  "selectBackupDefault": {
+    "message": "-- Select a backup --"
+  },
+  "restoreAll": {
+    "message": "Восстановить всё"
+  },
+  "noBackupsFound": {
+    "message": "Нет резервных копий"
+  },
+  "restoreSuccess": {
+    "message": "Открыто $count$ вкладок",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreFailed": {
+    "message": "Ошибка восстановления"
+  },
+  "tabsCount": {
+    "message": "вкладок"
+  },
+  "restoring": {
+    "message": "Восстановление..."
+  },
+  "selectFolderFirst": {
+    "message": "Выберите папку"
+  },
+  "manyTabsWarning": {
+    "message": "Откроется $count$ вкладок. Продолжить?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "folderDeleted": {
+    "message": "Выбранная папка удалена"
+  },
+  "restorePreserveGroups": {
+    "message": "Сохранить группы вкладок"
+  },
+  "contextMenuBackupTab": {
+    "message": "Сохранить эту вкладку"
+  },
+  "contextMenuBackupAll": {
+    "message": "Сохранить все вкладки"
+  },
+  "allWindows": {
+    "message": "Все окна"
+  },
+  "windowLabel": {
+    "message": "Окно"
+  },
+  "pinnedTab": {
+    "message": "Закреплённая"
+  },
+  "backupNotePlaceholder": {
+    "message": "Добавить заметку..."
+  },
+  "domainFilterPlaceholder": {
+    "message": "Фильтр по домену..."
+  },
+  "clearFilter": {
+    "message": "Очистить"
+  },
+  "restoreSelected": {
+    "message": "Восстановить выбранное"
+  },
+  "previewHint": {
+    "message": "Двойной клик для предпросмотра"
+  },
+  "searchPlaceholder": {
+    "message": "Поиск резервных копий..."
+  },
+  "compareTitle": {
+    "message": "Сравнить копии"
+  },
+  "compareSelect1": {
+    "message": "Копия A"
+  },
+  "compareSelect2": {
+    "message": "Копия B"
+  },
+  "compareBtn": {
+    "message": "Сравнить"
+  },
+  "added": {
+    "message": "Добавлено"
+  },
+  "removed": {
+    "message": "Удалено"
+  },
+  "common": {
+    "message": "Общее"
+  },
+  "toolsTab": {
+    "message": "Инструменты"
+  },
+  "exportImportTitle": {
+    "message": "Экспорт / Импорт"
+  },
+  "exportJson": {
+    "message": "Экспорт JSON"
+  },
+  "exportCsv": {
+    "message": "Экспорт CSV"
+  },
+  "importLabel": {
+    "message": "Импорт из файла:"
+  },
+  "importBtn": {
+    "message": "Импорт"
+  },
+  "importSuccess": {
+    "message": "$count$ вкладок импортировано",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "importFailed": {
+    "message": "Ошибка импорта"
+  },
+  "statsTitle": {
+    "message": "Статистика"
+  },
+  "totalBackups": {
+    "message": "Всего копий"
+  },
+  "totalTabs": {
+    "message": "Всего сохранено вкладок"
+  },
+  "topDomains": {
+    "message": "Топ доменов"
+  },
+  "noStats": {
+    "message": "Пока нет статистики"
+  },
+  "smartTriggersTitle": {
+    "message": "Умные триггеры"
+  },
+  "tabThreshold": {
+    "message": "Порог вкладок"
+  },
+  "reminderLabel": {
+    "message": "Напоминание"
+  },
+  "noBackupSelected": {
+    "message": "Копия не выбрана"
+  },
+  "exportSelectBackup": {
+    "message": "Выберите копию для экспорта"
+  },
+  "exportSelectFolder": {
+    "message": "Сначала выберите папку для экспорта."
+  },
+  "exportComplete": {
+    "message": "Экспорт завершён!"
+  },
+  "exportFailedMsg": {
+    "message": "Ошибка экспорта"
+  },
+  "importSelectFolder": {
+    "message": "Сначала выберите папку."
+  },
+  "importSelectFile": {
+    "message": "Выберите файл для импорта."
+  },
+  "noTabsRestore": {
+    "message": "Нет выбранных вкладок для восстановления."
+  },
+  "compareAdded": {
+    "message": "Добавлено (в B, нет в A)"
+  },
+  "compareRemoved": {
+    "message": "Удалено (в A, нет в B)"
+  },
+  "compareCommonLabel": {
+    "message": "Общее"
+  },
+  "lastUpdated": {
+    "message": "Последнее обновление"
+  },
+  "noBookmarksPreview": {
+    "message": "Закладки не найдены."
+  },
+  "backupCountLabel": {
+    "message": "закладок:"
+  },
+  "selectTwoBackups": {
+    "message": "Выберите две копии для сравнения."
+  },
+  "selectDiffBackups": {
+    "message": "Выберите две разные копии."
+  },
+  "noOpenTabs": {
+    "message": "Нет открытых вкладок."
+  },
+  "duplicateGroupTooltip": {
+    "message": "Вкладки с одинаковым URL"
+  },
+  "loadingPreview": {
+    "message": "Загрузка..."
+  },
+  "unknownError": {
+    "message": "Unknown error"
+  }
 }

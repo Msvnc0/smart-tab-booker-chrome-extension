@@ -65,6 +65,9 @@
     "backupSuccess": {
         "message": "Yedekleme tamamlandı!"
     },
+    "backupInProgress": {
+        "message": "Yedekleme zaten devam ediyor"
+    },
     "backupFailed": {
         "message": "Yedekleme başarısız: "
     },
@@ -157,6 +160,9 @@
     "selectBackupFolder": {
         "message": "Yedek Klasörü Seç:"
     },
+    "selectBackupDefault": {
+        "message": "-- Yedek seçin --"
+    },
     "restoreAll": {
         "message": "Tümünü Aç"
     },
@@ -164,12 +170,7 @@
         "message": "Bu klasörde yedek bulunamadı"
     },
     "restoreSuccess": {
-        "message": "$count$ sekme açıldı",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
+        "message": "$1 sekme açıldı"
     },
     "restoreFailed": {
         "message": "Geri yükleme başarısız"
@@ -184,14 +185,66 @@
         "message": "Yedekleri görmek için klasör seçin"
     },
     "manyTabsWarning": {
-        "message": "$count$ sekme açılacak. Devam edilsin mi?",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
+        "message": "$1 sekme açılacak. Devam edilsin mi?"
     },
     "folderDeleted": {
         "message": "Seçili klasör silinmiş"
-    }
+    },
+    "restorePreserveGroups": {
+        "message": "Sekme Gruplarını Koru"
+    },
+    "contextMenuBackupTab": { "message": "Bu sekmeyi yedekle" },
+    "contextMenuBackupAll": { "message": "Tüm sekmeleri yedekle" },
+    "allWindows": { "message": "Tüm Pencereler" },
+    "windowLabel": { "message": "Pencere" },
+    "pinnedTab": { "message": "Sabitlenmiş" },
+    "backupNotePlaceholder": { "message": "Bu yedekleme için not ekleyin..." },
+    "domainFilterPlaceholder": { "message": "Domain ile filtrele..." },
+    "clearFilter": { "message": "Temizle" },
+    "restoreSelected": { "message": "Seçilenleri Geri Yükle" },
+    "previewHint": { "message": "Önizleme için çift tıklayın" },
+    "searchPlaceholder": { "message": "Yedekleri ara..." },
+    "compareTitle": { "message": "Yedekleri Karşılaştır" },
+    "compareSelect1": { "message": "Yedek A" },
+    "compareSelect2": { "message": "Yedek B" },
+    "compareBtn": { "message": "Karşılaştır" },
+    "added": { "message": "Eklendi" },
+    "removed": { "message": "Kaldırıldı" },
+    "common": { "message": "Ortak" },
+    "toolsTab": { "message": "Araçlar" },
+    "exportImportTitle": { "message": "Dışa / İçe Aktar" },
+    "exportJson": { "message": "JSON Olarak Aktar" },
+    "exportCsv": { "message": "CSV Olarak Aktar" },
+    "importLabel": { "message": "Dosyadan içe aktar:" },
+    "importBtn": { "message": "İçe Aktar" },
+    "importSuccess": { "message": "$count$ sekme içe aktarıldı", "placeholders": { "count": { "content": "$1" } } },
+    "importFailed": { "message": "İçe aktarma başarısız" },
+    "statsTitle": { "message": "Yedek İstatistikleri" },
+    "totalBackups": { "message": "Toplam Yedek" },
+    "totalTabs": { "message": "Yedeklenen Toplam Sekme" },
+    "topDomains": { "message": "En Çok Yedeklenen Domainler" },
+    "noStats": { "message": "Henüz istatistik yok" },
+    "smartTriggersTitle": { "message": "Akıllı Tetikleyiciler" },
+    "tabThreshold": { "message": "Sekme Eşiği" },
+    "reminderLabel": { "message": "Hatırlatma" },
+    "noBackupSelected": { "message": "Yedek seçilmedi" },
+    "exportSelectBackup": { "message": "Dışa aktarmak için yedek seçin" },
+    "exportSelectFolder": { "message": "Önce bir yedek klasörü seçin." },
+    "exportComplete": { "message": "Dışa aktarma tamamlandı!" },
+    "exportFailedMsg": { "message": "Dışa aktarma başarısız" },
+    "importSelectFolder": { "message": "Önce bir klasör seçin." },
+    "importSelectFile": { "message": "İçe aktarılacak dosyayı seçin." },
+    "noTabsRestore": { "message": "Geri yüklenecek sekme seçilmedi." },
+    "compareAdded": { "message": "Eklenen (B'de, A'da yok)" },
+    "compareRemoved": { "message": "Kaldırılan (A'da, B'de yok)" },
+    "compareCommonLabel": { "message": "Ortak" },
+    "lastUpdated": { "message": "Son Güncelleme" },
+    "noBookmarksPreview": { "message": "Yer imi bulunamadı." },
+    "backupCountLabel": { "message": "yer imi:" },
+    "selectTwoBackups": { "message": "Karşılaştırmak için iki yedek seçin." },
+    "selectDiffBackups": { "message": "İki farklı yedek seçin." },
+    "noOpenTabs": { "message": "Açık sekme yok." },
+    "duplicateGroupTooltip": { "message": "aynı URL'ye sahip sekme" },
+    "loadingPreview": { "message": "Yükleniyor..." },
+    "unknownError": { "message": "Bilinmeyen hata" }
 }

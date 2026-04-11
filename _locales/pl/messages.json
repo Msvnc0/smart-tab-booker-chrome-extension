@@ -1,197 +1,373 @@
 {
-    "extName": {
-        "message": "Smart Tab Booker"
-    },
-    "extDesc": {
-        "message": "Twórz kopie zapasowe otwartych kart w zakładkach automatycznie lub ręcznie."
-    },
-    "selectStart": {
-        "message": "Wczytywanie folderów..."
-    },
-    "selectDefault": {
-        "message": "Wybierz folder..."
-    },
-    "backupBtn": {
-        "message": "Utwórz kopię teraz"
-    },
-    "backupBtnProgress": {
-        "message": "Tworzenie kopii..."
-    },
-    "autoBackupTitle": {
-        "message": "Ustawienia automatycznej kopii"
-    },
-    "intervalLabel": {
-        "message": "Interwał:"
-    },
-    "daily": {
-        "message": "Codziennie"
-    },
-    "weekly": {
-        "message": "Co tydzień"
-    },
-    "monthly": {
-        "message": "Co miesiąc"
-    },
-    "enableAutoBackup": {
-        "message": "Włącz automatyczną kopię zapasową"
-    },
-    "darkMode": {
-        "message": "Tryb ciemny"
-    },
-    "custom": {
-        "message": "Niestandardowy"
-    },
-    "backupTimeLabel": {
-        "message": "Czas kopii (24h):"
-    },
-    "saveSettingsBtn": {
-        "message": "Zapisz ustawienia"
-    },
-    "saved": {
-        "message": "Zapisano!"
-    },
-    "lastBackupLabel": {
-        "message": "Ostatnia kopia:"
-    },
-    "never": {
-        "message": "Nigdy"
-    },
-    "folderSaved": {
-        "message": "Folder zapisany!"
-    },
-    "selectFolderErr": {
-        "message": "Najpierw wybierz folder."
-    },
-    "backupSuccess": {
-        "message": "Kopia zapasowa utworzona!"
-    },
-    "backupFailed": {
-        "message": "Błąd kopii zapasowej: "
-    },
-    "invalidValue": {
-        "message": "Nieprawidłowa wartość."
-    },
-    "invalidTime": {
-        "message": "Nieprawidłowy czas."
-    },
-    "selectAll": {
-        "message": "Zaznacz wszystko"
-    },
-    "deselectAll": {
-        "message": "Odznacz wszystko"
-    },
-    "tabCounter": {
-        "message": "Zaznaczono: $SELECTED$ / $TOTAL$",
-        "placeholders": {
-            "selected": {
-                "content": "$1"
-            },
-            "total": {
-                "content": "$2"
-            }
-        }
-    },
-    "bookmarksBar": {
-        "message": "Pasek zakładek"
-    },
-    "otherBookmarks": {
-        "message": "Inne zakładki"
-    },
-    "minutes": {
-        "message": "Minuty"
-    },
-    "hours": {
-        "message": "Godziny"
-    },
-    "days": {
-        "message": "Dni"
-    },
-    "selectFolderLabel": {
-        "message": "Wybierz folder kopii zapasowej:"
-    },
-    "selectTabsLabel": {
-        "message": "Wybierz karty do kopii zapasowej:"
-    },
-    "noTabsSelected": {
-        "message": "Nie wybrano kart!"
-    },
-    "preserveGroups": {
-        "message": "Zachowaj grupy kart jako foldery"
-    },
-    "autoCleanup": {
-        "message": "Automatyczne czyszczenie starych kopii"
-    },
-    "cleanupDaysLabel": {
-        "message": "Usuń kopie starsze niż"
-    },
-    "daysLabel": {
-        "message": "dni"
-    },
-    "addTimeBtn": {
-        "message": "+ Dodaj czas"
-    },
-    "multiTimeLabel": {
-        "message": "Czasy kopii zapasowych (maks 5):"
-    },
-    "quickBackupDesc": {
-        "message": "Szybka kopia zapasowa wszystkich kart"
-    },
-    "shortcutLabel": {
-        "message": "Skrót klawiszowy:"
-    },
-    "changeShortcut": {
-        "message": "Zmień"
-    },
-    "duplicateWarning": {
-        "message": "duplikat(y)"
-    },
-    "includeDuplicates": {
-        "message": "Uwzględnij zduplikowane adresy URL"
-    },
-    "backupTab": {
-        "message": "Kopia zapas."
-    },
-    "restoreTab": {
-        "message": "Przywróć"
-    },
-    "selectBackupFolder": {
-        "message": "Wybierz folder kopii:"
-    },
-    "restoreAll": {
-        "message": "Przywróć wszystko"
-    },
-    "noBackupsFound": {
-        "message": "Brak kopii zapasowych"
-    },
-    "restoreSuccess": {
-        "message": "Otwarto $count$ kart",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "restoreFailed": {
-        "message": "Przywracanie nie powiodło się"
-    },
-    "tabsCount": {
-        "message": "kart"
-    },
-    "restoring": {
-        "message": "Przywracanie..."
-    },
-    "selectFolderFirst": {
-        "message": "Wybierz folder"
-    },
-    "manyTabsWarning": {
-        "message": "Zostanie otwartych $count$ kart. Kontynuować?",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "folderDeleted": {
-        "message": "Wybrany folder został usunięty"
+  "extName": {
+    "message": "Smart Tab Booker"
+  },
+  "extDesc": {
+    "message": "Twórz kopie zapasowe otwartych kart w zakładkach automatycznie lub ręcznie."
+  },
+  "selectStart": {
+    "message": "Wczytywanie folderów..."
+  },
+  "selectDefault": {
+    "message": "Wybierz folder..."
+  },
+  "backupBtn": {
+    "message": "Utwórz kopię teraz"
+  },
+  "backupBtnProgress": {
+    "message": "Tworzenie kopii..."
+  },
+  "autoBackupTitle": {
+    "message": "Ustawienia automatycznej kopii"
+  },
+  "intervalLabel": {
+    "message": "Interwał:"
+  },
+  "daily": {
+    "message": "Codziennie"
+  },
+  "weekly": {
+    "message": "Co tydzień"
+  },
+  "monthly": {
+    "message": "Co miesiąc"
+  },
+  "enableAutoBackup": {
+    "message": "Włącz automatyczną kopię zapasową"
+  },
+  "darkMode": {
+    "message": "Tryb ciemny"
+  },
+  "custom": {
+    "message": "Niestandardowy"
+  },
+  "backupTimeLabel": {
+    "message": "Czas kopii (24h):"
+  },
+  "saveSettingsBtn": {
+    "message": "Zapisz ustawienia"
+  },
+  "saved": {
+    "message": "Zapisano!"
+  },
+  "lastBackupLabel": {
+    "message": "Ostatnia kopia:"
+  },
+  "never": {
+    "message": "Nigdy"
+  },
+  "folderSaved": {
+    "message": "Folder zapisany!"
+  },
+  "selectFolderErr": {
+    "message": "Najpierw wybierz folder."
+  },
+  "backupSuccess": {
+    "message": "Kopia zapasowa utworzona!"
+  },
+  "backupInProgress": {
+    "message": "Kopia zapasowa jest już w toku"
+  },
+  "backupFailed": {
+    "message": "Błąd kopii zapasowej: "
+  },
+  "invalidValue": {
+    "message": "Nieprawidłowa wartość."
+  },
+  "invalidTime": {
+    "message": "Nieprawidłowy czas."
+  },
+  "selectAll": {
+    "message": "Zaznacz wszystko"
+  },
+  "deselectAll": {
+    "message": "Odznacz wszystko"
+  },
+  "tabCounter": {
+    "message": "Zaznaczono: $SELECTED$ / $TOTAL$",
+    "placeholders": {
+      "selected": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
     }
+  },
+  "bookmarksBar": {
+    "message": "Pasek zakładek"
+  },
+  "otherBookmarks": {
+    "message": "Inne zakładki"
+  },
+  "minutes": {
+    "message": "Minuty"
+  },
+  "hours": {
+    "message": "Godziny"
+  },
+  "days": {
+    "message": "Dni"
+  },
+  "selectFolderLabel": {
+    "message": "Wybierz folder kopii zapasowej:"
+  },
+  "selectTabsLabel": {
+    "message": "Wybierz karty do kopii zapasowej:"
+  },
+  "noTabsSelected": {
+    "message": "Nie wybrano kart!"
+  },
+  "preserveGroups": {
+    "message": "Zachowaj grupy kart jako foldery"
+  },
+  "autoCleanup": {
+    "message": "Automatyczne czyszczenie starych kopii"
+  },
+  "cleanupDaysLabel": {
+    "message": "Usuń kopie starsze niż"
+  },
+  "daysLabel": {
+    "message": "dni"
+  },
+  "addTimeBtn": {
+    "message": "+ Dodaj czas"
+  },
+  "multiTimeLabel": {
+    "message": "Czasy kopii zapasowych (maks 5):"
+  },
+  "quickBackupDesc": {
+    "message": "Szybka kopia zapasowa wszystkich kart"
+  },
+  "shortcutLabel": {
+    "message": "Skrót klawiszowy:"
+  },
+  "changeShortcut": {
+    "message": "Zmień"
+  },
+  "duplicateWarning": {
+    "message": "duplikat(y)"
+  },
+  "includeDuplicates": {
+    "message": "Uwzględnij zduplikowane adresy URL"
+  },
+  "backupTab": {
+    "message": "Kopia zapas."
+  },
+  "restoreTab": {
+    "message": "Przywróć"
+  },
+  "selectBackupFolder": {
+    "message": "Wybierz folder kopii:"
+  },
+  "selectBackupDefault": {
+    "message": "-- Select a backup --"
+  },
+  "restoreAll": {
+    "message": "Przywróć wszystko"
+  },
+  "noBackupsFound": {
+    "message": "Brak kopii zapasowych"
+  },
+  "restoreSuccess": {
+    "message": "Otwarto $count$ kart",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreFailed": {
+    "message": "Przywracanie nie powiodło się"
+  },
+  "tabsCount": {
+    "message": "kart"
+  },
+  "restoring": {
+    "message": "Przywracanie..."
+  },
+  "selectFolderFirst": {
+    "message": "Wybierz folder"
+  },
+  "manyTabsWarning": {
+    "message": "Zostanie otwartych $count$ kart. Kontynuować?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "folderDeleted": {
+    "message": "Wybrany folder został usunięty"
+  },
+  "restorePreserveGroups": {
+    "message": "Zachowaj grupy kart"
+  },
+  "contextMenuBackupTab": {
+    "message": "Zachowaj tę kartę"
+  },
+  "contextMenuBackupAll": {
+    "message": "Zachowaj wszystkie karty"
+  },
+  "allWindows": {
+    "message": "Wszystkie okna"
+  },
+  "windowLabel": {
+    "message": "Okno"
+  },
+  "pinnedTab": {
+    "message": "Przypięta"
+  },
+  "backupNotePlaceholder": {
+    "message": "Dodaj notatkę..."
+  },
+  "domainFilterPlaceholder": {
+    "message": "Filtruj według domeny..."
+  },
+  "clearFilter": {
+    "message": "Wyczyść"
+  },
+  "restoreSelected": {
+    "message": "Przywróć zaznaczone"
+  },
+  "previewHint": {
+    "message": "Podwójne kliknięcie dla podglądu"
+  },
+  "searchPlaceholder": {
+    "message": "Szukaj kopii zapasowych..."
+  },
+  "compareTitle": {
+    "message": "Porównaj kopie"
+  },
+  "compareSelect1": {
+    "message": "Kopia A"
+  },
+  "compareSelect2": {
+    "message": "Kopia B"
+  },
+  "compareBtn": {
+    "message": "Porównaj"
+  },
+  "added": {
+    "message": "Dodano"
+  },
+  "removed": {
+    "message": "Usunięto"
+  },
+  "common": {
+    "message": "Wspólne"
+  },
+  "toolsTab": {
+    "message": "Narzędzia"
+  },
+  "exportImportTitle": {
+    "message": "Eksport / Import"
+  },
+  "exportJson": {
+    "message": "Eksportuj JSON"
+  },
+  "exportCsv": {
+    "message": "Eksportuj CSV"
+  },
+  "importLabel": {
+    "message": "Importuj z pliku:"
+  },
+  "importBtn": {
+    "message": "Importuj"
+  },
+  "importSuccess": {
+    "message": "Zaimportowano $count$ kart",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "importFailed": {
+    "message": "Import nie powiódł się"
+  },
+  "statsTitle": {
+    "message": "Statystyki"
+  },
+  "totalBackups": {
+    "message": "Łącznie kopii"
+  },
+  "totalTabs": {
+    "message": "Łącznie zachowanych kart"
+  },
+  "topDomains": {
+    "message": "Najpopularniejsze domeny"
+  },
+  "noStats": {
+    "message": "Brak statystyk"
+  },
+  "smartTriggersTitle": {
+    "message": "Inteligentne wyzwalacze"
+  },
+  "tabThreshold": {
+    "message": "Próg kart"
+  },
+  "reminderLabel": {
+    "message": "Przypomnienie"
+  },
+  "noBackupSelected": {
+    "message": "Nie wybrano kopii"
+  },
+  "exportSelectBackup": {
+    "message": "Wybierz kopię do eksportu"
+  },
+  "exportSelectFolder": {
+    "message": "Najpierw wybierz folder kopii zapasowej."
+  },
+  "exportComplete": {
+    "message": "Eksport zakończony!"
+  },
+  "exportFailedMsg": {
+    "message": "Eksport nie powiódł się"
+  },
+  "importSelectFolder": {
+    "message": "Najpierw wybierz folder."
+  },
+  "importSelectFile": {
+    "message": "Wybierz plik do zaimportowania."
+  },
+  "noTabsRestore": {
+    "message": "Nie wybrano kart do przywrócenia."
+  },
+  "compareAdded": {
+    "message": "Dodano (w B, nie w A)"
+  },
+  "compareRemoved": {
+    "message": "Usunięto (w A, nie w B)"
+  },
+  "compareCommonLabel": {
+    "message": "Wspólne"
+  },
+  "lastUpdated": {
+    "message": "Ostatnia aktualizacja"
+  },
+  "noBookmarksPreview": {
+    "message": "Nie znaleziono zakładek."
+  },
+  "backupCountLabel": {
+    "message": "zakładki:"
+  },
+  "selectTwoBackups": {
+    "message": "Wybierz dwie kopie do porównania."
+  },
+  "selectDiffBackups": {
+    "message": "Wybierz dwie różne kopie."
+  },
+  "noOpenTabs": {
+    "message": "Brak otwartych kart."
+  },
+  "duplicateGroupTooltip": {
+    "message": "Karty z tym samym adresem URL"
+  },
+  "loadingPreview": {
+    "message": "Ładowanie..."
+  },
+  "unknownError": {
+    "message": "Unknown error"
+  }
 }

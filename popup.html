@@ -53,96 +53,121 @@
             <button id="restoreTab" class="tab-button" data-tab="restore">
                 <span data-i18n="restoreTab">Restore</span>
             </button>
+            <button id="toolsTab" class="tab-button" data-tab="tools">
+                <span data-i18n="toolsTab">Tools</span>
+            </button>
         </div>
 
+        <!-- ==================== BACKUP PANEL ==================== -->
         <div id="backupPanel" class="tab-panel active">
-        <div class="section">
-            <label for="folderSelect" data-i18n="selectFolderLabel">Select Backup Folder:</label>
-            <select id="folderSelect">
-                <option value="" disabled selected data-i18n="selectStart">Loading folders...</option>
-            </select>
-        </div>
-
-        <div class="section">
-            <label data-i18n="selectTabsLabel">Select Tabs to Backup:</label>
-            <div id="tabListContainer" style="margin-bottom: 10px;">
-            </div>
-            <div class="setting-row" style="margin-bottom: 8px;">
-                <label style="display: flex; align-items: center; cursor: pointer;">
-                    <input type="checkbox" id="includeDuplicatesToggle" style="margin-right: 8px;">
-                    <span data-i18n="includeDuplicates">Include Duplicate URLs</span>
-                </label>
-            </div>
-            <button id="backupBtn" class="primary-btn" data-i18n="backupBtn">Backup Now</button>
-            <p id="statusMessage" class="status"></p>
-        </div>
-
-        <hr>
-
-        <div class="section">
-            <h2 data-i18n="autoBackupTitle">Auto Backup Settings</h2>
-
-            <div style="margin-bottom: 10px;">
-                <label style="display: flex; align-items: center; cursor: pointer;">
-                    <input type="checkbox" id="autoBackupToggle" style="margin-right: 8px;">
-                    <span data-i18n="enableAutoBackup">Enable Auto Backup</span>
-                </label>
-            </div>
-
-            <div id="autoBackupSettings" class="hidden">
-                <label for="intervalSelect" data-i18n="intervalLabel">Interval:</label>
-                <select id="intervalSelect">
-                    <option value="daily" selected data-i18n="daily">Daily</option>
-                    <option value="weekly" data-i18n="weekly">Weekly</option>
-                    <option value="monthly" data-i18n="monthly">Monthly</option>
-                    <option value="custom" data-i18n="custom">Custom</option>
+            <div class="section">
+                <label for="folderSelect" data-i18n="selectFolderLabel">Select Backup Folder:</label>
+                <select id="folderSelect">
+                    <option value="" disabled selected data-i18n="selectStart">Loading folders...</option>
                 </select>
+            </div>
 
-                <div id="timeContainer">
-                    <div id="multiTimeContainer">
-                        <label data-i18n="multiTimeLabel">Backup Times (max 5):</label>
-                        <div id="timeList"></div>
-                        <button id="addTimeBtn" class="small-btn" data-i18n="addTimeBtn">+ Add Time</button>
-                    </div>
+            <div class="section">
+                <div class="flex-row" style="margin-bottom: 8px;">
+                    <input type="text" id="domainFilterInput" data-i18n-placeholder="domainFilterPlaceholder" placeholder="Filter by domain..." style="flex: 1;">
+                    <button id="clearFilterBtn" class="small-btn" data-i18n="clearFilter">✕</button>
                 </div>
 
-                <div id="customIntervalContainer" class="hidden">
-                    <div class="flex-row">
-                        <input type="number" id="customIntervalInput" min="1" placeholder="Value">
-                        <select id="customIntervalUnit">
-                            <option value="minutes" selected data-i18n="minutes">Minutes</option>
-                            <option value="hours" data-i18n="hours">Hours</option>
-                            <option value="days" data-i18n="days">Days</option>
-                        </select>
-                    </div>
-                </div>
-
-                <hr style="margin: 10px 0;">
-
-                <div class="setting-row">
+                <div class="setting-row" style="margin-bottom: 8px;">
                     <label style="display: flex; align-items: center; cursor: pointer;">
-                        <input type="checkbox" id="preserveGroupsToggle" style="margin-right: 8px;">
-                        <span data-i18n="preserveGroups">Preserve Tab Groups as Folders</span>
+                        <input type="checkbox" id="allWindowsToggle" style="margin-right: 8px;">
+                        <span data-i18n="allWindows">All Windows</span>
                     </label>
                 </div>
 
-                <div class="setting-row">
-                    <label style="display: flex; align-items: center; cursor: pointer; margin-bottom: 5px;">
-                        <input type="checkbox" id="autoCleanupToggle" style="margin-right: 8px;">
-                        <span data-i18n="autoCleanup">Auto Cleanup Old Backups</span>
+                <label data-i18n="selectTabsLabel">Select Tabs to Backup:</label>
+                <div id="tabListContainer" style="margin-bottom: 10px;"></div>
+
+                <div class="setting-row" style="margin-bottom: 8px;">
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" id="includeDuplicatesToggle" style="margin-right: 8px;">
+                        <span data-i18n="includeDuplicates">Include Duplicate URLs</span>
                     </label>
-                    <div id="cleanupSettings" class="hidden">
-                        <div class="flex-row" style="align-items: center;">
-                            <span data-i18n="cleanupDaysLabel" style="font-size: 12px;">Delete backups older than</span>
-                            <input type="number" id="cleanupDays" min="1" max="365" value="30" style="width: 60px;">
-                            <span data-i18n="daysLabel" style="font-size: 12px;">days</span>
+                </div>
+
+                <input type="text" id="backupNoteInput" data-i18n-placeholder="backupNotePlaceholder" placeholder="Add a note for this backup..." style="width: 100%; padding: 8px; border: 1px solid var(--input-border); border-radius: 4px; font-size: 13px; box-sizing: border-box; background-color: var(--bg-color); color: var(--text-color); margin-bottom: 8px;">
+
+                <button id="backupBtn" class="primary-btn" data-i18n="backupBtn">Backup Now</button>
+                <p id="statusMessage" class="status"></p>
+            </div>
+
+            <hr>
+
+            <div class="section collapsible-section">
+                <h2 class="collapsible-header" id="autoBackupHeader" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                    <span data-i18n="autoBackupTitle">Auto Backup Settings</span>
+                    <span class="collapse-icon">▸</span>
+                </h2>
+
+                <div id="autoBackupBody" class="hidden">
+                    <div style="margin-bottom: 10px;">
+                        <label style="display: flex; align-items: center; cursor: pointer;">
+                            <input type="checkbox" id="autoBackupToggle" style="margin-right: 8px;">
+                            <span data-i18n="enableAutoBackup">Enable Auto Backup</span>
+                        </label>
+                    </div>
+
+                    <div id="autoBackupSettings" class="hidden">
+                        <label for="intervalSelect" data-i18n="intervalLabel">Interval:</label>
+                        <select id="intervalSelect">
+                            <option value="daily" selected data-i18n="daily">Daily</option>
+                            <option value="weekly" data-i18n="weekly">Weekly</option>
+                            <option value="monthly" data-i18n="monthly">Monthly</option>
+                            <option value="custom" data-i18n="custom">Custom</option>
+                        </select>
+
+                        <div id="timeContainer">
+                            <div id="multiTimeContainer">
+                                <label data-i18n="multiTimeLabel">Backup Times (max 5):</label>
+                                <div id="timeList"></div>
+                                <button id="addTimeBtn" class="small-btn" data-i18n="addTimeBtn">+ Add Time</button>
+                            </div>
+                        </div>
+
+                        <div id="customIntervalContainer" class="hidden">
+                            <div class="flex-row">
+                                <input type="number" id="customIntervalInput" min="1" placeholder="Value">
+                                <select id="customIntervalUnit">
+                                    <option value="minutes" selected data-i18n="minutes">Minutes</option>
+                                    <option value="hours" data-i18n="hours">Hours</option>
+                                    <option value="days" data-i18n="days">Days</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <hr style="margin: 10px 0;">
+
+                        <div class="setting-row">
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" id="preserveGroupsToggle" style="margin-right: 8px;">
+                                <span data-i18n="preserveGroups">Preserve Tab Groups as Folders</span>
+                            </label>
+                        </div>
+
+                        <div class="setting-row">
+                            <label style="display: flex; align-items: center; cursor: pointer; margin-bottom: 5px;">
+                                <input type="checkbox" id="autoCleanupToggle" style="margin-right: 8px;">
+                                <span data-i18n="autoCleanup">Auto Cleanup Old Backups</span>
+                            </label>
+                            <div id="cleanupSettings" class="hidden">
+                                <div class="flex-row" style="align-items: center;">
+                                    <span data-i18n="cleanupDaysLabel" style="font-size: 12px;">Delete backups older than</span>
+                                    <input type="number" id="cleanupDays" min="1" max="365" value="30" style="width: 60px;">
+                                    <span data-i18n="daysLabel" style="font-size: 12px;">days</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
 
+        <!-- ==================== RESTORE PANEL ==================== -->
         <div id="restorePanel" class="tab-panel">
             <div class="section">
                 <label for="restoreFolderSelect" data-i18n="selectBackupFolder">Select Backup Folder:</label>
@@ -150,18 +175,100 @@
                     <option value="" disabled selected data-i18n="selectStart">Loading folders...</option>
                 </select>
             </div>
-            
+
             <div class="section">
+                <input type="text" id="searchInput" data-i18n-placeholder="searchPlaceholder" placeholder="Search backups..." style="width: 100%; padding: 8px; border: 1px solid var(--input-border); border-radius: 4px; font-size: 13px; box-sizing: border-box; background-color: var(--bg-color); color: var(--text-color); margin-bottom: 8px;">
+
                 <div id="restoreList" class="restore-list">
                     <div class="no-backups" data-i18n="selectFolderFirst">Select a folder to view backups</div>
                 </div>
             </div>
-            
+
+            <div id="restorePreview" class="restore-preview hidden"></div>
+
+            <div class="setting-row" style="margin-bottom: 8px;">
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                    <input type="checkbox" id="restorePreserveGroupsToggle" style="margin-right: 8px;">
+                    <span data-i18n="restorePreserveGroups">Preserve Tab Groups</span>
+                </label>
+            </div>
+
             <div class="button-group">
                 <button id="restoreAllBtn" class="primary-btn" disabled data-i18n="restoreAll">Restore All</button>
+                <button id="restoreSelectedBtn" class="primary-btn" disabled data-i18n="restoreSelected">Restore Selected</button>
             </div>
-            
+
+            <div class="section" style="margin-top: 12px;">
+                <h2 data-i18n="compareTitle">Compare Backups</h2>
+                <div class="flex-row">
+                    <select id="compareSelect1" style="flex: 1;">
+                        <option value="" disabled selected data-i18n="compareSelect1">Backup A</option>
+                    </select>
+                    <select id="compareSelect2" style="flex: 1;">
+                        <option value="" disabled selected data-i18n="compareSelect2">Backup B</option>
+                    </select>
+                </div>
+                <button id="compareBtn" class="small-btn" disabled data-i18n="compareBtn">Compare</button>
+                <div id="compareResult"></div>
+            </div>
+
             <div id="restoreStatusMessage" class="status-message"></div>
+        </div>
+
+        <!-- ==================== TOOLS PANEL ==================== -->
+        <div id="toolsPanel" class="tab-panel">
+            <div class="section">
+                <h2 data-i18n="exportImportTitle">Export / Import</h2>
+                <label for="toolsFolderSelect" data-i18n="selectBackupFolder">Select Backup Folder:</label>
+                <select id="toolsFolderSelect">
+                    <option value="" disabled selected data-i18n="selectStart">Loading folders...</option>
+                </select>
+                <label for="toolsBackupSelect" style="margin-top: 8px;" data-i18n="selectBackupLabel">Select Backup:</label>
+                <select id="toolsBackupSelect">
+                    <option value="" disabled selected data-i18n="selectBackupDefault">-- Select a backup --</option>
+                </select>
+                <div class="flex-row" style="margin-top: 8px;">
+                    <button id="exportJsonBtn" class="small-btn" data-i18n="exportJson">Export JSON</button>
+                    <button id="exportCsvBtn" class="small-btn" data-i18n="exportCsv">Export CSV</button>
+                </div>
+                <p id="exportStatus" class="status-message"></p>
+                <hr style="margin: 10px 0;">
+                <label for="importFile" data-i18n="importLabel">Import from file:</label>
+                <input type="file" id="importFile" accept=".json" style="width: 100%; margin-bottom: 8px; font-size: 12px;">
+                <button id="importBtn" class="primary-btn" data-i18n="importBtn">Import</button>
+                <p id="importStatus" class="status-message"></p>
+            </div>
+
+            <div class="section" style="margin-top: 12px;">
+                <h2 data-i18n="statsTitle">Backup Statistics</h2>
+                <div id="statsContainer" class="stats-container"></div>
+            </div>
+
+            <div class="section" style="margin-top: 12px;">
+                <h2 data-i18n="smartTriggersTitle">Smart Triggers</h2>
+
+                <div class="setting-row">
+                    <div class="flex-row">
+                        <label style="display: flex; align-items: center; cursor: pointer; flex: 1;">
+                            <input type="checkbox" id="tabThresholdToggle" style="margin-right: 8px;">
+                            <span data-i18n="tabThreshold">Tab Threshold</span>
+                        </label>
+                        <input type="number" id="tabThresholdInput" value="20" min="5" max="100" style="width: 60px;">
+                    </div>
+                </div>
+
+                <div class="setting-row">
+                    <div class="flex-row">
+                        <label style="display: flex; align-items: center; cursor: pointer; flex: 1;">
+                            <input type="checkbox" id="reminderToggle" style="margin-right: 8px;">
+                            <span data-i18n="reminderLabel">Reminder</span>
+                        </label>
+                        <input type="number" id="reminderDaysInput" value="3" min="1" max="30" style="width: 60px;">
+                        <span data-i18n="daysLabel" style="font-size: 12px;">days</span>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
         <button id="saveSettingsBtn" class="secondary-btn" data-i18n="saveSettingsBtn">Save Settings</button>

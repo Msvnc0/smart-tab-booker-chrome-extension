@@ -1,197 +1,373 @@
 {
-    "extName": {
-        "message": "Smart Tab Booker"
-    },
-    "extDesc": {
-        "message": "열려 있는 탭을 자동 또는 수동으로 북마크에 백업하세요."
-    },
-    "selectStart": {
-        "message": "폴더 불러오는 중..."
-    },
-    "selectDefault": {
-        "message": "폴더 선택..."
-    },
-    "backupBtn": {
-        "message": "지금 백업"
-    },
-    "backupBtnProgress": {
-        "message": "백업 중..."
-    },
-    "autoBackupTitle": {
-        "message": "자동 백업 설정"
-    },
-    "intervalLabel": {
-        "message": "간격:"
-    },
-    "daily": {
-        "message": "매일"
-    },
-    "weekly": {
-        "message": "매주"
-    },
-    "monthly": {
-        "message": "매월"
-    },
-    "enableAutoBackup": {
-        "message": "자동 백업 사용"
-    },
-    "darkMode": {
-        "message": "다크 모드"
-    },
-    "custom": {
-        "message": "사용자 지정"
-    },
-    "backupTimeLabel": {
-        "message": "백업 시간 (24시간):"
-    },
-    "saveSettingsBtn": {
-        "message": "설정 저장"
-    },
-    "saved": {
-        "message": "저장됨!"
-    },
-    "lastBackupLabel": {
-        "message": "마지막 백업:"
-    },
-    "never": {
-        "message": "없음"
-    },
-    "folderSaved": {
-        "message": "폴더가 저장되었습니다!"
-    },
-    "selectFolderErr": {
-        "message": "먼저 폴더를 선택해 주세요."
-    },
-    "backupSuccess": {
-        "message": "백업 완료!"
-    },
-    "backupFailed": {
-        "message": "백업 실패: "
-    },
-    "invalidValue": {
-        "message": "잘못된 값입니다."
-    },
-    "invalidTime": {
-        "message": "잘못된 시간입니다."
-    },
-    "selectAll": {
-        "message": "전체 선택"
-    },
-    "deselectAll": {
-        "message": "선택 해제"
-    },
-    "tabCounter": {
-        "message": "선택됨: $SELECTED$ / $TOTAL$",
-        "placeholders": {
-            "selected": {
-                "content": "$1"
-            },
-            "total": {
-                "content": "$2"
-            }
-        }
-    },
-    "bookmarksBar": {
-        "message": "북마크 바"
-    },
-    "otherBookmarks": {
-        "message": "기타 북마크"
-    },
-    "minutes": {
-        "message": "분"
-    },
-    "hours": {
-        "message": "시간"
-    },
-    "days": {
-        "message": "일"
-    },
-    "selectFolderLabel": {
-        "message": "백업 폴더 선택:"
-    },
-    "selectTabsLabel": {
-        "message": "백업할 탭 선택:"
-    },
-    "noTabsSelected": {
-        "message": "선택된 탭이 없습니다!"
-    },
-    "preserveGroups": {
-        "message": "탭 그룹을 폴더로 유지"
-    },
-    "autoCleanup": {
-        "message": "오래된 백업 자동 정리"
-    },
-    "cleanupDaysLabel": {
-        "message": "다음 기간보다 오래된 백업 삭제"
-    },
-    "daysLabel": {
-        "message": "일"
-    },
-    "addTimeBtn": {
-        "message": "+ 시간 추가"
-    },
-    "multiTimeLabel": {
-        "message": "백업 시간 (최대 5개):"
-    },
-    "quickBackupDesc": {
-        "message": "모든 탭 빠른 백업"
-    },
-    "shortcutLabel": {
-        "message": "키보드 단축키:"
-    },
-    "changeShortcut": {
-        "message": "변경"
-    },
-    "duplicateWarning": {
-        "message": "중복"
-    },
-    "includeDuplicates": {
-        "message": "중복 URL 포함"
-    },
-    "backupTab": {
-        "message": "백업"
-    },
-    "restoreTab": {
-        "message": "복원"
-    },
-    "selectBackupFolder": {
-        "message": "백업 폴더 선택:"
-    },
-    "restoreAll": {
-        "message": "모두 복원"
-    },
-    "noBackupsFound": {
-        "message": "백업 없음"
-    },
-    "restoreSuccess": {
-        "message": "$count$개 탭 열림",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "restoreFailed": {
-        "message": "복원 실패"
-    },
-    "tabsCount": {
-        "message": "탭"
-    },
-    "restoring": {
-        "message": "복원 중..."
-    },
-    "selectFolderFirst": {
-        "message": "폴더 선택"
-    },
-    "manyTabsWarning": {
-        "message": "$count$개 탭이 열립니다. 계속하시겠습니까?",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "folderDeleted": {
-        "message": "선택한 폴더가 삭제됨"
+  "extName": {
+    "message": "Smart Tab Booker"
+  },
+  "extDesc": {
+    "message": "열려 있는 탭을 자동 또는 수동으로 북마크에 백업하세요."
+  },
+  "selectStart": {
+    "message": "폴더 불러오는 중..."
+  },
+  "selectDefault": {
+    "message": "폴더 선택..."
+  },
+  "backupBtn": {
+    "message": "지금 백업"
+  },
+  "backupBtnProgress": {
+    "message": "백업 중..."
+  },
+  "autoBackupTitle": {
+    "message": "자동 백업 설정"
+  },
+  "intervalLabel": {
+    "message": "간격:"
+  },
+  "daily": {
+    "message": "매일"
+  },
+  "weekly": {
+    "message": "매주"
+  },
+  "monthly": {
+    "message": "매월"
+  },
+  "enableAutoBackup": {
+    "message": "자동 백업 사용"
+  },
+  "darkMode": {
+    "message": "다크 모드"
+  },
+  "custom": {
+    "message": "사용자 지정"
+  },
+  "backupTimeLabel": {
+    "message": "백업 시간 (24시간):"
+  },
+  "saveSettingsBtn": {
+    "message": "설정 저장"
+  },
+  "saved": {
+    "message": "저장됨!"
+  },
+  "lastBackupLabel": {
+    "message": "마지막 백업:"
+  },
+  "never": {
+    "message": "없음"
+  },
+  "folderSaved": {
+    "message": "폴더가 저장되었습니다!"
+  },
+  "selectFolderErr": {
+    "message": "먼저 폴더를 선택해 주세요."
+  },
+  "backupSuccess": {
+    "message": "백업 완료!"
+  },
+  "backupInProgress": {
+    "message": "백업이 이미 진행 중입니다"
+  },
+  "backupFailed": {
+    "message": "백업 실패: "
+  },
+  "invalidValue": {
+    "message": "잘못된 값입니다."
+  },
+  "invalidTime": {
+    "message": "잘못된 시간입니다."
+  },
+  "selectAll": {
+    "message": "전체 선택"
+  },
+  "deselectAll": {
+    "message": "선택 해제"
+  },
+  "tabCounter": {
+    "message": "선택됨: $SELECTED$ / $TOTAL$",
+    "placeholders": {
+      "selected": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
     }
+  },
+  "bookmarksBar": {
+    "message": "북마크 바"
+  },
+  "otherBookmarks": {
+    "message": "기타 북마크"
+  },
+  "minutes": {
+    "message": "분"
+  },
+  "hours": {
+    "message": "시간"
+  },
+  "days": {
+    "message": "일"
+  },
+  "selectFolderLabel": {
+    "message": "백업 폴더 선택:"
+  },
+  "selectTabsLabel": {
+    "message": "백업할 탭 선택:"
+  },
+  "noTabsSelected": {
+    "message": "선택된 탭이 없습니다!"
+  },
+  "preserveGroups": {
+    "message": "탭 그룹을 폴더로 유지"
+  },
+  "autoCleanup": {
+    "message": "오래된 백업 자동 정리"
+  },
+  "cleanupDaysLabel": {
+    "message": "다음 기간보다 오래된 백업 삭제"
+  },
+  "daysLabel": {
+    "message": "일"
+  },
+  "addTimeBtn": {
+    "message": "+ 시간 추가"
+  },
+  "multiTimeLabel": {
+    "message": "백업 시간 (최대 5개):"
+  },
+  "quickBackupDesc": {
+    "message": "모든 탭 빠른 백업"
+  },
+  "shortcutLabel": {
+    "message": "키보드 단축키:"
+  },
+  "changeShortcut": {
+    "message": "변경"
+  },
+  "duplicateWarning": {
+    "message": "중복"
+  },
+  "includeDuplicates": {
+    "message": "중복 URL 포함"
+  },
+  "backupTab": {
+    "message": "백업"
+  },
+  "restoreTab": {
+    "message": "복원"
+  },
+  "selectBackupFolder": {
+    "message": "백업 폴더 선택:"
+  },
+  "selectBackupDefault": {
+    "message": "-- Select a backup --"
+  },
+  "restoreAll": {
+    "message": "모두 복원"
+  },
+  "noBackupsFound": {
+    "message": "백업 없음"
+  },
+  "restoreSuccess": {
+    "message": "$count$개 탭 열림",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreFailed": {
+    "message": "복원 실패"
+  },
+  "tabsCount": {
+    "message": "탭"
+  },
+  "restoring": {
+    "message": "복원 중..."
+  },
+  "selectFolderFirst": {
+    "message": "폴더 선택"
+  },
+  "manyTabsWarning": {
+    "message": "$count$개 탭이 열립니다. 계속하시겠습니까?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "folderDeleted": {
+    "message": "선택한 폴더가 삭제됨"
+  },
+  "restorePreserveGroups": {
+    "message": "탭 그룹 유지"
+  },
+  "contextMenuBackupTab": {
+    "message": "이 탭 백업"
+  },
+  "contextMenuBackupAll": {
+    "message": "모든 탭 백업"
+  },
+  "allWindows": {
+    "message": "모든 창"
+  },
+  "windowLabel": {
+    "message": "창"
+  },
+  "pinnedTab": {
+    "message": "고정됨"
+  },
+  "backupNotePlaceholder": {
+    "message": "메모 추가..."
+  },
+  "domainFilterPlaceholder": {
+    "message": "도메인으로 필터..."
+  },
+  "clearFilter": {
+    "message": "지우기"
+  },
+  "restoreSelected": {
+    "message": "선택 복원"
+  },
+  "previewHint": {
+    "message": "더블클릭으로 미리보기"
+  },
+  "searchPlaceholder": {
+    "message": "백업 검색..."
+  },
+  "compareTitle": {
+    "message": "백업 비교"
+  },
+  "compareSelect1": {
+    "message": "백업 A"
+  },
+  "compareSelect2": {
+    "message": "백업 B"
+  },
+  "compareBtn": {
+    "message": "비교"
+  },
+  "added": {
+    "message": "추가됨"
+  },
+  "removed": {
+    "message": "제거됨"
+  },
+  "common": {
+    "message": "공통"
+  },
+  "toolsTab": {
+    "message": "도구"
+  },
+  "exportImportTitle": {
+    "message": "내보내기 / 가져오기"
+  },
+  "exportJson": {
+    "message": "JSON 내보내기"
+  },
+  "exportCsv": {
+    "message": "CSV 내보내기"
+  },
+  "importLabel": {
+    "message": "파일에서 가져오기:"
+  },
+  "importBtn": {
+    "message": "가져오기"
+  },
+  "importSuccess": {
+    "message": "$count$ 탭 가져옴",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "importFailed": {
+    "message": "가져오기 실패"
+  },
+  "statsTitle": {
+    "message": "통계"
+  },
+  "totalBackups": {
+    "message": "총 백업"
+  },
+  "totalTabs": {
+    "message": "총 백업된 탭"
+  },
+  "topDomains": {
+    "message": "상위 도메인"
+  },
+  "noStats": {
+    "message": "통계 없음"
+  },
+  "smartTriggersTitle": {
+    "message": "스마트 트리거"
+  },
+  "tabThreshold": {
+    "message": "탭 임계값"
+  },
+  "reminderLabel": {
+    "message": "알림"
+  },
+  "noBackupSelected": {
+    "message": "백업 미선택"
+  },
+  "exportSelectBackup": {
+    "message": "내보낼 백업 선택"
+  },
+  "exportSelectFolder": {
+    "message": "백업 폴더를 먼저 선택하세요."
+  },
+  "exportComplete": {
+    "message": "내보내기 완료!"
+  },
+  "exportFailedMsg": {
+    "message": "내보내기 실패"
+  },
+  "importSelectFolder": {
+    "message": "폴더를 먼저 선택하세요."
+  },
+  "importSelectFile": {
+    "message": "가져올 파일을 선택하세요."
+  },
+  "noTabsRestore": {
+    "message": "복원할 탭이 선택되지 않았습니다."
+  },
+  "compareAdded": {
+    "message": "추가됨 (B에 있고 A에 없음)"
+  },
+  "compareRemoved": {
+    "message": "제거됨 (A에 있고 B에 없음)"
+  },
+  "compareCommonLabel": {
+    "message": "공통"
+  },
+  "lastUpdated": {
+    "message": "마지막 업데이트"
+  },
+  "noBookmarksPreview": {
+    "message": "북마크를 찾을 수 없습니다."
+  },
+  "backupCountLabel": {
+    "message": "북마크:"
+  },
+  "selectTwoBackups": {
+    "message": "비교할 백업 2개를 선택하세요."
+  },
+  "selectDiffBackups": {
+    "message": "서로 다른 백업 2개를 선택하세요."
+  },
+  "noOpenTabs": {
+    "message": "열린 탭이 없습니다."
+  },
+  "duplicateGroupTooltip": {
+    "message": "같은 URL의 탭"
+  },
+  "loadingPreview": {
+    "message": "로딩 중..."
+  },
+  "unknownError": {
+    "message": "Unknown error"
+  }
 }

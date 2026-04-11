@@ -1,197 +1,373 @@
 {
-    "extName": {
-        "message": "Smart Tab Booker"
-    },
-    "extDesc": {
-        "message": "自动或手动将打开的标签页备份到书签。"
-    },
-    "selectStart": {
-        "message": "正在加载文件夹..."
-    },
-    "selectDefault": {
-        "message": "选择文件夹..."
-    },
-    "backupBtn": {
-        "message": "立即备份"
-    },
-    "backupBtnProgress": {
-        "message": "正在备份..."
-    },
-    "autoBackupTitle": {
-        "message": "自动备份设置"
-    },
-    "intervalLabel": {
-        "message": "间隔："
-    },
-    "daily": {
-        "message": "每天"
-    },
-    "weekly": {
-        "message": "每周"
-    },
-    "monthly": {
-        "message": "每月"
-    },
-    "enableAutoBackup": {
-        "message": "启用自动备份"
-    },
-    "darkMode": {
-        "message": "深色模式"
-    },
-    "custom": {
-        "message": "自定义"
-    },
-    "backupTimeLabel": {
-        "message": "备份时间 (24小时)："
-    },
-    "saveSettingsBtn": {
-        "message": "保存设置"
-    },
-    "saved": {
-        "message": "已保存！"
-    },
-    "lastBackupLabel": {
-        "message": "上次备份："
-    },
-    "never": {
-        "message": "从不"
-    },
-    "folderSaved": {
-        "message": "文件夹已保存！"
-    },
-    "selectFolderErr": {
-        "message": "请先选择一个文件夹。"
-    },
-    "backupSuccess": {
-        "message": "备份完成！"
-    },
-    "backupFailed": {
-        "message": "备份失败： "
-    },
-    "invalidValue": {
-        "message": "无效值。"
-    },
-    "invalidTime": {
-        "message": "无效时间。"
-    },
-    "selectAll": {
-        "message": "全选"
-    },
-    "deselectAll": {
-        "message": "取消全选"
-    },
-    "tabCounter": {
-        "message": "已选: $SELECTED$ / $TOTAL$",
-        "placeholders": {
-            "selected": {
-                "content": "$1"
-            },
-            "total": {
-                "content": "$2"
-            }
-        }
-    },
-    "bookmarksBar": {
-        "message": "书签栏"
-    },
-    "otherBookmarks": {
-        "message": "其他书签"
-    },
-    "minutes": {
-        "message": "分钟"
-    },
-    "hours": {
-        "message": "小时"
-    },
-    "days": {
-        "message": "天"
-    },
-    "selectFolderLabel": {
-        "message": "选择备份文件夹："
-    },
-    "selectTabsLabel": {
-        "message": "选择要备份的标签页："
-    },
-    "noTabsSelected": {
-        "message": "未选择标签页！"
-    },
-    "preserveGroups": {
-        "message": "将标签页组保存为文件夹"
-    },
-    "autoCleanup": {
-        "message": "自动清理旧备份"
-    },
-    "cleanupDaysLabel": {
-        "message": "删除超过以下天数的备份"
-    },
-    "daysLabel": {
-        "message": "天"
-    },
-    "addTimeBtn": {
-        "message": "+ 添加时间"
-    },
-    "multiTimeLabel": {
-        "message": "备份时间（最多5个）："
-    },
-    "quickBackupDesc": {
-        "message": "快速备份所有标签页"
-    },
-    "shortcutLabel": {
-        "message": "快捷键："
-    },
-    "changeShortcut": {
-        "message": "更改"
-    },
-    "duplicateWarning": {
-        "message": "重复"
-    },
-    "includeDuplicates": {
-        "message": "包含重复URL"
-    },
-    "backupTab": {
-        "message": "备份"
-    },
-    "restoreTab": {
-        "message": "恢复"
-    },
-    "selectBackupFolder": {
-        "message": "选择备份文件夹："
-    },
-    "restoreAll": {
-        "message": "全部恢复"
-    },
-    "noBackupsFound": {
-        "message": "此文件夹中未找到备份"
-    },
-    "restoreSuccess": {
-        "message": "已打开 $count$ 个标签页",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "restoreFailed": {
-        "message": "恢复失败"
-    },
-    "tabsCount": {
-        "message": "个标签页"
-    },
-    "restoring": {
-        "message": "恢复中..."
-    },
-    "selectFolderFirst": {
-        "message": "选择文件夹以查看备份"
-    },
-    "manyTabsWarning": {
-        "message": "将打开 $count$ 个标签页。继续？",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "folderDeleted": {
-        "message": "所选文件夹已删除"
+  "extName": {
+    "message": "Smart Tab Booker"
+  },
+  "extDesc": {
+    "message": "自动或手动将打开的标签页备份到书签。"
+  },
+  "selectStart": {
+    "message": "正在加载文件夹..."
+  },
+  "selectDefault": {
+    "message": "选择文件夹..."
+  },
+  "backupBtn": {
+    "message": "立即备份"
+  },
+  "backupBtnProgress": {
+    "message": "正在备份..."
+  },
+  "autoBackupTitle": {
+    "message": "自动备份设置"
+  },
+  "intervalLabel": {
+    "message": "间隔："
+  },
+  "daily": {
+    "message": "每天"
+  },
+  "weekly": {
+    "message": "每周"
+  },
+  "monthly": {
+    "message": "每月"
+  },
+  "enableAutoBackup": {
+    "message": "启用自动备份"
+  },
+  "darkMode": {
+    "message": "深色模式"
+  },
+  "custom": {
+    "message": "自定义"
+  },
+  "backupTimeLabel": {
+    "message": "备份时间 (24小时)："
+  },
+  "saveSettingsBtn": {
+    "message": "保存设置"
+  },
+  "saved": {
+    "message": "已保存！"
+  },
+  "lastBackupLabel": {
+    "message": "上次备份："
+  },
+  "never": {
+    "message": "从不"
+  },
+  "folderSaved": {
+    "message": "文件夹已保存！"
+  },
+  "selectFolderErr": {
+    "message": "请先选择一个文件夹。"
+  },
+  "backupSuccess": {
+    "message": "备份完成！"
+  },
+  "backupInProgress": {
+    "message": "备份正在进行中"
+  },
+  "backupFailed": {
+    "message": "备份失败： "
+  },
+  "invalidValue": {
+    "message": "无效值。"
+  },
+  "invalidTime": {
+    "message": "无效时间。"
+  },
+  "selectAll": {
+    "message": "全选"
+  },
+  "deselectAll": {
+    "message": "取消全选"
+  },
+  "tabCounter": {
+    "message": "已选: $SELECTED$ / $TOTAL$",
+    "placeholders": {
+      "selected": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
     }
+  },
+  "bookmarksBar": {
+    "message": "书签栏"
+  },
+  "otherBookmarks": {
+    "message": "其他书签"
+  },
+  "minutes": {
+    "message": "分钟"
+  },
+  "hours": {
+    "message": "小时"
+  },
+  "days": {
+    "message": "天"
+  },
+  "selectFolderLabel": {
+    "message": "选择备份文件夹："
+  },
+  "selectTabsLabel": {
+    "message": "选择要备份的标签页："
+  },
+  "noTabsSelected": {
+    "message": "未选择标签页！"
+  },
+  "preserveGroups": {
+    "message": "将标签页组保存为文件夹"
+  },
+  "autoCleanup": {
+    "message": "自动清理旧备份"
+  },
+  "cleanupDaysLabel": {
+    "message": "删除超过以下天数的备份"
+  },
+  "daysLabel": {
+    "message": "天"
+  },
+  "addTimeBtn": {
+    "message": "+ 添加时间"
+  },
+  "multiTimeLabel": {
+    "message": "备份时间（最多5个）："
+  },
+  "quickBackupDesc": {
+    "message": "快速备份所有标签页"
+  },
+  "shortcutLabel": {
+    "message": "快捷键："
+  },
+  "changeShortcut": {
+    "message": "更改"
+  },
+  "duplicateWarning": {
+    "message": "重复"
+  },
+  "includeDuplicates": {
+    "message": "包含重复URL"
+  },
+  "backupTab": {
+    "message": "备份"
+  },
+  "restoreTab": {
+    "message": "恢复"
+  },
+  "selectBackupFolder": {
+    "message": "选择备份文件夹："
+  },
+  "selectBackupDefault": {
+    "message": "-- Select a backup --"
+  },
+  "restoreAll": {
+    "message": "全部恢复"
+  },
+  "noBackupsFound": {
+    "message": "此文件夹中未找到备份"
+  },
+  "restoreSuccess": {
+    "message": "已打开 $count$ 个标签页",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreFailed": {
+    "message": "恢复失败"
+  },
+  "tabsCount": {
+    "message": "个标签页"
+  },
+  "restoring": {
+    "message": "恢复中..."
+  },
+  "selectFolderFirst": {
+    "message": "选择文件夹以查看备份"
+  },
+  "manyTabsWarning": {
+    "message": "将打开 $count$ 个标签页。继续？",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "folderDeleted": {
+    "message": "所选文件夹已删除"
+  },
+  "restorePreserveGroups": {
+    "message": "保留标签页分组"
+  },
+  "contextMenuBackupTab": {
+    "message": "备份此标签页"
+  },
+  "contextMenuBackupAll": {
+    "message": "备份所有标签页"
+  },
+  "allWindows": {
+    "message": "所有窗口"
+  },
+  "windowLabel": {
+    "message": "窗口"
+  },
+  "pinnedTab": {
+    "message": "已固定"
+  },
+  "backupNotePlaceholder": {
+    "message": "添加备注..."
+  },
+  "domainFilterPlaceholder": {
+    "message": "按域名筛选..."
+  },
+  "clearFilter": {
+    "message": "清除"
+  },
+  "restoreSelected": {
+    "message": "恢复所选"
+  },
+  "previewHint": {
+    "message": "双击预览"
+  },
+  "searchPlaceholder": {
+    "message": "搜索备份..."
+  },
+  "compareTitle": {
+    "message": "比较备份"
+  },
+  "compareSelect1": {
+    "message": "备份 A"
+  },
+  "compareSelect2": {
+    "message": "备份 B"
+  },
+  "compareBtn": {
+    "message": "比较"
+  },
+  "added": {
+    "message": "新增"
+  },
+  "removed": {
+    "message": "移除"
+  },
+  "common": {
+    "message": "共同"
+  },
+  "toolsTab": {
+    "message": "工具"
+  },
+  "exportImportTitle": {
+    "message": "导出 / 导入"
+  },
+  "exportJson": {
+    "message": "导出 JSON"
+  },
+  "exportCsv": {
+    "message": "导出 CSV"
+  },
+  "importLabel": {
+    "message": "从文件导入："
+  },
+  "importBtn": {
+    "message": "导入"
+  },
+  "importSuccess": {
+    "message": "$count$ 个标签页已导入",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "importFailed": {
+    "message": "导入失败"
+  },
+  "statsTitle": {
+    "message": "统计"
+  },
+  "totalBackups": {
+    "message": "总备份数"
+  },
+  "totalTabs": {
+    "message": "已备份标签页总数"
+  },
+  "topDomains": {
+    "message": "热门域名"
+  },
+  "noStats": {
+    "message": "暂无统计"
+  },
+  "smartTriggersTitle": {
+    "message": "智能触发器"
+  },
+  "tabThreshold": {
+    "message": "标签页阈值"
+  },
+  "reminderLabel": {
+    "message": "提醒"
+  },
+  "noBackupSelected": {
+    "message": "未选择备份"
+  },
+  "exportSelectBackup": {
+    "message": "选择要导出的备份"
+  },
+  "exportSelectFolder": {
+    "message": "请先选择备份文件夹。"
+  },
+  "exportComplete": {
+    "message": "导出完成！"
+  },
+  "exportFailedMsg": {
+    "message": "导出失败"
+  },
+  "importSelectFolder": {
+    "message": "请先选择文件夹。"
+  },
+  "importSelectFile": {
+    "message": "选择要导入的文件。"
+  },
+  "noTabsRestore": {
+    "message": "未选择要恢复的标签页。"
+  },
+  "compareAdded": {
+    "message": "新增（在B中，不在A中）"
+  },
+  "compareRemoved": {
+    "message": "移除（在A中，不在B中）"
+  },
+  "compareCommonLabel": {
+    "message": "共同"
+  },
+  "lastUpdated": {
+    "message": "最后更新"
+  },
+  "noBookmarksPreview": {
+    "message": "未找到书签。"
+  },
+  "backupCountLabel": {
+    "message": "书签："
+  },
+  "selectTwoBackups": {
+    "message": "请选择两个备份进行比较。"
+  },
+  "selectDiffBackups": {
+    "message": "请选择两个不同的备份。"
+  },
+  "noOpenTabs": {
+    "message": "没有打开的标签页。"
+  },
+  "duplicateGroupTooltip": {
+    "message": "相同URL的标签页"
+  },
+  "loadingPreview": {
+    "message": "加载中..."
+  },
+  "unknownError": {
+    "message": "Unknown error"
+  }
 }

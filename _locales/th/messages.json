@@ -1,197 +1,373 @@
 {
-    "extName": {
-        "message": "Smart Tab Booker"
-    },
-    "extDesc": {
-        "message": "สำรองแท็บที่เปิดอยู่ไปยังบุ๊คมาร์กโดยอัตโนมัติหรือด้วยตนเอง"
-    },
-    "selectStart": {
-        "message": "กำลังโหลดโฟลเดอร์..."
-    },
-    "selectDefault": {
-        "message": "เลือกโฟลเดอร์..."
-    },
-    "backupBtn": {
-        "message": "สำรองข้อมูลเดี๋ยวนี้"
-    },
-    "backupBtnProgress": {
-        "message": "กำลังสำรองข้อมูล..."
-    },
-    "autoBackupTitle": {
-        "message": "การตั้งค่าการสำรองข้อมูลอัตโนมัติ"
-    },
-    "intervalLabel": {
-        "message": "ช่วงเวลา:"
-    },
-    "daily": {
-        "message": "รายวัน"
-    },
-    "weekly": {
-        "message": "รายสัปดาห์"
-    },
-    "monthly": {
-        "message": "รายเดือน"
-    },
-    "enableAutoBackup": {
-        "message": "เปิดใช้งานการสำรองข้อมูลอัตโนมัติ"
-    },
-    "darkMode": {
-        "message": "โหมดมืด"
-    },
-    "custom": {
-        "message": "กำหนดเอง"
-    },
-    "backupTimeLabel": {
-        "message": "เวลาสำรองข้อมูล (24 ชั่วโมง):"
-    },
-    "saveSettingsBtn": {
-        "message": "บันทึกการตั้งค่า"
-    },
-    "saved": {
-        "message": "บันทึกแล้ว!"
-    },
-    "lastBackupLabel": {
-        "message": "การสำรองข้อมูลครั้งล่าสุด:"
-    },
-    "never": {
-        "message": "ไม่เคย"
-    },
-    "folderSaved": {
-        "message": "บันทึกโฟลเดอร์แล้ว!"
-    },
-    "selectFolderErr": {
-        "message": "กรุณาเลือกโฟลเดอร์ก่อน"
-    },
-    "backupSuccess": {
-        "message": "สำรองข้อมูลเสร็จสมบูรณ์!"
-    },
-    "backupFailed": {
-        "message": "การสำรองข้อมูลล้มเหลว: "
-    },
-    "invalidValue": {
-        "message": "ค่าไม่ถูกต้อง"
-    },
-    "invalidTime": {
-        "message": "เวลาไม่ถูกต้อง"
-    },
-    "selectAll": {
-        "message": "เลือกทั้งหมด"
-    },
-    "deselectAll": {
-        "message": "ยกเลิกการเลือกทั้งหมด"
-    },
-    "tabCounter": {
-        "message": "เลือกแล้ว: $SELECTED$ / $TOTAL$",
-        "placeholders": {
-            "selected": {
-                "content": "$1"
-            },
-            "total": {
-                "content": "$2"
-            }
-        }
-    },
-    "bookmarksBar": {
-        "message": "แถบบุ๊คมาร์ก"
-    },
-    "otherBookmarks": {
-        "message": "บุ๊คมาร์กอื่นๆ"
-    },
-    "minutes": {
-        "message": "นาที"
-    },
-    "hours": {
-        "message": "ชั่วโมง"
-    },
-    "days": {
-        "message": "วัน"
-    },
-    "selectFolderLabel": {
-        "message": "เลือกโฟลเดอร์สำรองข้อมูล:"
-    },
-    "selectTabsLabel": {
-        "message": "เลือกแท็บที่จะสำรองข้อมูล:"
-    },
-    "noTabsSelected": {
-        "message": "ไม่มีแท็บที่เลือก!"
-    },
-    "preserveGroups": {
-        "message": "รักษากลุ่มแท็บเป็นโฟลเดอร์"
-    },
-    "autoCleanup": {
-        "message": "ล้างการสำรองข้อมูลเก่าโดยอัตโนมัติ"
-    },
-    "cleanupDaysLabel": {
-        "message": "ลบการสำรองข้อมูลที่เก่ากว่า"
-    },
-    "daysLabel": {
-        "message": "วัน"
-    },
-    "addTimeBtn": {
-        "message": "+ เพิ่มเวลา"
-    },
-    "multiTimeLabel": {
-        "message": "เวลาสำรองข้อมูล (สูงสุด 5):"
-    },
-    "quickBackupDesc": {
-        "message": "สำรองข้อมูลแท็บทั้งหมดอย่างรวดเร็ว"
-    },
-    "shortcutLabel": {
-        "message": "ทางลัดแป้นพิมพ์:"
-    },
-    "changeShortcut": {
-        "message": "เปลี่ยน"
-    },
-    "duplicateWarning": {
-        "message": "ซ้ำ"
-    },
-    "includeDuplicates": {
-        "message": "รวม URL ที่ซ้ำกัน"
-    },
-    "backupTab": {
-        "message": "สำรองข้อมูล"
-    },
-    "restoreTab": {
-        "message": "กู้คืน"
-    },
-    "selectBackupFolder": {
-        "message": "เลือกโฟลเดอร์สำรอง:"
-    },
-    "restoreAll": {
-        "message": "กู้คืนทั้งหมด"
-    },
-    "noBackupsFound": {
-        "message": "ไม่พบข้อมูลสำรอง"
-    },
-    "restoreSuccess": {
-        "message": "เปิด $count$ แท็บแล้ว",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "restoreFailed": {
-        "message": "กู้คืนล้มเหลว"
-    },
-    "tabsCount": {
-        "message": "แท็บ"
-    },
-    "restoring": {
-        "message": "กำลังกู้คืน..."
-    },
-    "selectFolderFirst": {
-        "message": "เลือกโฟลเดอร์"
-    },
-    "manyTabsWarning": {
-        "message": "จะเปิด $count$ แท็บ ดำเนินการต่อ?",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "folderDeleted": {
-        "message": "โฟลเดอร์ที่เลือกถูกลบแล้ว"
+  "extName": {
+    "message": "Smart Tab Booker"
+  },
+  "extDesc": {
+    "message": "สำรองแท็บที่เปิดอยู่ไปยังบุ๊คมาร์กโดยอัตโนมัติหรือด้วยตนเอง"
+  },
+  "selectStart": {
+    "message": "กำลังโหลดโฟลเดอร์..."
+  },
+  "selectDefault": {
+    "message": "เลือกโฟลเดอร์..."
+  },
+  "backupBtn": {
+    "message": "สำรองข้อมูลเดี๋ยวนี้"
+  },
+  "backupBtnProgress": {
+    "message": "กำลังสำรองข้อมูล..."
+  },
+  "autoBackupTitle": {
+    "message": "การตั้งค่าการสำรองข้อมูลอัตโนมัติ"
+  },
+  "intervalLabel": {
+    "message": "ช่วงเวลา:"
+  },
+  "daily": {
+    "message": "รายวัน"
+  },
+  "weekly": {
+    "message": "รายสัปดาห์"
+  },
+  "monthly": {
+    "message": "รายเดือน"
+  },
+  "enableAutoBackup": {
+    "message": "เปิดใช้งานการสำรองข้อมูลอัตโนมัติ"
+  },
+  "darkMode": {
+    "message": "โหมดมืด"
+  },
+  "custom": {
+    "message": "กำหนดเอง"
+  },
+  "backupTimeLabel": {
+    "message": "เวลาสำรองข้อมูล (24 ชั่วโมง):"
+  },
+  "saveSettingsBtn": {
+    "message": "บันทึกการตั้งค่า"
+  },
+  "saved": {
+    "message": "บันทึกแล้ว!"
+  },
+  "lastBackupLabel": {
+    "message": "การสำรองข้อมูลครั้งล่าสุด:"
+  },
+  "never": {
+    "message": "ไม่เคย"
+  },
+  "folderSaved": {
+    "message": "บันทึกโฟลเดอร์แล้ว!"
+  },
+  "selectFolderErr": {
+    "message": "กรุณาเลือกโฟลเดอร์ก่อน"
+  },
+  "backupSuccess": {
+    "message": "สำรองข้อมูลเสร็จสมบูรณ์!"
+  },
+  "backupInProgress": {
+    "message": "กำลังสำรองข้อมูลอยู่"
+  },
+  "backupFailed": {
+    "message": "การสำรองข้อมูลล้มเหลว: "
+  },
+  "invalidValue": {
+    "message": "ค่าไม่ถูกต้อง"
+  },
+  "invalidTime": {
+    "message": "เวลาไม่ถูกต้อง"
+  },
+  "selectAll": {
+    "message": "เลือกทั้งหมด"
+  },
+  "deselectAll": {
+    "message": "ยกเลิกการเลือกทั้งหมด"
+  },
+  "tabCounter": {
+    "message": "เลือกแล้ว: $SELECTED$ / $TOTAL$",
+    "placeholders": {
+      "selected": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
     }
+  },
+  "bookmarksBar": {
+    "message": "แถบบุ๊คมาร์ก"
+  },
+  "otherBookmarks": {
+    "message": "บุ๊คมาร์กอื่นๆ"
+  },
+  "minutes": {
+    "message": "นาที"
+  },
+  "hours": {
+    "message": "ชั่วโมง"
+  },
+  "days": {
+    "message": "วัน"
+  },
+  "selectFolderLabel": {
+    "message": "เลือกโฟลเดอร์สำรองข้อมูล:"
+  },
+  "selectTabsLabel": {
+    "message": "เลือกแท็บที่จะสำรองข้อมูล:"
+  },
+  "noTabsSelected": {
+    "message": "ไม่มีแท็บที่เลือก!"
+  },
+  "preserveGroups": {
+    "message": "รักษากลุ่มแท็บเป็นโฟลเดอร์"
+  },
+  "autoCleanup": {
+    "message": "ล้างการสำรองข้อมูลเก่าโดยอัตโนมัติ"
+  },
+  "cleanupDaysLabel": {
+    "message": "ลบการสำรองข้อมูลที่เก่ากว่า"
+  },
+  "daysLabel": {
+    "message": "วัน"
+  },
+  "addTimeBtn": {
+    "message": "+ เพิ่มเวลา"
+  },
+  "multiTimeLabel": {
+    "message": "เวลาสำรองข้อมูล (สูงสุด 5):"
+  },
+  "quickBackupDesc": {
+    "message": "สำรองข้อมูลแท็บทั้งหมดอย่างรวดเร็ว"
+  },
+  "shortcutLabel": {
+    "message": "ทางลัดแป้นพิมพ์:"
+  },
+  "changeShortcut": {
+    "message": "เปลี่ยน"
+  },
+  "duplicateWarning": {
+    "message": "ซ้ำ"
+  },
+  "includeDuplicates": {
+    "message": "รวม URL ที่ซ้ำกัน"
+  },
+  "backupTab": {
+    "message": "สำรองข้อมูล"
+  },
+  "restoreTab": {
+    "message": "กู้คืน"
+  },
+  "selectBackupFolder": {
+    "message": "เลือกโฟลเดอร์สำรอง:"
+  },
+  "selectBackupDefault": {
+    "message": "-- Select a backup --"
+  },
+  "restoreAll": {
+    "message": "กู้คืนทั้งหมด"
+  },
+  "noBackupsFound": {
+    "message": "ไม่พบข้อมูลสำรอง"
+  },
+  "restoreSuccess": {
+    "message": "เปิด $count$ แท็บแล้ว",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "restoreFailed": {
+    "message": "กู้คืนล้มเหลว"
+  },
+  "tabsCount": {
+    "message": "แท็บ"
+  },
+  "restoring": {
+    "message": "กำลังกู้คืน..."
+  },
+  "selectFolderFirst": {
+    "message": "เลือกโฟลเดอร์"
+  },
+  "manyTabsWarning": {
+    "message": "จะเปิด $count$ แท็บ ดำเนินการต่อ?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "folderDeleted": {
+    "message": "โฟลเดอร์ที่เลือกถูกลบแล้ว"
+  },
+  "restorePreserveGroups": {
+    "message": "รักษากลุ่มแท็บ"
+  },
+  "contextMenuBackupTab": {
+    "message": "สำรองแท็บนี้"
+  },
+  "contextMenuBackupAll": {
+    "message": "สำรองแท็บทั้งหมด"
+  },
+  "allWindows": {
+    "message": "หน้าต่างทั้งหมด"
+  },
+  "windowLabel": {
+    "message": "หน้าต่าง"
+  },
+  "pinnedTab": {
+    "message": "ปักหมุด"
+  },
+  "backupNotePlaceholder": {
+    "message": "เพิ่มบันทึก..."
+  },
+  "domainFilterPlaceholder": {
+    "message": "กรองตามโดเมน..."
+  },
+  "clearFilter": {
+    "message": "ล้าง"
+  },
+  "restoreSelected": {
+    "message": "กู้คืนที่เลือก"
+  },
+  "previewHint": {
+    "message": "ดับเบิลคลิกเพื่อดูตัวอย่าง"
+  },
+  "searchPlaceholder": {
+    "message": "ค้นหาข้อมูลสำรอง..."
+  },
+  "compareTitle": {
+    "message": "เปรียบเทียบข้อมูลสำรอง"
+  },
+  "compareSelect1": {
+    "message": "สำรอง A"
+  },
+  "compareSelect2": {
+    "message": "สำรอง B"
+  },
+  "compareBtn": {
+    "message": "เปรียบเทียบ"
+  },
+  "added": {
+    "message": "เพิ่มแล้ว"
+  },
+  "removed": {
+    "message": "ลบแล้ว"
+  },
+  "common": {
+    "message": "ร่วม"
+  },
+  "toolsTab": {
+    "message": "เครื่องมือ"
+  },
+  "exportImportTitle": {
+    "message": "ส่งออก / นำเข้า"
+  },
+  "exportJson": {
+    "message": "ส่งออก JSON"
+  },
+  "exportCsv": {
+    "message": "ส่งออก CSV"
+  },
+  "importLabel": {
+    "message": "นำเข้าจากไฟล์:"
+  },
+  "importBtn": {
+    "message": "นำเข้า"
+  },
+  "importSuccess": {
+    "message": "นำเข้า $count$ แท็บ",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "importFailed": {
+    "message": "นำเข้าล้มเหลว"
+  },
+  "statsTitle": {
+    "message": "สถิติ"
+  },
+  "totalBackups": {
+    "message": "สำรองทั้งหมด"
+  },
+  "totalTabs": {
+    "message": "แท็บที่สำรองทั้งหมด"
+  },
+  "topDomains": {
+    "message": "โดเมนยอดนิยม"
+  },
+  "noStats": {
+    "message": "ยังไม่มีสถิติ"
+  },
+  "smartTriggersTitle": {
+    "message": "ทริกเกอร์อัจฉริยะ"
+  },
+  "tabThreshold": {
+    "message": "ขีดจำกัดแท็บ"
+  },
+  "reminderLabel": {
+    "message": "การแจ้งเตือน"
+  },
+  "noBackupSelected": {
+    "message": "ไม่ได้เลือกข้อมูลสำรอง"
+  },
+  "exportSelectBackup": {
+    "message": "เลือกข้อมูลสำรองเพื่อส่งออก"
+  },
+  "exportSelectFolder": {
+    "message": "เลือกโฟลเดอร์สำรองข้อมูลก่อน"
+  },
+  "exportComplete": {
+    "message": "ส่งออกเสร็จสมบูรณ์!"
+  },
+  "exportFailedMsg": {
+    "message": "ส่งออกล้มเหลว"
+  },
+  "importSelectFolder": {
+    "message": "เลือกโฟลเดอร์ก่อน"
+  },
+  "importSelectFile": {
+    "message": "เลือกไฟล์ที่จะนำเข้า"
+  },
+  "noTabsRestore": {
+    "message": "ไม่มีแท็บที่เลือกสำหรับกู้คืน"
+  },
+  "compareAdded": {
+    "message": "เพิ่มแล้ว (ใน B ไม่ใช่ใน A)"
+  },
+  "compareRemoved": {
+    "message": "ลบแล้ว (ใน A ไม่ใช่ใน B)"
+  },
+  "compareCommonLabel": {
+    "message": "ร่วม"
+  },
+  "lastUpdated": {
+    "message": "อัปเดตล่าสุด"
+  },
+  "noBookmarksPreview": {
+    "message": "ไม่พบบุ๊คมาร์ก"
+  },
+  "backupCountLabel": {
+    "message": "บุ๊คมาร์ก:"
+  },
+  "selectTwoBackups": {
+    "message": "เลือกข้อมูลสำรองสองรายการเพื่อเปรียบเทียบ"
+  },
+  "selectDiffBackups": {
+    "message": "เลือกข้อมูลสำรองสองรายการที่แตกต่างกัน"
+  },
+  "noOpenTabs": {
+    "message": "ไม่มีแท็บที่เปิดอยู่"
+  },
+  "duplicateGroupTooltip": {
+    "message": "แท็บที่มี URL เดียวกัน"
+  },
+  "loadingPreview": {
+    "message": "กำลังโหลด..."
+  },
+  "unknownError": {
+    "message": "Unknown error"
+  }
 }
