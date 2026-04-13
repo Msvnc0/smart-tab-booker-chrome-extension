@@ -35,7 +35,13 @@ const CONSTANTS = {
         DAYS: 'days',
         MINUTES: 'minutes'
     },
-    MAX_BACKUP_TIMES: 5
+    MAX_BACKUP_TIMES: 5,
+    // Timeouts
+    BADGE_CLEAR_TIMEOUT: 2500,
+    THRESHOLD_DEBOUNCE_MS: 5000,
+    ONE_HOUR_MS: 3600000,
+    // Limits
+    MAX_TOP_DOMAINS: 10
 };
 
 console.log('Background service worker loaded');
@@ -213,7 +219,7 @@ async function performQuickBackup() {
 function showBadge(text, color) {
     chrome.action.setBadgeText({ text });
     chrome.action.setBadgeBackgroundColor({ color });
-    setTimeout(() => chrome.action.setBadgeText({ text: '' }), 2500);
+    setTimeout(() => chrome.action.setBadgeText({ text: '' }), CONSTANTS.BADGE_CLEAR_TIMEOUT);
 }
 
 // --- Alarm Management ---
@@ -401,7 +407,9 @@ async function performBackup(parentId, explicitTabs, note = '') {
         } catch (saveErr) {
             try {
                 await chrome.bookmarks.removeTree(backupFolder.id);
-            } catch (_) {}
+            } catch (err) {
+                console.error('Failed to remove backup folder after error:', err);
+            }
             throw saveErr;
         }
 
@@ -583,7 +591,7 @@ async function restoreFromBookmarks(folderId, options = {}) {
     } catch (err) {
         console.error('Restore failed:', err);
         if (window) {
-            try { await chrome.windows.remove(window.id); } catch (_) {}
+            try { await chrome.windows.remove(window.id); } catch (err) { console.error('Failed to remove window:', err); }
         }
         return { success: false, error: err.message };
     }
@@ -596,7 +604,7 @@ async function restoreTabsFlat(windowId, bookmarks) {
             const parsed = parseBookmarkTitle(bm.title);
             await chrome.tabs.create({ windowId, url: bm.url, pinned: parsed.pinned });
             opened++;
-        } catch (e) {
+        } catch (err) {
             console.warn('Failed to create tab:', bm.url, e);
         }
     }
@@ -624,7 +632,7 @@ async function restoreTabsWithGroups(windowId, bookmarks) {
                     const tab = await chrome.tabs.create({ windowId, url: bm.url, pinned: parsed.pinned });
                     tabIds.push(tab.id);
                     tabsOpened++;
-                } catch (e) {
+                } catch (err) {
                     console.warn('Failed to create tab:', bm.url, e);
                 }
             }
@@ -640,11 +648,11 @@ async function restoreTabsWithGroups(windowId, bookmarks) {
                     }
                     await chrome.tabGroups.update(groupId, updateOpts);
                     groupsCreated++;
-                } catch (e) {
+                } catch (err) {
                     console.warn('Failed to create tab group:', e);
                 }
             }
-        } catch (e) {
+        } catch (err) {
             console.warn('Failed to process folder:', folder.title, e);
         }
     }
@@ -662,7 +670,7 @@ let thresholdDebounce = null;
 
 async function checkTabThreshold() {
     if (thresholdDebounce) return;
-    thresholdDebounce = setTimeout(() => { thresholdDebounce = null; }, 5000);
+    thresholdDebounce = setTimeout(() => { thresholdDebounce = null; }, CONSTANTS.THRESHOLD_DEBOUNCE_MS);
 
     const settings = await chrome.storage.local.get([
         CONSTANTS.STORAGE.TAB_THRESHOLD_ENABLED,
@@ -679,7 +687,7 @@ async function checkTabThreshold() {
 
     if (validTabs.length >= threshold) {
         const lastBackup = settings[CONSTANTS.STORAGE.LAST_BACKUP_TIME] || 0;
-        const oneHourAgo = Date.now() - 3600000;
+        const oneHourAgo = Date.now() - CONSTANTS.ONE_HOUR_MS;
         if (lastBackup < oneHourAgo) {
             const folderId = settings[CONSTANTS.STORAGE.BACKUP_FOLDER_ID];
             if (folderId) {
@@ -729,7 +737,7 @@ async function restoreTabsList(tabs) {
             try {
                 await chrome.tabs.create({ windowId: window.id, url: tab.url, pinned: tab.pinned || false });
                 tabsOpened++;
-            } catch (e) {
+            } catch (err) {
                 console.warn('Failed to restore tab:', tab.url, e);
             }
         }
@@ -743,7 +751,7 @@ async function restoreTabsList(tabs) {
         return { success: true, tabsOpened };
     } catch (err) {
         if (window) {
-            try { await chrome.windows.remove(window.id); } catch (_) {}
+            try { await chrome.windows.remove(window.id); } catch (err) { console.error('Failed to remove window:', err); }
         }
         return { success: false, error: err.message };
     }
@@ -804,7 +812,7 @@ async function importBackupFromFile(jsonData, folderId) {
     let data;
     try {
         data = JSON.parse(jsonData);
-    } catch (e) {
+    } catch (err) {
         throw new Error('Invalid JSON data');
     }
 
@@ -839,7 +847,9 @@ async function importBackupFromFile(jsonData, folderId) {
     if (grouped.size === 0 && ungrouped.length === 0) {
         try {
             await chrome.bookmarks.removeTree(importFolder.id);
-        } catch (_) {}
+        } catch (err) {
+            console.error('Failed to remove import folder:', err);
+        }
         throw new Error('No valid URLs found in import data');
     }
 
@@ -892,13 +902,15 @@ async function updateBackupStats(parentId) {
                 try {
                     const hostname = new URL(item.url).hostname;
                     domainMap[hostname] = (domainMap[hostname] || 0) + 1;
-                } catch (e) {}
+                } catch (err) {
+                    console.warn('Failed to parse URL hostname:', err);
+                }
             }
         }
 
         const topDomains = Object.entries(domainMap)
             .sort((a, b) => b[1] - a[1])
-            .slice(0, 10)
+            .slice(0, CONSTANTS.MAX_TOP_DOMAINS)
             .map(([domain, count]) => ({ domain, count }));
 
         const stats = {
