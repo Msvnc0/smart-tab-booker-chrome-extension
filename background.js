@@ -605,7 +605,7 @@ async function restoreTabsFlat(windowId, bookmarks) {
             await chrome.tabs.create({ windowId, url: bm.url, pinned: parsed.pinned });
             opened++;
         } catch (err) {
-            console.warn('Failed to create tab:', bm.url, e);
+            console.warn('Failed to create tab:', bm.url, err);
         }
     }
     return opened;
@@ -633,7 +633,7 @@ async function restoreTabsWithGroups(windowId, bookmarks) {
                     tabIds.push(tab.id);
                     tabsOpened++;
                 } catch (err) {
-                    console.warn('Failed to create tab:', bm.url, e);
+                    console.warn('Failed to create tab:', bm.url, err);
                 }
             }
 
@@ -649,11 +649,11 @@ async function restoreTabsWithGroups(windowId, bookmarks) {
                     await chrome.tabGroups.update(groupId, updateOpts);
                     groupsCreated++;
                 } catch (err) {
-                    console.warn('Failed to create tab group:', e);
+                    console.warn('Failed to create tab group:', err);
                 }
             }
         } catch (err) {
-            console.warn('Failed to process folder:', folder.title, e);
+            console.warn('Failed to process folder:', folder.title, err);
         }
     }
 
@@ -738,7 +738,7 @@ async function restoreTabsList(tabs) {
                 await chrome.tabs.create({ windowId: window.id, url: tab.url, pinned: tab.pinned || false });
                 tabsOpened++;
             } catch (err) {
-                console.warn('Failed to restore tab:', tab.url, e);
+                console.warn('Failed to restore tab:', tab.url, err);
             }
         }
 
