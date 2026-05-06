@@ -390,18 +390,13 @@ const BookmarkManager = {
             const select = DOM.get(CONSTANTS.SELECTORS.FOLDER_SELECT);
             const defaultText = Localization.get("selectDefault");
             select.innerHTML = `<option value="" disabled selected>${defaultText}</option>`;
-            this.processNodes(nodes, 0, savedId);
+            BookmarkTreeHelper.populateFolderSelect(select, nodes, 0, savedId);
         });
 
         DOM.get(CONSTANTS.SELECTORS.FOLDER_SELECT).addEventListener('change', (e) => {
             SettingsManager.save({ [CONSTANTS.STORAGE.BACKUP_FOLDER_ID]: e.target.value })
                 .then(() => UI.showStatus(Localization.get("folderSaved"), 'success'));
         });
-    },
-
-    processNodes(nodes, depth, savedId) {
-        const select = DOM.get(CONSTANTS.SELECTORS.FOLDER_SELECT);
-        BookmarkTreeHelper.populateFolderSelect(select, nodes, depth, savedId);
     }
 };
 
@@ -460,16 +455,12 @@ const RestoreManager = {
             const select = DOM.get(CONSTANTS.SELECTORS.RESTORE_FOLDER_SELECT);
             const defaultText = Localization.get("selectBackupFolder");
             select.innerHTML = `<option value="" disabled selected>${defaultText}</option>`;
-            this.processFolderNodes(nodes, 0, savedFolderId, select);
+            BookmarkTreeHelper.populateFolderSelect(select, nodes, 0, savedFolderId);
 
             if (savedFolderId) {
                 this.loadBackups(savedFolderId);
             }
         });
-    },
-
-    processFolderNodes(nodes, depth, savedId, select) {
-        BookmarkTreeHelper.populateFolderSelect(select, nodes, depth, savedId);
     },
 
     setupEventListeners() {
@@ -545,11 +536,11 @@ const RestoreManager = {
     },
 
     async renderBackups(container, backups) {
-        for (const backup of backups) {
-            const count = await this.countBookmarks(backup.id);
-            const item = this.createBackupItem(backup, count);
+        const counts = await Promise.all(backups.map(b => this.countBookmarks(b.id)));
+        backups.forEach((backup, i) => {
+            const item = this.createBackupItem(backup, counts[i]);
             container.appendChild(item);
-        }
+        });
     },
 
     countBookmarks(folderId) {
@@ -1050,16 +1041,12 @@ const ToolsManager = {
             const select = DOM.get(CONSTANTS.SELECTORS.TOOLS_FOLDER_SELECT);
             const defaultText = Localization.get("selectBackupFolder") || 'Select Backup Folder';
             select.innerHTML = `<option value="" disabled selected>${defaultText}</option>`;
-            this.processNodes(nodes, 0, savedFolderId, select);
+            BookmarkTreeHelper.populateFolderSelect(select, nodes, 0, savedFolderId);
 
             if (savedFolderId) {
                 this.loadBackups(savedFolderId);
             }
         });
-    },
-
-    processNodes(nodes, depth, savedId, select) {
-        BookmarkTreeHelper.populateFolderSelect(select, nodes, depth, savedId);
     },
 
     loadBackups(folderId) {
