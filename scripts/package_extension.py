@@ -4,11 +4,12 @@ import os
 def package_extension():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     project_dir = os.path.dirname(script_dir)
-    output_zip = os.path.join(project_dir, 'smart-tab-booker-v1.4.zip')
+    output_zip = os.path.join(project_dir, 'smart-tab-booker-v1.5.zip')
 
     exclude_dirs = {'.git', '__pycache__', 'scripts', 'docs'}
     exclude_files = {'.gitignore', '.DS_Store', 'CHANGELOG.md', 'README.md',
-                     'STORE_LISTING.md', 'validate_keys.js', 'package_extension.py'}
+                     'STORE_LISTING.md', 'validate_keys.js', 'package_extension.py',
+                     'AGENTS.md'}
     exclude_patterns = ['smart-tab-booker-v']
 
     with zipfile.ZipFile(output_zip, 'w', zipfile.ZIP_DEFLATED) as zipf:

@@ -468,6 +468,73 @@ hr {
     border-bottom-color: var(--border-color);
 }
 
+.restore-preview-loading {
+    font-size: 12px;
+    color: #888;
+}
+
+.restore-preview-header {
+    font-size: 12px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.restore-preview-label {
+    font-size: 11px;
+    margin-left: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    max-width: 280px;
+}
+
+.compare-result-error {
+    color: red;
+}
+
+.compare-section-heading {
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.compare-section-list {
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.compare-section-item {
+    font-size: 11px;
+    padding: 2px 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dark-mode .compare-result-error {
+    color: #f44336;
+}
+
+.stats-detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+    font-size: 11px;
+    color: #666;
+}
+
+.stats-domain-header {
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.dark-mode .stats-detail-row {
+    color: #999;
+}
+
 /* === RTL Support === */
 html[dir="rtl"] {
     direction: rtl;

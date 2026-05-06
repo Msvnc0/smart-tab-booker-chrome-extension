@@ -613,7 +613,7 @@ const RestoreManager = {
 
         preview.classList.remove('hidden');
         preview.dataset.backupId = backupId;
-        preview.innerHTML = `<div style="font-size:12px;color:#888;">${Localization.get("loadingPreview")}</div>`;
+        preview.innerHTML = `<div class="restore-preview-loading">${Localization.get("loadingPreview")}</div>`;
 
         this.loadBackupPreview(backupId, preview);
     },
@@ -654,12 +654,12 @@ const RestoreManager = {
 
             processChildren(children, (allItems) => {
                 if (allItems.length === 0) {
-                    container.innerHTML = `<div style="font-size:12px;color:#888;">${Localization.get("noBookmarksPreview")}</div>`;
+                    container.innerHTML = `<div class="restore-preview-loading">${Localization.get("noBookmarksPreview")}</div>`;
                     return;
                 }
 
                 const header = DOM.create('div');
-                header.style.cssText = 'font-size:12px;margin-bottom:6px;font-weight:bold;';
+                header.className = 'restore-preview-header';
                 header.textContent = `${allItems.length} ${Localization.get("backupCountLabel")}`;
                 container.appendChild(header);
 
@@ -678,7 +678,7 @@ const RestoreManager = {
                     const span = DOM.create('span');
                     span.textContent = (item.pinned ? '\uD83D\uDCCC ' : '') + (item.title || item.url);
                     span.title = item.url;
-                    span.style.cssText = 'font-size:11px;margin-left:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;max-width:280px;';
+                    span.className = 'restore-preview-label';
 
                     row.append(cb, span);
                     container.appendChild(row);
@@ -726,13 +726,13 @@ const RestoreManager = {
 
         if (!id1 || !id2) {
             const result = DOM.get(CONSTANTS.SELECTORS.COMPARE_RESULT);
-            result.innerHTML = `<div style="color:red;">${Localization.get("selectTwoBackups")}</div>`;
+            result.innerHTML = `<div class="compare-result-error">${Localization.get("selectTwoBackups")}</div>`;
             return;
         }
 
         if (id1 === id2) {
             const result = DOM.get(CONSTANTS.SELECTORS.COMPARE_RESULT);
-            result.innerHTML = `<div style="color:red;">${Localization.get("selectDiffBackups")}</div>`;
+            result.innerHTML = `<div class="compare-result-error">${Localization.get("selectDiffBackups")}</div>`;
             return;
         }
 
@@ -755,15 +755,16 @@ const RestoreManager = {
                 section.style.marginBottom = '8px';
 
                 const heading = DOM.create('div');
-                heading.style.cssText = `font-weight:bold;color:${color};font-size:12px;margin-bottom:4px;`;
+                heading.className = 'compare-section-heading';
+                heading.style.color = color;
                 heading.textContent = `${title} (${items.length})`;
                 section.appendChild(heading);
 
                 const list = DOM.create('div');
-                list.style.cssText = 'max-height:100px;overflow-y:auto;';
+                list.className = 'compare-section-list';
                 items.forEach(url => {
                     const row = DOM.create('div');
-                    row.style.cssText = 'font-size:11px;padding:2px 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
+                    row.className = 'compare-section-item';
                     row.textContent = url;
                     row.title = url;
                     list.appendChild(row);
@@ -1542,14 +1543,14 @@ const UI = {
             const addRow = (label, value) => {
                 const row = DOM.create('div');
                 row.className = 'stat-row';
-                row.style.cssText = 'display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--input-border, #ddd);font-size:12px;';
 
                 const labelEl = DOM.create('span');
                 labelEl.textContent = label;
-                labelEl.style.fontWeight = 'bold';
+                labelEl.className = 'stat-label';
 
                 const valueEl = DOM.create('span');
                 valueEl.textContent = value;
+                valueEl.className = 'stat-value';
 
                 row.append(labelEl, valueEl);
                 container.appendChild(row);
@@ -1564,14 +1565,13 @@ const UI = {
 
             if (stats.topDomains && stats.topDomains.length > 0) {
                 const domainHeader = DOM.create('div');
-                domainHeader.style.cssText = 'font-weight:bold;font-size:12px;margin-top:8px;margin-bottom:4px;';
+                domainHeader.className = 'stats-domain-header';
                 domainHeader.textContent = Localization.get("topDomains") + ':';
                 container.appendChild(domainHeader);
 
                 stats.topDomains.forEach(d => {
                     const row = DOM.create('div');
-                    row.className = 'stat-row';
-                    row.style.cssText = 'display:flex;justify-content:space-between;padding:2px 0;font-size:11px;color:#666;';
+                    row.className = 'stats-detail-row';
 
                     const labelEl = DOM.create('span');
                     labelEl.textContent = d.domain;
