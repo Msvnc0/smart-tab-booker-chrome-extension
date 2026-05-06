@@ -35,7 +35,6 @@ const CONSTANTS = {
         DAYS: 'days',
         MINUTES: 'minutes'
     },
-    MAX_BACKUP_TIMES: 5,
     // Timeouts
     BADGE_CLEAR_TIMEOUT: 2500,
     THRESHOLD_DEBOUNCE_MS: 5000,
@@ -435,7 +434,7 @@ function filterDuplicateTabs(tabs) {
 function generateBackupFolderName(note = '') {
     const now = new Date();
     const dateStr = now.toISOString().split('T')[0];
-    const timeStr = `${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}`;
+    const timeStr = `${String(now.getUTCHours()).padStart(2, '0')}-${String(now.getUTCMinutes()).padStart(2, '0')}`;
     let name = `Backup_${dateStr}_${timeStr}`;
     if (note) {
         name += ` (${note})`;
@@ -509,7 +508,7 @@ async function cleanupOldBackups(parentId) {
     }
 
     const cleanupDays = settings[CONSTANTS.STORAGE.AUTO_CLEANUP_DAYS] || 30;
-    const cutoffDate = new Date(Date.now() - cleanupDays * 24 * 60 * 60 * 1000);
+    const cutoffDate = Date.now() - cleanupDays * 24 * 60 * 60 * 1000;
 
     const children = await chrome.bookmarks.getChildren(parentId);
 
@@ -591,7 +590,7 @@ async function restoreFromBookmarks(folderId, options = {}) {
     } catch (err) {
         console.error('Restore failed:', err);
         if (window) {
-            try { await chrome.windows.remove(window.id); } catch (err) { console.error('Failed to remove window:', err); }
+            try { await chrome.windows.remove(window.id); } catch (removeErr) { console.error('Failed to remove window:', removeErr); }
         }
         return { success: false, error: err.message };
     }
@@ -751,7 +750,7 @@ async function restoreTabsList(tabs) {
         return { success: true, tabsOpened };
     } catch (err) {
         if (window) {
-            try { await chrome.windows.remove(window.id); } catch (err) { console.error('Failed to remove window:', err); }
+            try { await chrome.windows.remove(window.id); } catch (removeErr) { console.error('Failed to remove window:', removeErr); }
         }
         return { success: false, error: err.message };
     }
@@ -822,7 +821,7 @@ async function importBackupFromFile(jsonData, folderId) {
 
     const now = new Date();
     const dateStr = now.toISOString().split('T')[0];
-    const timeStr = `${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}`;
+    const timeStr = `${String(now.getUTCHours()).padStart(2, '0')}-${String(now.getUTCMinutes()).padStart(2, '0')}`;
     const importFolder = await chrome.bookmarks.create({
         parentId: folderId,
         title: `Backup_${dateStr}_${timeStr} (Imported)`
