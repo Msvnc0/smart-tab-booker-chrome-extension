@@ -1,250 +1,336 @@
-{
-    "extName": {
-        "message": "Smart Tab Booker"
-    },
-    "extDesc": {
-        "message": "Açık sekmeleri otomatik veya manuel olarak yer imlerine yedekleyin."
-    },
-    "selectStart": {
-        "message": "Klasörler yükleniyor..."
-    },
-    "selectDefault": {
-        "message": "Bir klasör seçin..."
-    },
-    "backupBtn": {
-        "message": "Şimdi Yedekle"
-    },
-    "backupBtnProgress": {
-        "message": "Yedekleniyor..."
-    },
-    "autoBackupTitle": {
-        "message": "Otomatik Yedekleme Ayarları"
-    },
-    "intervalLabel": {
-        "message": "Aralık:"
-    },
-    "daily": {
-        "message": "Günlük"
-    },
-    "weekly": {
-        "message": "Haftalık"
-    },
-    "monthly": {
-        "message": "Aylık"
-    },
-    "enableAutoBackup": {
-        "message": "Otomatik Yedeklemeyi Etkinleştir"
-    },
-    "darkMode": {
-        "message": "Karanlık Mod"
-    },
-    "custom": {
-        "message": "Özel"
-    },
-    "backupTimeLabel": {
-        "message": "Yedekleme Saati (24s):"
-    },
-    "saveSettingsBtn": {
-        "message": "Ayarları Kaydet"
-    },
-    "saved": {
-        "message": "Kaydedildi!"
-    },
-    "lastBackupLabel": {
-        "message": "Son Yedekleme:"
-    },
-    "never": {
-        "message": "Hiç"
-    },
-    "folderSaved": {
-        "message": "Klasör kaydedildi!"
-    },
-    "selectFolderErr": {
-        "message": "Lütfen önce bir klasör seçin."
-    },
-    "backupSuccess": {
-        "message": "Yedekleme tamamlandı!"
-    },
-    "backupInProgress": {
-        "message": "Yedekleme zaten devam ediyor"
-    },
-    "backupFailed": {
-        "message": "Yedekleme başarısız: "
-    },
-    "invalidValue": {
-        "message": "Geçersiz değer."
-    },
-    "invalidTime": {
-        "message": "Geçersiz saat."
-    },
-    "selectAll": {
-        "message": "Tümünü Seç"
-    },
-    "deselectAll": {
-        "message": "Seçimi Kaldır"
-    },
-    "tabCounter": {
-        "message": "Seçilen: $SELECTED$ / $TOTAL$",
-        "placeholders": {
-            "selected": {
-                "content": "$1"
-            },
-            "total": {
-                "content": "$2"
-            }
-        }
-    },
-    "bookmarksBar": {
-        "message": "Yer İmleri Çubuğu"
-    },
-    "otherBookmarks": {
-        "message": "Diğer Yer İmleri"
-    },
-    "minutes": {
-        "message": "Dakika"
-    },
-    "hours": {
-        "message": "Saat"
-    },
-    "days": {
-        "message": "Gün"
-    },
-    "selectFolderLabel": {
-        "message": "Yedekleme Klasörünü Seç:"
-    },
-    "selectTabsLabel": {
-        "message": "Yedeklenecek Sekmeleri Seç:"
-    },
-    "noTabsSelected": {
-        "message": "Sekme seçilmedi!"
-    },
-    "preserveGroups": {
-        "message": "Sekme Gruplarını Klasör Olarak Koru"
-    },
-    "autoCleanup": {
-        "message": "Eski Yedekleri Otomatik Temizle"
-    },
-    "cleanupDaysLabel": {
-        "message": "Şu kadar günden eski yedekleri sil:"
-    },
-    "daysLabel": {
-        "message": "gün"
-    },
-    "addTimeBtn": {
-        "message": "+ Zaman Ekle"
-    },
-    "multiTimeLabel": {
-        "message": "Yedekleme Zamanları (maks 5):"
-    },
-    "quickBackupDesc": {
-        "message": "Tüm sekmeleri hızlı yedekle"
-    },
-    "shortcutLabel": {
-        "message": "Klavye Kısayolu:"
-    },
-    "changeShortcut": {
-        "message": "Değiştir"
-    },
-    "duplicateWarning": {
-        "message": "kopya"
-    },
-    "includeDuplicates": {
-        "message": "Kopya URL'leri de Yedekle"
-    },
-    "backupTab": {
-        "message": "Yedekle"
-    },
-    "restoreTab": {
-        "message": "Geri Yükle"
-    },
-    "selectBackupFolder": {
-        "message": "Yedek Klasörü Seç:"
-    },
-    "selectBackupDefault": {
-        "message": "-- Yedek seçin --"
-    },
-    "restoreAll": {
-        "message": "Tümünü Aç"
-    },
-    "noBackupsFound": {
-        "message": "Bu klasörde yedek bulunamadı"
-    },
-    "restoreSuccess": {
-        "message": "$1 sekme açıldı"
-    },
-    "restoreFailed": {
-        "message": "Geri yükleme başarısız"
-    },
-    "tabsCount": {
-        "message": "sekme"
-    },
-    "restoring": {
-        "message": "Yükleniyor..."
-    },
-    "selectFolderFirst": {
-        "message": "Yedekleri görmek için klasör seçin"
-    },
-    "manyTabsWarning": {
-        "message": "$1 sekme açılacak. Devam edilsin mi?"
-    },
-    "folderDeleted": {
-        "message": "Seçili klasör silinmiş"
-    },
-    "restorePreserveGroups": {
-        "message": "Sekme Gruplarını Koru"
-    },
-    "contextMenuBackupTab": { "message": "Bu sekmeyi yedekle" },
-    "contextMenuBackupAll": { "message": "Tüm sekmeleri yedekle" },
-    "allWindows": { "message": "Tüm Pencereler" },
-    "windowLabel": { "message": "Pencere" },
-    "pinnedTab": { "message": "Sabitlenmiş" },
-    "backupNotePlaceholder": { "message": "Bu yedekleme için not ekleyin..." },
-    "domainFilterPlaceholder": { "message": "Domain ile filtrele..." },
-    "clearFilter": { "message": "Temizle" },
-    "restoreSelected": { "message": "Seçilenleri Geri Yükle" },
-    "previewHint": { "message": "Önizleme için çift tıklayın" },
-    "searchPlaceholder": { "message": "Yedekleri ara..." },
-    "compareTitle": { "message": "Yedekleri Karşılaştır" },
-    "compareSelect1": { "message": "Yedek A" },
-    "compareSelect2": { "message": "Yedek B" },
-    "compareBtn": { "message": "Karşılaştır" },
-    "added": { "message": "Eklendi" },
-    "removed": { "message": "Kaldırıldı" },
-    "common": { "message": "Ortak" },
-    "toolsTab": { "message": "Araçlar" },
-    "exportImportTitle": { "message": "Dışa / İçe Aktar" },
-    "exportJson": { "message": "JSON Olarak Aktar" },
-    "exportCsv": { "message": "CSV Olarak Aktar" },
-    "importLabel": { "message": "Dosyadan içe aktar:" },
-    "importBtn": { "message": "İçe Aktar" },
-    "importSuccess": { "message": "$count$ sekme içe aktarıldı", "placeholders": { "count": { "content": "$1" } } },
-    "importFailed": { "message": "İçe aktarma başarısız" },
-    "statsTitle": { "message": "Yedek İstatistikleri" },
-    "totalBackups": { "message": "Toplam Yedek" },
-    "totalTabs": { "message": "Yedeklenen Toplam Sekme" },
-    "topDomains": { "message": "En Çok Yedeklenen Domainler" },
-    "noStats": { "message": "Henüz istatistik yok" },
-    "smartTriggersTitle": { "message": "Akıllı Tetikleyiciler" },
-    "tabThreshold": { "message": "Sekme Eşiği" },
-    "reminderLabel": { "message": "Hatırlatma" },
-    "noBackupSelected": { "message": "Yedek seçilmedi" },
-    "exportSelectBackup": { "message": "Dışa aktarmak için yedek seçin" },
-    "exportSelectFolder": { "message": "Önce bir yedek klasörü seçin." },
-    "exportComplete": { "message": "Dışa aktarma tamamlandı!" },
-    "exportFailedMsg": { "message": "Dışa aktarma başarısız" },
-    "importSelectFolder": { "message": "Önce bir klasör seçin." },
-    "importSelectFile": { "message": "İçe aktarılacak dosyayı seçin." },
-    "noTabsRestore": { "message": "Geri yüklenecek sekme seçilmedi." },
-    "compareAdded": { "message": "Eklenen (B'de, A'da yok)" },
-    "compareRemoved": { "message": "Kaldırılan (A'da, B'de yok)" },
-    "compareCommonLabel": { "message": "Ortak" },
-    "lastUpdated": { "message": "Son Güncelleme" },
-    "noBookmarksPreview": { "message": "Yer imi bulunamadı." },
-    "backupCountLabel": { "message": "yer imi:" },
-    "selectTwoBackups": { "message": "Karşılaştırmak için iki yedek seçin." },
-    "selectDiffBackups": { "message": "İki farklı yedek seçin." },
-    "noOpenTabs": { "message": "Açık sekme yok." },
-    "duplicateGroupTooltip": { "message": "aynı URL'ye sahip sekme" },
-    "loadingPreview": { "message": "Yükleniyor..." },
-    "unknownError": { "message": "Bilinmeyen hata" }
+﻿{
+    "extName":  {
+                    "message":  "Smart Tab Booker"
+                },
+    "extDesc":  {
+                    "message":  "Açık sekmeleri otomatik veya manuel olarak yer imlerine yedekleyin."
+                },
+    "selectStart":  {
+                        "message":  "Klasörler yükleniyor..."
+                    },
+    "selectDefault":  {
+                          "message":  "Bir klasör seçin..."
+                      },
+    "backupBtn":  {
+                      "message":  "Şimdi Yedekle"
+                  },
+    "backupBtnProgress":  {
+                              "message":  "Yedekleniyor..."
+                          },
+    "autoBackupTitle":  {
+                            "message":  "Otomatik Yedekleme Ayarları"
+                        },
+    "intervalLabel":  {
+                          "message":  "Aralık:"
+                      },
+    "daily":  {
+                  "message":  "Günlük"
+              },
+    "weekly":  {
+                   "message":  "Haftalık"
+               },
+    "monthly":  {
+                    "message":  "Aylık"
+                },
+    "enableAutoBackup":  {
+                             "message":  "Otomatik Yedeklemeyi Etkinleştir"
+                         },
+    "darkMode":  {
+                     "message":  "Karanlık Mod"
+                 },
+    "custom":  {
+                   "message":  "Özel"
+               },
+    "saveSettingsBtn":  {
+                            "message":  "Ayarları Kaydet"
+                        },
+    "saved":  {
+                  "message":  "Kaydedildi!"
+              },
+    "lastBackupLabel":  {
+                            "message":  "Son Yedekleme:"
+                        },
+    "never":  {
+                  "message":  "Hiç"
+              },
+    "folderSaved":  {
+                        "message":  "Klasör kaydedildi!"
+                    },
+    "selectFolderErr":  {
+                            "message":  "Lütfen önce bir klasör seçin."
+                        },
+    "backupSuccess":  {
+                          "message":  "Yedekleme tamamlandı!"
+                      },
+    "backupInProgress":  {
+                             "message":  "Yedekleme zaten devam ediyor"
+                         },
+    "backupFailed":  {
+                         "message":  "Yedekleme başarısız: "
+                     },
+    "invalidValue":  {
+                         "message":  "Geçersiz değer."
+                     },
+    "selectAll":  {
+                      "message":  "Tümünü Seç"
+                  },
+    "deselectAll":  {
+                        "message":  "Seçimi Kaldır"
+                    },
+    "tabCounter":  {
+                       "message":  "Seçilen: $SELECTED$ / $TOTAL$",
+                       "placeholders":  {
+                                            "selected":  {
+                                                             "content":  "$1"
+                                                         },
+                                            "total":  {
+                                                          "content":  "$2"
+                                                      }
+                                        }
+                   },
+    "bookmarksBar":  {
+                         "message":  "Yer İmleri Çubuğu"
+                     },
+    "otherBookmarks":  {
+                           "message":  "Diğer Yer İmleri"
+                       },
+    "minutes":  {
+                    "message":  "Dakika"
+                },
+    "hours":  {
+                  "message":  "Saat"
+              },
+    "days":  {
+                 "message":  "Gün"
+             },
+    "selectFolderLabel":  {
+                              "message":  "Yedekleme Klasörünü Seç:"
+                          },
+    "selectTabsLabel":  {
+                            "message":  "Yedeklenecek Sekmeleri Seç:"
+                        },
+    "noTabsSelected":  {
+                           "message":  "Sekme seçilmedi!"
+                       },
+    "preserveGroups":  {
+                           "message":  "Sekme Gruplarını Klasör Olarak Koru"
+                       },
+    "autoCleanup":  {
+                        "message":  "Eski Yedekleri Otomatik Temizle"
+                    },
+    "cleanupDaysLabel":  {
+                             "message":  "Şu kadar günden eski yedekleri sil:"
+                         },
+    "daysLabel":  {
+                      "message":  "gün"
+                  },
+    "addTimeBtn":  {
+                       "message":  "+ Zaman Ekle"
+                   },
+    "multiTimeLabel":  {
+                           "message":  "Yedekleme Zamanları (maks 5):"
+                       },
+    "quickBackupDesc":  {
+                            "message":  "Tüm sekmeleri hızlı yedekle"
+                        },
+    "shortcutLabel":  {
+                          "message":  "Klavye Kısayolu:"
+                      },
+    "changeShortcut":  {
+                           "message":  "Değiştir"
+                       },
+    "duplicateWarning":  {
+                             "message":  "kopya"
+                         },
+    "includeDuplicates":  {
+                              "message":  "Kopya URL\u0027leri de Yedekle"
+                          },
+    "backupTab":  {
+                      "message":  "Yedekle"
+                  },
+    "restoreTab":  {
+                       "message":  "Geri Yükle"
+                   },
+    "selectBackupFolder":  {
+                               "message":  "Yedek Klasörü Seç:"
+                           },
+    "selectBackupDefault":  {
+                                "message":  "-- Yedek seçin --"
+                            },
+    "restoreAll":  {
+                       "message":  "Tümünü Aç"
+                   },
+    "noBackupsFound":  {
+                           "message":  "Bu klasörde yedek bulunamadı"
+                       },
+    "restoreSuccess":  {
+                           "message":  "$1 sekme açıldı"
+                       },
+    "restoreFailed":  {
+                          "message":  "Geri yükleme başarısız"
+                      },
+    "tabsCount":  {
+                      "message":  "sekme"
+                  },
+    "restoring":  {
+                      "message":  "Yükleniyor..."
+                  },
+    "selectFolderFirst":  {
+                              "message":  "Yedekleri görmek için klasör seçin"
+                          },
+    "manyTabsWarning":  {
+                            "message":  "$1 sekme açılacak. Devam edilsin mi?"
+                        },
+    "folderDeleted":  {
+                          "message":  "Seçili klasör silinmiş"
+                      },
+    "restorePreserveGroups":  {
+                                  "message":  "Sekme Gruplarını Koru"
+                              },
+    "contextMenuBackupTab":  {
+                                 "message":  "Bu sekmeyi yedekle"
+                             },
+    "contextMenuBackupAll":  {
+                                 "message":  "Tüm sekmeleri yedekle"
+                             },
+    "allWindows":  {
+                       "message":  "Tüm Pencereler"
+                   },
+    "backupNotePlaceholder":  {
+                                  "message":  "Bu yedekleme için not ekleyin..."
+                              },
+    "domainFilterPlaceholder":  {
+                                    "message":  "Domain ile filtrele..."
+                                },
+    "clearFilter":  {
+                        "message":  "Temizle"
+                    },
+    "restoreSelected":  {
+                            "message":  "Seçilenleri Geri Yükle"
+                        },
+    "previewHint":  {
+                        "message":  "Önizleme için çift tıklayın"
+                    },
+    "searchPlaceholder":  {
+                              "message":  "Yedekleri ara..."
+                          },
+    "compareTitle":  {
+                         "message":  "Yedekleri Karşılaştır"
+                     },
+    "compareSelect1":  {
+                           "message":  "Yedek A"
+                       },
+    "compareSelect2":  {
+                           "message":  "Yedek B"
+                       },
+    "compareBtn":  {
+                       "message":  "Karşılaştır"
+                   },
+    "toolsTab":  {
+                     "message":  "Araçlar"
+                 },
+    "exportImportTitle":  {
+                              "message":  "Dışa / İçe Aktar"
+                          },
+    "exportJson":  {
+                       "message":  "JSON Olarak Aktar"
+                   },
+    "exportCsv":  {
+                      "message":  "CSV Olarak Aktar"
+                  },
+    "importLabel":  {
+                        "message":  "Dosyadan içe aktar:"
+                    },
+    "importBtn":  {
+                      "message":  "İçe Aktar"
+                  },
+    "importSuccess":  {
+                          "message":  "$count$ sekme içe aktarıldı",
+                          "placeholders":  {
+                                               "count":  {
+                                                             "content":  "$1"
+                                                         }
+                                           }
+                      },
+    "importFailed":  {
+                         "message":  "İçe aktarma başarısız"
+                     },
+    "statsTitle":  {
+                       "message":  "Yedek İstatistikleri"
+                   },
+    "totalBackups":  {
+                         "message":  "Toplam Yedek"
+                     },
+    "totalTabs":  {
+                      "message":  "Yedeklenen Toplam Sekme"
+                  },
+    "topDomains":  {
+                       "message":  "En Çok Yedeklenen Domainler"
+                   },
+    "noStats":  {
+                    "message":  "Henüz istatistik yok"
+                },
+    "smartTriggersTitle":  {
+                               "message":  "Akıllı Tetikleyiciler"
+                           },
+    "tabThreshold":  {
+                         "message":  "Sekme Eşiği"
+                     },
+    "reminderLabel":  {
+                          "message":  "Hatırlatma"
+                      },
+    "exportSelectBackup":  {
+                               "message":  "Dışa aktarmak için yedek seçin"
+                           },
+    "exportComplete":  {
+                           "message":  "Dışa aktarma tamamlandı!"
+                       },
+    "exportFailedMsg":  {
+                            "message":  "Dışa aktarma başarısız"
+                        },
+    "importSelectFolder":  {
+                               "message":  "Önce bir klasör seçin."
+                           },
+    "importSelectFile":  {
+                             "message":  "İçe aktarılacak dosyayı seçin."
+                         },
+    "noTabsRestore":  {
+                          "message":  "Geri yüklenecek sekme seçilmedi."
+                      },
+    "compareAdded":  {
+                         "message":  "Eklenen (B\u0027de, A\u0027da yok)"
+                     },
+    "compareRemoved":  {
+                           "message":  "Kaldırılan (A\u0027da, B\u0027de yok)"
+                       },
+    "compareCommonLabel":  {
+                               "message":  "Ortak"
+                           },
+    "lastUpdated":  {
+                        "message":  "Son Güncelleme"
+                    },
+    "noBookmarksPreview":  {
+                               "message":  "Yer imi bulunamadı."
+                           },
+    "backupCountLabel":  {
+                             "message":  "yer imi:"
+                         },
+    "selectTwoBackups":  {
+                             "message":  "Karşılaştırmak için iki yedek seçin."
+                         },
+    "selectDiffBackups":  {
+                              "message":  "İki farklı yedek seçin."
+                          },
+    "noOpenTabs":  {
+                       "message":  "Açık sekme yok."
+                   },
+    "duplicateGroupTooltip":  {
+                                  "message":  "aynı URL\u0027ye sahip sekme"
+                              },
+    "loadingPreview":  {
+                           "message":  "Yükleniyor..."
+                       },
+    "unknownError":  {
+                         "message":  "Bilinmeyen hata"
+                     }
 }

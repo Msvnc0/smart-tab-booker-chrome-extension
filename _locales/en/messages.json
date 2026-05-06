@@ -1,363 +1,336 @@
-{
-    "extName": {
-        "message": "Smart Tab Booker"
-    },
-    "extDesc": {
-        "message": "Backup open tabs to bookmarks automatically or manually."
-    },
-    "selectStart": {
-        "message": "Loading folders..."
-    },
-    "selectDefault": {
-        "message": "Select a folder..."
-    },
-    "backupBtn": {
-        "message": "Backup Now"
-    },
-    "backupBtnProgress": {
-        "message": "Backing up..."
-    },
-    "autoBackupTitle": {
-        "message": "Auto Backup Settings"
-    },
-    "intervalLabel": {
-        "message": "Interval:"
-    },
-    "daily": {
-        "message": "Daily"
-    },
-    "weekly": {
-        "message": "Weekly"
-    },
-    "monthly": {
-        "message": "Monthly"
-    },
-    "enableAutoBackup": {
-        "message": "Enable Auto Backup"
-    },
-    "darkMode": {
-        "message": "Dark Mode"
-    },
-    "custom": {
-        "message": "Custom"
-    },
-    "backupTimeLabel": {
-        "message": "Backup Time (24h):"
-    },
-    "saveSettingsBtn": {
-        "message": "Save Settings"
-    },
-    "saved": {
-        "message": "Saved!"
-    },
-    "lastBackupLabel": {
-        "message": "Last Backup:"
-    },
-    "never": {
-        "message": "Never"
-    },
-    "folderSaved": {
-        "message": "Folder saved!"
-    },
-    "selectFolderErr": {
-        "message": "Please select a folder first."
-    },
-    "backupSuccess": {
-        "message": "Backup completed!"
-    },
-    "backupInProgress": {
-        "message": "Backup already in progress"
-    },
-    "backupFailed": {
-        "message": "Backup failed: "
-    },
-    "invalidValue": {
-        "message": "Invalid value."
-    },
-    "invalidTime": {
-        "message": "Invalid time."
-    },
-    "selectAll": {
-        "message": "Select All"
-    },
-    "deselectAll": {
-        "message": "Deselect All"
-    },
-    "tabCounter": {
-        "message": "Selected: $SELECTED$ / $TOTAL$",
-        "placeholders": {
-            "selected": {
-                "content": "$1"
-            },
-            "total": {
-                "content": "$2"
-            }
-        }
-    },
-    "bookmarksBar": {
-        "message": "Bookmarks Bar"
-    },
-    "otherBookmarks": {
-        "message": "Other Bookmarks"
-    },
-    "minutes": {
-        "message": "Minutes"
-    },
-    "hours": {
-        "message": "Hours"
-    },
-    "days": {
-        "message": "Days"
-    },
-    "selectFolderLabel": {
-        "message": "Select Backup Folder:"
-    },
-    "selectTabsLabel": {
-        "message": "Select Tabs to Backup:"
-    },
-    "noTabsSelected": {
-        "message": "No tabs selected!"
-    },
-    "preserveGroups": {
-        "message": "Preserve Tab Groups as Folders"
-    },
-    "autoCleanup": {
-        "message": "Auto Cleanup Old Backups"
-    },
-    "cleanupDaysLabel": {
-        "message": "Delete backups older than"
-    },
-    "daysLabel": {
-        "message": "days"
-    },
-    "addTimeBtn": {
-        "message": "+ Add Time"
-    },
-    "multiTimeLabel": {
-        "message": "Backup Times (max 5):"
-    },
-    "quickBackupDesc": {
-        "message": "Quick backup all tabs"
-    },
-    "shortcutLabel": {
-        "message": "Keyboard Shortcut:"
-    },
-    "changeShortcut": {
-        "message": "Change"
-    },
-    "duplicateWarning": {
-        "message": "duplicate(s)"
-    },
-    "includeDuplicates": {
-        "message": "Include Duplicate URLs"
-    },
-    "backupTab": {
-        "message": "Backup"
-    },
-    "restoreTab": {
-        "message": "Restore"
-    },
-    "selectBackupFolder": {
-        "message": "Select Backup Folder:"
-    },
-    "selectBackupDefault": {
-        "message": "-- Select a backup --"
-    },
-    "restoreAll": {
-        "message": "Restore All"
-    },
-    "noBackupsFound": {
-        "message": "No backups found in this folder"
-    },
-    "restoreSuccess": {
-        "message": "$1 tabs opened"
-    },
-    "restoreFailed": {
-        "message": "Restore failed"
-    },
-    "tabsCount": {
-        "message": "tabs"
-    },
-    "restoring": {
-        "message": "Restoring..."
-    },
-    "selectFolderFirst": {
-        "message": "Select a folder to view backups"
-    },
-    "manyTabsWarning": {
-        "message": "$1 tabs will be opened. Continue?"
-    },
-    "folderDeleted": {
-        "message": "Selected folder has been deleted"
-    },
-    "restorePreserveGroups": {
-        "message": "Preserve Tab Groups"
-    },
-    "contextMenuBackupTab": {
-        "message": "Backup this tab"
-    },
-    "contextMenuBackupAll": {
-        "message": "Backup all tabs"
-    },
-    "allWindows": {
-        "message": "All Windows"
-    },
-    "windowLabel": {
-        "message": "Window"
-    },
-    "pinnedTab": {
-        "message": "Pinned"
-    },
-    "backupNotePlaceholder": {
-        "message": "Add a note for this backup..."
-    },
-    "domainFilterPlaceholder": {
-        "message": "Filter by domain..."
-    },
-    "clearFilter": {
-        "message": "Clear"
-    },
-    "restoreSelected": {
-        "message": "Restore Selected"
-    },
-    "previewHint": {
-        "message": "Double-click to preview"
-    },
-    "searchPlaceholder": {
-        "message": "Search backups..."
-    },
-    "compareTitle": {
-        "message": "Compare Backups"
-    },
-    "compareSelect1": {
-        "message": "Backup A"
-    },
-    "compareSelect2": {
-        "message": "Backup B"
-    },
-    "compareBtn": {
-        "message": "Compare"
-    },
-    "added": {
-        "message": "Added"
-    },
-    "removed": {
-        "message": "Removed"
-    },
-    "common": {
-        "message": "Common"
-    },
-    "toolsTab": {
-        "message": "Tools"
-    },
-    "exportImportTitle": {
-        "message": "Export / Import"
-    },
-    "exportJson": {
-        "message": "Export JSON"
-    },
-    "exportCsv": {
-        "message": "Export CSV"
-    },
-    "importLabel": {
-        "message": "Import from file:"
-    },
-    "importBtn": {
-        "message": "Import"
-    },
-    "importSuccess": {
-        "message": "$count$ tabs imported",
-        "placeholders": {
-            "count": {
-                "content": "$1"
-            }
-        }
-    },
-    "importFailed": {
-        "message": "Import failed"
-    },
-    "statsTitle": {
-        "message": "Backup Statistics"
-    },
-    "totalBackups": {
-        "message": "Total Backups"
-    },
-    "totalTabs": {
-        "message": "Total Tabs Backed Up"
-    },
-    "topDomains": {
-        "message": "Top Domains"
-    },
-    "noStats": {
-        "message": "No statistics yet"
-    },
-    "smartTriggersTitle": {
-        "message": "Smart Triggers"
-    },
-    "tabThreshold": {
-        "message": "Tab Threshold"
-    },
-    "reminderLabel": {
-        "message": "Reminder"
-    },
-    "noBackupSelected": {
-        "message": "No backup selected"
-    },
-    "exportSelectBackup": {
-        "message": "Select a backup to export"
-    },
-    "exportSelectFolder": {
-        "message": "Select a backup folder first."
-    },
-    "exportComplete": {
-        "message": "Export completed!"
-    },
-    "exportFailedMsg": {
-        "message": "Export failed"
-    },
-    "importSelectFolder": {
-        "message": "Select a folder first."
-    },
-    "importSelectFile": {
-        "message": "Select a file to import."
-    },
-    "noTabsRestore": {
-        "message": "No tabs selected for restore."
-    },
-    "compareAdded": {
-        "message": "Added (in B, not in A)"
-    },
-    "compareRemoved": {
-        "message": "Removed (in A, not in B)"
-    },
-    "compareCommonLabel": {
-        "message": "Common"
-    },
-    "lastUpdated": {
-        "message": "Last Updated"
-    },
-    "noBookmarksPreview": {
-        "message": "No bookmarks found."
-    },
-    "backupCountLabel": {
-        "message": "bookmarks:"
-    },
-    "selectTwoBackups": {
-        "message": "Select two backups to compare."
-    },
-    "selectDiffBackups": {
-        "message": "Select two different backups."
-    },
-    "noOpenTabs": {
-        "message": "No open tabs."
-    },
-    "loadingPreview": {
-        "message": "Loading..."
-    },
-    "unknownError": {
-        "message": "Unknown error"
-    },
-    "duplicateGroupTooltip": {
-        "message": "tabs with same URL"
-    }
+﻿{
+    "extName":  {
+                    "message":  "Smart Tab Booker"
+                },
+    "extDesc":  {
+                    "message":  "Backup open tabs to bookmarks automatically or manually."
+                },
+    "selectStart":  {
+                        "message":  "Loading folders..."
+                    },
+    "selectDefault":  {
+                          "message":  "Select a folder..."
+                      },
+    "backupBtn":  {
+                      "message":  "Backup Now"
+                  },
+    "backupBtnProgress":  {
+                              "message":  "Backing up..."
+                          },
+    "autoBackupTitle":  {
+                            "message":  "Auto Backup Settings"
+                        },
+    "intervalLabel":  {
+                          "message":  "Interval:"
+                      },
+    "daily":  {
+                  "message":  "Daily"
+              },
+    "weekly":  {
+                   "message":  "Weekly"
+               },
+    "monthly":  {
+                    "message":  "Monthly"
+                },
+    "enableAutoBackup":  {
+                             "message":  "Enable Auto Backup"
+                         },
+    "darkMode":  {
+                     "message":  "Dark Mode"
+                 },
+    "custom":  {
+                   "message":  "Custom"
+               },
+    "saveSettingsBtn":  {
+                            "message":  "Save Settings"
+                        },
+    "saved":  {
+                  "message":  "Saved!"
+              },
+    "lastBackupLabel":  {
+                            "message":  "Last Backup:"
+                        },
+    "never":  {
+                  "message":  "Never"
+              },
+    "folderSaved":  {
+                        "message":  "Folder saved!"
+                    },
+    "selectFolderErr":  {
+                            "message":  "Please select a folder first."
+                        },
+    "backupSuccess":  {
+                          "message":  "Backup completed!"
+                      },
+    "backupInProgress":  {
+                             "message":  "Backup already in progress"
+                         },
+    "backupFailed":  {
+                         "message":  "Backup failed: "
+                     },
+    "invalidValue":  {
+                         "message":  "Invalid value."
+                     },
+    "selectAll":  {
+                      "message":  "Select All"
+                  },
+    "deselectAll":  {
+                        "message":  "Deselect All"
+                    },
+    "tabCounter":  {
+                       "message":  "Selected: $SELECTED$ / $TOTAL$",
+                       "placeholders":  {
+                                            "selected":  {
+                                                             "content":  "$1"
+                                                         },
+                                            "total":  {
+                                                          "content":  "$2"
+                                                      }
+                                        }
+                   },
+    "bookmarksBar":  {
+                         "message":  "Bookmarks Bar"
+                     },
+    "otherBookmarks":  {
+                           "message":  "Other Bookmarks"
+                       },
+    "minutes":  {
+                    "message":  "Minutes"
+                },
+    "hours":  {
+                  "message":  "Hours"
+              },
+    "days":  {
+                 "message":  "Days"
+             },
+    "selectFolderLabel":  {
+                              "message":  "Select Backup Folder:"
+                          },
+    "selectTabsLabel":  {
+                            "message":  "Select Tabs to Backup:"
+                        },
+    "noTabsSelected":  {
+                           "message":  "No tabs selected!"
+                       },
+    "preserveGroups":  {
+                           "message":  "Preserve Tab Groups as Folders"
+                       },
+    "autoCleanup":  {
+                        "message":  "Auto Cleanup Old Backups"
+                    },
+    "cleanupDaysLabel":  {
+                             "message":  "Delete backups older than"
+                         },
+    "daysLabel":  {
+                      "message":  "days"
+                  },
+    "addTimeBtn":  {
+                       "message":  "+ Add Time"
+                   },
+    "multiTimeLabel":  {
+                           "message":  "Backup Times (max 5):"
+                       },
+    "quickBackupDesc":  {
+                            "message":  "Quick backup all tabs"
+                        },
+    "shortcutLabel":  {
+                          "message":  "Keyboard Shortcut:"
+                      },
+    "changeShortcut":  {
+                           "message":  "Change"
+                       },
+    "duplicateWarning":  {
+                             "message":  "duplicate(s)"
+                         },
+    "includeDuplicates":  {
+                              "message":  "Include Duplicate URLs"
+                          },
+    "backupTab":  {
+                      "message":  "Backup"
+                  },
+    "restoreTab":  {
+                       "message":  "Restore"
+                   },
+    "selectBackupFolder":  {
+                               "message":  "Select Backup Folder:"
+                           },
+    "selectBackupDefault":  {
+                                "message":  "-- Select a backup --"
+                            },
+    "restoreAll":  {
+                       "message":  "Restore All"
+                   },
+    "noBackupsFound":  {
+                           "message":  "No backups found in this folder"
+                       },
+    "restoreSuccess":  {
+                           "message":  "$1 tabs opened"
+                       },
+    "restoreFailed":  {
+                          "message":  "Restore failed"
+                      },
+    "tabsCount":  {
+                      "message":  "tabs"
+                  },
+    "restoring":  {
+                      "message":  "Restoring..."
+                  },
+    "selectFolderFirst":  {
+                              "message":  "Select a folder to view backups"
+                          },
+    "manyTabsWarning":  {
+                            "message":  "$1 tabs will be opened. Continue?"
+                        },
+    "folderDeleted":  {
+                          "message":  "Selected folder has been deleted"
+                      },
+    "restorePreserveGroups":  {
+                                  "message":  "Preserve Tab Groups"
+                              },
+    "contextMenuBackupTab":  {
+                                 "message":  "Backup this tab"
+                             },
+    "contextMenuBackupAll":  {
+                                 "message":  "Backup all tabs"
+                             },
+    "allWindows":  {
+                       "message":  "All Windows"
+                   },
+    "backupNotePlaceholder":  {
+                                  "message":  "Add a note for this backup..."
+                              },
+    "domainFilterPlaceholder":  {
+                                    "message":  "Filter by domain..."
+                                },
+    "clearFilter":  {
+                        "message":  "Clear"
+                    },
+    "restoreSelected":  {
+                            "message":  "Restore Selected"
+                        },
+    "previewHint":  {
+                        "message":  "Double-click to preview"
+                    },
+    "searchPlaceholder":  {
+                              "message":  "Search backups..."
+                          },
+    "compareTitle":  {
+                         "message":  "Compare Backups"
+                     },
+    "compareSelect1":  {
+                           "message":  "Backup A"
+                       },
+    "compareSelect2":  {
+                           "message":  "Backup B"
+                       },
+    "compareBtn":  {
+                       "message":  "Compare"
+                   },
+    "toolsTab":  {
+                     "message":  "Tools"
+                 },
+    "exportImportTitle":  {
+                              "message":  "Export / Import"
+                          },
+    "exportJson":  {
+                       "message":  "Export JSON"
+                   },
+    "exportCsv":  {
+                      "message":  "Export CSV"
+                  },
+    "importLabel":  {
+                        "message":  "Import from file:"
+                    },
+    "importBtn":  {
+                      "message":  "Import"
+                  },
+    "importSuccess":  {
+                          "message":  "$count$ tabs imported",
+                          "placeholders":  {
+                                               "count":  {
+                                                             "content":  "$1"
+                                                         }
+                                           }
+                      },
+    "importFailed":  {
+                         "message":  "Import failed"
+                     },
+    "statsTitle":  {
+                       "message":  "Backup Statistics"
+                   },
+    "totalBackups":  {
+                         "message":  "Total Backups"
+                     },
+    "totalTabs":  {
+                      "message":  "Total Tabs Backed Up"
+                  },
+    "topDomains":  {
+                       "message":  "Top Domains"
+                   },
+    "noStats":  {
+                    "message":  "No statistics yet"
+                },
+    "smartTriggersTitle":  {
+                               "message":  "Smart Triggers"
+                           },
+    "tabThreshold":  {
+                         "message":  "Tab Threshold"
+                     },
+    "reminderLabel":  {
+                          "message":  "Reminder"
+                      },
+    "exportSelectBackup":  {
+                               "message":  "Select a backup to export"
+                           },
+    "exportComplete":  {
+                           "message":  "Export completed!"
+                       },
+    "exportFailedMsg":  {
+                            "message":  "Export failed"
+                        },
+    "importSelectFolder":  {
+                               "message":  "Select a folder first."
+                           },
+    "importSelectFile":  {
+                             "message":  "Select a file to import."
+                         },
+    "noTabsRestore":  {
+                          "message":  "No tabs selected for restore."
+                      },
+    "compareAdded":  {
+                         "message":  "Added (in B, not in A)"
+                     },
+    "compareRemoved":  {
+                           "message":  "Removed (in A, not in B)"
+                       },
+    "compareCommonLabel":  {
+                               "message":  "Common"
+                           },
+    "lastUpdated":  {
+                        "message":  "Last Updated"
+                    },
+    "noBookmarksPreview":  {
+                               "message":  "No bookmarks found."
+                           },
+    "backupCountLabel":  {
+                             "message":  "bookmarks:"
+                         },
+    "selectTwoBackups":  {
+                             "message":  "Select two backups to compare."
+                         },
+    "selectDiffBackups":  {
+                              "message":  "Select two different backups."
+                          },
+    "noOpenTabs":  {
+                       "message":  "No open tabs."
+                   },
+    "loadingPreview":  {
+                           "message":  "Loading..."
+                       },
+    "unknownError":  {
+                         "message":  "Unknown error"
+                     },
+    "duplicateGroupTooltip":  {
+                                  "message":  "tabs with same URL"
+                              }
 }

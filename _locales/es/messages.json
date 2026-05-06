@@ -1,373 +1,346 @@
-{
-  "extName": {
-    "message": "Smart Tab Booker"
-  },
-  "extDesc": {
-    "message": "Realice copias de seguridad de las pestañas abiertas en marcadores de forma automática o manual."
-  },
-  "selectStart": {
-    "message": "Cargando carpetas..."
-  },
-  "selectDefault": {
-    "message": "Seleccione una carpeta..."
-  },
-  "backupBtn": {
-    "message": "Respaldar ahora"
-  },
-  "backupBtnProgress": {
-    "message": "Respaldando..."
-  },
-  "autoBackupTitle": {
-    "message": "Configuración de respaldo automático"
-  },
-  "intervalLabel": {
-    "message": "Intervalo:"
-  },
-  "daily": {
-    "message": "Diario"
-  },
-  "weekly": {
-    "message": "Semanal"
-  },
-  "monthly": {
-    "message": "Mensual"
-  },
-  "enableAutoBackup": {
-    "message": "Habilitar copia de seguridad automática"
-  },
-  "darkMode": {
-    "message": "Modo oscuro"
-  },
-  "custom": {
-    "message": "Personalizado"
-  },
-  "backupTimeLabel": {
-    "message": "Hora de respaldo (24h):"
-  },
-  "saveSettingsBtn": {
-    "message": "Guardar configuración"
-  },
-  "saved": {
-    "message": "¡Guardado!"
-  },
-  "lastBackupLabel": {
-    "message": "Último respaldo:"
-  },
-  "never": {
-    "message": "Nunca"
-  },
-  "folderSaved": {
-    "message": "¡Carpeta guardada!"
-  },
-  "selectFolderErr": {
-    "message": "Por favor seleccione una carpeta primero."
-  },
-  "backupSuccess": {
-    "message": "¡Respaldo completado!"
-  },
-  "backupInProgress": {
-    "message": "Ya hay una copia de seguridad en curso"
-  },
-  "backupFailed": {
-    "message": "Fallo en el respaldo: "
-  },
-  "invalidValue": {
-    "message": "Valor inválido."
-  },
-  "invalidTime": {
-    "message": "Hora inválida."
-  },
-  "selectAll": {
-    "message": "Seleccionar todo"
-  },
-  "deselectAll": {
-    "message": "Deseleccionar todo"
-  },
-  "tabCounter": {
-    "message": "Seleccionados: $SELECTED$ / $TOTAL$",
-    "placeholders": {
-      "selected": {
-        "content": "$1"
-      },
-      "total": {
-        "content": "$2"
-      }
-    }
-  },
-  "bookmarksBar": {
-    "message": "Barra de marcadores"
-  },
-  "otherBookmarks": {
-    "message": "Otros marcadores"
-  },
-  "minutes": {
-    "message": "Minutos"
-  },
-  "hours": {
-    "message": "Horas"
-  },
-  "days": {
-    "message": "Días"
-  },
-  "selectFolderLabel": {
-    "message": "Carpeta de respaldo:"
-  },
-  "selectTabsLabel": {
-    "message": "Pestañas a respaldar:"
-  },
-  "noTabsSelected": {
-    "message": "¡Ninguna pestaña seleccionada!"
-  },
-  "preserveGroups": {
-    "message": "Conservar grupos de pestañas como carpetas"
-  },
-  "autoCleanup": {
-    "message": "Limpieza automática de respaldos antiguos"
-  },
-  "cleanupDaysLabel": {
-    "message": "Eliminar respaldos anteriores a"
-  },
-  "daysLabel": {
-    "message": "días"
-  },
-  "addTimeBtn": {
-    "message": "+ Agregar hora"
-  },
-  "multiTimeLabel": {
-    "message": "Horas de respaldo (máx 5):"
-  },
-  "quickBackupDesc": {
-    "message": "Respaldo rápido de todas las pestañas"
-  },
-  "shortcutLabel": {
-    "message": "Atajo de teclado:"
-  },
-  "changeShortcut": {
-    "message": "Cambiar"
-  },
-  "duplicateWarning": {
-    "message": "duplicado(s)"
-  },
-  "includeDuplicates": {
-    "message": "Incluir URLs duplicadas"
-  },
-  "backupTab": {
-    "message": "Respaldar"
-  },
-  "restoreTab": {
-    "message": "Restaurer"
-  },
-  "selectBackupFolder": {
-    "message": "Carpeta de respaldo:"
-  },
-  "selectBackupDefault": {
-    "message": "-- Select a backup --"
-  },
-  "restoreAll": {
-    "message": "Restaurar todo"
-  },
-  "noBackupsFound": {
-    "message": "Sin respaldos en esta carpeta"
-  },
-  "restoreSuccess": {
-    "message": "$count$ pestañas abiertas",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "restoreFailed": {
-    "message": "Error al restaurar"
-  },
-  "tabsCount": {
-    "message": "pestañas"
-  },
-  "restoring": {
-    "message": "Restaurando..."
-  },
-  "selectFolderFirst": {
-    "message": "Selecciona una carpeta"
-  },
-  "manyTabsWarning": {
-    "message": "Se abrirán $count$ pestañas. ¿Continuar?",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "folderDeleted": {
-    "message": "La carpeta seleccionada ha sido eliminada"
-  },
-  "restorePreserveGroups": {
-    "message": "Conservar grupos de pestañas"
-  },
-  "contextMenuBackupTab": {
-    "message": "Respaldar esta pestaña"
-  },
-  "contextMenuBackupAll": {
-    "message": "Respaldar todas las pestañas"
-  },
-  "allWindows": {
-    "message": "Todas las ventanas"
-  },
-  "windowLabel": {
-    "message": "Ventana"
-  },
-  "pinnedTab": {
-    "message": "Fijada"
-  },
-  "backupNotePlaceholder": {
-    "message": "Agregar una nota..."
-  },
-  "domainFilterPlaceholder": {
-    "message": "Filtrar por dominio..."
-  },
-  "clearFilter": {
-    "message": "Limpiar"
-  },
-  "restoreSelected": {
-    "message": "Restaurar selección"
-  },
-  "previewHint": {
-    "message": "Doble clic para vista previa"
-  },
-  "searchPlaceholder": {
-    "message": "Buscar respaldos..."
-  },
-  "compareTitle": {
-    "message": "Comparar respaldos"
-  },
-  "compareSelect1": {
-    "message": "Respaldo A"
-  },
-  "compareSelect2": {
-    "message": "Respaldo B"
-  },
-  "compareBtn": {
-    "message": "Comparar"
-  },
-  "added": {
-    "message": "Agregado"
-  },
-  "removed": {
-    "message": "Eliminado"
-  },
-  "common": {
-    "message": "Común"
-  },
-  "toolsTab": {
-    "message": "Herramientas"
-  },
-  "exportImportTitle": {
-    "message": "Exportar / Importar"
-  },
-  "exportJson": {
-    "message": "Exportar JSON"
-  },
-  "exportCsv": {
-    "message": "Exportar CSV"
-  },
-  "importLabel": {
-    "message": "Importar desde archivo:"
-  },
-  "importBtn": {
-    "message": "Importar"
-  },
-  "importSuccess": {
-    "message": "$count$ pestañas importadas",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "importFailed": {
-    "message": "Error al importar"
-  },
-  "statsTitle": {
-    "message": "Estadísticas"
-  },
-  "totalBackups": {
-    "message": "Total de respaldos"
-  },
-  "totalTabs": {
-    "message": "Total de pestañas respaldadas"
-  },
-  "topDomains": {
-    "message": "Dominios principales"
-  },
-  "noStats": {
-    "message": "Sin estadísticas aún"
-  },
-  "smartTriggersTitle": {
-    "message": "Disparadores inteligentes"
-  },
-  "tabThreshold": {
-    "message": "Umbral de pestañas"
-  },
-  "reminderLabel": {
-    "message": "Recordatorio"
-  },
-  "noBackupSelected": {
-    "message": "Ningún respaldo seleccionado"
-  },
-  "exportSelectBackup": {
-    "message": "Seleccionar respaldo para exportar"
-  },
-  "exportSelectFolder": {
-    "message": "Seleccione una carpeta de respaldo primero."
-  },
-  "exportComplete": {
-    "message": "¡Exportación completada!"
-  },
-  "exportFailedMsg": {
-    "message": "Exportación fallida"
-  },
-  "importSelectFolder": {
-    "message": "Seleccione una carpeta primero."
-  },
-  "importSelectFile": {
-    "message": "Seleccione un archivo para importar."
-  },
-  "noTabsRestore": {
-    "message": "No hay pestañas seleccionadas para restaurar."
-  },
-  "compareAdded": {
-    "message": "Agregado (en B, no en A)"
-  },
-  "compareRemoved": {
-    "message": "Eliminado (en A, no en B)"
-  },
-  "compareCommonLabel": {
-    "message": "Común"
-  },
-  "lastUpdated": {
-    "message": "Última actualización"
-  },
-  "noBookmarksPreview": {
-    "message": "No se encontraron marcadores."
-  },
-  "backupCountLabel": {
-    "message": "marcadores:"
-  },
-  "selectTwoBackups": {
-    "message": "Seleccione dos respaldos para comparar."
-  },
-  "selectDiffBackups": {
-    "message": "Seleccione dos respaldos diferentes."
-  },
-  "noOpenTabs": {
-    "message": "No hay pestañas abiertas."
-  },
-  "duplicateGroupTooltip": {
-    "message": "Pestañas con la misma URL"
-  },
-  "loadingPreview": {
-    "message": "Cargando..."
-  },
-  "unknownError": {
-    "message": "Unknown error"
-  }
+﻿{
+    "extName":  {
+                    "message":  "Smart Tab Booker"
+                },
+    "extDesc":  {
+                    "message":  "Realice copias de seguridad de las pestañas abiertas en marcadores de forma automática o manual."
+                },
+    "selectStart":  {
+                        "message":  "Cargando carpetas..."
+                    },
+    "selectDefault":  {
+                          "message":  "Seleccione una carpeta..."
+                      },
+    "backupBtn":  {
+                      "message":  "Respaldar ahora"
+                  },
+    "backupBtnProgress":  {
+                              "message":  "Respaldando..."
+                          },
+    "autoBackupTitle":  {
+                            "message":  "Configuración de respaldo automático"
+                        },
+    "intervalLabel":  {
+                          "message":  "Intervalo:"
+                      },
+    "daily":  {
+                  "message":  "Diario"
+              },
+    "weekly":  {
+                   "message":  "Semanal"
+               },
+    "monthly":  {
+                    "message":  "Mensual"
+                },
+    "enableAutoBackup":  {
+                             "message":  "Habilitar copia de seguridad automática"
+                         },
+    "darkMode":  {
+                     "message":  "Modo oscuro"
+                 },
+    "custom":  {
+                   "message":  "Personalizado"
+               },
+    "saveSettingsBtn":  {
+                            "message":  "Guardar configuración"
+                        },
+    "saved":  {
+                  "message":  "¡Guardado!"
+              },
+    "lastBackupLabel":  {
+                            "message":  "Último respaldo:"
+                        },
+    "never":  {
+                  "message":  "Nunca"
+              },
+    "folderSaved":  {
+                        "message":  "¡Carpeta guardada!"
+                    },
+    "selectFolderErr":  {
+                            "message":  "Por favor seleccione una carpeta primero."
+                        },
+    "backupSuccess":  {
+                          "message":  "¡Respaldo completado!"
+                      },
+    "backupInProgress":  {
+                             "message":  "Ya hay una copia de seguridad en curso"
+                         },
+    "backupFailed":  {
+                         "message":  "Fallo en el respaldo: "
+                     },
+    "invalidValue":  {
+                         "message":  "Valor inválido."
+                     },
+    "selectAll":  {
+                      "message":  "Seleccionar todo"
+                  },
+    "deselectAll":  {
+                        "message":  "Deseleccionar todo"
+                    },
+    "tabCounter":  {
+                       "message":  "Seleccionados: $SELECTED$ / $TOTAL$",
+                       "placeholders":  {
+                                            "selected":  {
+                                                             "content":  "$1"
+                                                         },
+                                            "total":  {
+                                                          "content":  "$2"
+                                                      }
+                                        }
+                   },
+    "bookmarksBar":  {
+                         "message":  "Barra de marcadores"
+                     },
+    "otherBookmarks":  {
+                           "message":  "Otros marcadores"
+                       },
+    "minutes":  {
+                    "message":  "Minutos"
+                },
+    "hours":  {
+                  "message":  "Horas"
+              },
+    "days":  {
+                 "message":  "Días"
+             },
+    "selectFolderLabel":  {
+                              "message":  "Carpeta de respaldo:"
+                          },
+    "selectTabsLabel":  {
+                            "message":  "Pestañas a respaldar:"
+                        },
+    "noTabsSelected":  {
+                           "message":  "¡Ninguna pestaña seleccionada!"
+                       },
+    "preserveGroups":  {
+                           "message":  "Conservar grupos de pestañas como carpetas"
+                       },
+    "autoCleanup":  {
+                        "message":  "Limpieza automática de respaldos antiguos"
+                    },
+    "cleanupDaysLabel":  {
+                             "message":  "Eliminar respaldos anteriores a"
+                         },
+    "daysLabel":  {
+                      "message":  "días"
+                  },
+    "addTimeBtn":  {
+                       "message":  "+ Agregar hora"
+                   },
+    "multiTimeLabel":  {
+                           "message":  "Horas de respaldo (máx 5):"
+                       },
+    "quickBackupDesc":  {
+                            "message":  "Respaldo rápido de todas las pestañas"
+                        },
+    "shortcutLabel":  {
+                          "message":  "Atajo de teclado:"
+                      },
+    "changeShortcut":  {
+                           "message":  "Cambiar"
+                       },
+    "duplicateWarning":  {
+                             "message":  "duplicado(s)"
+                         },
+    "includeDuplicates":  {
+                              "message":  "Incluir URLs duplicadas"
+                          },
+    "backupTab":  {
+                      "message":  "Respaldar"
+                  },
+    "restoreTab":  {
+                       "message":  "Restaurer"
+                   },
+    "selectBackupFolder":  {
+                               "message":  "Carpeta de respaldo:"
+                           },
+    "selectBackupDefault":  {
+                                "message":  "-- Select a backup --"
+                            },
+    "restoreAll":  {
+                       "message":  "Restaurar todo"
+                   },
+    "noBackupsFound":  {
+                           "message":  "Sin respaldos en esta carpeta"
+                       },
+    "restoreSuccess":  {
+                           "message":  "$count$ pestañas abiertas",
+                           "placeholders":  {
+                                                "count":  {
+                                                              "content":  "$1"
+                                                          }
+                                            }
+                       },
+    "restoreFailed":  {
+                          "message":  "Error al restaurar"
+                      },
+    "tabsCount":  {
+                      "message":  "pestañas"
+                  },
+    "restoring":  {
+                      "message":  "Restaurando..."
+                  },
+    "selectFolderFirst":  {
+                              "message":  "Selecciona una carpeta"
+                          },
+    "manyTabsWarning":  {
+                            "message":  "Se abrirán $count$ pestañas. ¿Continuar?",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "folderDeleted":  {
+                          "message":  "La carpeta seleccionada ha sido eliminada"
+                      },
+    "restorePreserveGroups":  {
+                                  "message":  "Conservar grupos de pestañas"
+                              },
+    "contextMenuBackupTab":  {
+                                 "message":  "Respaldar esta pestaña"
+                             },
+    "contextMenuBackupAll":  {
+                                 "message":  "Respaldar todas las pestañas"
+                             },
+    "allWindows":  {
+                       "message":  "Todas las ventanas"
+                   },
+    "backupNotePlaceholder":  {
+                                  "message":  "Agregar una nota..."
+                              },
+    "domainFilterPlaceholder":  {
+                                    "message":  "Filtrar por dominio..."
+                                },
+    "clearFilter":  {
+                        "message":  "Limpiar"
+                    },
+    "restoreSelected":  {
+                            "message":  "Restaurar selección"
+                        },
+    "previewHint":  {
+                        "message":  "Doble clic para vista previa"
+                    },
+    "searchPlaceholder":  {
+                              "message":  "Buscar respaldos..."
+                          },
+    "compareTitle":  {
+                         "message":  "Comparar respaldos"
+                     },
+    "compareSelect1":  {
+                           "message":  "Respaldo A"
+                       },
+    "compareSelect2":  {
+                           "message":  "Respaldo B"
+                       },
+    "compareBtn":  {
+                       "message":  "Comparar"
+                   },
+    "toolsTab":  {
+                     "message":  "Herramientas"
+                 },
+    "exportImportTitle":  {
+                              "message":  "Exportar / Importar"
+                          },
+    "exportJson":  {
+                       "message":  "Exportar JSON"
+                   },
+    "exportCsv":  {
+                      "message":  "Exportar CSV"
+                  },
+    "importLabel":  {
+                        "message":  "Importar desde archivo:"
+                    },
+    "importBtn":  {
+                      "message":  "Importar"
+                  },
+    "importSuccess":  {
+                          "message":  "$count$ pestañas importadas",
+                          "placeholders":  {
+                                               "count":  {
+                                                             "content":  "$1"
+                                                         }
+                                           }
+                      },
+    "importFailed":  {
+                         "message":  "Error al importar"
+                     },
+    "statsTitle":  {
+                       "message":  "Estadísticas"
+                   },
+    "totalBackups":  {
+                         "message":  "Total de respaldos"
+                     },
+    "totalTabs":  {
+                      "message":  "Total de pestañas respaldadas"
+                  },
+    "topDomains":  {
+                       "message":  "Dominios principales"
+                   },
+    "noStats":  {
+                    "message":  "Sin estadísticas aún"
+                },
+    "smartTriggersTitle":  {
+                               "message":  "Disparadores inteligentes"
+                           },
+    "tabThreshold":  {
+                         "message":  "Umbral de pestañas"
+                     },
+    "reminderLabel":  {
+                          "message":  "Recordatorio"
+                      },
+    "exportSelectBackup":  {
+                               "message":  "Seleccionar respaldo para exportar"
+                           },
+    "exportComplete":  {
+                           "message":  "¡Exportación completada!"
+                       },
+    "exportFailedMsg":  {
+                            "message":  "Exportación fallida"
+                        },
+    "importSelectFolder":  {
+                               "message":  "Seleccione una carpeta primero."
+                           },
+    "importSelectFile":  {
+                             "message":  "Seleccione un archivo para importar."
+                         },
+    "noTabsRestore":  {
+                          "message":  "No hay pestañas seleccionadas para restaurar."
+                      },
+    "compareAdded":  {
+                         "message":  "Agregado (en B, no en A)"
+                     },
+    "compareRemoved":  {
+                           "message":  "Eliminado (en A, no en B)"
+                       },
+    "compareCommonLabel":  {
+                               "message":  "Común"
+                           },
+    "lastUpdated":  {
+                        "message":  "Última actualización"
+                    },
+    "noBookmarksPreview":  {
+                               "message":  "No se encontraron marcadores."
+                           },
+    "backupCountLabel":  {
+                             "message":  "marcadores:"
+                         },
+    "selectTwoBackups":  {
+                             "message":  "Seleccione dos respaldos para comparar."
+                         },
+    "selectDiffBackups":  {
+                              "message":  "Seleccione dos respaldos diferentes."
+                          },
+    "noOpenTabs":  {
+                       "message":  "No hay pestañas abiertas."
+                   },
+    "duplicateGroupTooltip":  {
+                                  "message":  "Pestañas con la misma URL"
+                              },
+    "loadingPreview":  {
+                           "message":  "Cargando..."
+                       },
+    "unknownError":  {
+                         "message":  "Unknown error"
+                     }
 }
