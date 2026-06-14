@@ -59,5 +59,4 @@ Creates `smart-tab-booker-v1.6-chrome.zip` or `smart-tab-booker-v1.6-firefox.zip
 - Do not call `browser.bookmarks`, `browser.alarms`, or `browser.tabs` from popup.js — delegate to background.js via messages.
 - Do not use `chrome.*` API namespace — use `browser.*` everywhere. The polyfill handles Chrome.
 - Do not modify `_locales/` files without updating all 18 locales.
-- Do not add `tabGroups` permission to `manifest-firefox.json` — Firefox doesn't support it.
 - No test runner exists. If adding tests, choose and document the framework in this file.
