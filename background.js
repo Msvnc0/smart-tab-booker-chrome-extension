@@ -1,3 +1,7 @@
+if (typeof browser === 'undefined') {
+    importScripts('browser-polyfill.js', 'browser-detect.js');
+}
+
 const CONSTANTS = {
     ALARM: {
         NAME: 'autoBackup',
@@ -35,11 +39,9 @@ const CONSTANTS = {
         DAYS: 'days',
         MINUTES: 'minutes'
     },
-    // Timeouts
     BADGE_CLEAR_TIMEOUT: 2500,
     THRESHOLD_DEBOUNCE_MS: 5000,
     ONE_HOUR_MS: 3600000,
-    // Limits
     MAX_TOP_DOMAINS: 10
 };
 
@@ -51,35 +53,36 @@ function isValidUrl(url) {
     if (!url) return false;
     if (url.startsWith('chrome://')) return false;
     if (url.startsWith('chrome-extension://')) return false;
+    if (url.startsWith('moz-extension://')) return false;
     if (url.startsWith('about:')) return false;
     if (url.startsWith('file://')) return false;
     if (url.startsWith('javascript:')) return false;
     return url.startsWith('http://') || url.startsWith('https://');
 }
 
-chrome.runtime.onInstalled.addListener(handleInstalled);
-chrome.alarms.onAlarm.addListener(handleAlarm);
-chrome.runtime.onMessage.addListener(handleMessage);
-chrome.commands.onCommand.addListener(handleCommand);
-chrome.contextMenus.onClicked.addListener(handleContextMenuClick);
-chrome.tabs.onCreated.addListener(checkTabThreshold);
+browser.runtime.onInstalled.addListener(handleInstalled);
+browser.alarms.onAlarm.addListener(handleAlarm);
+browser.runtime.onMessage.addListener(handleMessage);
+browser.commands.onCommand.addListener(handleCommand);
+browser.contextMenus.onClicked.addListener(handleContextMenuClick);
+browser.tabs.onCreated.addListener(checkTabThreshold);
 
 function handleInstalled() {
     console.log('Smart Tab Booker installed');
-    chrome.storage.local.get([CONSTANTS.STORAGE.BACKUP_INTERVAL], (result) => {
+    browser.storage.local.get([CONSTANTS.STORAGE.BACKUP_INTERVAL], (result) => {
         if (!result[CONSTANTS.STORAGE.BACKUP_INTERVAL]) {
-            chrome.storage.local.set({ [CONSTANTS.STORAGE.BACKUP_INTERVAL]: 'weekly' });
+            browser.storage.local.set({ [CONSTANTS.STORAGE.BACKUP_INTERVAL]: 'weekly' });
         }
         setupAlarm();
     });
-    chrome.contextMenus.create({
+    browser.contextMenus.create({
         id: 'backup-current-tab',
-        title: chrome.i18n.getMessage('contextMenuBackupTab') || 'Backup this tab',
+        title: browser.i18n.getMessage('contextMenuBackupTab') || 'Backup this tab',
         contexts: ['page']
     });
-    chrome.contextMenus.create({
+    browser.contextMenus.create({
         id: 'backup-all-tabs',
-        title: chrome.i18n.getMessage('contextMenuBackupAll') || 'Backup all tabs',
+        title: browser.i18n.getMessage('contextMenuBackupAll') || 'Backup all tabs',
         contexts: ['page']
     });
 }
@@ -94,43 +97,80 @@ function handleAlarm(alarm) {
 }
 
 function handleMessage(request, sender, sendResponse) {
-    if (request.action === 'manualBackup') {
+    const handler = messageHandlers[request.action];
+    if (handler) {
+        handler(request, sendResponse);
+        return true;
+    }
+    sendResponse({ success: false, error: 'Unknown action' });
+}
+
+const messageHandlers = {
+    manualBackup(request, sendResponse) {
         performBackup(request.folderId, request.tabs, request.note || '')
             .then(() => sendResponse({ success: true }))
             .catch((err) => sendResponse({ success: false, error: err.message }));
-        return true;
-    } else if (request.action === 'updateSchedule') {
+    },
+    updateSchedule(request, sendResponse) {
         setupAlarm(() => sendResponse({ success: true }));
-        return true;
-    } else if (request.action === 'restoreBackup') {
+    },
+    restoreBackup(request, sendResponse) {
         restoreFromBookmarks(request.backupId, request.options)
             .then(result => sendResponse(result))
             .catch(err => sendResponse({ success: false, error: err.message }));
-        return true;
-    } else if (request.action === 'restoreTabs') {
+    },
+    restoreTabs(request, sendResponse) {
         restoreTabsList(request.tabs)
             .then(result => sendResponse(result))
             .catch(err => sendResponse({ success: false, error: err.message }));
-        return true;
-    } else if (request.action === 'exportBackup') {
+    },
+    exportBackup(request, sendResponse) {
         exportBackupAsFile(request.backupId, request.format)
             .then(data => sendResponse({ success: true, data }))
             .catch(err => sendResponse({ success: false, error: err.message }));
-        return true;
-    } else if (request.action === 'importBackup') {
+    },
+    importBackup(request, sendResponse) {
         importBackupFromFile(request.data, request.folderId)
             .then(count => sendResponse({ success: true, count }))
             .catch(err => sendResponse({ success: false, error: err.message }));
-        return true;
-    } else if (request.action === 'getStats') {
-        chrome.storage.local.get([CONSTANTS.STORAGE.BACKUP_STATS], (result) => {
-            sendResponse(result[CONSTANTS.STORAGE.BACKUP_STATS] || {});
-        });
-        return true;
-    } else {
-        sendResponse({ success: false, error: 'Unknown action' });
+    },
+    getStats(request, sendResponse) {
+        browser.storage.local.get([CONSTANTS.STORAGE.BACKUP_STATS])
+            .then(result => {
+                sendResponse(result[CONSTANTS.STORAGE.BACKUP_STATS] || {});
+            });
+    },
+    getBookmarkTree(request, sendResponse) {
+        browser.bookmarks.getTree()
+            .then(nodes => {
+                sendResponse({ success: true, tree: nodes });
+            });
+    },
+    getBookmarkChildren(request, sendResponse) {
+        browser.bookmarks.getChildren(request.folderId)
+            .then(children => {
+                sendResponse({ success: true, children: children || [] });
+            })
+            .catch(err => {
+                sendResponse({ success: false, error: err.message });
+            });
+    },
+    countBookmarks(request, sendResponse) {
+        countAllBookmarks(request.folderId)
+            .then(count => sendResponse({ success: true, count }))
+            .catch(err => sendResponse({ success: false, error: err.message }));
+    },
+    getBackupPreview(request, sendResponse) {
+        collectAllBookmarkItems(request.backupId)
+            .then(items => sendResponse({ success: true, items }))
+            .catch(err => sendResponse({ success: false, error: err.message }));
+    },
+    getAllBookmarkUrls(request, sendResponse) {
+        collectAllUrls(request.backupId)
+            .then(urls => sendResponse({ success: true, urls }))
+            .catch(err => sendResponse({ success: false, error: err.message }));
     }
-}
+};
 
 function handleCommand(command) {
     if (command === 'quick-backup') {
@@ -152,7 +192,7 @@ async function backupSingleTab(tab) {
         showBadge('!', '#F44336');
         return;
     }
-    const result = await chrome.storage.local.get([CONSTANTS.STORAGE.BACKUP_FOLDER_ID]);
+    const result = await browser.storage.local.get([CONSTANTS.STORAGE.BACKUP_FOLDER_ID]);
     const folderId = result[CONSTANTS.STORAGE.BACKUP_FOLDER_ID];
     if (!folderId) {
         showBadge('!', '#F44336');
@@ -166,8 +206,6 @@ async function backupSingleTab(tab) {
         showBadge('!', '#F44336');
     }
 }
-
-// --- Pinned Tab Support ---
 
 function formatBookmarkTitle(tab) {
     const title = tab.title || tab.url;
@@ -184,8 +222,6 @@ function parseBookmarkTitle(title) {
     return { pinned, cleanTitle };
 }
 
-// --- Tab Group Colors ---
-
 function extractGroupColor(folderTitle) {
     const match = folderTitle.match(/^\[(\w+)\]/);
     return match ? match[1] : null;
@@ -195,10 +231,8 @@ function extractGroupCleanTitle(folderTitle) {
     return folderTitle.replace(/^\[\w+\]/, '');
 }
 
-// --- Quick Backup ---
-
 async function performQuickBackup() {
-    const result = await chrome.storage.local.get([CONSTANTS.STORAGE.BACKUP_FOLDER_ID]);
+    const result = await browser.storage.local.get([CONSTANTS.STORAGE.BACKUP_FOLDER_ID]);
     const folderId = result[CONSTANTS.STORAGE.BACKUP_FOLDER_ID];
 
     if (!folderId) {
@@ -216,19 +250,17 @@ async function performQuickBackup() {
 }
 
 function showBadge(text, color) {
-    chrome.action.setBadgeText({ text });
-    chrome.action.setBadgeBackgroundColor({ color });
-    setTimeout(() => chrome.action.setBadgeText({ text: '' }), CONSTANTS.BADGE_CLEAR_TIMEOUT);
+    browser.action.setBadgeText({ text });
+    browser.action.setBadgeBackgroundColor({ color });
+    setTimeout(() => browser.action.setBadgeText({ text: '' }), CONSTANTS.BADGE_CLEAR_TIMEOUT);
 }
 
-// --- Alarm Management ---
-
 function setupAlarm(onComplete) {
-    chrome.alarms.clearAll(() => {
+    browser.alarms.clearAll(() => {
         getBackupSettings((settings) => {
             if (!isBackupEnabled(settings)) {
                 console.log('Auto backup is disabled.');
-                chrome.alarms.create(CONSTANTS.ALARM.REMINDER, { periodInMinutes: 360 });
+                browser.alarms.create(CONSTANTS.ALARM.REMINDER, { periodInMinutes: 360 });
                 if (onComplete) onComplete();
                 return;
             }
@@ -240,11 +272,11 @@ function setupAlarm(onComplete) {
                         ? `${CONSTANTS.ALARM.NAME_PREFIX}${index}`
                         : CONSTANTS.ALARM.NAME;
                     console.log(`Setting alarm [${alarmName}]:`, alarmInfo);
-                    chrome.alarms.create(alarmName, alarmInfo);
+                    browser.alarms.create(alarmName, alarmInfo);
                 }
             });
 
-            chrome.alarms.create(CONSTANTS.ALARM.REMINDER, { periodInMinutes: 360 });
+            browser.alarms.create(CONSTANTS.ALARM.REMINDER, { periodInMinutes: 360 });
             if (onComplete) onComplete();
         });
     });
@@ -259,7 +291,7 @@ function getBackupSettings(callback) {
         CONSTANTS.STORAGE.BACKUP_TIME,
         CONSTANTS.STORAGE.BACKUP_TIMES
     ];
-    chrome.storage.local.get(keys, callback);
+    browser.storage.local.get(keys, callback);
 }
 
 function isBackupEnabled(settings) {
@@ -342,14 +374,12 @@ function calculateNextFireTime(targetTimeStr = CONSTANTS.ALARM.DEFAULT_TIME) {
     return nextFire.getTime();
 }
 
-// --- Backup Operations ---
-
 function performAutoBackup() {
     if (backupInProgress) {
         console.log('Auto backup skipped: backup already in progress');
         return;
     }
-    chrome.storage.local.get([CONSTANTS.STORAGE.BACKUP_FOLDER_ID], (result) => {
+    browser.storage.local.get([CONSTANTS.STORAGE.BACKUP_FOLDER_ID], (result) => {
         const folderId = result[CONSTANTS.STORAGE.BACKUP_FOLDER_ID];
         if (folderId) {
             performBackup(folderId)
@@ -369,7 +399,7 @@ async function performBackup(parentId, explicitTabs, note = '') {
     backupInProgress = true;
 
     try {
-        const settings = await chrome.storage.local.get([
+        const settings = await browser.storage.local.get([
             CONSTANTS.STORAGE.PRESERVE_TAB_GROUPS,
             CONSTANTS.STORAGE.INCLUDE_DUPLICATES,
             CONSTANTS.STORAGE.ALL_WINDOWS
@@ -381,7 +411,7 @@ async function performBackup(parentId, explicitTabs, note = '') {
             tabs = explicitTabs.filter(t => isValidUrl(t.url));
         } else {
             const queryOpts = settings[CONSTANTS.STORAGE.ALL_WINDOWS] ? {} : { currentWindow: true };
-            tabs = await chrome.tabs.query(queryOpts);
+            tabs = await browser.tabs.query(queryOpts);
             tabs = tabs.filter(tab => isValidUrl(tab.url));
         }
 
@@ -392,7 +422,7 @@ async function performBackup(parentId, explicitTabs, note = '') {
         }
 
         const folderName = generateBackupFolderName(note);
-        const backupFolder = await chrome.bookmarks.create({
+        const backupFolder = await browser.bookmarks.create({
             parentId: parentId,
             title: folderName
         });
@@ -405,7 +435,7 @@ async function performBackup(parentId, explicitTabs, note = '') {
             }
         } catch (saveErr) {
             try {
-                await chrome.bookmarks.removeTree(backupFolder.id);
+                await browser.bookmarks.removeTree(backupFolder.id);
             } catch (err) {
                 console.error('Failed to remove backup folder after error:', err);
             }
@@ -444,7 +474,7 @@ function generateBackupFolderName(note = '') {
 
 async function saveTabsAsBookmarks(parentId, tabs) {
     const bookmarkPromises = tabs
-        .map(tab => chrome.bookmarks.create({
+        .map(tab => browser.bookmarks.create({
             parentId: parentId,
             title: formatBookmarkTitle(tab),
             url: tab.url
@@ -458,7 +488,11 @@ async function saveTabsAsBookmarks(parentId, tabs) {
 }
 
 async function saveTabsWithGroups(parentId, tabs) {
-    const groups = await chrome.tabGroups.query({});
+    if (!BrowserDetect.supportsTabGroups) {
+        return saveTabsAsBookmarks(parentId, tabs);
+    }
+
+    const groups = await browser.tabGroups.query({});
     const tabGroupMap = new Map();
 
     groups.forEach(group => {
@@ -469,7 +503,7 @@ async function saveTabsWithGroups(parentId, tabs) {
     const ungroupedTabs = [];
 
     tabs.forEach(tab => {
-        if (tab.groupId && tab.groupId !== chrome.tabGroups.TAB_GROUP_ID_NONE) {
+        if (tab.groupId && tab.groupId !== (browser.tabGroups ? browser.tabGroups.TAB_GROUP_ID_NONE : -1)) {
             const groupInfo = tabGroupMap.get(tab.groupId) || { title: 'Unnamed Group', color: 'grey' };
             const groupKey = groupInfo.title;
             if (!groupedTabs.has(groupKey)) {
@@ -483,7 +517,7 @@ async function saveTabsWithGroups(parentId, tabs) {
 
     for (const [groupTitle, groupData] of groupedTabs) {
         const folderTitle = `[${groupData.color}]${groupTitle}`;
-        const groupFolder = await chrome.bookmarks.create({
+        const groupFolder = await browser.bookmarks.create({
             parentId: parentId,
             title: folderTitle
         });
@@ -495,10 +529,8 @@ async function saveTabsWithGroups(parentId, tabs) {
     }
 }
 
-// --- Auto Cleanup ---
-
 async function cleanupOldBackups(parentId) {
-    const settings = await chrome.storage.local.get([
+    const settings = await browser.storage.local.get([
         CONSTANTS.STORAGE.AUTO_CLEANUP_ENABLED,
         CONSTANTS.STORAGE.AUTO_CLEANUP_DAYS
     ]);
@@ -510,13 +542,13 @@ async function cleanupOldBackups(parentId) {
     const cleanupDays = settings[CONSTANTS.STORAGE.AUTO_CLEANUP_DAYS] || 30;
     const cutoffDate = Date.now() - cleanupDays * 24 * 60 * 60 * 1000;
 
-    const children = await chrome.bookmarks.getChildren(parentId);
+    const children = await browser.bookmarks.getChildren(parentId);
 
     for (const child of children) {
         if (child.title && child.title.startsWith('Backup_')) {
             const folderDate = extractDateFromFolderName(child.title);
             if (folderDate && folderDate < cutoffDate) {
-                await chrome.bookmarks.removeTree(child.id);
+                await browser.bookmarks.removeTree(child.id);
                 console.log(`Cleaned up old backup: ${child.title}`);
             }
         }
@@ -535,17 +567,15 @@ function extractDateFromFolderName(folderName) {
 }
 
 async function updateLastBackupTime() {
-    await chrome.storage.local.set({ [CONSTANTS.STORAGE.LAST_BACKUP_TIME]: Date.now() });
+    await browser.storage.local.set({ [CONSTANTS.STORAGE.LAST_BACKUP_TIME]: Date.now() });
 }
-
-// --- Restore Operations ---
 
 async function restoreFromBookmarks(folderId, options = {}) {
     const { preserveTabGroups = true } = options;
     let window = null;
 
     try {
-        const children = await chrome.bookmarks.getChildren(folderId);
+        const children = await browser.bookmarks.getChildren(folderId);
         if (children.length === 0) {
             return { success: false, error: 'noBookmarks' };
         }
@@ -555,7 +585,7 @@ async function restoreFromBookmarks(folderId, options = {}) {
 
         let totalBookmarks = validBookmarks.length;
         for (const folder of folders) {
-            const subChildren = await chrome.bookmarks.getChildren(folder.id);
+            const subChildren = await browser.bookmarks.getChildren(folder.id);
             totalBookmarks += subChildren.filter(b => b.url && isValidUrl(b.url)).length;
         }
 
@@ -563,7 +593,7 @@ async function restoreFromBookmarks(folderId, options = {}) {
             return { success: false, error: 'noBookmarks' };
         }
 
-        window = await chrome.windows.create({ focused: true });
+        window = await browser.windows.create({ focused: true });
         let groupsCreated = 0;
         let tabsOpened = 0;
 
@@ -574,23 +604,23 @@ async function restoreFromBookmarks(folderId, options = {}) {
         } else {
             const allBookmarks = [...validBookmarks];
             for (const folder of folders) {
-                const subChildren = await chrome.bookmarks.getChildren(folder.id);
+                const subChildren = await browser.bookmarks.getChildren(folder.id);
                 allBookmarks.push(...subChildren.filter(b => b.url && isValidUrl(b.url)));
             }
             tabsOpened = await restoreTabsFlat(window.id, allBookmarks);
         }
 
-        const tabs = await chrome.tabs.query({ windowId: window.id });
-        const newTab = tabs.find(t => t.url === 'chrome://newtab/');
+        const tabs = await browser.tabs.query({ windowId: window.id });
+        const newTab = tabs.find(t => BrowserDetect.NEW_TAB_URLS.includes(t.url));
         if (newTab) {
-            await chrome.tabs.remove(newTab.id);
+            await browser.tabs.remove(newTab.id);
         }
 
         return { success: true, tabsOpened, groupsCreated };
     } catch (err) {
         console.error('Restore failed:', err);
         if (window) {
-            try { await chrome.windows.remove(window.id); } catch (removeErr) { console.error('Failed to remove window:', removeErr); }
+            try { await browser.windows.remove(window.id); } catch (removeErr) { console.error('Failed to remove window:', removeErr); }
         }
         return { success: false, error: err.message };
     }
@@ -601,7 +631,7 @@ async function restoreTabsFlat(windowId, bookmarks) {
     for (const bm of bookmarks) {
         try {
             const parsed = parseBookmarkTitle(bm.title);
-            await chrome.tabs.create({ windowId, url: bm.url, pinned: parsed.pinned });
+            await browser.tabs.create({ windowId, url: bm.url, pinned: parsed.pinned });
             opened++;
         } catch (err) {
             console.warn('Failed to create tab:', bm.url, err);
@@ -611,6 +641,23 @@ async function restoreTabsFlat(windowId, bookmarks) {
 }
 
 async function restoreTabsWithGroups(windowId, bookmarks) {
+    if (!BrowserDetect.supportsTabGroups) {
+        const flatBookmarks = [];
+        for (const b of bookmarks) {
+            if (b.url && isValidUrl(b.url)) {
+                flatBookmarks.push(b);
+            } else if (!b.url) {
+                const subBookmarks = await browser.bookmarks.getChildren(b.id);
+                for (const sub of subBookmarks) {
+                    if (sub.url && isValidUrl(sub.url)) {
+                        flatBookmarks.push(sub);
+                    }
+                }
+            }
+        }
+        return restoreTabsFlat(windowId, flatBookmarks);
+    }
+
     const folders = bookmarks.filter(b => !b.url);
     const singleBookmarks = bookmarks.filter(b => b.url && isValidUrl(b.url));
 
@@ -619,7 +666,7 @@ async function restoreTabsWithGroups(windowId, bookmarks) {
 
     for (const folder of folders) {
         try {
-            const folderBookmarks = await chrome.bookmarks.getChildren(folder.id);
+            const folderBookmarks = await browser.bookmarks.getChildren(folder.id);
             const validTabs = folderBookmarks.filter(b => b.url && isValidUrl(b.url));
 
             if (validTabs.length === 0) continue;
@@ -628,7 +675,7 @@ async function restoreTabsWithGroups(windowId, bookmarks) {
             for (const bm of validTabs) {
                 try {
                     const parsed = parseBookmarkTitle(bm.title);
-                    const tab = await chrome.tabs.create({ windowId, url: bm.url, pinned: parsed.pinned });
+                    const tab = await browser.tabs.create({ windowId, url: bm.url, pinned: parsed.pinned });
                     tabIds.push(tab.id);
                     tabsOpened++;
                 } catch (err) {
@@ -638,14 +685,14 @@ async function restoreTabsWithGroups(windowId, bookmarks) {
 
             if (tabIds.length > 0) {
                 try {
-                    const groupId = await chrome.tabs.group({ tabIds });
+                    const groupId = await browser.tabs.group({ tabIds });
                     const color = extractGroupColor(folder.title);
                     const cleanTitle = extractGroupCleanTitle(folder.title);
                     const updateOpts = { title: cleanTitle };
                     if (color) {
                         updateOpts.color = color;
                     }
-                    await chrome.tabGroups.update(groupId, updateOpts);
+                    await browser.tabGroups.update(groupId, updateOpts);
                     groupsCreated++;
                 } catch (err) {
                     console.warn('Failed to create tab group:', err);
@@ -663,46 +710,44 @@ async function restoreTabsWithGroups(windowId, bookmarks) {
     return { groupsCreated, tabsOpened };
 }
 
-// --- Smart Triggers ---
-
 let thresholdDebounce = null;
 
 async function checkTabThreshold() {
     if (thresholdDebounce) return;
     thresholdDebounce = setTimeout(() => { thresholdDebounce = null; }, CONSTANTS.THRESHOLD_DEBOUNCE_MS);
 
-    const settings = await chrome.storage.local.get([
-        CONSTANTS.STORAGE.TAB_THRESHOLD_ENABLED,
-        CONSTANTS.STORAGE.TAB_THRESHOLD,
-        CONSTANTS.STORAGE.BACKUP_FOLDER_ID,
-        CONSTANTS.STORAGE.LAST_BACKUP_TIME
-    ]);
+    try {
+        const settings = await browser.storage.local.get([
+            CONSTANTS.STORAGE.TAB_THRESHOLD_ENABLED,
+            CONSTANTS.STORAGE.TAB_THRESHOLD,
+            CONSTANTS.STORAGE.BACKUP_FOLDER_ID,
+            CONSTANTS.STORAGE.LAST_BACKUP_TIME
+        ]);
 
-    if (!settings[CONSTANTS.STORAGE.TAB_THRESHOLD_ENABLED]) return;
+        if (!settings[CONSTANTS.STORAGE.TAB_THRESHOLD_ENABLED]) return;
 
-    const threshold = settings[CONSTANTS.STORAGE.TAB_THRESHOLD] || 50;
-    const allTabs = await chrome.tabs.query({});
-    const validTabs = allTabs.filter(t => isValidUrl(t.url));
+        const threshold = settings[CONSTANTS.STORAGE.TAB_THRESHOLD] || 50;
+        const allTabs = await browser.tabs.query({});
+        const validTabs = allTabs.filter(t => isValidUrl(t.url));
 
-    if (validTabs.length >= threshold) {
-        const lastBackup = settings[CONSTANTS.STORAGE.LAST_BACKUP_TIME] || 0;
-        const oneHourAgo = Date.now() - CONSTANTS.ONE_HOUR_MS;
-        if (lastBackup < oneHourAgo) {
-            const folderId = settings[CONSTANTS.STORAGE.BACKUP_FOLDER_ID];
-            if (folderId) {
-                try {
+        if (validTabs.length >= threshold) {
+            const lastBackup = settings[CONSTANTS.STORAGE.LAST_BACKUP_TIME] || 0;
+            const oneHourAgo = Date.now() - CONSTANTS.ONE_HOUR_MS;
+            if (lastBackup < oneHourAgo) {
+                const folderId = settings[CONSTANTS.STORAGE.BACKUP_FOLDER_ID];
+                if (folderId) {
                     await performBackup(folderId, null, 'Tab Threshold');
                     console.log('Tab threshold auto backup performed');
-                } catch (err) {
-                    console.error('Tab threshold backup failed:', err);
                 }
             }
         }
+    } catch (err) {
+        console.error('Tab threshold backup failed:', err);
     }
 }
 
 async function checkBackupReminder() {
-    const settings = await chrome.storage.local.get([
+    const settings = await browser.storage.local.get([
         CONSTANTS.STORAGE.REMINDER_ENABLED,
         CONSTANTS.STORAGE.REMINDER_DAYS,
         CONSTANTS.STORAGE.LAST_BACKUP_TIME
@@ -719,8 +764,6 @@ async function checkBackupReminder() {
     }
 }
 
-// --- Restore Tabs List ---
-
 async function restoreTabsList(tabs) {
     if (!tabs || tabs.length === 0) {
         return { success: false, error: 'No tabs to restore' };
@@ -728,38 +771,36 @@ async function restoreTabsList(tabs) {
 
     let window = null;
     try {
-        window = await chrome.windows.create({ focused: true });
+        window = await browser.windows.create({ focused: true });
         let tabsOpened = 0;
 
         for (const tab of tabs) {
             if (!isValidUrl(tab.url)) continue;
             try {
-                await chrome.tabs.create({ windowId: window.id, url: tab.url, pinned: tab.pinned || false });
+                await browser.tabs.create({ windowId: window.id, url: tab.url, pinned: tab.pinned || false });
                 tabsOpened++;
             } catch (err) {
                 console.warn('Failed to restore tab:', tab.url, err);
             }
         }
 
-        const allTabs = await chrome.tabs.query({ windowId: window.id });
-        const newTab = allTabs.find(t => t.url === 'chrome://newtab/');
+        const allTabs = await browser.tabs.query({ windowId: window.id });
+        const newTab = allTabs.find(t => BrowserDetect.NEW_TAB_URLS.includes(t.url));
         if (newTab) {
-            await chrome.tabs.remove(newTab.id);
+            await browser.tabs.remove(newTab.id);
         }
 
         return { success: true, tabsOpened };
     } catch (err) {
         if (window) {
-            try { await chrome.windows.remove(window.id); } catch (removeErr) { console.error('Failed to remove window:', removeErr); }
+            try { await browser.windows.remove(window.id); } catch (removeErr) { console.error('Failed to remove window:', removeErr); }
         }
         return { success: false, error: err.message };
     }
 }
 
-// --- Export Backup ---
-
 async function exportBackupAsFile(backupId, format) {
-    const node = await chrome.bookmarks.get(backupId);
+    const node = await browser.bookmarks.get(backupId);
     const bookmarkNode = node[0];
     if (!bookmarkNode) throw new Error('Backup not found');
 
@@ -794,7 +835,7 @@ async function collectBookmarkUrls(node, group = '') {
         return results;
     }
 
-    const children = await chrome.bookmarks.getChildren(node.id);
+    const children = await browser.bookmarks.getChildren(node.id);
     if (!children) return results;
     for (const child of children) {
         const childGroup = !child.url ? extractGroupCleanTitle(child.title || '') : group;
@@ -804,8 +845,6 @@ async function collectBookmarkUrls(node, group = '') {
 
     return results;
 }
-
-// --- Import Backup ---
 
 async function importBackupFromFile(jsonData, folderId) {
     let data;
@@ -822,7 +861,7 @@ async function importBackupFromFile(jsonData, folderId) {
     const now = new Date();
     const dateStr = now.toISOString().split('T')[0];
     const timeStr = `${String(now.getUTCHours()).padStart(2, '0')}-${String(now.getUTCMinutes()).padStart(2, '0')}`;
-    const importFolder = await chrome.bookmarks.create({
+    const importFolder = await browser.bookmarks.create({
         parentId: folderId,
         title: `Backup_${dateStr}_${timeStr} (Imported)`
     });
@@ -845,7 +884,7 @@ async function importBackupFromFile(jsonData, folderId) {
 
     if (grouped.size === 0 && ungrouped.length === 0) {
         try {
-            await chrome.bookmarks.removeTree(importFolder.id);
+            await browser.bookmarks.removeTree(importFolder.id);
         } catch (err) {
             console.error('Failed to remove import folder:', err);
         }
@@ -855,13 +894,13 @@ async function importBackupFromFile(jsonData, folderId) {
     let count = 0;
 
     for (const [groupTitle, items] of grouped) {
-        const groupFolder = await chrome.bookmarks.create({
+        const groupFolder = await browser.bookmarks.create({
             parentId: importFolder.id,
             title: groupTitle
         });
         for (const item of items) {
             const title = item.pinned ? `[PIN] ${item.title || item.url}` : (item.title || item.url);
-            await chrome.bookmarks.create({
+            await browser.bookmarks.create({
                 parentId: groupFolder.id,
                 title: title,
                 url: item.url
@@ -872,7 +911,7 @@ async function importBackupFromFile(jsonData, folderId) {
 
     for (const item of ungrouped) {
         const title = item.pinned ? `[PIN] ${item.title || item.url}` : (item.title || item.url);
-        await chrome.bookmarks.create({
+        await browser.bookmarks.create({
             parentId: importFolder.id,
             title: title,
             url: item.url
@@ -883,11 +922,50 @@ async function importBackupFromFile(jsonData, folderId) {
     return count;
 }
 
-// --- Backup Stats ---
+async function countAllBookmarks(folderId) {
+    const children = await browser.bookmarks.getChildren(folderId);
+    let count = children.filter(c => c.url && isValidUrl(c.url)).length;
+    const subfolders = children.filter(c => !c.url);
+    for (const subfolder of subfolders) {
+        count += await countAllBookmarks(subfolder.id);
+    }
+    return count;
+}
+
+async function collectAllBookmarkItems(folderId) {
+    const children = await browser.bookmarks.getChildren(folderId);
+    const items = [];
+    for (const child of children) {
+        if (child.url) {
+            if (isValidUrl(child.url)) {
+                const parsed = parseBookmarkTitle(child.title || '');
+                items.push({ title: parsed.cleanTitle, url: child.url, pinned: parsed.pinned });
+            }
+        } else {
+            const subItems = await collectAllBookmarkItems(child.id);
+            items.push(...subItems);
+        }
+    }
+    return items;
+}
+
+async function collectAllUrls(backupId) {
+    const children = await browser.bookmarks.getChildren(backupId);
+    const urls = [];
+    for (const child of children) {
+        if (child.url) {
+            if (isValidUrl(child.url)) urls.push(child.url);
+        } else {
+            const subUrls = await collectAllUrls(child.id);
+            urls.push(...subUrls);
+        }
+    }
+    return urls;
+}
 
 async function updateBackupStats(parentId) {
     try {
-        const children = await chrome.bookmarks.getChildren(parentId);
+        const children = await browser.bookmarks.getChildren(parentId);
         const backupFolders = children.filter(c => c.title && c.title.startsWith('Backup_'));
 
         let totalTabs = 0;
@@ -919,7 +997,7 @@ async function updateBackupStats(parentId) {
             updatedAt: Date.now()
         };
 
-        await chrome.storage.local.set({ [CONSTANTS.STORAGE.BACKUP_STATS]: stats });
+        await browser.storage.local.set({ [CONSTANTS.STORAGE.BACKUP_STATS]: stats });
     } catch (err) {
         console.error('Failed to update backup stats:', err);
     }
