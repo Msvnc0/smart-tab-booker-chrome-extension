@@ -461,8 +461,8 @@ function filterDuplicateTabs(tabs) {
 
 function generateBackupFolderName(note = '') {
     const now = new Date();
-    const dateStr = now.toISOString().split('T')[0];
-    const timeStr = `${String(now.getUTCHours()).padStart(2, '0')}-${String(now.getUTCMinutes()).padStart(2, '0')}`;
+    const dateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    const timeStr = `${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}`;
     let name = `Backup_${dateStr}_${timeStr}`;
     if (note) {
         name += ` (${note})`;
@@ -559,7 +559,7 @@ function extractDateFromFolderName(folderName) {
         const year = parseInt(match[1]);
         const month = parseInt(match[2]) - 1;
         const day = parseInt(match[3]);
-        return Date.UTC(year, month, day);
+        return new Date(year, month, day).getTime();
     }
     return null;
 }
