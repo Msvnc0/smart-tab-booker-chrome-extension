@@ -45,7 +45,7 @@ Creates `smart-tab-booker-v1.6-chrome.zip` or `smart-tab-booker-v1.6-firefox.zip
 
 - No framework, no transpilation. All JS is vanilla and runs directly in browser extension contexts.
 - All API calls use `browser.*` namespace (not `chrome.*`). The polyfill handles the mapping.
-- Backup folders are named `Backup_YYYY-MM-DD_HH-MM (note)`. Date parsing in `extractDateFromFolderName` uses UTC — do not switch to local time.
+- Backup folders are named `Backup_YYYY-MM-DD_HH-MM (note)`. Date parsing in `extractDateFromFolderName` uses local time.
 - Pinned tabs are stored as bookmarks with `[PIN] ` prefix. Parsed by `parseBookmarkTitle` in both background.js and popup.js — keep in sync.
 - Tab group folders use `[color]title` format. Parsed by `extractGroupColor` / `extractGroupCleanTitle`.
 - URL validation (`isValidUrl`) blocks `javascript:`, `chrome://`, `chrome-extension://`, `moz-extension://`, `about:`, `file://` — only `http://` and `https://` pass.

@@ -1,4 +1,4 @@
-if (typeof importScripts === 'function') {
+if (typeof browser === 'undefined' && typeof importScripts === 'function') {
     importScripts('browser-polyfill.js', 'browser-detect.js');
 }
 
@@ -608,7 +608,7 @@ async function restoreFromBookmarks(folderId, options = {}) {
         }
 
         const tabs = await browser.tabs.query({ windowId: window.id });
-        const newTab = tabs.find(t => BrowserDetect.NEW_TAB_URLS.includes(t.url));
+        const newTab = tabs.find(t => BrowserDetect.NEW_TAB_URLS.some(url => t.url.startsWith(url)));
         if (newTab) {
             await browser.tabs.remove(newTab.id);
         }
@@ -765,7 +765,7 @@ async function restoreTabsList(tabs) {
         }
 
         const allTabs = await browser.tabs.query({ windowId: window.id });
-        const newTab = allTabs.find(t => BrowserDetect.NEW_TAB_URLS.includes(t.url));
+        const newTab = allTabs.find(t => BrowserDetect.NEW_TAB_URLS.some(url => t.url.startsWith(url)));
         if (newTab) {
             await browser.tabs.remove(newTab.id);
         }
