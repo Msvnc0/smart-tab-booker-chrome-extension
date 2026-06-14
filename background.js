@@ -486,33 +486,7 @@ async function saveTabsAsBookmarks(parentId, tabs) {
 
 async function saveTabsWithGroups(parentId, tabs) {
     if (!BrowserDetect.supportsTabGroups) {
-        const groupedTabs = new Map();
-        const ungroupedTabs = [];
-
-        tabs.forEach(tab => {
-            if (tab.groupId && tab.groupId !== -1) {
-                const groupKey = `Group ${tab.groupId}`;
-                if (!groupedTabs.has(groupKey)) {
-                    groupedTabs.set(groupKey, []);
-                }
-                groupedTabs.get(groupKey).push(tab);
-            } else {
-                ungroupedTabs.push(tab);
-            }
-        });
-
-        for (const [, groupTabs] of groupedTabs) {
-            const groupFolder = await browser.bookmarks.create({
-                parentId: parentId,
-                title: 'Group'
-            });
-            await saveTabsAsBookmarks(groupFolder.id, groupTabs);
-        }
-
-        if (ungroupedTabs.length > 0) {
-            await saveTabsAsBookmarks(parentId, ungroupedTabs);
-        }
-        return;
+        return saveTabsAsBookmarks(parentId, tabs);
     }
 
     const groups = await browser.tabGroups.query({});
@@ -522,23 +496,24 @@ async function saveTabsWithGroups(parentId, tabs) {
         tabGroupMap.set(group.id, { title: group.title || 'Unnamed Group', color: group.color });
     });
 
-    const groupedTabs = new Map();
+    const orderedGroups = new Map();
     const ungroupedTabs = [];
+    let ungroupedIndex = 0;
 
     tabs.forEach(tab => {
         if (tab.groupId && tab.groupId !== (browser.tabGroups ? browser.tabGroups.TAB_GROUP_ID_NONE : -1)) {
             const groupInfo = tabGroupMap.get(tab.groupId) || { title: 'Unnamed Group', color: 'grey' };
             const groupKey = groupInfo.title;
-            if (!groupedTabs.has(groupKey)) {
-                groupedTabs.set(groupKey, { tabs: [], color: groupInfo.color });
+            if (!orderedGroups.has(groupKey)) {
+                orderedGroups.set(groupKey, { tabs: [], color: groupInfo.color, order: ungroupedIndex++ });
             }
-            groupedTabs.get(groupKey).tabs.push(tab);
+            orderedGroups.get(groupKey).tabs.push(tab);
         } else {
             ungroupedTabs.push(tab);
         }
     });
 
-    for (const [groupTitle, groupData] of groupedTabs) {
+    for (const [groupTitle, groupData] of orderedGroups) {
         const folderTitle = `[${groupData.color}]${groupTitle}`;
         const groupFolder = await browser.bookmarks.create({
             parentId: parentId,
