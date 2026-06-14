@@ -9,7 +9,8 @@
     "bookmarks",
     "storage",
     "alarms",
-    "contextMenus"
+    "contextMenus",
+    "tabGroups"
   ],
   "action": {
     "default_popup": "popup.html",
@@ -39,7 +40,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "smart-tab-booker@example.com",
-      "strict_min_version": "109.0"
+      "strict_min_version": "133.0"
     }
   }
 }
