@@ -1,6 +1,4 @@
-if (typeof browser === 'undefined') {
-    importScripts('browser-polyfill.js', 'browser-detect.js');
-}
+importScripts('browser-polyfill.js', 'browser-detect.js');
 
 const CONSTANTS = {
     ALARM: {
