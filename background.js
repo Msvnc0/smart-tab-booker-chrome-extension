@@ -67,14 +67,13 @@ browser.commands.onCommand.addListener(handleCommand);
 browser.contextMenus.onClicked.addListener(handleContextMenuClick);
 browser.tabs.onCreated.addListener(checkTabThreshold);
 
-function handleInstalled() {
+async function handleInstalled() {
     console.log('Smart Tab Booker installed');
-    browser.storage.local.get([CONSTANTS.STORAGE.BACKUP_INTERVAL], (result) => {
-        if (!result[CONSTANTS.STORAGE.BACKUP_INTERVAL]) {
-            browser.storage.local.set({ [CONSTANTS.STORAGE.BACKUP_INTERVAL]: 'weekly' });
-        }
-        setupAlarm();
-    });
+    const result = await browser.storage.local.get([CONSTANTS.STORAGE.BACKUP_INTERVAL]);
+    if (!result[CONSTANTS.STORAGE.BACKUP_INTERVAL]) {
+        await browser.storage.local.set({ [CONSTANTS.STORAGE.BACKUP_INTERVAL]: 'weekly' });
+    }
+    setupAlarm();
     browser.contextMenus.create({
         id: 'backup-current-tab',
         title: browser.i18n.getMessage('contextMenuBackupTab') || 'Backup this tab',
@@ -255,34 +254,32 @@ function showBadge(text, color) {
     setTimeout(() => browser.action.setBadgeText({ text: '' }), CONSTANTS.BADGE_CLEAR_TIMEOUT);
 }
 
-function setupAlarm(onComplete) {
-    browser.alarms.clearAll(() => {
-        getBackupSettings((settings) => {
-            if (!isBackupEnabled(settings)) {
-                console.log('Auto backup is disabled.');
-                browser.alarms.create(CONSTANTS.ALARM.REMINDER, { periodInMinutes: 360 });
-                if (onComplete) onComplete();
-                return;
-            }
+async function setupAlarm(onComplete) {
+    await browser.alarms.clearAll();
+    const settings = await getBackupSettings();
+    if (!isBackupEnabled(settings)) {
+        console.log('Auto backup is disabled.');
+        browser.alarms.create(CONSTANTS.ALARM.REMINDER, { periodInMinutes: 360 });
+        if (onComplete) onComplete();
+        return;
+    }
 
-            const alarmInfos = calculateAlarmInfos(settings);
-            alarmInfos.forEach((alarmInfo, index) => {
-                if (alarmInfo) {
-                    const alarmName = alarmInfos.length > 1
-                        ? `${CONSTANTS.ALARM.NAME_PREFIX}${index}`
-                        : CONSTANTS.ALARM.NAME;
-                    console.log(`Setting alarm [${alarmName}]:`, alarmInfo);
-                    browser.alarms.create(alarmName, alarmInfo);
-                }
-            });
-
-            browser.alarms.create(CONSTANTS.ALARM.REMINDER, { periodInMinutes: 360 });
-            if (onComplete) onComplete();
-        });
+    const alarmInfos = calculateAlarmInfos(settings);
+    alarmInfos.forEach((alarmInfo, index) => {
+        if (alarmInfo) {
+            const alarmName = alarmInfos.length > 1
+                ? `${CONSTANTS.ALARM.NAME_PREFIX}${index}`
+                : CONSTANTS.ALARM.NAME;
+            console.log(`Setting alarm [${alarmName}]:`, alarmInfo);
+            browser.alarms.create(alarmName, alarmInfo);
+        }
     });
+
+    browser.alarms.create(CONSTANTS.ALARM.REMINDER, { periodInMinutes: 360 });
+    if (onComplete) onComplete();
 }
 
-function getBackupSettings(callback) {
+async function getBackupSettings() {
     const keys = [
         CONSTANTS.STORAGE.BACKUP_ENABLED,
         CONSTANTS.STORAGE.BACKUP_INTERVAL,
@@ -291,7 +288,7 @@ function getBackupSettings(callback) {
         CONSTANTS.STORAGE.BACKUP_TIME,
         CONSTANTS.STORAGE.BACKUP_TIMES
     ];
-    browser.storage.local.get(keys, callback);
+    return browser.storage.local.get(keys);
 }
 
 function isBackupEnabled(settings) {
@@ -379,7 +376,7 @@ function performAutoBackup() {
         console.log('Auto backup skipped: backup already in progress');
         return;
     }
-    browser.storage.local.get([CONSTANTS.STORAGE.BACKUP_FOLDER_ID], (result) => {
+    browser.storage.local.get([CONSTANTS.STORAGE.BACKUP_FOLDER_ID]).then((result) => {
         const folderId = result[CONSTANTS.STORAGE.BACKUP_FOLDER_ID];
         if (folderId) {
             performBackup(folderId)
