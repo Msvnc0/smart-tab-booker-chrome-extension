@@ -470,17 +470,16 @@ function generateBackupFolderName(note = '') {
 }
 
 async function saveTabsAsBookmarks(parentId, tabs) {
-    const bookmarkPromises = tabs
-        .map(tab => browser.bookmarks.create({
-            parentId: parentId,
-            title: formatBookmarkTitle(tab),
-            url: tab.url
-        }));
-
-    const results = await Promise.allSettled(bookmarkPromises);
-    const failed = results.filter(r => r.status === 'rejected');
-    if (failed.length > 0) {
-        console.warn(`Failed to save ${failed.length} bookmarks`);
+    for (const tab of tabs) {
+        try {
+            await browser.bookmarks.create({
+                parentId: parentId,
+                title: formatBookmarkTitle(tab),
+                url: tab.url
+            });
+        } catch (err) {
+            console.warn('Failed to save bookmark:', tab.url, err);
+        }
     }
 }
 
