@@ -486,7 +486,33 @@ async function saveTabsAsBookmarks(parentId, tabs) {
 
 async function saveTabsWithGroups(parentId, tabs) {
     if (!BrowserDetect.supportsTabGroups) {
-        return saveTabsAsBookmarks(parentId, tabs);
+        const groupedTabs = new Map();
+        const ungroupedTabs = [];
+
+        tabs.forEach(tab => {
+            if (tab.groupId && tab.groupId !== -1) {
+                const groupKey = `Group ${tab.groupId}`;
+                if (!groupedTabs.has(groupKey)) {
+                    groupedTabs.set(groupKey, []);
+                }
+                groupedTabs.get(groupKey).push(tab);
+            } else {
+                ungroupedTabs.push(tab);
+            }
+        });
+
+        for (const [, groupTabs] of groupedTabs) {
+            const groupFolder = await browser.bookmarks.create({
+                parentId: parentId,
+                title: 'Group'
+            });
+            await saveTabsAsBookmarks(groupFolder.id, groupTabs);
+        }
+
+        if (ungroupedTabs.length > 0) {
+            await saveTabsAsBookmarks(parentId, ungroupedTabs);
+        }
+        return;
     }
 
     const groups = await browser.tabGroups.query({});
@@ -638,23 +664,6 @@ async function restoreTabsFlat(windowId, bookmarks) {
 }
 
 async function restoreTabsWithGroups(windowId, bookmarks) {
-    if (!BrowserDetect.supportsTabGroups) {
-        const flatBookmarks = [];
-        for (const b of bookmarks) {
-            if (b.url && isValidUrl(b.url)) {
-                flatBookmarks.push(b);
-            } else if (!b.url) {
-                const subBookmarks = await browser.bookmarks.getChildren(b.id);
-                for (const sub of subBookmarks) {
-                    if (sub.url && isValidUrl(sub.url)) {
-                        flatBookmarks.push(sub);
-                    }
-                }
-            }
-        }
-        return restoreTabsFlat(windowId, flatBookmarks);
-    }
-
     const folders = bookmarks.filter(b => !b.url);
     const singleBookmarks = bookmarks.filter(b => b.url && isValidUrl(b.url));
 
@@ -680,7 +689,7 @@ async function restoreTabsWithGroups(windowId, bookmarks) {
                 }
             }
 
-            if (tabIds.length > 0) {
+            if (tabIds.length > 0 && BrowserDetect.supportsTabGroups) {
                 try {
                     const groupId = await browser.tabs.group({ tabIds });
                     const color = extractGroupColor(folder.title);

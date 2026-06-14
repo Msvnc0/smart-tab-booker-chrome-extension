@@ -1529,11 +1529,4 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     BookmarkManager.init(settings[CONSTANTS.STORAGE.BACKUP_FOLDER_ID]);
     TabManager.init(settings[CONSTANTS.STORAGE.INCLUDE_DUPLICATES] || false);
-
-    if (!BrowserDetect.supportsTabGroups) {
-        const preserveGroups = DOM.get(CONSTANTS.SELECTORS.PRESERVE_GROUPS_TOGGLE);
-        const restorePreserveGroups = DOM.get(CONSTANTS.SELECTORS.RESTORE_PRESERVE_GROUPS_TOGGLE);
-        if (preserveGroups) preserveGroups.closest('.setting-row').classList.add('unsupported-feature');
-        if (restorePreserveGroups) restorePreserveGroups.closest('.setting-row').classList.add('unsupported-feature');
-    }
 });
