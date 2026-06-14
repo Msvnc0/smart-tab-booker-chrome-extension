@@ -5,7 +5,7 @@ All notable changes to Smart Tab Booker will be documented in this file.
 ## [1.6.0] - 2026-06-14
 
 ### Added
-- **Firefox/Zen Browser Support** — Full compatibility with Firefox and Firefox-based browsers (Zen Browser, Waterfox, etc.) via webextension-polyfill
+- **Firefox Support** — Full compatibility with Firefox and all Firefox-based browsers (Zen Browser, Waterfox, etc.) via webextension-polyfill
 - **Dual Packaging** — `package_extension.py` now accepts `--chrome` or `--firefox` flag to build browser-specific packages
 - **Firefox Manifest** — Separate `manifest-firefox.json` with `browser_specific_settings` for AMO submission
 - **Runtime Feature Detection** — `BrowserDetect` module detects `isFirefox` and `supportsTabGroups` at runtime
