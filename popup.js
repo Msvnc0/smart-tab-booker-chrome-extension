@@ -90,6 +90,10 @@ const DOM = {
     create: (tag) => document.createElement(tag)
 };
 
+function sendMessage(request) {
+    return browser.runtime.sendMessage(request);
+}
+
 const Localization = {
     translations: {},
 
@@ -102,7 +106,7 @@ const Localization = {
     },
 
     detectLanguage() {
-        const uiLang = chrome.i18n.getUILanguage();
+        const uiLang = browser.i18n.getUILanguage();
         let lang = uiLang.split('-')[0].toLowerCase();
         const supported = ['en', 'tr', 'de', 'fr', 'es', 'it', 'pt_BR', 'ru', 'ja', 'zh_CN', 'ko', 'pl', 'nl', 'id', 'vi', 'ar', 'hi', 'th'];
 
@@ -143,26 +147,29 @@ const Localization = {
         });
     },
 
-    get(key) {
+    get(key, substitutions) {
         if (this.translations[key] && this.translations[key].message) {
-            return this.translations[key].message;
+            let msg = this.translations[key].message;
+            if (substitutions) {
+                substitutions.forEach((sub, i) => {
+                    msg = msg.replace(`$${i + 1}`, sub);
+                });
+            }
+            return msg;
         }
-        return chrome.i18n.getMessage(key) || key;
+        const chromeMsg = browser.i18n.getMessage(key, substitutions);
+        return chromeMsg || key;
     }
 };
 
 const SettingsManager = {
     async load() {
-        return new Promise(resolve => {
-            const keys = Object.values(CONSTANTS.STORAGE);
-            chrome.storage.local.get(keys, resolve);
-        });
+        const keys = Object.values(CONSTANTS.STORAGE);
+        return browser.storage.local.get(keys);
     },
 
-    save(settings) {
-        return new Promise(resolve => {
-            chrome.storage.local.set(settings, resolve);
-        });
+    async save(settings) {
+        return browser.storage.local.set(settings);
     }
 };
 
@@ -174,37 +181,37 @@ const TabManager = {
         this.loadOpenTabs();
     },
 
-    loadOpenTabs() {
+    async loadOpenTabs() {
         const allWindowsToggle = DOM.get(CONSTANTS.SELECTORS.ALL_WINDOWS_TOGGLE);
         const domainFilterInput = DOM.get(CONSTANTS.SELECTORS.DOMAIN_FILTER_INPUT);
         const queryOpts = allWindowsToggle && allWindowsToggle.checked ? {} : { currentWindow: true };
         const domainFilter = domainFilterInput ? domainFilterInput.value.trim().toLowerCase() : '';
 
-        chrome.tabs.query(queryOpts, (tabs) => {
-            if (domainFilter) {
-                tabs = tabs.filter(tab => {
-                    try {
-                        const hostname = new URL(tab.url).hostname.toLowerCase();
-                        return hostname.includes(domainFilter);
-                    } catch (e) {
-                        return false;
-                    }
-                });
-            }
+        const allTabs = await browser.tabs.query(queryOpts);
+        let filteredTabs = allTabs;
+        if (domainFilter) {
+            filteredTabs = allTabs.filter(tab => {
+                try {
+                    const hostname = new URL(tab.url).hostname.toLowerCase();
+                    return hostname.includes(domainFilter);
+                } catch (e) {
+                    return false;
+                }
+            });
+        }
 
-            const container = DOM.get(CONSTANTS.SELECTORS.TAB_LIST_CONTAINER);
-            container.innerHTML = '';
+        const container = DOM.get(CONSTANTS.SELECTORS.TAB_LIST_CONTAINER);
+        container.replaceChildren();
 
-            if (tabs.length === 0) {
-                container.textContent = Localization.get("noOpenTabs");
-                return;
-            }
+        if (filteredTabs.length === 0) {
+            container.textContent = Localization.get("noOpenTabs");
+            return;
+        }
 
-            const duplicates = this.includeDuplicates ? new Set() : this.findDuplicates(tabs);
-            container.appendChild(this.createControls(tabs.length, duplicates));
-            container.appendChild(this.createTabList(tabs, duplicates));
-            this.updateCounter(tabs.length);
-        });
+        const duplicates = this.includeDuplicates ? new Set() : this.findDuplicates(filteredTabs);
+        container.appendChild(this.createControls(filteredTabs.length, duplicates));
+        container.appendChild(this.createTabList(filteredTabs, duplicates));
+        this.updateCounter(filteredTabs.length);
     },
 
     findDuplicates(tabs) {
@@ -326,7 +333,7 @@ const TabManager = {
             const badge = DOM.create('span');
             badge.className = 'duplicate-badge';
             badge.textContent = `${groupSize}x`;
-                    badge.title = `${groupSize} ${Localization.get("duplicateGroupTooltip")}`;
+            badge.title = `${groupSize} ${Localization.get("duplicateGroupTooltip")}`;
             row.appendChild(badge);
         }
 
@@ -377,7 +384,7 @@ const TabManager = {
                 title: cb.dataset.title,
                 url: cb.dataset.url,
                 pinned: cb.dataset.pinned === 'true',
-                groupId: cb.dataset.groupId ? parseInt(cb.dataset.groupId, 10) : chrome.tabGroups.TAB_GROUP_ID_NONE
+                groupId: cb.dataset.groupId ? parseInt(cb.dataset.groupId, 10) : (BrowserDetect.supportsTabGroups ? browser.tabGroups.TAB_GROUP_ID_NONE : -1)
             });
         });
         return selected;
@@ -385,23 +392,25 @@ const TabManager = {
 };
 
 const BookmarkManager = {
-    init(savedId) {
-        chrome.bookmarks.getTree((nodes) => {
-            const select = DOM.get(CONSTANTS.SELECTORS.FOLDER_SELECT);
-            const defaultText = Localization.get("selectDefault");
-            select.innerHTML = `<option value="" disabled selected>${defaultText}</option>`;
-            this.processNodes(nodes, 0, savedId);
-        });
+    async init(savedId) {
+        const response = await sendMessage({ action: 'getBookmarkTree' });
+        if (!response || !response.success) return;
+
+        const select = DOM.get(CONSTANTS.SELECTORS.FOLDER_SELECT);
+        const defaultText = Localization.get("selectDefault");
+        select.replaceChildren();
+        const defaultOpt = DOM.create('option');
+        defaultOpt.value = '';
+        defaultOpt.disabled = true;
+        defaultOpt.selected = true;
+        defaultOpt.textContent = defaultText;
+        select.appendChild(defaultOpt);
+        BookmarkTreeHelper.populateFolderSelect(select, response.tree, 0, savedId);
 
         DOM.get(CONSTANTS.SELECTORS.FOLDER_SELECT).addEventListener('change', (e) => {
             SettingsManager.save({ [CONSTANTS.STORAGE.BACKUP_FOLDER_ID]: e.target.value })
                 .then(() => UI.showStatus(Localization.get("folderSaved"), 'success'));
         });
-    },
-
-    processNodes(nodes, depth, savedId) {
-        const select = DOM.get(CONSTANTS.SELECTORS.FOLDER_SELECT);
-        BookmarkTreeHelper.populateFolderSelect(select, nodes, depth, savedId);
     }
 };
 
@@ -431,7 +440,7 @@ const BookmarkTreeHelper = {
     }
 };
 
-function parsePreviewTitle(title) {
+function parseBookmarkTitle(title) {
     if (!title || typeof title !== 'string') return { pinned: false, cleanTitle: '' };
     const pinned = title.startsWith('[PIN] ');
     const cleanTitle = pinned ? title.replace(/^\[PIN\] /, '') : title;
@@ -455,21 +464,24 @@ const RestoreManager = {
         this.updateButtonStates(false);
     },
 
-    loadBackupFolders(savedFolderId) {
-        chrome.bookmarks.getTree((nodes) => {
-            const select = DOM.get(CONSTANTS.SELECTORS.RESTORE_FOLDER_SELECT);
-            const defaultText = Localization.get("selectBackupFolder");
-            select.innerHTML = `<option value="" disabled selected>${defaultText}</option>`;
-            this.processFolderNodes(nodes, 0, savedFolderId, select);
+    async loadBackupFolders(savedFolderId) {
+        const response = await sendMessage({ action: 'getBookmarkTree' });
+        if (!response || !response.success) return;
 
-            if (savedFolderId) {
-                this.loadBackups(savedFolderId);
-            }
-        });
-    },
+        const select = DOM.get(CONSTANTS.SELECTORS.RESTORE_FOLDER_SELECT);
+        const defaultText = Localization.get("selectBackupFolder");
+        select.replaceChildren();
+        const defaultOpt = DOM.create('option');
+        defaultOpt.value = '';
+        defaultOpt.disabled = true;
+        defaultOpt.selected = true;
+        defaultOpt.textContent = defaultText;
+        select.appendChild(defaultOpt);
+        BookmarkTreeHelper.populateFolderSelect(select, response.tree, 0, savedFolderId);
 
-    processFolderNodes(nodes, depth, savedId, select) {
-        BookmarkTreeHelper.populateFolderSelect(select, nodes, depth, savedId);
+        if (savedFolderId) {
+            this.loadBackups(savedFolderId);
+        }
     },
 
     setupEventListeners() {
@@ -509,7 +521,7 @@ const RestoreManager = {
         selectedBtn.disabled = !hasSelection;
     },
 
-    loadBackups(folderId) {
+    async loadBackups(folderId) {
         if (!folderId) {
             this.updateButtonStates(false);
             return;
@@ -519,53 +531,44 @@ const RestoreManager = {
         this.tabCount = 0;
         this.updateButtonStates(false);
 
-        chrome.bookmarks.getChildren(folderId, (children) => {
-            if (chrome.runtime.lastError) {
-                this.showFolderDeletedError();
-                return;
-            }
+        const response = await sendMessage({ action: 'getBookmarkChildren', folderId });
+        if (!response || !response.success) {
+            this.showFolderDeletedError();
+            return;
+        }
 
-            const container = DOM.get(CONSTANTS.SELECTORS.RESTORE_LIST);
-            container.innerHTML = '';
+        const container = DOM.get(CONSTANTS.SELECTORS.RESTORE_LIST);
+        container.replaceChildren();
 
-            const backups = children.filter(c => !c.url && c.title && c.title.startsWith('Backup_'));
+        const backups = response.children.filter(c => !c.url && c.title && c.title.startsWith('Backup_'));
 
-            this._backups = backups;
+        this._backups = backups;
 
-            if (backups.length === 0) {
-                container.innerHTML = `<div class="no-backups">${Localization.get("noBackupsFound")}</div>`;
-                this.updateButtonStates(false);
-                this.loadCompareOptions([]);
-                return;
-            }
+        if (backups.length === 0) {
+            const noBackups = DOM.create('div');
+            noBackups.className = 'no-backups';
+            noBackups.textContent = Localization.get("noBackupsFound");
+            container.replaceChildren(noBackups);
+            this.updateButtonStates(false);
+            this.loadCompareOptions([]);
+            return;
+        }
 
-            this.renderBackups(container, backups);
-            this.loadCompareOptions(backups);
-        });
+        this.renderBackups(container, backups);
+        this.loadCompareOptions(backups);
     },
 
     async renderBackups(container, backups) {
-        for (const backup of backups) {
-            const count = await this.countBookmarks(backup.id);
-            const item = this.createBackupItem(backup, count);
+        const counts = await Promise.all(backups.map(b => this.countBookmarks(b.id)));
+        backups.forEach((backup, i) => {
+            const item = this.createBackupItem(backup, counts[i]);
             container.appendChild(item);
-        }
+        });
     },
 
-    countBookmarks(folderId) {
-        return new Promise((resolve) => {
-            chrome.bookmarks.getChildren(folderId, async (children) => {
-                let count = children.filter(c => c.url && (c.url.startsWith('http://') || c.url.startsWith('https://'))).length;
-
-                const subfolders = children.filter(c => !c.url);
-                for (const subfolder of subfolders) {
-                    const subCount = await this.countBookmarks(subfolder.id);
-                    count += subCount;
-                }
-
-                resolve(count);
-            });
-        });
+    async countBookmarks(folderId) {
+        const response = await sendMessage({ action: 'countBookmarks', folderId });
+        return response && response.success ? response.count : 0;
     },
 
     createBackupItem(backup, count) {
@@ -615,88 +618,63 @@ const RestoreManager = {
 
         if (existingId === backupId && !preview.classList.contains('hidden')) {
             preview.classList.add('hidden');
-            preview.innerHTML = '';
+            preview.replaceChildren();
             preview.dataset.backupId = '';
             return;
         }
 
         preview.classList.remove('hidden');
         preview.dataset.backupId = backupId;
-        preview.innerHTML = `<div style="font-size:12px;color:#888;">${Localization.get("loadingPreview")}</div>`;
+        const loadingEl = DOM.create('div');
+        loadingEl.className = 'restore-preview-loading';
+        loadingEl.textContent = Localization.get("loadingPreview");
+        preview.replaceChildren(loadingEl);
 
         this.loadBackupPreview(backupId, preview);
     },
 
-    loadBackupPreview(backupId, container) {
-        chrome.bookmarks.getChildren(backupId, (children) => {
-            container.innerHTML = '';
+    async loadBackupPreview(backupId, container) {
+        const response = await sendMessage({ action: 'getBackupPreview', backupId });
+        container.replaceChildren();
 
-            const items = [];
+        if (!response || !response.success || response.items.length === 0) {
+            const noPreview = DOM.create('div');
+            noPreview.className = 'restore-preview-loading';
+            noPreview.textContent = Localization.get("noBookmarksPreview");
+            container.replaceChildren(noPreview);
+            return;
+        }
 
-            const processChildren = (nodes, callback) => {
-                let pending = nodes.length;
-                if (pending === 0) { callback(items); return; }
+        const items = response.items;
 
-                nodes.forEach(child => {
-                    if (child.url) {
-                        if (child.url.startsWith('http://') || child.url.startsWith('https://')) {
-                            const parsed = parsePreviewTitle(child.title);
-                            items.push({ title: parsed.cleanTitle, url: child.url, pinned: parsed.pinned });
-                        }
-                        pending--;
-                        if (pending === 0) callback(items);
-                    } else {
-                        chrome.bookmarks.getChildren(child.id, (subChildren) => {
-                            if (subChildren && subChildren.length > 0) {
-                                processChildren(subChildren, () => {
-                                    pending--;
-                                    if (pending === 0) callback(items);
-                                });
-                            } else {
-                                pending--;
-                                if (pending === 0) callback(items);
-                            }
-                        });
-                    }
-                });
-            };
+        const header = DOM.create('div');
+        header.className = 'restore-preview-header';
+        header.textContent = `${items.length} ${Localization.get("backupCountLabel")}`;
+        container.appendChild(header);
 
-            processChildren(children, (allItems) => {
-                if (allItems.length === 0) {
-                    container.innerHTML = `<div style="font-size:12px;color:#888;">${Localization.get("noBookmarksPreview")}</div>`;
-                    return;
-                }
+        items.forEach(item => {
+            const row = DOM.create('div');
+            row.className = 'restore-preview-row';
 
-                const header = DOM.create('div');
-                header.style.cssText = 'font-size:12px;margin-bottom:6px;font-weight:bold;';
-                header.textContent = `${allItems.length} ${Localization.get("backupCountLabel")}`;
-                container.appendChild(header);
+            const cb = DOM.create('input');
+            cb.type = 'checkbox';
+            cb.className = 'restore-select-cb';
+            cb.dataset.url = item.url;
+            cb.dataset.title = item.title;
+            cb.dataset.pinned = item.pinned ? 'true' : 'false';
+            cb.checked = true;
 
-                allItems.forEach(item => {
-                    const row = DOM.create('div');
-                    row.className = 'restore-preview-row';
+            const span = DOM.create('span');
+            span.textContent = (item.pinned ? '\uD83D\uDCCC ' : '') + (item.title || item.url);
+            span.title = item.url;
+            span.className = 'restore-preview-label';
 
-                    const cb = DOM.create('input');
-                    cb.type = 'checkbox';
-                    cb.className = 'restore-select-cb';
-                    cb.dataset.url = item.url;
-                    cb.dataset.title = item.title;
-                    cb.dataset.pinned = item.pinned ? 'true' : 'false';
-                    cb.checked = true;
-
-                    const span = DOM.create('span');
-                    span.textContent = (item.pinned ? '\uD83D\uDCCC ' : '') + (item.title || item.url);
-                    span.title = item.url;
-                    span.style.cssText = 'font-size:11px;margin-left:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;max-width:280px;';
-
-                    row.append(cb, span);
-                    container.appendChild(row);
-                });
-            });
+            row.append(cb, span);
+            container.appendChild(row);
         });
     },
 
-    restoreSelected() {
+    async restoreSelected() {
         const checkboxes = DOM.getAll('.restore-select-cb:checked');
         if (checkboxes.length === 0) {
             this.showStatus(Localization.get("noTabsRestore"), 'error');
@@ -710,10 +688,9 @@ const RestoreManager = {
 
         this.showProgress(true);
 
-        chrome.runtime.sendMessage({ action: 'restoreTabs', tabs }, (response) => {
-            this.showProgress(false);
-            this.handleResponse(response);
-        });
+        const response = await browser.runtime.sendMessage({ action: 'restoreTabs', tabs });
+        this.showProgress(false);
+        this.handleResponse(response);
     },
 
     filterBackups(query) {
@@ -735,13 +712,19 @@ const RestoreManager = {
 
         if (!id1 || !id2) {
             const result = DOM.get(CONSTANTS.SELECTORS.COMPARE_RESULT);
-            result.innerHTML = `<div style="color:red;">${Localization.get("selectTwoBackups")}</div>`;
+            const errEl = DOM.create('div');
+            errEl.className = 'compare-result-error';
+            errEl.textContent = Localization.get("selectTwoBackups");
+            result.replaceChildren(errEl);
             return;
         }
 
         if (id1 === id2) {
             const result = DOM.get(CONSTANTS.SELECTORS.COMPARE_RESULT);
-            result.innerHTML = `<div style="color:red;">${Localization.get("selectDiffBackups")}</div>`;
+            const errEl = DOM.create('div');
+            errEl.className = 'compare-result-error';
+            errEl.textContent = Localization.get("selectDiffBackups");
+            result.replaceChildren(errEl);
             return;
         }
 
@@ -757,22 +740,23 @@ const RestoreManager = {
             const common = [...set1].filter(u => set2.has(u));
 
             const result = DOM.get(CONSTANTS.SELECTORS.COMPARE_RESULT);
-            result.innerHTML = '';
+            result.replaceChildren();
 
             const renderSection = (title, items, color) => {
                 const section = DOM.create('div');
                 section.style.marginBottom = '8px';
 
                 const heading = DOM.create('div');
-                heading.style.cssText = `font-weight:bold;color:${color};font-size:12px;margin-bottom:4px;`;
+                heading.className = 'compare-section-heading';
+                heading.style.color = color;
                 heading.textContent = `${title} (${items.length})`;
                 section.appendChild(heading);
 
                 const list = DOM.create('div');
-                list.style.cssText = 'max-height:100px;overflow-y:auto;';
+                list.className = 'compare-section-list';
                 items.forEach(url => {
                     const row = DOM.create('div');
-                    row.style.cssText = 'font-size:11px;padding:2px 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
+                    row.className = 'compare-section-item';
                     row.textContent = url;
                     row.title = url;
                     list.appendChild(row);
@@ -795,8 +779,8 @@ const RestoreManager = {
         const label1 = select1.querySelector('option[disabled]');
         const label2 = select2.querySelector('option[disabled]');
 
-        select1.innerHTML = '';
-        select2.innerHTML = '';
+        select1.replaceChildren();
+        select2.replaceChildren();
 
         const opt1 = DOM.create('option');
         opt1.value = '';
@@ -831,37 +815,9 @@ const RestoreManager = {
         }
     },
 
-    getAllBookmarkUrls(backupId) {
-        return new Promise((resolve) => {
-            const urls = [];
-
-            const collect = (id, callback) => {
-                chrome.bookmarks.getChildren(id, (children) => {
-                    if (!children || children.length === 0) {
-                        callback();
-                        return;
-                    }
-
-                    let pending = children.length;
-                    children.forEach(child => {
-                        if (child.url) {
-                            if (child.url.startsWith('http://') || child.url.startsWith('https://')) {
-                                urls.push(child.url);
-                            }
-                            pending--;
-                            if (pending === 0) callback();
-                        } else {
-                            collect(child.id, () => {
-                                pending--;
-                                if (pending === 0) callback();
-                            });
-                        }
-                    });
-                });
-            };
-
-            collect(backupId, () => resolve(urls));
-        });
+    async getAllBookmarkUrls(backupId) {
+        const response = await sendMessage({ action: 'getAllBookmarkUrls', backupId });
+        return response && response.success ? response.urls : [];
     },
 
     confirmAndRestore(backupId, tabCount) {
@@ -874,17 +830,16 @@ const RestoreManager = {
         this.restoreBackup(backupId);
     },
 
-    restoreBackup(backupId) {
+    async restoreBackup(backupId) {
         this.showProgress(true);
         const preserveGroups = DOM.get(CONSTANTS.SELECTORS.RESTORE_PRESERVE_GROUPS_TOGGLE).checked;
-        chrome.runtime.sendMessage({
+        const response = await browser.runtime.sendMessage({
             action: 'restoreBackup',
             backupId: backupId,
-            options: { newWindow: true, preserveTabGroups: preserveGroups }
-        }, (response) => {
-            this.showProgress(false);
-            this.handleResponse(response);
+            options: { preserveTabGroups: preserveGroups }
         });
+        this.showProgress(false);
+        this.handleResponse(response);
     },
 
     showProgress(show) {
@@ -902,10 +857,6 @@ const RestoreManager = {
     },
 
     handleResponse(response) {
-        if (chrome.runtime.lastError) {
-            this.showStatus(Localization.get("restoreFailed"), 'error');
-            return;
-        }
         if (response && response.success) {
             const msg = Localization.get("restoreSuccess", [response.tabsOpened]);
             this.showStatus(msg, 'success');
@@ -923,7 +874,10 @@ const RestoreManager = {
 
     showFolderDeletedError() {
         const container = DOM.get(CONSTANTS.SELECTORS.RESTORE_LIST);
-        container.innerHTML = `<div class="no-backups error">${Localization.get("folderDeleted")}</div>`;
+        const errEl = DOM.create('div');
+        errEl.className = 'no-backups error';
+        errEl.textContent = Localization.get("folderDeleted");
+        container.replaceChildren(errEl);
         this.updateButtonStates(false);
     }
 };
@@ -947,7 +901,7 @@ const TimeManager = {
 
     render() {
         const container = DOM.get(CONSTANTS.SELECTORS.TIME_LIST);
-        container.innerHTML = '';
+        container.replaceChildren();
 
         this.times.forEach((time, index) => {
             const row = DOM.create('div');
@@ -1045,54 +999,62 @@ const ToolsManager = {
         }
     },
 
-    loadFolderTree(savedFolderId) {
-        chrome.bookmarks.getTree((nodes) => {
-            const select = DOM.get(CONSTANTS.SELECTORS.TOOLS_FOLDER_SELECT);
-            const defaultText = Localization.get("selectBackupFolder") || 'Select Backup Folder';
-            select.innerHTML = `<option value="" disabled selected>${defaultText}</option>`;
-            this.processNodes(nodes, 0, savedFolderId, select);
+    async loadFolderTree(savedFolderId) {
+        const response = await sendMessage({ action: 'getBookmarkTree' });
+        if (!response || !response.success) return;
 
-            if (savedFolderId) {
-                this.loadBackups(savedFolderId);
-            }
-        });
+        const select = DOM.get(CONSTANTS.SELECTORS.TOOLS_FOLDER_SELECT);
+        const defaultText = Localization.get("selectBackupFolder") || 'Select Backup Folder';
+        select.replaceChildren();
+        const defaultOpt = DOM.create('option');
+        defaultOpt.value = '';
+        defaultOpt.disabled = true;
+        defaultOpt.selected = true;
+        defaultOpt.textContent = defaultText;
+        select.appendChild(defaultOpt);
+        BookmarkTreeHelper.populateFolderSelect(select, response.tree, 0, savedFolderId);
+
+        if (savedFolderId) {
+            this.loadBackups(savedFolderId);
+        }
     },
 
-    processNodes(nodes, depth, savedId, select) {
-        BookmarkTreeHelper.populateFolderSelect(select, nodes, depth, savedId);
-    },
-
-    loadBackups(folderId) {
+    async loadBackups(folderId) {
         const select = DOM.get(CONSTANTS.SELECTORS.TOOLS_BACKUP_SELECT);
         const defaultText = Localization.get("selectBackupDefault") || '-- Select a backup --';
-        select.innerHTML = `<option value="" disabled selected>${defaultText}</option>`;
+        select.replaceChildren();
+        const defaultOpt = DOM.create('option');
+        defaultOpt.value = '';
+        defaultOpt.disabled = true;
+        defaultOpt.selected = true;
+        defaultOpt.textContent = defaultText;
+        select.appendChild(defaultOpt);
 
         if (!folderId) return;
 
-        chrome.bookmarks.getChildren(folderId, (children) => {
-            if (chrome.runtime.lastError) {
-                const opt = DOM.create('option');
-                opt.disabled = true;
-                opt.textContent = Localization.get("folderDeleted") || 'Error loading backups';
-                select.appendChild(opt);
-                return;
-            }
+        const response = await sendMessage({ action: 'getBookmarkChildren', folderId });
+        if (!response || !response.success) {
+            const opt = DOM.create('option');
+            opt.disabled = true;
+            opt.textContent = Localization.get("folderDeleted") || 'Error loading backups';
+            select.appendChild(opt);
+            return;
+        }
 
-            const backups = children.filter(c => !c.url && c.title && c.title.startsWith('Backup_'));
-            if (backups.length === 0) {
-                const opt = DOM.create('option');
-                opt.disabled = true;
-                opt.textContent = Localization.get("noBackupsFound") || 'No backups found';
-                select.appendChild(opt);
-                return;
-            }
+        const backups = response.children.filter(c => !c.url && c.title && c.title.startsWith('Backup_'));
+        if (backups.length === 0) {
+            const opt = DOM.create('option');
+            opt.disabled = true;
+            opt.textContent = Localization.get("noBackupsFound") || 'No backups found';
+            select.appendChild(opt);
+            return;
+        }
 
-            backups.forEach(backup => {
-                const opt = DOM.create('option');
-                opt.value = backup.id;
-                opt.textContent = backup.title;
-                select.appendChild(opt);
-            });
+        backups.forEach(backup => {
+            const opt = DOM.create('option');
+            opt.value = backup.id;
+            opt.textContent = backup.title;
+            select.appendChild(opt);
         });
     },
 
@@ -1116,18 +1078,15 @@ const ToolsManager = {
         });
     },
 
-    exportBackup(format) {
+    async exportBackup(format) {
         const backupId = DOM.get(CONSTANTS.SELECTORS.TOOLS_BACKUP_SELECT).value;
         if (!backupId) {
             this.showExportStatus(Localization.get("exportSelectBackup") || 'Please select a backup first', 'error');
             return;
         }
 
-        chrome.runtime.sendMessage({ action: 'exportBackup', backupId, format }, (response) => {
-            if (chrome.runtime.lastError) {
-                this.showExportStatus(Localization.get("exportFailedMsg") + ': ' + chrome.runtime.lastError.message, 'error');
-                return;
-            }
+        try {
+            const response = await browser.runtime.sendMessage({ action: 'exportBackup', backupId, format });
             if (response && response.success) {
                 const mimeType = format === 'csv' ? 'text/csv' : 'application/json';
                 const extension = format === 'csv' ? '.csv' : '.json';
@@ -1145,10 +1104,12 @@ const ToolsManager = {
             } else {
                 this.showExportStatus(Localization.get("exportFailedMsg") + ': ' + (response ? response.error : ''), 'error');
             }
-        });
+        } catch (err) {
+            this.showExportStatus(Localization.get("exportFailedMsg") + ': ' + err.message, 'error');
+        }
     },
 
-    importBackup() {
+    async importBackup() {
         const fileInput = DOM.get(CONSTANTS.SELECTORS.IMPORT_FILE);
         const statusEl = DOM.get(CONSTANTS.SELECTORS.IMPORT_STATUS);
         const folderId = DOM.get(CONSTANTS.SELECTORS.TOOLS_FOLDER_SELECT).value;
@@ -1167,14 +1128,10 @@ const ToolsManager = {
         }
 
         const reader = new FileReader();
-        reader.onload = (e) => {
+        reader.onload = async (e) => {
             const data = e.target.result;
-            chrome.runtime.sendMessage({ action: 'importBackup', data, folderId }, (response) => {
-                if (chrome.runtime.lastError) {
-                    statusEl.textContent = (Localization.get("importFailed") || 'Import failed') + ': ' + chrome.runtime.lastError.message;
-                    statusEl.style.color = 'red';
-                    return;
-                }
+            try {
+                const response = await browser.runtime.sendMessage({ action: 'importBackup', data, folderId });
                 if (response && response.success) {
                     const msg = (Localization.get("importSuccess") || 'Imported $count$ tabs').replace('$count$', response.count);
                     statusEl.textContent = msg;
@@ -1184,7 +1141,10 @@ const ToolsManager = {
                     statusEl.style.color = 'red';
                 }
                 setTimeout(() => statusEl.textContent = '', 4000);
-            });
+            } catch (err) {
+                statusEl.textContent = (Localization.get("importFailed") || 'Import failed') + ': ' + err.message;
+                statusEl.style.color = 'red';
+            }
         };
         reader.readAsText(file);
     },
@@ -1251,7 +1211,7 @@ const UI = {
 
         DOM.get(CONSTANTS.SELECTORS.SHORTCUT_LINK).addEventListener('click', (e) => {
             e.preventDefault();
-            chrome.tabs.create({ url: 'chrome://extensions/shortcuts' });
+            browser.tabs.create({ url: BrowserDetect.shortcutUrl });
         });
 
         DOM.get(CONSTANTS.SELECTORS.INCLUDE_DUPLICATES_TOGGLE).addEventListener('change', (e) => {
@@ -1320,13 +1280,13 @@ const UI = {
         });
 
         if (tabName === 'restore') {
-            chrome.storage.local.get([CONSTANTS.STORAGE.BACKUP_FOLDER_ID], (result) => {
+            browser.storage.local.get([CONSTANTS.STORAGE.BACKUP_FOLDER_ID]).then((result) => {
                 RestoreManager.init(result[CONSTANTS.STORAGE.BACKUP_FOLDER_ID]);
             });
         }
 
         if (tabName === 'tools') {
-            chrome.storage.local.get([CONSTANTS.STORAGE.BACKUP_FOLDER_ID], (result) => {
+            browser.storage.local.get([CONSTANTS.STORAGE.BACKUP_FOLDER_ID]).then((result) => {
                 ToolsManager.init(result[CONSTANTS.STORAGE.BACKUP_FOLDER_ID]);
             });
             this.loadStats();
@@ -1366,7 +1326,7 @@ const UI = {
         else cleanupSettings.classList.add('hidden');
     },
 
-    handleBackupClick() {
+    async handleBackupClick() {
         const folderId = DOM.get(CONSTANTS.SELECTORS.FOLDER_SELECT).value;
         if (!folderId) {
             this.showStatus(Localization.get("selectFolderErr"), 'error');
@@ -1385,13 +1345,12 @@ const UI = {
         btn.disabled = true;
         btn.textContent = Localization.get("backupBtnProgress");
 
-        chrome.runtime.sendMessage({ action: 'manualBackup', folderId, tabs, note }, (response) => {
+        try {
+            const response = await browser.runtime.sendMessage({ action: 'manualBackup', folderId, tabs, note });
             btn.disabled = false;
             btn.textContent = Localization.get("backupBtn");
 
-            if (chrome.runtime.lastError) {
-                this.showStatus(Localization.get("backupFailed") + chrome.runtime.lastError.message, 'error');
-            } else if (response && response.success) {
+            if (response && response.success) {
                 this.showStatus(Localization.get("backupSuccess"), 'success');
                 this.updateLastBackupTime();
             } else if (response && response.error === 'Backup already in progress') {
@@ -1399,7 +1358,11 @@ const UI = {
             } else {
                 this.showStatus(Localization.get("backupFailed") + (response ? response.error : Localization.get("unknownError")), 'error');
             }
-        });
+        } catch (err) {
+            btn.disabled = false;
+            btn.textContent = Localization.get("backupBtn");
+            this.showStatus(Localization.get("backupFailed") + err.message, 'error');
+        }
     },
 
     handleSaveSettings() {
@@ -1446,7 +1409,7 @@ const UI = {
         }
 
         SettingsManager.save(settings).then(() => {
-            chrome.runtime.sendMessage({ action: 'updateSchedule' });
+            browser.runtime.sendMessage({ action: 'updateSchedule' });
 
             const btn = DOM.get(CONSTANTS.SELECTORS.SAVE_SETTINGS_BTN);
             btn.textContent = Localization.get("saved");
@@ -1462,7 +1425,7 @@ const UI = {
     },
 
     updateLastBackupTime() {
-        chrome.storage.local.get([CONSTANTS.STORAGE.LAST_BACKUP_TIME], (result) => {
+        browser.storage.local.get([CONSTANTS.STORAGE.LAST_BACKUP_TIME]).then((result) => {
             const time = result[CONSTANTS.STORAGE.LAST_BACKUP_TIME];
             if (time) {
                 DOM.get(CONSTANTS.SELECTORS.LAST_BACKUP_TIME).textContent = new Date(time).toLocaleString(undefined, {
@@ -1540,63 +1503,65 @@ const UI = {
         this.updateLastBackupTime();
     },
 
-    loadStats() {
-        chrome.runtime.sendMessage({ action: 'getStats' }, (stats) => {
-            const container = DOM.get(CONSTANTS.SELECTORS.STATS_CONTAINER);
-            if (!container) return;
+    async loadStats() {
+        const stats = await browser.runtime.sendMessage({ action: 'getStats' });
+        const container = DOM.get(CONSTANTS.SELECTORS.STATS_CONTAINER);
+        if (!container) return;
 
-            container.innerHTML = '';
+        container.replaceChildren();
 
-            if (!stats || Object.keys(stats).length === 0) {
-                container.innerHTML = `<div style="font-size:12px;color:#888;">${Localization.get("noStats")}</div>`;
-                return;
-            }
+        if (!stats || Object.keys(stats).length === 0) {
+            const noStats = DOM.create('div');
+            noStats.style.fontSize = '12px';
+            noStats.style.color = '#888';
+            noStats.textContent = Localization.get("noStats");
+            container.replaceChildren(noStats);
+            return;
+        }
 
-            const addRow = (label, value) => {
+        const addRow = (label, value) => {
+            const row = DOM.create('div');
+            row.className = 'stat-row';
+
+            const labelEl = DOM.create('span');
+            labelEl.textContent = label;
+            labelEl.className = 'stat-label';
+
+            const valueEl = DOM.create('span');
+            valueEl.textContent = value;
+            valueEl.className = 'stat-value';
+
+            row.append(labelEl, valueEl);
+            container.appendChild(row);
+        };
+
+        addRow(Localization.get("totalBackups"), stats.totalBackups || 0);
+        addRow(Localization.get("totalTabs"), stats.totalTabs || 0);
+
+        if (stats.updatedAt) {
+            addRow(Localization.get("lastUpdated"), new Date(stats.updatedAt).toLocaleString());
+        }
+
+        if (stats.topDomains && stats.topDomains.length > 0) {
+            const domainHeader = DOM.create('div');
+            domainHeader.className = 'stats-domain-header';
+            domainHeader.textContent = Localization.get("topDomains") + ':';
+            container.appendChild(domainHeader);
+
+            stats.topDomains.forEach(d => {
                 const row = DOM.create('div');
-                row.className = 'stat-row';
-                row.style.cssText = 'display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--input-border, #ddd);font-size:12px;';
+                row.className = 'stats-detail-row';
 
                 const labelEl = DOM.create('span');
-                labelEl.textContent = label;
-                labelEl.style.fontWeight = 'bold';
+                labelEl.textContent = d.domain;
 
                 const valueEl = DOM.create('span');
-                valueEl.textContent = value;
+                valueEl.textContent = d.count;
 
                 row.append(labelEl, valueEl);
                 container.appendChild(row);
-            };
-
-            addRow(Localization.get("totalBackups"), stats.totalBackups || 0);
-            addRow(Localization.get("totalTabs"), stats.totalTabs || 0);
-
-            if (stats.updatedAt) {
-                addRow(Localization.get("lastUpdated"), new Date(stats.updatedAt).toLocaleString());
-            }
-
-            if (stats.topDomains && stats.topDomains.length > 0) {
-                const domainHeader = DOM.create('div');
-                domainHeader.style.cssText = 'font-weight:bold;font-size:12px;margin-top:8px;margin-bottom:4px;';
-                domainHeader.textContent = Localization.get("topDomains") + ':';
-                container.appendChild(domainHeader);
-
-                stats.topDomains.forEach(d => {
-                    const row = DOM.create('div');
-                    row.className = 'stat-row';
-                    row.style.cssText = 'display:flex;justify-content:space-between;padding:2px 0;font-size:11px;color:#666;';
-
-                    const labelEl = DOM.create('span');
-                    labelEl.textContent = d.domain;
-
-                    const valueEl = DOM.create('span');
-                    valueEl.textContent = d.count;
-
-                    row.append(labelEl, valueEl);
-                    container.appendChild(row);
-                });
-            }
-        });
+            });
+        }
     }
 };
 

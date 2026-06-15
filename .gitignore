@@ -10,6 +10,7 @@ coverage/
 build/
 dist/
 *.zip
+firefox-build/
 *.crx
 *.pem
 

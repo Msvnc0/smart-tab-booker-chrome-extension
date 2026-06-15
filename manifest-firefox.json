@@ -9,7 +9,6 @@
     "bookmarks",
     "storage",
     "alarms",
-    "tabGroups",
     "contextMenus"
   ],
   "action": {
@@ -21,7 +20,7 @@
     }
   },
   "background": {
-    "service_worker": "background.js"
+    "scripts": ["browser-polyfill.js", "browser-detect.js", "background.js"]
   },
   "icons": {
     "16": "images/icon16.png",
@@ -35,6 +34,15 @@
         "mac": "Command+Shift+B"
       },
       "description": "__MSG_quickBackupDesc__"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "smart-tab-booker@example.com",
+      "strict_min_version": "142.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
     }
   }
 }

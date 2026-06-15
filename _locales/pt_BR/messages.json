@@ -1,373 +1,346 @@
-{
-  "extName": {
-    "message": "Smart Tab Booker"
-  },
-  "extDesc": {
-    "message": "Faça backup das abas abertas nos favoritos automaticamente ou manualmente."
-  },
-  "selectStart": {
-    "message": "Carregando pastas..."
-  },
-  "selectDefault": {
-    "message": "Selecione uma pasta..."
-  },
-  "backupBtn": {
-    "message": "Fazer Backup Agora"
-  },
-  "backupBtnProgress": {
-    "message": "Fazendo backup..."
-  },
-  "autoBackupTitle": {
-    "message": "Configurações de Backup Automático"
-  },
-  "intervalLabel": {
-    "message": "Intervalo:"
-  },
-  "daily": {
-    "message": "Diário"
-  },
-  "weekly": {
-    "message": "Semanal"
-  },
-  "monthly": {
-    "message": "Mensal"
-  },
-  "enableAutoBackup": {
-    "message": "Ativar backup automático"
-  },
-  "darkMode": {
-    "message": "Modo escuro"
-  },
-  "custom": {
-    "message": "Personalizado"
-  },
-  "backupTimeLabel": {
-    "message": "Hora do Backup (24h):"
-  },
-  "saveSettingsBtn": {
-    "message": "Salvar Configurações"
-  },
-  "saved": {
-    "message": "Salvo!"
-  },
-  "lastBackupLabel": {
-    "message": "Último Backup:"
-  },
-  "never": {
-    "message": "Nunca"
-  },
-  "folderSaved": {
-    "message": "Pasta salva!"
-  },
-  "selectFolderErr": {
-    "message": "Por favor, selecione uma pasta primeiro."
-  },
-  "backupSuccess": {
-    "message": "Backup concluído!"
-  },
-  "backupInProgress": {
-    "message": "Backup já está em andamento"
-  },
-  "backupFailed": {
-    "message": "Falha no backup: "
-  },
-  "invalidValue": {
-    "message": "Valor inválido."
-  },
-  "invalidTime": {
-    "message": "Hora inválida."
-  },
-  "selectAll": {
-    "message": "Selecionar tudo"
-  },
-  "deselectAll": {
-    "message": "Desmarcar tudo"
-  },
-  "tabCounter": {
-    "message": "Selecionados: $SELECTED$ / $TOTAL$",
-    "placeholders": {
-      "selected": {
-        "content": "$1"
-      },
-      "total": {
-        "content": "$2"
-      }
-    }
-  },
-  "bookmarksBar": {
-    "message": "Barra de favoritos"
-  },
-  "otherBookmarks": {
-    "message": "Outros favoritos"
-  },
-  "minutes": {
-    "message": "Minutos"
-  },
-  "hours": {
-    "message": "Horas"
-  },
-  "days": {
-    "message": "Dias"
-  },
-  "selectFolderLabel": {
-    "message": "Pasta de Backup:"
-  },
-  "selectTabsLabel": {
-    "message": "Abas para backup:"
-  },
-  "noTabsSelected": {
-    "message": "Nenhuma aba selecionada!"
-  },
-  "preserveGroups": {
-    "message": "Preservar grupos de abas como pastas"
-  },
-  "autoCleanup": {
-    "message": "Limpeza automática de backups antigos"
-  },
-  "cleanupDaysLabel": {
-    "message": "Excluir backups mais antigos que"
-  },
-  "daysLabel": {
-    "message": "dias"
-  },
-  "addTimeBtn": {
-    "message": "+ Adicionar hora"
-  },
-  "multiTimeLabel": {
-    "message": "Horários de backup (máx 5):"
-  },
-  "quickBackupDesc": {
-    "message": "Backup rápido de todas as abas"
-  },
-  "shortcutLabel": {
-    "message": "Atalho de teclado:"
-  },
-  "changeShortcut": {
-    "message": "Alterar"
-  },
-  "duplicateWarning": {
-    "message": "duplicado(s)"
-  },
-  "includeDuplicates": {
-    "message": "Incluir URLs duplicadas"
-  },
-  "backupTab": {
-    "message": "Backup"
-  },
-  "restoreTab": {
-    "message": "Restaurar"
-  },
-  "selectBackupFolder": {
-    "message": "Pasta de backup:"
-  },
-  "selectBackupDefault": {
-    "message": "-- Select a backup --"
-  },
-  "restoreAll": {
-    "message": "Restaurar tudo"
-  },
-  "noBackupsFound": {
-    "message": "Nenhum backup nesta pasta"
-  },
-  "restoreSuccess": {
-    "message": "$count$ abas abertas",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "restoreFailed": {
-    "message": "Falha na restauração"
-  },
-  "tabsCount": {
-    "message": "abas"
-  },
-  "restoring": {
-    "message": "Restaurando..."
-  },
-  "selectFolderFirst": {
-    "message": "Selecione uma pasta"
-  },
-  "manyTabsWarning": {
-    "message": "$count$ abas serão abertas. Continuar?",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "folderDeleted": {
-    "message": "A pasta selecionada foi excluída"
-  },
-  "restorePreserveGroups": {
-    "message": "Preservar grupos de abas"
-  },
-  "contextMenuBackupTab": {
-    "message": "Fazer backup desta aba"
-  },
-  "contextMenuBackupAll": {
-    "message": "Fazer backup de todas as abas"
-  },
-  "allWindows": {
-    "message": "Todas as janelas"
-  },
-  "windowLabel": {
-    "message": "Janela"
-  },
-  "pinnedTab": {
-    "message": "Fixada"
-  },
-  "backupNotePlaceholder": {
-    "message": "Adicionar uma nota..."
-  },
-  "domainFilterPlaceholder": {
-    "message": "Filtrar por domínio..."
-  },
-  "clearFilter": {
-    "message": "Limpar"
-  },
-  "restoreSelected": {
-    "message": "Restaurar seleção"
-  },
-  "previewHint": {
-    "message": "Duplo clique para pré-visualização"
-  },
-  "searchPlaceholder": {
-    "message": "Pesquisar backups..."
-  },
-  "compareTitle": {
-    "message": "Comparar backups"
-  },
-  "compareSelect1": {
-    "message": "Backup A"
-  },
-  "compareSelect2": {
-    "message": "Backup B"
-  },
-  "compareBtn": {
-    "message": "Comparar"
-  },
-  "added": {
-    "message": "Adicionado"
-  },
-  "removed": {
-    "message": "Removido"
-  },
-  "common": {
-    "message": "Comum"
-  },
-  "toolsTab": {
-    "message": "Ferramentas"
-  },
-  "exportImportTitle": {
-    "message": "Exportar / Importar"
-  },
-  "exportJson": {
-    "message": "Exportar JSON"
-  },
-  "exportCsv": {
-    "message": "Exportar CSV"
-  },
-  "importLabel": {
-    "message": "Importar de arquivo:"
-  },
-  "importBtn": {
-    "message": "Importar"
-  },
-  "importSuccess": {
-    "message": "$count$ abas importadas",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "importFailed": {
-    "message": "Falha na importação"
-  },
-  "statsTitle": {
-    "message": "Estatísticas"
-  },
-  "totalBackups": {
-    "message": "Total de backups"
-  },
-  "totalTabs": {
-    "message": "Total de abas salvas"
-  },
-  "topDomains": {
-    "message": "Domínios principais"
-  },
-  "noStats": {
-    "message": "Sem estatísticas"
-  },
-  "smartTriggersTitle": {
-    "message": "Gatilhos inteligentes"
-  },
-  "tabThreshold": {
-    "message": "Limite de abas"
-  },
-  "reminderLabel": {
-    "message": "Lembrete"
-  },
-  "noBackupSelected": {
-    "message": "Nenhum backup selecionado"
-  },
-  "exportSelectBackup": {
-    "message": "Selecione backup para exportar"
-  },
-  "exportSelectFolder": {
-    "message": "Selecione uma pasta de backup primeiro."
-  },
-  "exportComplete": {
-    "message": "Exportação concluída!"
-  },
-  "exportFailedMsg": {
-    "message": "Falha na exportação"
-  },
-  "importSelectFolder": {
-    "message": "Selecione uma pasta primeiro."
-  },
-  "importSelectFile": {
-    "message": "Selecione um arquivo para importar."
-  },
-  "noTabsRestore": {
-    "message": "Nenhuma aba selecionada para restauração."
-  },
-  "compareAdded": {
-    "message": "Adicionado (em B, não em A)"
-  },
-  "compareRemoved": {
-    "message": "Removido (em A, não em B)"
-  },
-  "compareCommonLabel": {
-    "message": "Comum"
-  },
-  "lastUpdated": {
-    "message": "Última atualização"
-  },
-  "noBookmarksPreview": {
-    "message": "Nenhum favorito encontrado."
-  },
-  "backupCountLabel": {
-    "message": "favoritos:"
-  },
-  "selectTwoBackups": {
-    "message": "Selecione dois backups para comparar."
-  },
-  "selectDiffBackups": {
-    "message": "Selecione dois backups diferentes."
-  },
-  "noOpenTabs": {
-    "message": "Nenhuma aba aberta."
-  },
-  "duplicateGroupTooltip": {
-    "message": "Abas com a mesma URL"
-  },
-  "loadingPreview": {
-    "message": "Carregando..."
-  },
-  "unknownError": {
-    "message": "Unknown error"
-  }
+﻿{
+    "extName":  {
+                    "message":  "Smart Tab Booker"
+                },
+    "extDesc":  {
+                    "message":  "Faça backup das abas abertas nos favoritos automaticamente ou manualmente."
+                },
+    "selectStart":  {
+                        "message":  "Carregando pastas..."
+                    },
+    "selectDefault":  {
+                          "message":  "Selecione uma pasta..."
+                      },
+    "backupBtn":  {
+                      "message":  "Fazer Backup Agora"
+                  },
+    "backupBtnProgress":  {
+                              "message":  "Fazendo backup..."
+                          },
+    "autoBackupTitle":  {
+                            "message":  "Configurações de Backup Automático"
+                        },
+    "intervalLabel":  {
+                          "message":  "Intervalo:"
+                      },
+    "daily":  {
+                  "message":  "Diário"
+              },
+    "weekly":  {
+                   "message":  "Semanal"
+               },
+    "monthly":  {
+                    "message":  "Mensal"
+                },
+    "enableAutoBackup":  {
+                             "message":  "Ativar backup automático"
+                         },
+    "darkMode":  {
+                     "message":  "Modo escuro"
+                 },
+    "custom":  {
+                   "message":  "Personalizado"
+               },
+    "saveSettingsBtn":  {
+                            "message":  "Salvar Configurações"
+                        },
+    "saved":  {
+                  "message":  "Salvo!"
+              },
+    "lastBackupLabel":  {
+                            "message":  "Último Backup:"
+                        },
+    "never":  {
+                  "message":  "Nunca"
+              },
+    "folderSaved":  {
+                        "message":  "Pasta salva!"
+                    },
+    "selectFolderErr":  {
+                            "message":  "Por favor, selecione uma pasta primeiro."
+                        },
+    "backupSuccess":  {
+                          "message":  "Backup concluído!"
+                      },
+    "backupInProgress":  {
+                             "message":  "Backup já está em andamento"
+                         },
+    "backupFailed":  {
+                         "message":  "Falha no backup: "
+                     },
+    "invalidValue":  {
+                         "message":  "Valor inválido."
+                     },
+    "selectAll":  {
+                      "message":  "Selecionar tudo"
+                  },
+    "deselectAll":  {
+                        "message":  "Desmarcar tudo"
+                    },
+    "tabCounter":  {
+                       "message":  "Selecionados: $SELECTED$ / $TOTAL$",
+                       "placeholders":  {
+                                            "selected":  {
+                                                             "content":  "$1"
+                                                         },
+                                            "total":  {
+                                                          "content":  "$2"
+                                                      }
+                                        }
+                   },
+    "bookmarksBar":  {
+                         "message":  "Barra de favoritos"
+                     },
+    "otherBookmarks":  {
+                           "message":  "Outros favoritos"
+                       },
+    "minutes":  {
+                    "message":  "Minutos"
+                },
+    "hours":  {
+                  "message":  "Horas"
+              },
+    "days":  {
+                 "message":  "Dias"
+             },
+    "selectFolderLabel":  {
+                              "message":  "Pasta de Backup:"
+                          },
+    "selectTabsLabel":  {
+                            "message":  "Abas para backup:"
+                        },
+    "noTabsSelected":  {
+                           "message":  "Nenhuma aba selecionada!"
+                       },
+    "preserveGroups":  {
+                           "message":  "Preservar grupos de abas como pastas"
+                       },
+    "autoCleanup":  {
+                        "message":  "Limpeza automática de backups antigos"
+                    },
+    "cleanupDaysLabel":  {
+                             "message":  "Excluir backups mais antigos que"
+                         },
+    "daysLabel":  {
+                      "message":  "dias"
+                  },
+    "addTimeBtn":  {
+                       "message":  "+ Adicionar hora"
+                   },
+    "multiTimeLabel":  {
+                           "message":  "Horários de backup (máx 5):"
+                       },
+    "quickBackupDesc":  {
+                            "message":  "Backup rápido de todas as abas"
+                        },
+    "shortcutLabel":  {
+                          "message":  "Atalho de teclado:"
+                      },
+    "changeShortcut":  {
+                           "message":  "Alterar"
+                       },
+    "duplicateWarning":  {
+                             "message":  "duplicado(s)"
+                         },
+    "includeDuplicates":  {
+                              "message":  "Incluir URLs duplicadas"
+                          },
+    "backupTab":  {
+                      "message":  "Backup"
+                  },
+    "restoreTab":  {
+                       "message":  "Restaurar"
+                   },
+    "selectBackupFolder":  {
+                               "message":  "Pasta de backup:"
+                           },
+    "selectBackupDefault":  {
+                                "message":  "-- Select a backup --"
+                            },
+    "restoreAll":  {
+                       "message":  "Restaurar tudo"
+                   },
+    "noBackupsFound":  {
+                           "message":  "Nenhum backup nesta pasta"
+                       },
+    "restoreSuccess":  {
+                           "message":  "$count$ abas abertas",
+                           "placeholders":  {
+                                                "count":  {
+                                                              "content":  "$1"
+                                                          }
+                                            }
+                       },
+    "restoreFailed":  {
+                          "message":  "Falha na restauração"
+                      },
+    "tabsCount":  {
+                      "message":  "abas"
+                  },
+    "restoring":  {
+                      "message":  "Restaurando..."
+                  },
+    "selectFolderFirst":  {
+                              "message":  "Selecione uma pasta"
+                          },
+    "manyTabsWarning":  {
+                            "message":  "$count$ abas serão abertas. Continuar?",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "folderDeleted":  {
+                          "message":  "A pasta selecionada foi excluída"
+                      },
+    "restorePreserveGroups":  {
+                                  "message":  "Preservar grupos de abas"
+                              },
+    "contextMenuBackupTab":  {
+                                 "message":  "Fazer backup desta aba"
+                             },
+    "contextMenuBackupAll":  {
+                                 "message":  "Fazer backup de todas as abas"
+                             },
+    "allWindows":  {
+                       "message":  "Todas as janelas"
+                   },
+    "backupNotePlaceholder":  {
+                                  "message":  "Adicionar uma nota..."
+                              },
+    "domainFilterPlaceholder":  {
+                                    "message":  "Filtrar por domínio..."
+                                },
+    "clearFilter":  {
+                        "message":  "Limpar"
+                    },
+    "restoreSelected":  {
+                            "message":  "Restaurar seleção"
+                        },
+    "previewHint":  {
+                        "message":  "Duplo clique para pré-visualização"
+                    },
+    "searchPlaceholder":  {
+                              "message":  "Pesquisar backups..."
+                          },
+    "compareTitle":  {
+                         "message":  "Comparar backups"
+                     },
+    "compareSelect1":  {
+                           "message":  "Backup A"
+                       },
+    "compareSelect2":  {
+                           "message":  "Backup B"
+                       },
+    "compareBtn":  {
+                       "message":  "Comparar"
+                   },
+    "toolsTab":  {
+                     "message":  "Ferramentas"
+                 },
+    "exportImportTitle":  {
+                              "message":  "Exportar / Importar"
+                          },
+    "exportJson":  {
+                       "message":  "Exportar JSON"
+                   },
+    "exportCsv":  {
+                      "message":  "Exportar CSV"
+                  },
+    "importLabel":  {
+                        "message":  "Importar de arquivo:"
+                    },
+    "importBtn":  {
+                      "message":  "Importar"
+                  },
+    "importSuccess":  {
+                          "message":  "$count$ abas importadas",
+                          "placeholders":  {
+                                               "count":  {
+                                                             "content":  "$1"
+                                                         }
+                                           }
+                      },
+    "importFailed":  {
+                         "message":  "Falha na importação"
+                     },
+    "statsTitle":  {
+                       "message":  "Estatísticas"
+                   },
+    "totalBackups":  {
+                         "message":  "Total de backups"
+                     },
+    "totalTabs":  {
+                      "message":  "Total de abas salvas"
+                  },
+    "topDomains":  {
+                       "message":  "Domínios principais"
+                   },
+    "noStats":  {
+                    "message":  "Sem estatísticas"
+                },
+    "smartTriggersTitle":  {
+                               "message":  "Gatilhos inteligentes"
+                           },
+    "tabThreshold":  {
+                         "message":  "Limite de abas"
+                     },
+    "reminderLabel":  {
+                          "message":  "Lembrete"
+                      },
+    "exportSelectBackup":  {
+                               "message":  "Selecione backup para exportar"
+                           },
+    "exportComplete":  {
+                           "message":  "Exportação concluída!"
+                       },
+    "exportFailedMsg":  {
+                            "message":  "Falha na exportação"
+                        },
+    "importSelectFolder":  {
+                               "message":  "Selecione uma pasta primeiro."
+                           },
+    "importSelectFile":  {
+                             "message":  "Selecione um arquivo para importar."
+                         },
+    "noTabsRestore":  {
+                          "message":  "Nenhuma aba selecionada para restauração."
+                      },
+    "compareAdded":  {
+                         "message":  "Adicionado (em B, não em A)"
+                     },
+    "compareRemoved":  {
+                           "message":  "Removido (em A, não em B)"
+                       },
+    "compareCommonLabel":  {
+                               "message":  "Comum"
+                           },
+    "lastUpdated":  {
+                        "message":  "Última atualização"
+                    },
+    "noBookmarksPreview":  {
+                               "message":  "Nenhum favorito encontrado."
+                           },
+    "backupCountLabel":  {
+                             "message":  "favoritos:"
+                         },
+    "selectTwoBackups":  {
+                             "message":  "Selecione dois backups para comparar."
+                         },
+    "selectDiffBackups":  {
+                              "message":  "Selecione dois backups diferentes."
+                          },
+    "noOpenTabs":  {
+                       "message":  "Nenhuma aba aberta."
+                   },
+    "duplicateGroupTooltip":  {
+                                  "message":  "Abas com a mesma URL"
+                              },
+    "loadingPreview":  {
+                           "message":  "Carregando..."
+                       },
+    "unknownError":  {
+                         "message":  "Unknown error"
+                     }
 }

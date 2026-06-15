@@ -1,373 +1,346 @@
-{
-  "extName": {
-    "message": "Smart Tab Booker"
-  },
-  "extDesc": {
-    "message": "احفظ علامات التبويب المفتوحة في الإشارات المرجعية تلقائيًا أو يدويًا."
-  },
-  "selectStart": {
-    "message": "جاري تحميل المجلدات..."
-  },
-  "selectDefault": {
-    "message": "اختر مجلدًا..."
-  },
-  "backupBtn": {
-    "message": "إنشاء نسخة احتياطية الآن"
-  },
-  "backupBtnProgress": {
-    "message": "جاري إنشاء النسخة الاحتياطية..."
-  },
-  "autoBackupTitle": {
-    "message": "إعدادات النسخ الاحتياطي التلقائي"
-  },
-  "intervalLabel": {
-    "message": "الفاصل الزمني:"
-  },
-  "daily": {
-    "message": "يوميًا"
-  },
-  "weekly": {
-    "message": "أسبوعيًا"
-  },
-  "monthly": {
-    "message": "شهريًا"
-  },
-  "enableAutoBackup": {
-    "message": "تفعيل النسخ الاحتياطي التلقائي"
-  },
-  "darkMode": {
-    "message": "الوضع الداكن"
-  },
-  "custom": {
-    "message": "مخصص"
-  },
-  "backupTimeLabel": {
-    "message": "وقت النسخ الاحتياطي (24 ساعة):"
-  },
-  "saveSettingsBtn": {
-    "message": "حفظ الإعدادات"
-  },
-  "saved": {
-    "message": "تم الحفظ!"
-  },
-  "lastBackupLabel": {
-    "message": "آخر نسخة احتياطية:"
-  },
-  "never": {
-    "message": "أبدًا"
-  },
-  "folderSaved": {
-    "message": "تم حفظ المجلد!"
-  },
-  "selectFolderErr": {
-    "message": "يرجى اختيار مجلد أولاً."
-  },
-  "backupSuccess": {
-    "message": "تم إنشاء النسخة الاحتياطية!"
-  },
-  "backupInProgress": {
-    "message": "يوجد نسخ احتياطي قيد التقدم بالفعل"
-  },
-  "backupFailed": {
-    "message": "فشل إنشاء النسخة الاحتياطية: "
-  },
-  "invalidValue": {
-    "message": "قيمة غير صالحة."
-  },
-  "invalidTime": {
-    "message": "وقت غير صالح."
-  },
-  "selectAll": {
-    "message": "تحديد الكل"
-  },
-  "deselectAll": {
-    "message": "إلغاء تحديد الكل"
-  },
-  "tabCounter": {
-    "message": "المحدد: $SELECTED$ / $TOTAL$",
-    "placeholders": {
-      "selected": {
-        "content": "$1"
-      },
-      "total": {
-        "content": "$2"
-      }
-    }
-  },
-  "bookmarksBar": {
-    "message": "شريط الإشارات المرجعية"
-  },
-  "otherBookmarks": {
-    "message": "إشارات مرجعية أخرى"
-  },
-  "minutes": {
-    "message": "دقائق"
-  },
-  "hours": {
-    "message": "ساعات"
-  },
-  "days": {
-    "message": "أيام"
-  },
-  "selectFolderLabel": {
-    "message": "اختر مجلد النسخ الاحتياطي:"
-  },
-  "selectTabsLabel": {
-    "message": "اختر علامات التبويب للنسخ الاحتياطي:"
-  },
-  "noTabsSelected": {
-    "message": "لم يتم تحديد أي علامات تبويب!"
-  },
-  "preserveGroups": {
-    "message": "الحفاظ على مجموعات علامات التبويب كمجلدات"
-  },
-  "autoCleanup": {
-    "message": "التنظيف التلقائي للنسخ الاحتياطية القديمة"
-  },
-  "cleanupDaysLabel": {
-    "message": "حذف النسخ الاحتياطية الأقدم من"
-  },
-  "daysLabel": {
-    "message": "يوم"
-  },
-  "addTimeBtn": {
-    "message": "+ إضافة وقت"
-  },
-  "multiTimeLabel": {
-    "message": "أوقات النسخ الاحتياطي (حد أقصى 5):"
-  },
-  "quickBackupDesc": {
-    "message": "نسخ احتياطي سريع لجميع علامات التبويب"
-  },
-  "shortcutLabel": {
-    "message": "اختصار لوحة المفاتيح:"
-  },
-  "changeShortcut": {
-    "message": "تغيير"
-  },
-  "duplicateWarning": {
-    "message": "مكرر/مكررات"
-  },
-  "includeDuplicates": {
-    "message": "تضمين عناوين URL المكررة"
-  },
-  "backupTab": {
-    "message": "نسخ احتياطي"
-  },
-  "restoreTab": {
-    "message": "استعادة"
-  },
-  "selectBackupFolder": {
-    "message": "اختر مجلد النسخ الاحتياطي:"
-  },
-  "selectBackupDefault": {
-    "message": "-- Select a backup --"
-  },
-  "restoreAll": {
-    "message": "استعادة الكل"
-  },
-  "noBackupsFound": {
-    "message": "لم يتم العثور على نسخ احتياطية"
-  },
-  "restoreSuccess": {
-    "message": "تم فتح $count$ علامة تبويب",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "restoreFailed": {
-    "message": "فشلت الاستعادة"
-  },
-  "tabsCount": {
-    "message": "علامات تبويب"
-  },
-  "restoring": {
-    "message": "جاري الاستعادة..."
-  },
-  "selectFolderFirst": {
-    "message": "اختر مجلدًا"
-  },
-  "manyTabsWarning": {
-    "message": "سيتم فتح $count$ علامة تبويب. متابعة؟",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "folderDeleted": {
-    "message": "تم حذف المجلد المحدد"
-  },
-  "restorePreserveGroups": {
-    "message": "الحفاظ على مجموعات علامات التبويب"
-  },
-  "contextMenuBackupTab": {
-    "message": "نسخ هذا التبويب احتياطياً"
-  },
-  "contextMenuBackupAll": {
-    "message": "نسخ جميع التبويبات احتياطياً"
-  },
-  "allWindows": {
-    "message": "جميع النوافذ"
-  },
-  "windowLabel": {
-    "message": "نافذة"
-  },
-  "pinnedTab": {
-    "message": "مثبت"
-  },
-  "backupNotePlaceholder": {
-    "message": "إضافة ملاحظة..."
-  },
-  "domainFilterPlaceholder": {
-    "message": "تصفية حسب النطاق..."
-  },
-  "clearFilter": {
-    "message": "مسح"
-  },
-  "restoreSelected": {
-    "message": "استعادة المحدد"
-  },
-  "previewHint": {
-    "message": "انقر مرتين للمعاينة"
-  },
-  "searchPlaceholder": {
-    "message": "البحث في النسخ الاحتياطية..."
-  },
-  "compareTitle": {
-    "message": "مقارنة النسخ الاحتياطية"
-  },
-  "compareSelect1": {
-    "message": "نسخة احتياطية أ"
-  },
-  "compareSelect2": {
-    "message": "نسخة احتياطية ب"
-  },
-  "compareBtn": {
-    "message": "مقارنة"
-  },
-  "added": {
-    "message": "مضاف"
-  },
-  "removed": {
-    "message": "محذوف"
-  },
-  "common": {
-    "message": "مشترك"
-  },
-  "toolsTab": {
-    "message": "أدوات"
-  },
-  "exportImportTitle": {
-    "message": "تصدير / استيراد"
-  },
-  "exportJson": {
-    "message": "تصدير JSON"
-  },
-  "exportCsv": {
-    "message": "تصدير CSV"
-  },
-  "importLabel": {
-    "message": "استيراد من ملف:"
-  },
-  "importBtn": {
-    "message": "استيراد"
-  },
-  "importSuccess": {
-    "message": "تم استيراد $count$ تبويب",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "importFailed": {
-    "message": "فشل الاستيراد"
-  },
-  "statsTitle": {
-    "message": "إحصائيات"
-  },
-  "totalBackups": {
-    "message": "إجمالي النسخ الاحتياطية"
-  },
-  "totalTabs": {
-    "message": "إجمالي التبويبات المنسوخة"
-  },
-  "topDomains": {
-    "message": "أهم النطاقات"
-  },
-  "noStats": {
-    "message": "لا توجد إحصائيات"
-  },
-  "smartTriggersTitle": {
-    "message": "المحفزات الذكية"
-  },
-  "tabThreshold": {
-    "message": "عتبة التبويبات"
-  },
-  "reminderLabel": {
-    "message": "تذكير"
-  },
-  "noBackupSelected": {
-    "message": "لم يتم تحديد نسخة احتياطية"
-  },
-  "exportSelectBackup": {
-    "message": "اختر نسخة احتياطية للتصدير"
-  },
-  "exportSelectFolder": {
-    "message": "اختر مجلد نسخ احتياطي أولاً."
-  },
-  "exportComplete": {
-    "message": "تم التصدير!"
-  },
-  "exportFailedMsg": {
-    "message": "فشل التصدير"
-  },
-  "importSelectFolder": {
-    "message": "اختر مجلداً أولاً."
-  },
-  "importSelectFile": {
-    "message": "اختر ملفاً للاستيراد."
-  },
-  "noTabsRestore": {
-    "message": "لم يتم تحديد علامات تبويب للاستعادة."
-  },
-  "compareAdded": {
-    "message": "مضاف (في B وليس في A)"
-  },
-  "compareRemoved": {
-    "message": "محذوف (في A وليس في B)"
-  },
-  "compareCommonLabel": {
-    "message": "مشترك"
-  },
-  "lastUpdated": {
-    "message": "آخر تحديث"
-  },
-  "noBookmarksPreview": {
-    "message": "لم يتم العثور على إشارات مرجعية."
-  },
-  "backupCountLabel": {
-    "message": "إشارات مرجعية:"
-  },
-  "selectTwoBackups": {
-    "message": "اختر نسختين احتياطيتين للمقارنة."
-  },
-  "selectDiffBackups": {
-    "message": "اختر نسختين احتياطيتين مختلفتين."
-  },
-  "noOpenTabs": {
-    "message": "لا توجد علامات تبويب مفتوحة."
-  },
-  "duplicateGroupTooltip": {
-    "message": "علامات تبويب بنفس عنوان URL"
-  },
-  "loadingPreview": {
-    "message": "جاري التحميل..."
-  },
-  "unknownError": {
-    "message": "Unknown error"
-  }
+﻿{
+    "extName":  {
+                    "message":  "Smart Tab Booker"
+                },
+    "extDesc":  {
+                    "message":  "احفظ علامات التبويب المفتوحة في الإشارات المرجعية تلقائيًا أو يدويًا."
+                },
+    "selectStart":  {
+                        "message":  "جاري تحميل المجلدات..."
+                    },
+    "selectDefault":  {
+                          "message":  "اختر مجلدًا..."
+                      },
+    "backupBtn":  {
+                      "message":  "إنشاء نسخة احتياطية الآن"
+                  },
+    "backupBtnProgress":  {
+                              "message":  "جاري إنشاء النسخة الاحتياطية..."
+                          },
+    "autoBackupTitle":  {
+                            "message":  "إعدادات النسخ الاحتياطي التلقائي"
+                        },
+    "intervalLabel":  {
+                          "message":  "الفاصل الزمني:"
+                      },
+    "daily":  {
+                  "message":  "يوميًا"
+              },
+    "weekly":  {
+                   "message":  "أسبوعيًا"
+               },
+    "monthly":  {
+                    "message":  "شهريًا"
+                },
+    "enableAutoBackup":  {
+                             "message":  "تفعيل النسخ الاحتياطي التلقائي"
+                         },
+    "darkMode":  {
+                     "message":  "الوضع الداكن"
+                 },
+    "custom":  {
+                   "message":  "مخصص"
+               },
+    "saveSettingsBtn":  {
+                            "message":  "حفظ الإعدادات"
+                        },
+    "saved":  {
+                  "message":  "تم الحفظ!"
+              },
+    "lastBackupLabel":  {
+                            "message":  "آخر نسخة احتياطية:"
+                        },
+    "never":  {
+                  "message":  "أبدًا"
+              },
+    "folderSaved":  {
+                        "message":  "تم حفظ المجلد!"
+                    },
+    "selectFolderErr":  {
+                            "message":  "يرجى اختيار مجلد أولاً."
+                        },
+    "backupSuccess":  {
+                          "message":  "تم إنشاء النسخة الاحتياطية!"
+                      },
+    "backupInProgress":  {
+                             "message":  "يوجد نسخ احتياطي قيد التقدم بالفعل"
+                         },
+    "backupFailed":  {
+                         "message":  "فشل إنشاء النسخة الاحتياطية: "
+                     },
+    "invalidValue":  {
+                         "message":  "قيمة غير صالحة."
+                     },
+    "selectAll":  {
+                      "message":  "تحديد الكل"
+                  },
+    "deselectAll":  {
+                        "message":  "إلغاء تحديد الكل"
+                    },
+    "tabCounter":  {
+                       "message":  "المحدد: $SELECTED$ / $TOTAL$",
+                       "placeholders":  {
+                                            "selected":  {
+                                                             "content":  "$1"
+                                                         },
+                                            "total":  {
+                                                          "content":  "$2"
+                                                      }
+                                        }
+                   },
+    "bookmarksBar":  {
+                         "message":  "شريط الإشارات المرجعية"
+                     },
+    "otherBookmarks":  {
+                           "message":  "إشارات مرجعية أخرى"
+                       },
+    "minutes":  {
+                    "message":  "دقائق"
+                },
+    "hours":  {
+                  "message":  "ساعات"
+              },
+    "days":  {
+                 "message":  "أيام"
+             },
+    "selectFolderLabel":  {
+                              "message":  "اختر مجلد النسخ الاحتياطي:"
+                          },
+    "selectTabsLabel":  {
+                            "message":  "اختر علامات التبويب للنسخ الاحتياطي:"
+                        },
+    "noTabsSelected":  {
+                           "message":  "لم يتم تحديد أي علامات تبويب!"
+                       },
+    "preserveGroups":  {
+                           "message":  "الحفاظ على مجموعات علامات التبويب كمجلدات"
+                       },
+    "autoCleanup":  {
+                        "message":  "التنظيف التلقائي للنسخ الاحتياطية القديمة"
+                    },
+    "cleanupDaysLabel":  {
+                             "message":  "حذف النسخ الاحتياطية الأقدم من"
+                         },
+    "daysLabel":  {
+                      "message":  "يوم"
+                  },
+    "addTimeBtn":  {
+                       "message":  "+ إضافة وقت"
+                   },
+    "multiTimeLabel":  {
+                           "message":  "أوقات النسخ الاحتياطي (حد أقصى 5):"
+                       },
+    "quickBackupDesc":  {
+                            "message":  "نسخ احتياطي سريع لجميع علامات التبويب"
+                        },
+    "shortcutLabel":  {
+                          "message":  "اختصار لوحة المفاتيح:"
+                      },
+    "changeShortcut":  {
+                           "message":  "تغيير"
+                       },
+    "duplicateWarning":  {
+                             "message":  "مكرر/مكررات"
+                         },
+    "includeDuplicates":  {
+                              "message":  "تضمين عناوين URL المكررة"
+                          },
+    "backupTab":  {
+                      "message":  "نسخ احتياطي"
+                  },
+    "restoreTab":  {
+                       "message":  "استعادة"
+                   },
+    "selectBackupFolder":  {
+                               "message":  "اختر مجلد النسخ الاحتياطي:"
+                           },
+    "selectBackupDefault":  {
+                                "message":  "-- Select a backup --"
+                            },
+    "restoreAll":  {
+                       "message":  "استعادة الكل"
+                   },
+    "noBackupsFound":  {
+                           "message":  "لم يتم العثور على نسخ احتياطية"
+                       },
+    "restoreSuccess":  {
+                           "message":  "تم فتح $count$ علامة تبويب",
+                           "placeholders":  {
+                                                "count":  {
+                                                              "content":  "$1"
+                                                          }
+                                            }
+                       },
+    "restoreFailed":  {
+                          "message":  "فشلت الاستعادة"
+                      },
+    "tabsCount":  {
+                      "message":  "علامات تبويب"
+                  },
+    "restoring":  {
+                      "message":  "جاري الاستعادة..."
+                  },
+    "selectFolderFirst":  {
+                              "message":  "اختر مجلدًا"
+                          },
+    "manyTabsWarning":  {
+                            "message":  "سيتم فتح $count$ علامة تبويب. متابعة؟",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "folderDeleted":  {
+                          "message":  "تم حذف المجلد المحدد"
+                      },
+    "restorePreserveGroups":  {
+                                  "message":  "الحفاظ على مجموعات علامات التبويب"
+                              },
+    "contextMenuBackupTab":  {
+                                 "message":  "نسخ هذا التبويب احتياطياً"
+                             },
+    "contextMenuBackupAll":  {
+                                 "message":  "نسخ جميع التبويبات احتياطياً"
+                             },
+    "allWindows":  {
+                       "message":  "جميع النوافذ"
+                   },
+    "backupNotePlaceholder":  {
+                                  "message":  "إضافة ملاحظة..."
+                              },
+    "domainFilterPlaceholder":  {
+                                    "message":  "تصفية حسب النطاق..."
+                                },
+    "clearFilter":  {
+                        "message":  "مسح"
+                    },
+    "restoreSelected":  {
+                            "message":  "استعادة المحدد"
+                        },
+    "previewHint":  {
+                        "message":  "انقر مرتين للمعاينة"
+                    },
+    "searchPlaceholder":  {
+                              "message":  "البحث في النسخ الاحتياطية..."
+                          },
+    "compareTitle":  {
+                         "message":  "مقارنة النسخ الاحتياطية"
+                     },
+    "compareSelect1":  {
+                           "message":  "نسخة احتياطية أ"
+                       },
+    "compareSelect2":  {
+                           "message":  "نسخة احتياطية ب"
+                       },
+    "compareBtn":  {
+                       "message":  "مقارنة"
+                   },
+    "toolsTab":  {
+                     "message":  "أدوات"
+                 },
+    "exportImportTitle":  {
+                              "message":  "تصدير / استيراد"
+                          },
+    "exportJson":  {
+                       "message":  "تصدير JSON"
+                   },
+    "exportCsv":  {
+                      "message":  "تصدير CSV"
+                  },
+    "importLabel":  {
+                        "message":  "استيراد من ملف:"
+                    },
+    "importBtn":  {
+                      "message":  "استيراد"
+                  },
+    "importSuccess":  {
+                          "message":  "تم استيراد $count$ تبويب",
+                          "placeholders":  {
+                                               "count":  {
+                                                             "content":  "$1"
+                                                         }
+                                           }
+                      },
+    "importFailed":  {
+                         "message":  "فشل الاستيراد"
+                     },
+    "statsTitle":  {
+                       "message":  "إحصائيات"
+                   },
+    "totalBackups":  {
+                         "message":  "إجمالي النسخ الاحتياطية"
+                     },
+    "totalTabs":  {
+                      "message":  "إجمالي التبويبات المنسوخة"
+                  },
+    "topDomains":  {
+                       "message":  "أهم النطاقات"
+                   },
+    "noStats":  {
+                    "message":  "لا توجد إحصائيات"
+                },
+    "smartTriggersTitle":  {
+                               "message":  "المحفزات الذكية"
+                           },
+    "tabThreshold":  {
+                         "message":  "عتبة التبويبات"
+                     },
+    "reminderLabel":  {
+                          "message":  "تذكير"
+                      },
+    "exportSelectBackup":  {
+                               "message":  "اختر نسخة احتياطية للتصدير"
+                           },
+    "exportComplete":  {
+                           "message":  "تم التصدير!"
+                       },
+    "exportFailedMsg":  {
+                            "message":  "فشل التصدير"
+                        },
+    "importSelectFolder":  {
+                               "message":  "اختر مجلداً أولاً."
+                           },
+    "importSelectFile":  {
+                             "message":  "اختر ملفاً للاستيراد."
+                         },
+    "noTabsRestore":  {
+                          "message":  "لم يتم تحديد علامات تبويب للاستعادة."
+                      },
+    "compareAdded":  {
+                         "message":  "مضاف (في B وليس في A)"
+                     },
+    "compareRemoved":  {
+                           "message":  "محذوف (في A وليس في B)"
+                       },
+    "compareCommonLabel":  {
+                               "message":  "مشترك"
+                           },
+    "lastUpdated":  {
+                        "message":  "آخر تحديث"
+                    },
+    "noBookmarksPreview":  {
+                               "message":  "لم يتم العثور على إشارات مرجعية."
+                           },
+    "backupCountLabel":  {
+                             "message":  "إشارات مرجعية:"
+                         },
+    "selectTwoBackups":  {
+                             "message":  "اختر نسختين احتياطيتين للمقارنة."
+                         },
+    "selectDiffBackups":  {
+                              "message":  "اختر نسختين احتياطيتين مختلفتين."
+                          },
+    "noOpenTabs":  {
+                       "message":  "لا توجد علامات تبويب مفتوحة."
+                   },
+    "duplicateGroupTooltip":  {
+                                  "message":  "علامات تبويب بنفس عنوان URL"
+                              },
+    "loadingPreview":  {
+                           "message":  "جاري التحميل..."
+                       },
+    "unknownError":  {
+                         "message":  "Unknown error"
+                     }
 }

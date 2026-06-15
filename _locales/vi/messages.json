@@ -1,373 +1,346 @@
-{
-  "extName": {
-    "message": "Smart Tab Booker"
-  },
-  "extDesc": {
-    "message": "Tự động hoặc thủ công sao lưu các tab đang mở vào dấu trang."
-  },
-  "selectStart": {
-    "message": "Đang tải thư mục..."
-  },
-  "selectDefault": {
-    "message": "Chọn thư mục..."
-  },
-  "backupBtn": {
-    "message": "Sao Lưu Ngay"
-  },
-  "backupBtnProgress": {
-    "message": "Đang sao lưu..."
-  },
-  "autoBackupTitle": {
-    "message": "Cài Đặt Sao Lưu Tự Động"
-  },
-  "intervalLabel": {
-    "message": "Chu kỳ:"
-  },
-  "daily": {
-    "message": "Hàng ngày"
-  },
-  "weekly": {
-    "message": "Hàng tuần"
-  },
-  "monthly": {
-    "message": "Hàng tháng"
-  },
-  "enableAutoBackup": {
-    "message": "Bật Sao Lưu Tự Động"
-  },
-  "darkMode": {
-    "message": "Chế độ tối"
-  },
-  "custom": {
-    "message": "Tùy chỉnh"
-  },
-  "backupTimeLabel": {
-    "message": "Thời gian sao lưu (24h):"
-  },
-  "saveSettingsBtn": {
-    "message": "Lưu Cài Đặt"
-  },
-  "saved": {
-    "message": "Đã lưu!"
-  },
-  "lastBackupLabel": {
-    "message": "Sao lưu gần nhất:"
-  },
-  "never": {
-    "message": "Chưa từng"
-  },
-  "folderSaved": {
-    "message": "Đã lưu thư mục!"
-  },
-  "selectFolderErr": {
-    "message": "Vui lòng chọn thư mục trước."
-  },
-  "backupSuccess": {
-    "message": "Sao lưu hoàn tất!"
-  },
-  "backupInProgress": {
-    "message": "Sao lưu đang được thực hiện"
-  },
-  "backupFailed": {
-    "message": "Sao lưu thất bại: "
-  },
-  "invalidValue": {
-    "message": "Giá trị không hợp lệ."
-  },
-  "invalidTime": {
-    "message": "Thời gian không hợp lệ."
-  },
-  "selectAll": {
-    "message": "Chọn Tất Cả"
-  },
-  "deselectAll": {
-    "message": "Bỏ Chọn Tất Cả"
-  },
-  "tabCounter": {
-    "message": "Đã chọn: $SELECTED$ / $TOTAL$",
-    "placeholders": {
-      "selected": {
-        "content": "$1"
-      },
-      "total": {
-        "content": "$2"
-      }
-    }
-  },
-  "bookmarksBar": {
-    "message": "Thanh Dấu Trang"
-  },
-  "otherBookmarks": {
-    "message": "Dấu Trang Khác"
-  },
-  "minutes": {
-    "message": "Phút"
-  },
-  "hours": {
-    "message": "Giờ"
-  },
-  "days": {
-    "message": "Ngày"
-  },
-  "selectFolderLabel": {
-    "message": "Chọn Thư Mục Sao Lưu:"
-  },
-  "selectTabsLabel": {
-    "message": "Chọn Tab Để Sao Lưu:"
-  },
-  "noTabsSelected": {
-    "message": "Không có tab nào được chọn!"
-  },
-  "preserveGroups": {
-    "message": "Giữ Nhóm Tab Dưới Dạng Thư Mục"
-  },
-  "autoCleanup": {
-    "message": "Tự Động Dọn Sạch Sao Lưu Cũ"
-  },
-  "cleanupDaysLabel": {
-    "message": "Xóa sao lưu cũ hơn"
-  },
-  "daysLabel": {
-    "message": "ngày"
-  },
-  "addTimeBtn": {
-    "message": "+ Thêm Thời Gian"
-  },
-  "multiTimeLabel": {
-    "message": "Thời gian sao lưu (tối đa 5):"
-  },
-  "quickBackupDesc": {
-    "message": "Sao lưu nhanh tất cả các tab"
-  },
-  "shortcutLabel": {
-    "message": "Phím Tắt:"
-  },
-  "changeShortcut": {
-    "message": "Thay đổi"
-  },
-  "duplicateWarning": {
-    "message": "trùng lặp"
-  },
-  "includeDuplicates": {
-    "message": "Bao Gồm URL Trùng Lặp"
-  },
-  "backupTab": {
-    "message": "Sao lưu"
-  },
-  "restoreTab": {
-    "message": "Khôi phục"
-  },
-  "selectBackupFolder": {
-    "message": "Chọn Thư mục Sao lưu:"
-  },
-  "selectBackupDefault": {
-    "message": "-- Select a backup --"
-  },
-  "restoreAll": {
-    "message": "Khôi phục tất cả"
-  },
-  "noBackupsFound": {
-    "message": "Không tìm thấy bản sao lưu"
-  },
-  "restoreSuccess": {
-    "message": "Đã mở $count$ tab",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "restoreFailed": {
-    "message": "Khôi phục thất bại"
-  },
-  "tabsCount": {
-    "message": "tab"
-  },
-  "restoring": {
-    "message": "Đang khôi phục..."
-  },
-  "selectFolderFirst": {
-    "message": "Chọn thư mục"
-  },
-  "manyTabsWarning": {
-    "message": "$count$ tab sẽ được mở. Tiếp tục?",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "folderDeleted": {
-    "message": "Thư mục đã chọn đã bị xóa"
-  },
-  "restorePreserveGroups": {
-    "message": "Giữ nguyên nhóm thẻ"
-  },
-  "contextMenuBackupTab": {
-    "message": "Sao lưu tab này"
-  },
-  "contextMenuBackupAll": {
-    "message": "Sao lưu tất cả tab"
-  },
-  "allWindows": {
-    "message": "Tất cả cửa sổ"
-  },
-  "windowLabel": {
-    "message": "Cửa sổ"
-  },
-  "pinnedTab": {
-    "message": "Đã ghim"
-  },
-  "backupNotePlaceholder": {
-    "message": "Thêm ghi chú..."
-  },
-  "domainFilterPlaceholder": {
-    "message": "Lọc theo tên miền..."
-  },
-  "clearFilter": {
-    "message": "Xóa"
-  },
-  "restoreSelected": {
-    "message": "Khôi phục đã chọn"
-  },
-  "previewHint": {
-    "message": "Nhấp đúp để xem trước"
-  },
-  "searchPlaceholder": {
-    "message": "Tìm kiếm bản sao lưu..."
-  },
-  "compareTitle": {
-    "message": "So sánh bản sao lưu"
-  },
-  "compareSelect1": {
-    "message": "Sao lưu A"
-  },
-  "compareSelect2": {
-    "message": "Sao lưu B"
-  },
-  "compareBtn": {
-    "message": "So sánh"
-  },
-  "added": {
-    "message": "Đã thêm"
-  },
-  "removed": {
-    "message": "Đã xóa"
-  },
-  "common": {
-    "message": "Chung"
-  },
-  "toolsTab": {
-    "message": "Công cụ"
-  },
-  "exportImportTitle": {
-    "message": "Xuất / Nhập"
-  },
-  "exportJson": {
-    "message": "Xuất JSON"
-  },
-  "exportCsv": {
-    "message": "Xuất CSV"
-  },
-  "importLabel": {
-    "message": "Nhập từ tệp:"
-  },
-  "importBtn": {
-    "message": "Nhập"
-  },
-  "importSuccess": {
-    "message": "Đã nhập $count$ tab",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "importFailed": {
-    "message": "Nhập thất bại"
-  },
-  "statsTitle": {
-    "message": "Thống kê"
-  },
-  "totalBackups": {
-    "message": "Tổng số sao lưu"
-  },
-  "totalTabs": {
-    "message": "Tổng tab đã sao lưu"
-  },
-  "topDomains": {
-    "message": "Tên miền hàng đầu"
-  },
-  "noStats": {
-    "message": "Chưa có thống kê"
-  },
-  "smartTriggersTitle": {
-    "message": "Kích hoạt thông minh"
-  },
-  "tabThreshold": {
-    "message": "Ngưỡng tab"
-  },
-  "reminderLabel": {
-    "message": "Nhắc nhở"
-  },
-  "noBackupSelected": {
-    "message": "Chưa chọn sao lưu"
-  },
-  "exportSelectBackup": {
-    "message": "Chọn sao lưu để xuất"
-  },
-  "exportSelectFolder": {
-    "message": "Chọn thư mục sao lưu trước."
-  },
-  "exportComplete": {
-    "message": "Xuất hoàn tất!"
-  },
-  "exportFailedMsg": {
-    "message": "Xuất thất bại"
-  },
-  "importSelectFolder": {
-    "message": "Chọn thư mục trước."
-  },
-  "importSelectFile": {
-    "message": "Chọn tệp để nhập."
-  },
-  "noTabsRestore": {
-    "message": "Không có tab nào được chọn để khôi phục."
-  },
-  "compareAdded": {
-    "message": "Đã thêm (trong B, không trong A)"
-  },
-  "compareRemoved": {
-    "message": "Đã xóa (trong A, không trong B)"
-  },
-  "compareCommonLabel": {
-    "message": "Chung"
-  },
-  "lastUpdated": {
-    "message": "Cập nhật lần cuối"
-  },
-  "noBookmarksPreview": {
-    "message": "Không tìm thấy dấu trang."
-  },
-  "backupCountLabel": {
-    "message": "dấu trang:"
-  },
-  "selectTwoBackups": {
-    "message": "Chọn hai bản sao lưu để so sánh."
-  },
-  "selectDiffBackups": {
-    "message": "Chọn hai bản sao lưu khác nhau."
-  },
-  "noOpenTabs": {
-    "message": "Không có tab nào mở."
-  },
-  "duplicateGroupTooltip": {
-    "message": "Tab có cùng URL"
-  },
-  "loadingPreview": {
-    "message": "Đang tải..."
-  },
-  "unknownError": {
-    "message": "Unknown error"
-  }
+﻿{
+    "extName":  {
+                    "message":  "Smart Tab Booker"
+                },
+    "extDesc":  {
+                    "message":  "Tự động hoặc thủ công sao lưu các tab đang mở vào dấu trang."
+                },
+    "selectStart":  {
+                        "message":  "Đang tải thư mục..."
+                    },
+    "selectDefault":  {
+                          "message":  "Chọn thư mục..."
+                      },
+    "backupBtn":  {
+                      "message":  "Sao Lưu Ngay"
+                  },
+    "backupBtnProgress":  {
+                              "message":  "Đang sao lưu..."
+                          },
+    "autoBackupTitle":  {
+                            "message":  "Cài Đặt Sao Lưu Tự Động"
+                        },
+    "intervalLabel":  {
+                          "message":  "Chu kỳ:"
+                      },
+    "daily":  {
+                  "message":  "Hàng ngày"
+              },
+    "weekly":  {
+                   "message":  "Hàng tuần"
+               },
+    "monthly":  {
+                    "message":  "Hàng tháng"
+                },
+    "enableAutoBackup":  {
+                             "message":  "Bật Sao Lưu Tự Động"
+                         },
+    "darkMode":  {
+                     "message":  "Chế độ tối"
+                 },
+    "custom":  {
+                   "message":  "Tùy chỉnh"
+               },
+    "saveSettingsBtn":  {
+                            "message":  "Lưu Cài Đặt"
+                        },
+    "saved":  {
+                  "message":  "Đã lưu!"
+              },
+    "lastBackupLabel":  {
+                            "message":  "Sao lưu gần nhất:"
+                        },
+    "never":  {
+                  "message":  "Chưa từng"
+              },
+    "folderSaved":  {
+                        "message":  "Đã lưu thư mục!"
+                    },
+    "selectFolderErr":  {
+                            "message":  "Vui lòng chọn thư mục trước."
+                        },
+    "backupSuccess":  {
+                          "message":  "Sao lưu hoàn tất!"
+                      },
+    "backupInProgress":  {
+                             "message":  "Sao lưu đang được thực hiện"
+                         },
+    "backupFailed":  {
+                         "message":  "Sao lưu thất bại: "
+                     },
+    "invalidValue":  {
+                         "message":  "Giá trị không hợp lệ."
+                     },
+    "selectAll":  {
+                      "message":  "Chọn Tất Cả"
+                  },
+    "deselectAll":  {
+                        "message":  "Bỏ Chọn Tất Cả"
+                    },
+    "tabCounter":  {
+                       "message":  "Đã chọn: $SELECTED$ / $TOTAL$",
+                       "placeholders":  {
+                                            "selected":  {
+                                                             "content":  "$1"
+                                                         },
+                                            "total":  {
+                                                          "content":  "$2"
+                                                      }
+                                        }
+                   },
+    "bookmarksBar":  {
+                         "message":  "Thanh Dấu Trang"
+                     },
+    "otherBookmarks":  {
+                           "message":  "Dấu Trang Khác"
+                       },
+    "minutes":  {
+                    "message":  "Phút"
+                },
+    "hours":  {
+                  "message":  "Giờ"
+              },
+    "days":  {
+                 "message":  "Ngày"
+             },
+    "selectFolderLabel":  {
+                              "message":  "Chọn Thư Mục Sao Lưu:"
+                          },
+    "selectTabsLabel":  {
+                            "message":  "Chọn Tab Để Sao Lưu:"
+                        },
+    "noTabsSelected":  {
+                           "message":  "Không có tab nào được chọn!"
+                       },
+    "preserveGroups":  {
+                           "message":  "Giữ Nhóm Tab Dưới Dạng Thư Mục"
+                       },
+    "autoCleanup":  {
+                        "message":  "Tự Động Dọn Sạch Sao Lưu Cũ"
+                    },
+    "cleanupDaysLabel":  {
+                             "message":  "Xóa sao lưu cũ hơn"
+                         },
+    "daysLabel":  {
+                      "message":  "ngày"
+                  },
+    "addTimeBtn":  {
+                       "message":  "+ Thêm Thời Gian"
+                   },
+    "multiTimeLabel":  {
+                           "message":  "Thời gian sao lưu (tối đa 5):"
+                       },
+    "quickBackupDesc":  {
+                            "message":  "Sao lưu nhanh tất cả các tab"
+                        },
+    "shortcutLabel":  {
+                          "message":  "Phím Tắt:"
+                      },
+    "changeShortcut":  {
+                           "message":  "Thay đổi"
+                       },
+    "duplicateWarning":  {
+                             "message":  "trùng lặp"
+                         },
+    "includeDuplicates":  {
+                              "message":  "Bao Gồm URL Trùng Lặp"
+                          },
+    "backupTab":  {
+                      "message":  "Sao lưu"
+                  },
+    "restoreTab":  {
+                       "message":  "Khôi phục"
+                   },
+    "selectBackupFolder":  {
+                               "message":  "Chọn Thư mục Sao lưu:"
+                           },
+    "selectBackupDefault":  {
+                                "message":  "-- Select a backup --"
+                            },
+    "restoreAll":  {
+                       "message":  "Khôi phục tất cả"
+                   },
+    "noBackupsFound":  {
+                           "message":  "Không tìm thấy bản sao lưu"
+                       },
+    "restoreSuccess":  {
+                           "message":  "Đã mở $count$ tab",
+                           "placeholders":  {
+                                                "count":  {
+                                                              "content":  "$1"
+                                                          }
+                                            }
+                       },
+    "restoreFailed":  {
+                          "message":  "Khôi phục thất bại"
+                      },
+    "tabsCount":  {
+                      "message":  "tab"
+                  },
+    "restoring":  {
+                      "message":  "Đang khôi phục..."
+                  },
+    "selectFolderFirst":  {
+                              "message":  "Chọn thư mục"
+                          },
+    "manyTabsWarning":  {
+                            "message":  "$count$ tab sẽ được mở. Tiếp tục?",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "folderDeleted":  {
+                          "message":  "Thư mục đã chọn đã bị xóa"
+                      },
+    "restorePreserveGroups":  {
+                                  "message":  "Giữ nguyên nhóm thẻ"
+                              },
+    "contextMenuBackupTab":  {
+                                 "message":  "Sao lưu tab này"
+                             },
+    "contextMenuBackupAll":  {
+                                 "message":  "Sao lưu tất cả tab"
+                             },
+    "allWindows":  {
+                       "message":  "Tất cả cửa sổ"
+                   },
+    "backupNotePlaceholder":  {
+                                  "message":  "Thêm ghi chú..."
+                              },
+    "domainFilterPlaceholder":  {
+                                    "message":  "Lọc theo tên miền..."
+                                },
+    "clearFilter":  {
+                        "message":  "Xóa"
+                    },
+    "restoreSelected":  {
+                            "message":  "Khôi phục đã chọn"
+                        },
+    "previewHint":  {
+                        "message":  "Nhấp đúp để xem trước"
+                    },
+    "searchPlaceholder":  {
+                              "message":  "Tìm kiếm bản sao lưu..."
+                          },
+    "compareTitle":  {
+                         "message":  "So sánh bản sao lưu"
+                     },
+    "compareSelect1":  {
+                           "message":  "Sao lưu A"
+                       },
+    "compareSelect2":  {
+                           "message":  "Sao lưu B"
+                       },
+    "compareBtn":  {
+                       "message":  "So sánh"
+                   },
+    "toolsTab":  {
+                     "message":  "Công cụ"
+                 },
+    "exportImportTitle":  {
+                              "message":  "Xuất / Nhập"
+                          },
+    "exportJson":  {
+                       "message":  "Xuất JSON"
+                   },
+    "exportCsv":  {
+                      "message":  "Xuất CSV"
+                  },
+    "importLabel":  {
+                        "message":  "Nhập từ tệp:"
+                    },
+    "importBtn":  {
+                      "message":  "Nhập"
+                  },
+    "importSuccess":  {
+                          "message":  "Đã nhập $count$ tab",
+                          "placeholders":  {
+                                               "count":  {
+                                                             "content":  "$1"
+                                                         }
+                                           }
+                      },
+    "importFailed":  {
+                         "message":  "Nhập thất bại"
+                     },
+    "statsTitle":  {
+                       "message":  "Thống kê"
+                   },
+    "totalBackups":  {
+                         "message":  "Tổng số sao lưu"
+                     },
+    "totalTabs":  {
+                      "message":  "Tổng tab đã sao lưu"
+                  },
+    "topDomains":  {
+                       "message":  "Tên miền hàng đầu"
+                   },
+    "noStats":  {
+                    "message":  "Chưa có thống kê"
+                },
+    "smartTriggersTitle":  {
+                               "message":  "Kích hoạt thông minh"
+                           },
+    "tabThreshold":  {
+                         "message":  "Ngưỡng tab"
+                     },
+    "reminderLabel":  {
+                          "message":  "Nhắc nhở"
+                      },
+    "exportSelectBackup":  {
+                               "message":  "Chọn sao lưu để xuất"
+                           },
+    "exportComplete":  {
+                           "message":  "Xuất hoàn tất!"
+                       },
+    "exportFailedMsg":  {
+                            "message":  "Xuất thất bại"
+                        },
+    "importSelectFolder":  {
+                               "message":  "Chọn thư mục trước."
+                           },
+    "importSelectFile":  {
+                             "message":  "Chọn tệp để nhập."
+                         },
+    "noTabsRestore":  {
+                          "message":  "Không có tab nào được chọn để khôi phục."
+                      },
+    "compareAdded":  {
+                         "message":  "Đã thêm (trong B, không trong A)"
+                     },
+    "compareRemoved":  {
+                           "message":  "Đã xóa (trong A, không trong B)"
+                       },
+    "compareCommonLabel":  {
+                               "message":  "Chung"
+                           },
+    "lastUpdated":  {
+                        "message":  "Cập nhật lần cuối"
+                    },
+    "noBookmarksPreview":  {
+                               "message":  "Không tìm thấy dấu trang."
+                           },
+    "backupCountLabel":  {
+                             "message":  "dấu trang:"
+                         },
+    "selectTwoBackups":  {
+                             "message":  "Chọn hai bản sao lưu để so sánh."
+                         },
+    "selectDiffBackups":  {
+                              "message":  "Chọn hai bản sao lưu khác nhau."
+                          },
+    "noOpenTabs":  {
+                       "message":  "Không có tab nào mở."
+                   },
+    "duplicateGroupTooltip":  {
+                                  "message":  "Tab có cùng URL"
+                              },
+    "loadingPreview":  {
+                           "message":  "Đang tải..."
+                       },
+    "unknownError":  {
+                         "message":  "Unknown error"
+                     }
 }

@@ -1,373 +1,346 @@
-{
-  "extName": {
-    "message": "Smart Tab Booker"
-  },
-  "extDesc": {
-    "message": "खुले टैब को बुकमार्क में स्वचालित या मैन्युअल रूप से बैकअप करें।"
-  },
-  "selectStart": {
-    "message": "फ़ोल्डर लोड हो रहे हैं..."
-  },
-  "selectDefault": {
-    "message": "एक फ़ोल्डर चुनें..."
-  },
-  "backupBtn": {
-    "message": "अभी बैकअप करें"
-  },
-  "backupBtnProgress": {
-    "message": "बैकअप हो रहा है..."
-  },
-  "autoBackupTitle": {
-    "message": "स्वचालित बैकअप सेटिंग्स"
-  },
-  "intervalLabel": {
-    "message": "अंतराल:"
-  },
-  "daily": {
-    "message": "दैनिक"
-  },
-  "weekly": {
-    "message": "साप्ताहिक"
-  },
-  "monthly": {
-    "message": "मासिक"
-  },
-  "enableAutoBackup": {
-    "message": "स्वचालित बैकअप सक्षम करें"
-  },
-  "darkMode": {
-    "message": "डार्क मोड"
-  },
-  "custom": {
-    "message": "कस्टम"
-  },
-  "backupTimeLabel": {
-    "message": "बैकअप समय (24 घंटे):"
-  },
-  "saveSettingsBtn": {
-    "message": "सेटिंग्स सहेजें"
-  },
-  "saved": {
-    "message": "सहेजा गया!"
-  },
-  "lastBackupLabel": {
-    "message": "अंतिम बैकअप:"
-  },
-  "never": {
-    "message": "कभी नहीं"
-  },
-  "folderSaved": {
-    "message": "फ़ोल्डर सहेजा गया!"
-  },
-  "selectFolderErr": {
-    "message": "कृपया पहले एक फ़ोल्डर चुनें।"
-  },
-  "backupSuccess": {
-    "message": "बैकअप पूर्ण हो गया!"
-  },
-  "backupInProgress": {
-    "message": "बैकअप पहले से चल रहा है"
-  },
-  "backupFailed": {
-    "message": "बैकअप विफल: "
-  },
-  "invalidValue": {
-    "message": "अमान्य मान।"
-  },
-  "invalidTime": {
-    "message": "अमान्य समय।"
-  },
-  "selectAll": {
-    "message": "सभी चुनें"
-  },
-  "deselectAll": {
-    "message": "सभी अचयनित करें"
-  },
-  "tabCounter": {
-    "message": "चयनित: $SELECTED$ / $TOTAL$",
-    "placeholders": {
-      "selected": {
-        "content": "$1"
-      },
-      "total": {
-        "content": "$2"
-      }
-    }
-  },
-  "bookmarksBar": {
-    "message": "बुकमार्क बार"
-  },
-  "otherBookmarks": {
-    "message": "अन्य बुकमार्क"
-  },
-  "minutes": {
-    "message": "मिनट"
-  },
-  "hours": {
-    "message": "घंटे"
-  },
-  "days": {
-    "message": "दिन"
-  },
-  "selectFolderLabel": {
-    "message": "बैकअप फ़ोल्डर चुनें:"
-  },
-  "selectTabsLabel": {
-    "message": "बैकअप के लिए टैब चुनें:"
-  },
-  "noTabsSelected": {
-    "message": "कोई टैब चयनित नहीं!"
-  },
-  "preserveGroups": {
-    "message": "टैब समूहों को फ़ोल्डर के रूप में संरक्षित करें"
-  },
-  "autoCleanup": {
-    "message": "पुराने बैकअप का स्वचालित सफायन"
-  },
-  "cleanupDaysLabel": {
-    "message": "इससे पुराने बैकअप हटाएं"
-  },
-  "daysLabel": {
-    "message": "दिन"
-  },
-  "addTimeBtn": {
-    "message": "+ समय जोड़ें"
-  },
-  "multiTimeLabel": {
-    "message": "बैकअप समय (अधिकतम 5):"
-  },
-  "quickBackupDesc": {
-    "message": "सभी टैब का त्वरित बैकअप"
-  },
-  "shortcutLabel": {
-    "message": "कीबोर्ड शॉर्टकट:"
-  },
-  "changeShortcut": {
-    "message": "बदलें"
-  },
-  "duplicateWarning": {
-    "message": "डुप्लिकेट"
-  },
-  "includeDuplicates": {
-    "message": "डुप्लिकेट URL शामिल करें"
-  },
-  "backupTab": {
-    "message": "बैकअप"
-  },
-  "restoreTab": {
-    "message": "पुनर्स्थापन"
-  },
-  "selectBackupFolder": {
-    "message": "बैकअप फ़ोल्डर चुनें:"
-  },
-  "selectBackupDefault": {
-    "message": "-- Select a backup --"
-  },
-  "restoreAll": {
-    "message": "सभी पुनर्स्थापित करें"
-  },
-  "noBackupsFound": {
-    "message": "कोई बैकअप नहीं मिला"
-  },
-  "restoreSuccess": {
-    "message": "$count$ टैब खुले",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "restoreFailed": {
-    "message": "पुनर्स्थापना विफल"
-  },
-  "tabsCount": {
-    "message": "टैब"
-  },
-  "restoring": {
-    "message": "पुनर्स्थापना हो रही है..."
-  },
-  "selectFolderFirst": {
-    "message": "फ़ोल्डर चुनें"
-  },
-  "manyTabsWarning": {
-    "message": "$count$ टैब खुलेंगे। जारी रखें?",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "folderDeleted": {
-    "message": "चयनित फ़ोल्डर हटा दिया गया"
-  },
-  "restorePreserveGroups": {
-    "message": "टैब समूह संरक्षित रखें"
-  },
-  "contextMenuBackupTab": {
-    "message": "इस टैब का बैकअप लें"
-  },
-  "contextMenuBackupAll": {
-    "message": "सभी टैब का बैकअप लें"
-  },
-  "allWindows": {
-    "message": "सभी विंडो"
-  },
-  "windowLabel": {
-    "message": "विंडो"
-  },
-  "pinnedTab": {
-    "message": "पिन किया हुआ"
-  },
-  "backupNotePlaceholder": {
-    "message": "नोट जोड़ें..."
-  },
-  "domainFilterPlaceholder": {
-    "message": "डोमेन से फ़िल्टर..."
-  },
-  "clearFilter": {
-    "message": "साफ़ करें"
-  },
-  "restoreSelected": {
-    "message": "चयनित पुनर्स्थापित करें"
-  },
-  "previewHint": {
-    "message": "पूर्वावलोकन के लिए डबल क्लिक करें"
-  },
-  "searchPlaceholder": {
-    "message": "बैकअप खोजें..."
-  },
-  "compareTitle": {
-    "message": "बैकअप तुलना करें"
-  },
-  "compareSelect1": {
-    "message": "बैकअप A"
-  },
-  "compareSelect2": {
-    "message": "बैकअप B"
-  },
-  "compareBtn": {
-    "message": "तुलना करें"
-  },
-  "added": {
-    "message": "जोड़ा गया"
-  },
-  "removed": {
-    "message": "हटाया गया"
-  },
-  "common": {
-    "message": "सामान्य"
-  },
-  "toolsTab": {
-    "message": "उपकरण"
-  },
-  "exportImportTitle": {
-    "message": "निर्यात / आयात"
-  },
-  "exportJson": {
-    "message": "JSON निर्यात"
-  },
-  "exportCsv": {
-    "message": "CSV निर्यात"
-  },
-  "importLabel": {
-    "message": "फ़ाइल से आयात:"
-  },
-  "importBtn": {
-    "message": "आयात"
-  },
-  "importSuccess": {
-    "message": "$count$ टैब आयात किए",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "importFailed": {
-    "message": "आयात विफल"
-  },
-  "statsTitle": {
-    "message": "आँकड़े"
-  },
-  "totalBackups": {
-    "message": "कुल बैकअप"
-  },
-  "totalTabs": {
-    "message": "कुल बैकअप टैब"
-  },
-  "topDomains": {
-    "message": "शीर्ष डोमेन"
-  },
-  "noStats": {
-    "message": "कोई आँकड़े नहीं"
-  },
-  "smartTriggersTitle": {
-    "message": "स्मार्ट ट्रिगर"
-  },
-  "tabThreshold": {
-    "message": "टैब सीमा"
-  },
-  "reminderLabel": {
-    "message": "रिमाइंडर"
-  },
-  "noBackupSelected": {
-    "message": "कोई बैकअप चयनित नहीं"
-  },
-  "exportSelectBackup": {
-    "message": "निर्यात के लिए बैकअप चुनें"
-  },
-  "exportSelectFolder": {
-    "message": "पहले बैकअप फ़ोल्डर चुनें।"
-  },
-  "exportComplete": {
-    "message": "निर्यात पूर्ण!"
-  },
-  "exportFailedMsg": {
-    "message": "निर्यात विफल"
-  },
-  "importSelectFolder": {
-    "message": "पहले एक फ़ोल्डर चुनें।"
-  },
-  "importSelectFile": {
-    "message": "आयात करने के लिए फ़ाइल चुनें।"
-  },
-  "noTabsRestore": {
-    "message": "पुनर्स्थापना के लिए कोई टैब चयनित नहीं।"
-  },
-  "compareAdded": {
-    "message": "जोड़ा गया (B में, A में नहीं)"
-  },
-  "compareRemoved": {
-    "message": "हटाया गया (A में, B में नहीं)"
-  },
-  "compareCommonLabel": {
-    "message": "सामान्य"
-  },
-  "lastUpdated": {
-    "message": "अंतिम अपडेट"
-  },
-  "noBookmarksPreview": {
-    "message": "कोई बुकमार्क नहीं मिला।"
-  },
-  "backupCountLabel": {
-    "message": "बुकमार्क:"
-  },
-  "selectTwoBackups": {
-    "message": "तुलना के लिए दो बैकअप चुनें।"
-  },
-  "selectDiffBackups": {
-    "message": "दो अलग बैकअप चुनें।"
-  },
-  "noOpenTabs": {
-    "message": "कोई टैब खुला नहीं है।"
-  },
-  "duplicateGroupTooltip": {
-    "message": "समान URL वाले टैब"
-  },
-  "loadingPreview": {
-    "message": "लोड हो रहा है..."
-  },
-  "unknownError": {
-    "message": "Unknown error"
-  }
+﻿{
+    "extName":  {
+                    "message":  "Smart Tab Booker"
+                },
+    "extDesc":  {
+                    "message":  "खुले टैब को बुकमार्क में स्वचालित या मैन्युअल रूप से बैकअप करें।"
+                },
+    "selectStart":  {
+                        "message":  "फ़ोल्डर लोड हो रहे हैं..."
+                    },
+    "selectDefault":  {
+                          "message":  "एक फ़ोल्डर चुनें..."
+                      },
+    "backupBtn":  {
+                      "message":  "अभी बैकअप करें"
+                  },
+    "backupBtnProgress":  {
+                              "message":  "बैकअप हो रहा है..."
+                          },
+    "autoBackupTitle":  {
+                            "message":  "स्वचालित बैकअप सेटिंग्स"
+                        },
+    "intervalLabel":  {
+                          "message":  "अंतराल:"
+                      },
+    "daily":  {
+                  "message":  "दैनिक"
+              },
+    "weekly":  {
+                   "message":  "साप्ताहिक"
+               },
+    "monthly":  {
+                    "message":  "मासिक"
+                },
+    "enableAutoBackup":  {
+                             "message":  "स्वचालित बैकअप सक्षम करें"
+                         },
+    "darkMode":  {
+                     "message":  "डार्क मोड"
+                 },
+    "custom":  {
+                   "message":  "कस्टम"
+               },
+    "saveSettingsBtn":  {
+                            "message":  "सेटिंग्स सहेजें"
+                        },
+    "saved":  {
+                  "message":  "सहेजा गया!"
+              },
+    "lastBackupLabel":  {
+                            "message":  "अंतिम बैकअप:"
+                        },
+    "never":  {
+                  "message":  "कभी नहीं"
+              },
+    "folderSaved":  {
+                        "message":  "फ़ोल्डर सहेजा गया!"
+                    },
+    "selectFolderErr":  {
+                            "message":  "कृपया पहले एक फ़ोल्डर चुनें।"
+                        },
+    "backupSuccess":  {
+                          "message":  "बैकअप पूर्ण हो गया!"
+                      },
+    "backupInProgress":  {
+                             "message":  "बैकअप पहले से चल रहा है"
+                         },
+    "backupFailed":  {
+                         "message":  "बैकअप विफल: "
+                     },
+    "invalidValue":  {
+                         "message":  "अमान्य मान।"
+                     },
+    "selectAll":  {
+                      "message":  "सभी चुनें"
+                  },
+    "deselectAll":  {
+                        "message":  "सभी अचयनित करें"
+                    },
+    "tabCounter":  {
+                       "message":  "चयनित: $SELECTED$ / $TOTAL$",
+                       "placeholders":  {
+                                            "selected":  {
+                                                             "content":  "$1"
+                                                         },
+                                            "total":  {
+                                                          "content":  "$2"
+                                                      }
+                                        }
+                   },
+    "bookmarksBar":  {
+                         "message":  "बुकमार्क बार"
+                     },
+    "otherBookmarks":  {
+                           "message":  "अन्य बुकमार्क"
+                       },
+    "minutes":  {
+                    "message":  "मिनट"
+                },
+    "hours":  {
+                  "message":  "घंटे"
+              },
+    "days":  {
+                 "message":  "दिन"
+             },
+    "selectFolderLabel":  {
+                              "message":  "बैकअप फ़ोल्डर चुनें:"
+                          },
+    "selectTabsLabel":  {
+                            "message":  "बैकअप के लिए टैब चुनें:"
+                        },
+    "noTabsSelected":  {
+                           "message":  "कोई टैब चयनित नहीं!"
+                       },
+    "preserveGroups":  {
+                           "message":  "टैब समूहों को फ़ोल्डर के रूप में संरक्षित करें"
+                       },
+    "autoCleanup":  {
+                        "message":  "पुराने बैकअप का स्वचालित सफायन"
+                    },
+    "cleanupDaysLabel":  {
+                             "message":  "इससे पुराने बैकअप हटाएं"
+                         },
+    "daysLabel":  {
+                      "message":  "दिन"
+                  },
+    "addTimeBtn":  {
+                       "message":  "+ समय जोड़ें"
+                   },
+    "multiTimeLabel":  {
+                           "message":  "बैकअप समय (अधिकतम 5):"
+                       },
+    "quickBackupDesc":  {
+                            "message":  "सभी टैब का त्वरित बैकअप"
+                        },
+    "shortcutLabel":  {
+                          "message":  "कीबोर्ड शॉर्टकट:"
+                      },
+    "changeShortcut":  {
+                           "message":  "बदलें"
+                       },
+    "duplicateWarning":  {
+                             "message":  "डुप्लिकेट"
+                         },
+    "includeDuplicates":  {
+                              "message":  "डुप्लिकेट URL शामिल करें"
+                          },
+    "backupTab":  {
+                      "message":  "बैकअप"
+                  },
+    "restoreTab":  {
+                       "message":  "पुनर्स्थापन"
+                   },
+    "selectBackupFolder":  {
+                               "message":  "बैकअप फ़ोल्डर चुनें:"
+                           },
+    "selectBackupDefault":  {
+                                "message":  "-- Select a backup --"
+                            },
+    "restoreAll":  {
+                       "message":  "सभी पुनर्स्थापित करें"
+                   },
+    "noBackupsFound":  {
+                           "message":  "कोई बैकअप नहीं मिला"
+                       },
+    "restoreSuccess":  {
+                           "message":  "$count$ टैब खुले",
+                           "placeholders":  {
+                                                "count":  {
+                                                              "content":  "$1"
+                                                          }
+                                            }
+                       },
+    "restoreFailed":  {
+                          "message":  "पुनर्स्थापना विफल"
+                      },
+    "tabsCount":  {
+                      "message":  "टैब"
+                  },
+    "restoring":  {
+                      "message":  "पुनर्स्थापना हो रही है..."
+                  },
+    "selectFolderFirst":  {
+                              "message":  "फ़ोल्डर चुनें"
+                          },
+    "manyTabsWarning":  {
+                            "message":  "$count$ टैब खुलेंगे। जारी रखें?",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "folderDeleted":  {
+                          "message":  "चयनित फ़ोल्डर हटा दिया गया"
+                      },
+    "restorePreserveGroups":  {
+                                  "message":  "टैब समूह संरक्षित रखें"
+                              },
+    "contextMenuBackupTab":  {
+                                 "message":  "इस टैब का बैकअप लें"
+                             },
+    "contextMenuBackupAll":  {
+                                 "message":  "सभी टैब का बैकअप लें"
+                             },
+    "allWindows":  {
+                       "message":  "सभी विंडो"
+                   },
+    "backupNotePlaceholder":  {
+                                  "message":  "नोट जोड़ें..."
+                              },
+    "domainFilterPlaceholder":  {
+                                    "message":  "डोमेन से फ़िल्टर..."
+                                },
+    "clearFilter":  {
+                        "message":  "साफ़ करें"
+                    },
+    "restoreSelected":  {
+                            "message":  "चयनित पुनर्स्थापित करें"
+                        },
+    "previewHint":  {
+                        "message":  "पूर्वावलोकन के लिए डबल क्लिक करें"
+                    },
+    "searchPlaceholder":  {
+                              "message":  "बैकअप खोजें..."
+                          },
+    "compareTitle":  {
+                         "message":  "बैकअप तुलना करें"
+                     },
+    "compareSelect1":  {
+                           "message":  "बैकअप A"
+                       },
+    "compareSelect2":  {
+                           "message":  "बैकअप B"
+                       },
+    "compareBtn":  {
+                       "message":  "तुलना करें"
+                   },
+    "toolsTab":  {
+                     "message":  "उपकरण"
+                 },
+    "exportImportTitle":  {
+                              "message":  "निर्यात / आयात"
+                          },
+    "exportJson":  {
+                       "message":  "JSON निर्यात"
+                   },
+    "exportCsv":  {
+                      "message":  "CSV निर्यात"
+                  },
+    "importLabel":  {
+                        "message":  "फ़ाइल से आयात:"
+                    },
+    "importBtn":  {
+                      "message":  "आयात"
+                  },
+    "importSuccess":  {
+                          "message":  "$count$ टैब आयात किए",
+                          "placeholders":  {
+                                               "count":  {
+                                                             "content":  "$1"
+                                                         }
+                                           }
+                      },
+    "importFailed":  {
+                         "message":  "आयात विफल"
+                     },
+    "statsTitle":  {
+                       "message":  "आँकड़े"
+                   },
+    "totalBackups":  {
+                         "message":  "कुल बैकअप"
+                     },
+    "totalTabs":  {
+                      "message":  "कुल बैकअप टैब"
+                  },
+    "topDomains":  {
+                       "message":  "शीर्ष डोमेन"
+                   },
+    "noStats":  {
+                    "message":  "कोई आँकड़े नहीं"
+                },
+    "smartTriggersTitle":  {
+                               "message":  "स्मार्ट ट्रिगर"
+                           },
+    "tabThreshold":  {
+                         "message":  "टैब सीमा"
+                     },
+    "reminderLabel":  {
+                          "message":  "रिमाइंडर"
+                      },
+    "exportSelectBackup":  {
+                               "message":  "निर्यात के लिए बैकअप चुनें"
+                           },
+    "exportComplete":  {
+                           "message":  "निर्यात पूर्ण!"
+                       },
+    "exportFailedMsg":  {
+                            "message":  "निर्यात विफल"
+                        },
+    "importSelectFolder":  {
+                               "message":  "पहले एक फ़ोल्डर चुनें।"
+                           },
+    "importSelectFile":  {
+                             "message":  "आयात करने के लिए फ़ाइल चुनें।"
+                         },
+    "noTabsRestore":  {
+                          "message":  "पुनर्स्थापना के लिए कोई टैब चयनित नहीं।"
+                      },
+    "compareAdded":  {
+                         "message":  "जोड़ा गया (B में, A में नहीं)"
+                     },
+    "compareRemoved":  {
+                           "message":  "हटाया गया (A में, B में नहीं)"
+                       },
+    "compareCommonLabel":  {
+                               "message":  "सामान्य"
+                           },
+    "lastUpdated":  {
+                        "message":  "अंतिम अपडेट"
+                    },
+    "noBookmarksPreview":  {
+                               "message":  "कोई बुकमार्क नहीं मिला।"
+                           },
+    "backupCountLabel":  {
+                             "message":  "बुकमार्क:"
+                         },
+    "selectTwoBackups":  {
+                             "message":  "तुलना के लिए दो बैकअप चुनें।"
+                         },
+    "selectDiffBackups":  {
+                              "message":  "दो अलग बैकअप चुनें।"
+                          },
+    "noOpenTabs":  {
+                       "message":  "कोई टैब खुला नहीं है।"
+                   },
+    "duplicateGroupTooltip":  {
+                                  "message":  "समान URL वाले टैब"
+                              },
+    "loadingPreview":  {
+                           "message":  "लोड हो रहा है..."
+                       },
+    "unknownError":  {
+                         "message":  "Unknown error"
+                     }
 }

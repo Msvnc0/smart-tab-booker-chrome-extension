@@ -1,373 +1,346 @@
-{
-  "extName": {
-    "message": "Smart Tab Booker"
-  },
-  "extDesc": {
-    "message": "開いているタブをブックマークに自動または手動でバックアップします。"
-  },
-  "selectStart": {
-    "message": "フォルダを読み込み中..."
-  },
-  "selectDefault": {
-    "message": "フォルダを選択..."
-  },
-  "backupBtn": {
-    "message": "今すぐバックアップ"
-  },
-  "backupBtnProgress": {
-    "message": "バックアップ中..."
-  },
-  "autoBackupTitle": {
-    "message": "自動バックアップ設定"
-  },
-  "intervalLabel": {
-    "message": "間隔:"
-  },
-  "daily": {
-    "message": "毎日"
-  },
-  "weekly": {
-    "message": "毎週"
-  },
-  "monthly": {
-    "message": "毎月"
-  },
-  "enableAutoBackup": {
-    "message": "自動バックアップを有効にする"
-  },
-  "darkMode": {
-    "message": "ダークモード"
-  },
-  "custom": {
-    "message": "カスタム"
-  },
-  "backupTimeLabel": {
-    "message": "バックアップ時間 (24時間):"
-  },
-  "saveSettingsBtn": {
-    "message": "設定を保存"
-  },
-  "saved": {
-    "message": "保存しました！"
-  },
-  "lastBackupLabel": {
-    "message": "前回のバックアップ:"
-  },
-  "never": {
-    "message": "なし"
-  },
-  "folderSaved": {
-    "message": "フォルダを保存しました！"
-  },
-  "selectFolderErr": {
-    "message": "フォルダを選択してください。"
-  },
-  "backupSuccess": {
-    "message": "バックアップ完了！"
-  },
-  "backupInProgress": {
-    "message": "バックアップはすでに進行中です"
-  },
-  "backupFailed": {
-    "message": "バックアップ失敗: "
-  },
-  "invalidValue": {
-    "message": "無効な値です。"
-  },
-  "invalidTime": {
-    "message": "無効な時間です。"
-  },
-  "selectAll": {
-    "message": "すべて選択"
-  },
-  "deselectAll": {
-    "message": "選択解除"
-  },
-  "tabCounter": {
-    "message": "選択: $SELECTED$ / $TOTAL$",
-    "placeholders": {
-      "selected": {
-        "content": "$1"
-      },
-      "total": {
-        "content": "$2"
-      }
-    }
-  },
-  "bookmarksBar": {
-    "message": "ブックマークバー"
-  },
-  "otherBookmarks": {
-    "message": "その他のブックマーク"
-  },
-  "minutes": {
-    "message": "分"
-  },
-  "hours": {
-    "message": "時間"
-  },
-  "days": {
-    "message": "日"
-  },
-  "selectFolderLabel": {
-    "message": "バックアップ先フォルダ:"
-  },
-  "selectTabsLabel": {
-    "message": "バックアップするタブ:"
-  },
-  "noTabsSelected": {
-    "message": "タブが選択されていません！"
-  },
-  "preserveGroups": {
-    "message": "タブグループをフォルダとして保持"
-  },
-  "autoCleanup": {
-    "message": "古いバックアップを自動削除"
-  },
-  "cleanupDaysLabel": {
-    "message": "以下の日数より古いバックアップを削除"
-  },
-  "daysLabel": {
-    "message": "日"
-  },
-  "addTimeBtn": {
-    "message": "+ 時間を追加"
-  },
-  "multiTimeLabel": {
-    "message": "バックアップ時間 (最大5):"
-  },
-  "quickBackupDesc": {
-    "message": "すべてのタブをクイックバックアップ"
-  },
-  "shortcutLabel": {
-    "message": "キーボードショートカット:"
-  },
-  "changeShortcut": {
-    "message": "変更"
-  },
-  "duplicateWarning": {
-    "message": "重複"
-  },
-  "includeDuplicates": {
-    "message": "重複URLを含める"
-  },
-  "backupTab": {
-    "message": "バックアップ"
-  },
-  "restoreTab": {
-    "message": "復元"
-  },
-  "selectBackupFolder": {
-    "message": "バックアップフォルダ:"
-  },
-  "selectBackupDefault": {
-    "message": "-- Select a backup --"
-  },
-  "restoreAll": {
-    "message": "すべて復元"
-  },
-  "noBackupsFound": {
-    "message": "バックアップが見つかりません"
-  },
-  "restoreSuccess": {
-    "message": "$count$個のタブを開きました",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "restoreFailed": {
-    "message": "復元に失敗しました"
-  },
-  "tabsCount": {
-    "message": "タブ"
-  },
-  "restoring": {
-    "message": "復元中..."
-  },
-  "selectFolderFirst": {
-    "message": "フォルダを選択"
-  },
-  "manyTabsWarning": {
-    "message": "$count$個のタブが開きます。続けますか？",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "folderDeleted": {
-    "message": "選択したフォルダが削除されました"
-  },
-  "restorePreserveGroups": {
-    "message": "タブグループを保持"
-  },
-  "contextMenuBackupTab": {
-    "message": "このタブをバックアップ"
-  },
-  "contextMenuBackupAll": {
-    "message": "すべてのタブをバックアップ"
-  },
-  "allWindows": {
-    "message": "すべてのウィンドウ"
-  },
-  "windowLabel": {
-    "message": "ウィンドウ"
-  },
-  "pinnedTab": {
-    "message": "固定"
-  },
-  "backupNotePlaceholder": {
-    "message": "メモを追加..."
-  },
-  "domainFilterPlaceholder": {
-    "message": "ドメインで絞り込み..."
-  },
-  "clearFilter": {
-    "message": "クリア"
-  },
-  "restoreSelected": {
-    "message": "選択を復元"
-  },
-  "previewHint": {
-    "message": "ダブルクリックでプレビュー"
-  },
-  "searchPlaceholder": {
-    "message": "バックアップを検索..."
-  },
-  "compareTitle": {
-    "message": "バックアップを比較"
-  },
-  "compareSelect1": {
-    "message": "バックアップ A"
-  },
-  "compareSelect2": {
-    "message": "バックアップ B"
-  },
-  "compareBtn": {
-    "message": "比較"
-  },
-  "added": {
-    "message": "追加"
-  },
-  "removed": {
-    "message": "削除"
-  },
-  "common": {
-    "message": "共通"
-  },
-  "toolsTab": {
-    "message": "ツール"
-  },
-  "exportImportTitle": {
-    "message": "エクスポート / インポート"
-  },
-  "exportJson": {
-    "message": "JSONエクスポート"
-  },
-  "exportCsv": {
-    "message": "CSVエクスポート"
-  },
-  "importLabel": {
-    "message": "ファイルからインポート:"
-  },
-  "importBtn": {
-    "message": "インポート"
-  },
-  "importSuccess": {
-    "message": "$count$ タブをインポート",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "importFailed": {
-    "message": "インポート失敗"
-  },
-  "statsTitle": {
-    "message": "統計"
-  },
-  "totalBackups": {
-    "message": "合計バックアップ"
-  },
-  "totalTabs": {
-    "message": "合計バックアップタブ"
-  },
-  "topDomains": {
-    "message": "上位ドメイン"
-  },
-  "noStats": {
-    "message": "統計なし"
-  },
-  "smartTriggersTitle": {
-    "message": "スマートトリガー"
-  },
-  "tabThreshold": {
-    "message": "タブしきい値"
-  },
-  "reminderLabel": {
-    "message": "リマインダー"
-  },
-  "noBackupSelected": {
-    "message": "バックアップ未選択"
-  },
-  "exportSelectBackup": {
-    "message": "エクスポートするバックアップを選択"
-  },
-  "exportSelectFolder": {
-    "message": "バックアップフォルダを先に選択してください。"
-  },
-  "exportComplete": {
-    "message": "エクスポート完了！"
-  },
-  "exportFailedMsg": {
-    "message": "エクスポート失敗"
-  },
-  "importSelectFolder": {
-    "message": "フォルダを先に選択してください。"
-  },
-  "importSelectFile": {
-    "message": "インポートするファイルを選択してください。"
-  },
-  "noTabsRestore": {
-    "message": "復元するタブが選択されていません。"
-  },
-  "compareAdded": {
-    "message": "追加（Bにあり、Aにない）"
-  },
-  "compareRemoved": {
-    "message": "削除（Aにあり、Bにない）"
-  },
-  "compareCommonLabel": {
-    "message": "共通"
-  },
-  "lastUpdated": {
-    "message": "最終更新"
-  },
-  "noBookmarksPreview": {
-    "message": "ブックマークが見つかりません。"
-  },
-  "backupCountLabel": {
-    "message": "ブックマーク:"
-  },
-  "selectTwoBackups": {
-    "message": "比較するバックアップを2つ選択してください。"
-  },
-  "selectDiffBackups": {
-    "message": "異なるバックアップを2つ選択してください。"
-  },
-  "noOpenTabs": {
-    "message": "開いているタブがありません。"
-  },
-  "duplicateGroupTooltip": {
-    "message": "同じURLのタブ"
-  },
-  "loadingPreview": {
-    "message": "読み込み中..."
-  },
-  "unknownError": {
-    "message": "Unknown error"
-  }
+﻿{
+    "extName":  {
+                    "message":  "Smart Tab Booker"
+                },
+    "extDesc":  {
+                    "message":  "開いているタブをブックマークに自動または手動でバックアップします。"
+                },
+    "selectStart":  {
+                        "message":  "フォルダを読み込み中..."
+                    },
+    "selectDefault":  {
+                          "message":  "フォルダを選択..."
+                      },
+    "backupBtn":  {
+                      "message":  "今すぐバックアップ"
+                  },
+    "backupBtnProgress":  {
+                              "message":  "バックアップ中..."
+                          },
+    "autoBackupTitle":  {
+                            "message":  "自動バックアップ設定"
+                        },
+    "intervalLabel":  {
+                          "message":  "間隔:"
+                      },
+    "daily":  {
+                  "message":  "毎日"
+              },
+    "weekly":  {
+                   "message":  "毎週"
+               },
+    "monthly":  {
+                    "message":  "毎月"
+                },
+    "enableAutoBackup":  {
+                             "message":  "自動バックアップを有効にする"
+                         },
+    "darkMode":  {
+                     "message":  "ダークモード"
+                 },
+    "custom":  {
+                   "message":  "カスタム"
+               },
+    "saveSettingsBtn":  {
+                            "message":  "設定を保存"
+                        },
+    "saved":  {
+                  "message":  "保存しました！"
+              },
+    "lastBackupLabel":  {
+                            "message":  "前回のバックアップ:"
+                        },
+    "never":  {
+                  "message":  "なし"
+              },
+    "folderSaved":  {
+                        "message":  "フォルダを保存しました！"
+                    },
+    "selectFolderErr":  {
+                            "message":  "フォルダを選択してください。"
+                        },
+    "backupSuccess":  {
+                          "message":  "バックアップ完了！"
+                      },
+    "backupInProgress":  {
+                             "message":  "バックアップはすでに進行中です"
+                         },
+    "backupFailed":  {
+                         "message":  "バックアップ失敗: "
+                     },
+    "invalidValue":  {
+                         "message":  "無効な値です。"
+                     },
+    "selectAll":  {
+                      "message":  "すべて選択"
+                  },
+    "deselectAll":  {
+                        "message":  "選択解除"
+                    },
+    "tabCounter":  {
+                       "message":  "選択: $SELECTED$ / $TOTAL$",
+                       "placeholders":  {
+                                            "selected":  {
+                                                             "content":  "$1"
+                                                         },
+                                            "total":  {
+                                                          "content":  "$2"
+                                                      }
+                                        }
+                   },
+    "bookmarksBar":  {
+                         "message":  "ブックマークバー"
+                     },
+    "otherBookmarks":  {
+                           "message":  "その他のブックマーク"
+                       },
+    "minutes":  {
+                    "message":  "分"
+                },
+    "hours":  {
+                  "message":  "時間"
+              },
+    "days":  {
+                 "message":  "日"
+             },
+    "selectFolderLabel":  {
+                              "message":  "バックアップ先フォルダ:"
+                          },
+    "selectTabsLabel":  {
+                            "message":  "バックアップするタブ:"
+                        },
+    "noTabsSelected":  {
+                           "message":  "タブが選択されていません！"
+                       },
+    "preserveGroups":  {
+                           "message":  "タブグループをフォルダとして保持"
+                       },
+    "autoCleanup":  {
+                        "message":  "古いバックアップを自動削除"
+                    },
+    "cleanupDaysLabel":  {
+                             "message":  "以下の日数より古いバックアップを削除"
+                         },
+    "daysLabel":  {
+                      "message":  "日"
+                  },
+    "addTimeBtn":  {
+                       "message":  "+ 時間を追加"
+                   },
+    "multiTimeLabel":  {
+                           "message":  "バックアップ時間 (最大5):"
+                       },
+    "quickBackupDesc":  {
+                            "message":  "すべてのタブをクイックバックアップ"
+                        },
+    "shortcutLabel":  {
+                          "message":  "キーボードショートカット:"
+                      },
+    "changeShortcut":  {
+                           "message":  "変更"
+                       },
+    "duplicateWarning":  {
+                             "message":  "重複"
+                         },
+    "includeDuplicates":  {
+                              "message":  "重複URLを含める"
+                          },
+    "backupTab":  {
+                      "message":  "バックアップ"
+                  },
+    "restoreTab":  {
+                       "message":  "復元"
+                   },
+    "selectBackupFolder":  {
+                               "message":  "バックアップフォルダ:"
+                           },
+    "selectBackupDefault":  {
+                                "message":  "-- Select a backup --"
+                            },
+    "restoreAll":  {
+                       "message":  "すべて復元"
+                   },
+    "noBackupsFound":  {
+                           "message":  "バックアップが見つかりません"
+                       },
+    "restoreSuccess":  {
+                           "message":  "$count$個のタブを開きました",
+                           "placeholders":  {
+                                                "count":  {
+                                                              "content":  "$1"
+                                                          }
+                                            }
+                       },
+    "restoreFailed":  {
+                          "message":  "復元に失敗しました"
+                      },
+    "tabsCount":  {
+                      "message":  "タブ"
+                  },
+    "restoring":  {
+                      "message":  "復元中..."
+                  },
+    "selectFolderFirst":  {
+                              "message":  "フォルダを選択"
+                          },
+    "manyTabsWarning":  {
+                            "message":  "$count$個のタブが開きます。続けますか？",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "folderDeleted":  {
+                          "message":  "選択したフォルダが削除されました"
+                      },
+    "restorePreserveGroups":  {
+                                  "message":  "タブグループを保持"
+                              },
+    "contextMenuBackupTab":  {
+                                 "message":  "このタブをバックアップ"
+                             },
+    "contextMenuBackupAll":  {
+                                 "message":  "すべてのタブをバックアップ"
+                             },
+    "allWindows":  {
+                       "message":  "すべてのウィンドウ"
+                   },
+    "backupNotePlaceholder":  {
+                                  "message":  "メモを追加..."
+                              },
+    "domainFilterPlaceholder":  {
+                                    "message":  "ドメインで絞り込み..."
+                                },
+    "clearFilter":  {
+                        "message":  "クリア"
+                    },
+    "restoreSelected":  {
+                            "message":  "選択を復元"
+                        },
+    "previewHint":  {
+                        "message":  "ダブルクリックでプレビュー"
+                    },
+    "searchPlaceholder":  {
+                              "message":  "バックアップを検索..."
+                          },
+    "compareTitle":  {
+                         "message":  "バックアップを比較"
+                     },
+    "compareSelect1":  {
+                           "message":  "バックアップ A"
+                       },
+    "compareSelect2":  {
+                           "message":  "バックアップ B"
+                       },
+    "compareBtn":  {
+                       "message":  "比較"
+                   },
+    "toolsTab":  {
+                     "message":  "ツール"
+                 },
+    "exportImportTitle":  {
+                              "message":  "エクスポート / インポート"
+                          },
+    "exportJson":  {
+                       "message":  "JSONエクスポート"
+                   },
+    "exportCsv":  {
+                      "message":  "CSVエクスポート"
+                  },
+    "importLabel":  {
+                        "message":  "ファイルからインポート:"
+                    },
+    "importBtn":  {
+                      "message":  "インポート"
+                  },
+    "importSuccess":  {
+                          "message":  "$count$ タブをインポート",
+                          "placeholders":  {
+                                               "count":  {
+                                                             "content":  "$1"
+                                                         }
+                                           }
+                      },
+    "importFailed":  {
+                         "message":  "インポート失敗"
+                     },
+    "statsTitle":  {
+                       "message":  "統計"
+                   },
+    "totalBackups":  {
+                         "message":  "合計バックアップ"
+                     },
+    "totalTabs":  {
+                      "message":  "合計バックアップタブ"
+                  },
+    "topDomains":  {
+                       "message":  "上位ドメイン"
+                   },
+    "noStats":  {
+                    "message":  "統計なし"
+                },
+    "smartTriggersTitle":  {
+                               "message":  "スマートトリガー"
+                           },
+    "tabThreshold":  {
+                         "message":  "タブしきい値"
+                     },
+    "reminderLabel":  {
+                          "message":  "リマインダー"
+                      },
+    "exportSelectBackup":  {
+                               "message":  "エクスポートするバックアップを選択"
+                           },
+    "exportComplete":  {
+                           "message":  "エクスポート完了！"
+                       },
+    "exportFailedMsg":  {
+                            "message":  "エクスポート失敗"
+                        },
+    "importSelectFolder":  {
+                               "message":  "フォルダを先に選択してください。"
+                           },
+    "importSelectFile":  {
+                             "message":  "インポートするファイルを選択してください。"
+                         },
+    "noTabsRestore":  {
+                          "message":  "復元するタブが選択されていません。"
+                      },
+    "compareAdded":  {
+                         "message":  "追加（Bにあり、Aにない）"
+                     },
+    "compareRemoved":  {
+                           "message":  "削除（Aにあり、Bにない）"
+                       },
+    "compareCommonLabel":  {
+                               "message":  "共通"
+                           },
+    "lastUpdated":  {
+                        "message":  "最終更新"
+                    },
+    "noBookmarksPreview":  {
+                               "message":  "ブックマークが見つかりません。"
+                           },
+    "backupCountLabel":  {
+                             "message":  "ブックマーク:"
+                         },
+    "selectTwoBackups":  {
+                             "message":  "比較するバックアップを2つ選択してください。"
+                         },
+    "selectDiffBackups":  {
+                              "message":  "異なるバックアップを2つ選択してください。"
+                          },
+    "noOpenTabs":  {
+                       "message":  "開いているタブがありません。"
+                   },
+    "duplicateGroupTooltip":  {
+                                  "message":  "同じURLのタブ"
+                              },
+    "loadingPreview":  {
+                           "message":  "読み込み中..."
+                       },
+    "unknownError":  {
+                         "message":  "Unknown error"
+                     }
 }

@@ -2,6 +2,35 @@
 
 All notable changes to Smart Tab Booker will be documented in this file.
 
+## [1.6.0] - 2026-06-14
+
+### Added
+- **Firefox Support** — Full compatibility with Firefox and all Firefox-based browsers (Zen Browser, Waterfox, etc.) via webextension-polyfill
+- **Dual Packaging** — `package_extension.py` now accepts `--chrome` or `--firefox` flag to build browser-specific packages
+- **Firefox Manifest** — Separate `manifest-firefox.json` with `browser_specific_settings` for AMO submission
+- **Runtime Feature Detection** — `BrowserDetect` module detects `isFirefox` and `supportsTabGroups` at runtime
+- **Tab Groups Graceful Fallback** — On browsers without tab groups API, backups save groups as folders and restores flatten them into tabs
+
+### Changed
+- All `chrome.*` API calls replaced with `browser.*` namespace (webextension-polyfill handles Chrome↔Firefox mapping)
+- Callback-based API patterns converted to async/await (`sendMessage`, `SettingsManager`, `TabManager`, message handlers)
+- `chrome.runtime.lastError` patterns removed in favor of promise rejection
+- Keyboard shortcut link now opens `about:addons` on Firefox, `chrome://extensions/shortcuts` on Chrome
+- New tab detection supports both `chrome://newtab/` and `about:newtab/` / `about:home/`
+- URL validation now blocks `moz-extension://` URLs on Firefox
+- Tab groups toggles hidden on browsers without tab groups support
+- Packaging script reads version from `manifest.json` instead of hardcoding
+
+### Technical
+- Added `browser-polyfill.js` (Mozilla webextension-polyfill v0.12.0)
+- Added `browser-detect.js` for runtime browser feature detection
+- Added `manifest-firefox.json` (no `tabGroups` permission, `background.scripts`, `browser_specific_settings.gecko`)
+- `popup.html` loads `browser-polyfill.js` and `browser-detect.js` before `popup.js`
+- `background.js` loads polyfill via conditional `importScripts` in service worker
+- Fixed bug in `restoreTabsWithGroups` Firefox fallback where nested bookmarks in group folders were silently dropped (`isValidUrl(b.url)` → `isValidUrl(sub.url)`)
+
+---
+
 ## [1.4.0] - 2026-04-01
 
 ### Added

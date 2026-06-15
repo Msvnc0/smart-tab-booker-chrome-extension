@@ -15,6 +15,9 @@
     --status-color: #666;
     --duplicate-bg: #fff3cd;
     --duplicate-badge: #856404;
+    --text-secondary: #666;
+    --primary-color: #4285f4;
+    --hover-bg: #f5f5f5;
 }
 
 body.dark-mode {
@@ -34,6 +37,9 @@ body.dark-mode {
     --status-color: #aaa;
     --duplicate-bg: #3d3800;
     --duplicate-badge: #ffc107;
+    --text-secondary: #aaa;
+    --primary-color: #8ab4f8;
+    --hover-bg: #2a2a2a;
 }
 
 body {
@@ -407,47 +413,15 @@ hr {
     overflow-y: auto;
 }
 
-.preview-row,
 .restore-preview-row {
     display: flex;
     align-items: center;
     padding: 3px 0;
 }
 
-.preview-row input[type="checkbox"],
 .restore-preview-row input[type="checkbox"] {
     margin-right: 8px;
     width: auto;
-}
-
-.preview-label {
-    font-size: 11px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    flex: 1;
-}
-
-.compare-section {
-    margin-top: 4px;
-}
-
-.compare-section h4 {
-    font-size: 11px;
-    margin: 4px 0 2px 0;
-    font-weight: 600;
-}
-
-.compare-section .compare-added { color: #4CAF50; }
-.compare-section .compare-removed { color: #F44336; }
-.compare-section .compare-common { color: #888; }
-
-.compare-item {
-    font-size: 11px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 1px 0;
 }
 
 .stats-container {
@@ -480,8 +454,7 @@ hr {
     padding: 2px 0;
 }
 
-.section + .section,
-.tools-section {
+.section + .section {
     margin-bottom: 12px;
 }
 
@@ -491,75 +464,81 @@ hr {
     width: 100%;
 }
 
-.search-input {
-    width: 100%;
-    padding: 6px 8px;
-    font-size: 12px;
-    border: 1px solid var(--input-border);
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-bottom: 8px;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-}
-
-.collapse-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    user-select: none;
-}
-
-.collapse-header .collapse-arrow {
-    transition: transform 0.2s;
-    font-size: 12px;
-}
-
-.collapse-header.collapsed .collapse-arrow {
-    transform: rotate(-90deg);
-}
-
-.filter-row {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 8px;
-}
-
-.filter-row input {
-    flex: 1;
-    padding: 5px 8px;
-    font-size: 12px;
-    border: 1px solid var(--input-border);
-    border-radius: 4px;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-}
-
 /* === Dark mode additions for new elements === */
 
 .dark-mode .restore-preview {
     border-top-color: var(--border-color);
 }
 
-.dark-mode .compare-section .compare-added { color: #66BB6A; }
-.dark-mode .compare-section .compare-removed { color: #ef5350; }
-.dark-mode .compare-section .compare-common { color: #777; }
-
 .dark-mode .stat-row {
     border-bottom-color: var(--border-color);
 }
 
-.dark-mode .search-input {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    border-color: var(--input-border);
+.restore-preview-loading {
+    font-size: 12px;
+    color: #888;
 }
 
-.dark-mode .filter-row input {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    border-color: var(--input-border);
+.restore-preview-header {
+    font-size: 12px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.restore-preview-label {
+    font-size: 11px;
+    margin-left: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    max-width: 280px;
+}
+
+.compare-result-error {
+    color: red;
+}
+
+.compare-section-heading {
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.compare-section-list {
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.compare-section-item {
+    font-size: 11px;
+    padding: 2px 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dark-mode .compare-result-error {
+    color: #f44336;
+}
+
+.stats-detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+    font-size: 11px;
+    color: #666;
+}
+
+.stats-domain-header {
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.dark-mode .stats-detail-row {
+    color: #999;
 }
 
 /* === RTL Support === */
@@ -766,4 +745,8 @@ html[dir="rtl"] h1 {
 
 .dark-mode .no-backups.error {
     color: #f44336;
+}
+
+.unsupported-feature {
+    display: none !important;
 }
