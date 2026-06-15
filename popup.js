@@ -201,7 +201,7 @@ const TabManager = {
         }
 
         const container = DOM.get(CONSTANTS.SELECTORS.TAB_LIST_CONTAINER);
-        container.innerHTML = '';
+        container.replaceChildren();
 
         if (filteredTabs.length === 0) {
             container.textContent = Localization.get("noOpenTabs");
@@ -398,7 +398,13 @@ const BookmarkManager = {
 
         const select = DOM.get(CONSTANTS.SELECTORS.FOLDER_SELECT);
         const defaultText = Localization.get("selectDefault");
-        select.innerHTML = `<option value="" disabled selected>${defaultText}</option>`;
+        select.replaceChildren();
+        const defaultOpt = DOM.create('option');
+        defaultOpt.value = '';
+        defaultOpt.disabled = true;
+        defaultOpt.selected = true;
+        defaultOpt.textContent = defaultText;
+        select.appendChild(defaultOpt);
         BookmarkTreeHelper.populateFolderSelect(select, response.tree, 0, savedId);
 
         DOM.get(CONSTANTS.SELECTORS.FOLDER_SELECT).addEventListener('change', (e) => {
@@ -464,7 +470,13 @@ const RestoreManager = {
 
         const select = DOM.get(CONSTANTS.SELECTORS.RESTORE_FOLDER_SELECT);
         const defaultText = Localization.get("selectBackupFolder");
-        select.innerHTML = `<option value="" disabled selected>${defaultText}</option>`;
+        select.replaceChildren();
+        const defaultOpt = DOM.create('option');
+        defaultOpt.value = '';
+        defaultOpt.disabled = true;
+        defaultOpt.selected = true;
+        defaultOpt.textContent = defaultText;
+        select.appendChild(defaultOpt);
         BookmarkTreeHelper.populateFolderSelect(select, response.tree, 0, savedFolderId);
 
         if (savedFolderId) {
@@ -526,14 +538,17 @@ const RestoreManager = {
         }
 
         const container = DOM.get(CONSTANTS.SELECTORS.RESTORE_LIST);
-        container.innerHTML = '';
+        container.replaceChildren();
 
         const backups = response.children.filter(c => !c.url && c.title && c.title.startsWith('Backup_'));
 
         this._backups = backups;
 
         if (backups.length === 0) {
-            container.innerHTML = `<div class="no-backups">${Localization.get("noBackupsFound")}</div>`;
+            const noBackups = DOM.create('div');
+            noBackups.className = 'no-backups';
+            noBackups.textContent = Localization.get("noBackupsFound");
+            container.replaceChildren(noBackups);
             this.updateButtonStates(false);
             this.loadCompareOptions([]);
             return;
@@ -603,24 +618,30 @@ const RestoreManager = {
 
         if (existingId === backupId && !preview.classList.contains('hidden')) {
             preview.classList.add('hidden');
-            preview.innerHTML = '';
+            preview.replaceChildren();
             preview.dataset.backupId = '';
             return;
         }
 
         preview.classList.remove('hidden');
         preview.dataset.backupId = backupId;
-        preview.innerHTML = `<div class="restore-preview-loading">${Localization.get("loadingPreview")}</div>`;
+        const loadingEl = DOM.create('div');
+        loadingEl.className = 'restore-preview-loading';
+        loadingEl.textContent = Localization.get("loadingPreview");
+        preview.replaceChildren(loadingEl);
 
         this.loadBackupPreview(backupId, preview);
     },
 
     async loadBackupPreview(backupId, container) {
         const response = await sendMessage({ action: 'getBackupPreview', backupId });
-        container.innerHTML = '';
+        container.replaceChildren();
 
         if (!response || !response.success || response.items.length === 0) {
-            container.innerHTML = `<div class="restore-preview-loading">${Localization.get("noBookmarksPreview")}</div>`;
+            const noPreview = DOM.create('div');
+            noPreview.className = 'restore-preview-loading';
+            noPreview.textContent = Localization.get("noBookmarksPreview");
+            container.replaceChildren(noPreview);
             return;
         }
 
@@ -691,13 +712,19 @@ const RestoreManager = {
 
         if (!id1 || !id2) {
             const result = DOM.get(CONSTANTS.SELECTORS.COMPARE_RESULT);
-            result.innerHTML = `<div class="compare-result-error">${Localization.get("selectTwoBackups")}</div>`;
+            const errEl = DOM.create('div');
+            errEl.className = 'compare-result-error';
+            errEl.textContent = Localization.get("selectTwoBackups");
+            result.replaceChildren(errEl);
             return;
         }
 
         if (id1 === id2) {
             const result = DOM.get(CONSTANTS.SELECTORS.COMPARE_RESULT);
-            result.innerHTML = `<div class="compare-result-error">${Localization.get("selectDiffBackups")}</div>`;
+            const errEl = DOM.create('div');
+            errEl.className = 'compare-result-error';
+            errEl.textContent = Localization.get("selectDiffBackups");
+            result.replaceChildren(errEl);
             return;
         }
 
@@ -713,7 +740,7 @@ const RestoreManager = {
             const common = [...set1].filter(u => set2.has(u));
 
             const result = DOM.get(CONSTANTS.SELECTORS.COMPARE_RESULT);
-            result.innerHTML = '';
+            result.replaceChildren();
 
             const renderSection = (title, items, color) => {
                 const section = DOM.create('div');
@@ -752,8 +779,8 @@ const RestoreManager = {
         const label1 = select1.querySelector('option[disabled]');
         const label2 = select2.querySelector('option[disabled]');
 
-        select1.innerHTML = '';
-        select2.innerHTML = '';
+        select1.replaceChildren();
+        select2.replaceChildren();
 
         const opt1 = DOM.create('option');
         opt1.value = '';
@@ -847,7 +874,10 @@ const RestoreManager = {
 
     showFolderDeletedError() {
         const container = DOM.get(CONSTANTS.SELECTORS.RESTORE_LIST);
-        container.innerHTML = `<div class="no-backups error">${Localization.get("folderDeleted")}</div>`;
+        const errEl = DOM.create('div');
+        errEl.className = 'no-backups error';
+        errEl.textContent = Localization.get("folderDeleted");
+        container.replaceChildren(errEl);
         this.updateButtonStates(false);
     }
 };
@@ -871,7 +901,7 @@ const TimeManager = {
 
     render() {
         const container = DOM.get(CONSTANTS.SELECTORS.TIME_LIST);
-        container.innerHTML = '';
+        container.replaceChildren();
 
         this.times.forEach((time, index) => {
             const row = DOM.create('div');
@@ -975,7 +1005,13 @@ const ToolsManager = {
 
         const select = DOM.get(CONSTANTS.SELECTORS.TOOLS_FOLDER_SELECT);
         const defaultText = Localization.get("selectBackupFolder") || 'Select Backup Folder';
-        select.innerHTML = `<option value="" disabled selected>${defaultText}</option>`;
+        select.replaceChildren();
+        const defaultOpt = DOM.create('option');
+        defaultOpt.value = '';
+        defaultOpt.disabled = true;
+        defaultOpt.selected = true;
+        defaultOpt.textContent = defaultText;
+        select.appendChild(defaultOpt);
         BookmarkTreeHelper.populateFolderSelect(select, response.tree, 0, savedFolderId);
 
         if (savedFolderId) {
@@ -986,7 +1022,13 @@ const ToolsManager = {
     async loadBackups(folderId) {
         const select = DOM.get(CONSTANTS.SELECTORS.TOOLS_BACKUP_SELECT);
         const defaultText = Localization.get("selectBackupDefault") || '-- Select a backup --';
-        select.innerHTML = `<option value="" disabled selected>${defaultText}</option>`;
+        select.replaceChildren();
+        const defaultOpt = DOM.create('option');
+        defaultOpt.value = '';
+        defaultOpt.disabled = true;
+        defaultOpt.selected = true;
+        defaultOpt.textContent = defaultText;
+        select.appendChild(defaultOpt);
 
         if (!folderId) return;
 
@@ -1466,10 +1508,14 @@ const UI = {
         const container = DOM.get(CONSTANTS.SELECTORS.STATS_CONTAINER);
         if (!container) return;
 
-        container.innerHTML = '';
+        container.replaceChildren();
 
         if (!stats || Object.keys(stats).length === 0) {
-            container.innerHTML = `<div style="font-size:12px;color:#888;">${Localization.get("noStats")}</div>`;
+            const noStats = DOM.create('div');
+            noStats.style.fontSize = '12px';
+            noStats.style.color = '#888';
+            noStats.textContent = Localization.get("noStats");
+            container.replaceChildren(noStats);
             return;
         }
 
