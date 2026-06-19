@@ -2,14 +2,15 @@
   "manifest_version": 3,
   "name": "__MSG_extName__",
   "default_locale": "en",
-  "version": "1.6",
+  "version": "1.6.1",
   "description": "__MSG_extDesc__",
   "permissions": [
     "tabs",
     "bookmarks",
     "storage",
     "alarms",
-    "contextMenus"
+    "contextMenus",
+    "tabGroups"
   ],
   "action": {
     "default_popup": "popup.html",
