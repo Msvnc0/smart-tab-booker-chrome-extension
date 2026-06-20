@@ -164,12 +164,18 @@
                            "message":  "कोई बैकअप नहीं मिला"
                        },
     "restoreSuccess":  {
-                           "message":  "$count$ टैब खुले",
-                           "placeholders":  {
-                                                "count":  {
-                                                              "content":  "$1"
-                                                          }
-                                            }
+                            "message":  "$count$ टैब खुले",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "tabGroupsCreated":  {
+                           "message":  "टैब समूह बनाए गए।"
+                       },
+    "zenFolderManualHint":  {
+                           "message":  "बहाल किए गए टैब से मैन्युअल रूप से Zen फ़ोल्डर बनाएं।"
                        },
     "restoreFailed":  {
                           "message":  "पुनर्स्थापना विफल"

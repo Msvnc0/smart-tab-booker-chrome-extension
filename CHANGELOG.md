@@ -2,6 +2,47 @@
 
 All notable changes to Smart Tab Booker will be documented in this file.
 
+## [1.6.2] - 2026-06-20
+
+### Added
+- **AMO (Firefox Add-ons) Submission Ready** — `data_collection_permissions` declared as `none` (no data leaves browser)
+- **AMO Listing Screenshots** — 6 screenshots (light/dark, backup/restore/tools) generated via Playwright
+- **LICENSE file** — MIT license added for AMO compliance
+- **Zen Browser detection** — `BrowserDetect.isZenBrowser` via `navigator.userAgent`
+- **i18n: `tabGroupsCreated`** — 18 locales, shown after restore when tab groups created
+- **i18n: `zenFolderManualHint`** — 18 locales, hint for Zen Browser users to create folders manually
+
+### Fixed
+- **Chrome: `BrowserDetect is not defined`** — `importScripts` guard was checking `typeof browser === 'undefined'` but Chrome has partial native `browser.*` support, skipping polyfill+detect load. Guard now only checks `typeof importScripts === 'function'`
+- **Chrome: `No open tabs to backup`** — caused by `BrowserDetect` not loading (same root cause as above)
+- **Zen/Chrome: Extra new tabs on restore** — `browser.windows.create()` opened blank window with default new tab. Now opens window with first bookmark URL directly, cleans up all new-tab URLs after restore
+- **Zen Browser: Tab groups not restored** — `browser.tabs.group()` was guarded by `BrowserDetect.supportsTabsGroup` which was Zen-blocked. Guard removed; `tabs.group()` now called on all browsers, errors caught silently
+- **Backup: `tabGroups.query` failure** — wrapped in try/catch, falls back to flat bookmark save if API errors
+
+### Changed
+- `strict_min_version` raised from `133.0` → `142.0` (Firefox for Android `data_collection_permissions` support)
+- `tabGroups` permission restored in `manifest-firefox.json` (Zen Browser inherits Firefox's tabGroups API)
+- All `innerHTML` assignments in `popup.js` replaced with safe DOM APIs (`replaceChildren`, `textContent`, `DOM.create`) — 20 occurrences, 0 remaining
+- `firefox-build/` stale directory deleted, added to `.gitignore`
+- Restore window now opens with first valid URL instead of blank window
+- All new-tab URLs cleaned after restore (not just first match)
+
+### Technical
+- `browser-detect.js`: added `isZenBrowser` getter
+- `background.js`: `saveTabsWithGroups` try/catch around `tabGroups.query`
+- `background.js`: `restoreFromBookmarks` reworked — first URL opens with window, `getFirstValidUrlFromFolder` helper added
+- `background.js`: `restoreTabsWithGroups` signature changed to accept `firstUrl` param
+
+---
+
+## [1.6.1] - 2026-06-15
+
+### Fixed
+- **Zen Browser: Tab groups not saved as folders** — `tabGroups` permission had been removed from Firefox manifest to avoid AMO warnings, but Zen Browser (Firefox-based) requires it. Permission restored.
+- Version bump to 1.6.1 for AMO re-submission.
+
+---
+
 ## [1.6.0] - 2026-06-14
 
 ### Added

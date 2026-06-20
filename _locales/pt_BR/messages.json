@@ -164,12 +164,18 @@
                            "message":  "Nenhum backup nesta pasta"
                        },
     "restoreSuccess":  {
-                           "message":  "$count$ abas abertas",
-                           "placeholders":  {
-                                                "count":  {
-                                                              "content":  "$1"
-                                                          }
-                                            }
+                            "message":  "$count$ abas abertas",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "tabGroupsCreated":  {
+                           "message":  "Grupos de abas criados."
+                       },
+    "zenFolderManualHint":  {
+                           "message":  "Crie pastas Zen manualmente a partir das abas restauradas."
                        },
     "restoreFailed":  {
                           "message":  "Falha na restauração"

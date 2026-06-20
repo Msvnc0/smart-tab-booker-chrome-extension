@@ -164,12 +164,18 @@
                            "message":  "バックアップが見つかりません"
                        },
     "restoreSuccess":  {
-                           "message":  "$count$個のタブを開きました",
-                           "placeholders":  {
-                                                "count":  {
-                                                              "content":  "$1"
-                                                          }
-                                            }
+                            "message":  "$count$個のタブを開きました",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "tabGroupsCreated":  {
+                           "message":  "タブグループが作成されました。"
+                       },
+    "zenFolderManualHint":  {
+                           "message":  "復元したタブから手動でZenフォルダを作成してください。"
                        },
     "restoreFailed":  {
                           "message":  "復元に失敗しました"

@@ -2,6 +2,9 @@ const BrowserDetect = {
     get isFirefox() {
         return typeof browser !== 'undefined' && browser.runtime && typeof browser.runtime.getBrowserInfo === 'function';
     },
+    get isZenBrowser() {
+        return typeof navigator !== 'undefined' && /zen/i.test(navigator.userAgent);
+    },
     get supportsTabGroups() {
         return typeof browser !== 'undefined' && browser.tabGroups && typeof browser.tabGroups.query === 'function';
     },

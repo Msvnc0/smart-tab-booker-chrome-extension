@@ -164,12 +164,18 @@
                            "message":  "لم يتم العثور على نسخ احتياطية"
                        },
     "restoreSuccess":  {
-                           "message":  "تم فتح $count$ علامة تبويب",
-                           "placeholders":  {
-                                                "count":  {
-                                                              "content":  "$1"
-                                                          }
-                                            }
+                            "message":  "تم فتح $count$ علامة تبويب",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "tabGroupsCreated":  {
+                           "message":  "تم إنشاء مجموعات علامات التبويب."
+                       },
+    "zenFolderManualHint":  {
+                           "message":  "أنشئ مجلدات Zen يدويًا من علامات التبويب المستعادة."
                        },
     "restoreFailed":  {
                           "message":  "فشلت الاستعادة"

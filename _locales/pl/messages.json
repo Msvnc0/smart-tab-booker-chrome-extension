@@ -164,12 +164,18 @@
                            "message":  "Brak kopii zapasowych"
                        },
     "restoreSuccess":  {
-                           "message":  "Otwarto $count$ kart",
-                           "placeholders":  {
-                                                "count":  {
-                                                              "content":  "$1"
-                                                          }
-                                            }
+                            "message":  "Otwarto $count$ kart",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "tabGroupsCreated":  {
+                           "message":  "Utworzono grupy kart."
+                       },
+    "zenFolderManualHint":  {
+                           "message":  "Utwórz foldery Zen ręcznie z przywróconych kart."
                        },
     "restoreFailed":  {
                           "message":  "Przywracanie nie powiodło się"

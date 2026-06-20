@@ -164,12 +164,18 @@
                            "message":  "此文件夹中未找到备份"
                        },
     "restoreSuccess":  {
-                           "message":  "已打开 $count$ 个标签页",
-                           "placeholders":  {
-                                                "count":  {
-                                                              "content":  "$1"
-                                                          }
-                                            }
+                            "message":  "已打开 $count$ 个标签页",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "tabGroupsCreated":  {
+                           "message":  "已创建标签页分组。"
+                       },
+    "zenFolderManualHint":  {
+                           "message":  "从恢复的标签页手动创建 Zen 文件夹。"
                        },
     "restoreFailed":  {
                           "message":  "恢复失败"

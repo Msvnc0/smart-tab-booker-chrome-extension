@@ -164,12 +164,18 @@
                            "message":  "Geen back-ups gevonden"
                        },
     "restoreSuccess":  {
-                           "message":  "$count$ tabbladen geopend",
-                           "placeholders":  {
-                                                "count":  {
-                                                              "content":  "$1"
-                                                          }
-                                            }
+                            "message":  "$count$ tabbladen geopend",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "tabGroupsCreated":  {
+                           "message":  "Tabgroepen gemaakt."
+                       },
+    "zenFolderManualHint":  {
+                           "message":  "Maak handmatig Zen-mappen van de herstelde tabs."
                        },
     "restoreFailed":  {
                           "message":  "Herstellen mislukt"

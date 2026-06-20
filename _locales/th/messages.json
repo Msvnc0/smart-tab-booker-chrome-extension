@@ -164,12 +164,18 @@
                            "message":  "ไม่พบข้อมูลสำรอง"
                        },
     "restoreSuccess":  {
-                           "message":  "เปิด $count$ แท็บแล้ว",
-                           "placeholders":  {
-                                                "count":  {
-                                                              "content":  "$1"
-                                                          }
-                                            }
+                            "message":  "เปิด $count$ แท็บแล้ว",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "tabGroupsCreated":  {
+                           "message":  "สร้างกลุ่มแท็บแล้ว"
+                       },
+    "zenFolderManualHint":  {
+                           "message":  "สร้างโฟลเดอร์ Zen ด้วยตนเองจากแท็บที่กู้คืนแล้ว"
                        },
     "restoreFailed":  {
                           "message":  "กู้คืนล้มเหลว"

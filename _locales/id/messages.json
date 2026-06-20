@@ -164,12 +164,18 @@
                            "message":  "Tidak ada cadangan"
                        },
     "restoreSuccess":  {
-                           "message":  "$count$ tab dibuka",
-                           "placeholders":  {
-                                                "count":  {
-                                                              "content":  "$1"
-                                                          }
-                                            }
+                            "message":  "$count$ tab dibuka",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "tabGroupsCreated":  {
+                           "message":  "Grup tab dibuat."
+                       },
+    "zenFolderManualHint":  {
+                           "message":  "Buat Folder Zen secara manual dari tab yang dipulihkan."
                        },
     "restoreFailed":  {
                           "message":  "Pemulihan gagal"

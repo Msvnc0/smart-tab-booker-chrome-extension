@@ -164,12 +164,18 @@
                            "message":  "Aucune sauvegarde dans ce dossier"
                        },
     "restoreSuccess":  {
-                           "message":  "$count$ onglets ouverts",
-                           "placeholders":  {
-                                                "count":  {
-                                                              "content":  "$1"
-                                                          }
-                                            }
+                            "message":  "$count$ onglets ouverts",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "tabGroupsCreated":  {
+                           "message":  "Groupes d'onglets créés."
+                       },
+    "zenFolderManualHint":  {
+                           "message":  "Créez des dossiers Zen manuellement à partir des onglets restaurés."
                        },
     "restoreFailed":  {
                           "message":  "Échec de la restauration"

@@ -1,4 +1,4 @@
-if (typeof browser === 'undefined' && typeof importScripts === 'function') {
+if (typeof importScripts === 'function') {
     importScripts('browser-polyfill.js', 'browser-detect.js');
 }
 
@@ -484,11 +484,19 @@ async function saveTabsAsBookmarks(parentId, tabs) {
 }
 
 async function saveTabsWithGroups(parentId, tabs) {
-    if (!BrowserDetect.supportsTabGroups) {
+    let groups = [];
+    if (BrowserDetect.supportsTabGroups) {
+        try {
+            groups = await browser.tabGroups.query({});
+        } catch (err) {
+            console.warn('tabGroups.query failed, saving flat:', err);
+            return saveTabsAsBookmarks(parentId, tabs);
+        }
+    }
+    if (groups.length === 0 && !BrowserDetect.supportsTabGroups) {
         return saveTabsAsBookmarks(parentId, tabs);
     }
 
-    const groups = await browser.tabGroups.query({});
     const tabGroupMap = new Map();
 
     groups.forEach(group => {
@@ -590,27 +598,42 @@ async function restoreFromBookmarks(folderId, options = {}) {
             return { success: false, error: 'noBookmarks' };
         }
 
-        window = await browser.windows.create({ focused: true });
+        const firstUrl = validBookmarks.length > 0
+            ? validBookmarks[0].url
+            : (folders.length > 0 ? await getFirstValidUrlFromFolder(folders[0].id) : null);
+
+        if (firstUrl) {
+            window = await browser.windows.create({ focused: true, url: firstUrl });
+        } else {
+            window = await browser.windows.create({ focused: true });
+        }
+
         let groupsCreated = 0;
         let tabsOpened = 0;
 
         if (preserveTabGroups) {
-            const result = await restoreTabsWithGroups(window.id, children);
+            const remainingBookmarks = firstUrl && validBookmarks.length > 0
+                ? validBookmarks.slice(1)
+                : validBookmarks;
+            const allChildren = [...remainingBookmarks, ...folders];
+            const result = await restoreTabsWithGroups(window.id, allChildren, firstUrl);
             groupsCreated = result.groupsCreated;
-            tabsOpened = result.tabsOpened;
+            tabsOpened = result.tabsOpened + (firstUrl ? 1 : 0);
         } else {
-            const allBookmarks = [...validBookmarks];
+            const allBookmarks = firstUrl && validBookmarks.length > 0
+                ? validBookmarks.slice(1)
+                : validBookmarks;
             for (const folder of folders) {
                 const subChildren = await browser.bookmarks.getChildren(folder.id);
                 allBookmarks.push(...subChildren.filter(b => b.url && isValidUrl(b.url)));
             }
-            tabsOpened = await restoreTabsFlat(window.id, allBookmarks);
+            tabsOpened = await restoreTabsFlat(window.id, allBookmarks) + (firstUrl ? 1 : 0);
         }
 
         const tabs = await browser.tabs.query({ windowId: window.id });
-        const newTab = tabs.find(t => BrowserDetect.NEW_TAB_URLS.some(url => t.url.startsWith(url)));
-        if (newTab) {
-            await browser.tabs.remove(newTab.id);
+        const newTabs = tabs.filter(t => BrowserDetect.NEW_TAB_URLS.some(url => t.url.startsWith(url)));
+        for (const nt of newTabs) {
+            try { await browser.tabs.remove(nt.id); } catch (e) { /* tab already removed */ }
         }
 
         return { success: true, tabsOpened, groupsCreated };
@@ -621,6 +644,12 @@ async function restoreFromBookmarks(folderId, options = {}) {
         }
         return { success: false, error: err.message };
     }
+}
+
+async function getFirstValidUrlFromFolder(folderId) {
+    const children = await browser.bookmarks.getChildren(folderId);
+    const first = children.find(b => b.url && isValidUrl(b.url));
+    return first ? first.url : null;
 }
 
 async function restoreTabsFlat(windowId, bookmarks) {
@@ -637,7 +666,7 @@ async function restoreTabsFlat(windowId, bookmarks) {
     return opened;
 }
 
-async function restoreTabsWithGroups(windowId, bookmarks) {
+async function restoreTabsWithGroups(windowId, bookmarks, firstUrl) {
     const folders = bookmarks.filter(b => !b.url);
     const singleBookmarks = bookmarks.filter(b => b.url && isValidUrl(b.url));
 
@@ -663,7 +692,7 @@ async function restoreTabsWithGroups(windowId, bookmarks) {
                 }
             }
 
-            if (tabIds.length > 0 && BrowserDetect.supportsTabGroups) {
+            if (tabIds.length > 0) {
                 try {
                     const groupId = await browser.tabs.group({ tabIds });
                     const color = extractGroupColor(folder.title);

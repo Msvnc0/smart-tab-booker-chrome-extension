@@ -164,12 +164,18 @@
                            "message":  "Keine Backups in diesem Ordner"
                        },
     "restoreSuccess":  {
-                           "message":  "$count$ Tabs geöffnet",
-                           "placeholders":  {
-                                                "count":  {
-                                                              "content":  "$1"
-                                                          }
-                                            }
+                            "message":  "$count$ Tabs geöffnet",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "tabGroupsCreated":  {
+                           "message":  "Tab-Gruppen erstellt."
+                       },
+    "zenFolderManualHint":  {
+                           "message":  "Erstellen Sie Zen-Ordner manuell aus den wiederhergestellten Tabs."
                        },
     "restoreFailed":  {
                           "message":  "Wiederherstellung fehlgeschlagen"

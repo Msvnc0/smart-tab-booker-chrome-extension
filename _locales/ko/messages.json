@@ -164,12 +164,18 @@
                            "message":  "백업 없음"
                        },
     "restoreSuccess":  {
-                           "message":  "$count$개 탭 열림",
-                           "placeholders":  {
-                                                "count":  {
-                                                              "content":  "$1"
-                                                          }
-                                            }
+                            "message":  "$count$개 탭 열림",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "tabGroupsCreated":  {
+                           "message":  "탭 그룹이 생성되었습니다."
+                       },
+    "zenFolderManualHint":  {
+                           "message":  "복원된 탭에서 수동으로 Zen 폴더를 만드세요."
                        },
     "restoreFailed":  {
                           "message":  "복원 실패"

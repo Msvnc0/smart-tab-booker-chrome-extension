@@ -858,7 +858,10 @@ const RestoreManager = {
 
     handleResponse(response) {
         if (response && response.success) {
-            const msg = Localization.get("restoreSuccess", [response.tabsOpened]);
+            let msg = Localization.get("restoreSuccess", [response.tabsOpened]);
+            if (response.groupsCreated > 0) {
+                msg += ' ' + Localization.get("tabGroupsCreated");
+            }
             this.showStatus(msg, 'success');
         } else {
             this.showStatus(Localization.get("restoreFailed") + (response ? ': ' + response.error : ''), 'error');

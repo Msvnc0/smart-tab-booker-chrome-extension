@@ -164,7 +164,13 @@
                            "message":  "Bu klasörde yedek bulunamadı"
                        },
     "restoreSuccess":  {
-                           "message":  "$1 sekme açıldı"
+                            "message":  "$1 sekme açıldı"
+                        },
+    "tabGroupsCreated":  {
+                           "message":  "Sekme grupları oluşturuldu."
+                       },
+    "zenFolderManualHint":  {
+                           "message":  "Geri yüklenen sekmelerden Zen Klasörlerini manuel olarak oluşturun."
                        },
     "restoreFailed":  {
                           "message":  "Geri yükleme başarısız"

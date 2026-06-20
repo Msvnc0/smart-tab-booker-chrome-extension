@@ -166,6 +166,12 @@
     "restoreSuccess":  {
                            "message":  "$1 tabs opened"
                        },
+    "tabGroupsCreated":  {
+                           "message":  "Tab groups created."
+                       },
+    "zenFolderManualHint":  {
+                           "message":  "Create Zen Folders manually from the restored tabs."
+                       },
     "restoreFailed":  {
                           "message":  "Restore failed"
                       },

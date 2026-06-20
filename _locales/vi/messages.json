@@ -164,12 +164,18 @@
                            "message":  "Không tìm thấy bản sao lưu"
                        },
     "restoreSuccess":  {
-                           "message":  "Đã mở $count$ tab",
-                           "placeholders":  {
-                                                "count":  {
-                                                              "content":  "$1"
-                                                          }
-                                            }
+                            "message":  "Đã mở $count$ tab",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "tabGroupsCreated":  {
+                           "message":  "Đã tạo nhóm tab."
+                       },
+    "zenFolderManualHint":  {
+                           "message":  "Tạo thư mục Zen thủ công từ các tab đã khôi phục."
                        },
     "restoreFailed":  {
                           "message":  "Khôi phục thất bại"

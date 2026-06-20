@@ -164,12 +164,18 @@
                            "message":  "Sin respaldos en esta carpeta"
                        },
     "restoreSuccess":  {
-                           "message":  "$count$ pestañas abiertas",
-                           "placeholders":  {
-                                                "count":  {
-                                                              "content":  "$1"
-                                                          }
-                                            }
+                            "message":  "$count$ pestañas abiertas",
+                            "placeholders":  {
+                                                 "count":  {
+                                                               "content":  "$1"
+                                                           }
+                                             }
+                        },
+    "tabGroupsCreated":  {
+                           "message":  "Grupos de pestañas creados."
+                       },
+    "zenFolderManualHint":  {
+                           "message":  "Crea carpetas Zen manualmente desde las pestañas restauradas."
                        },
     "restoreFailed":  {
                           "message":  "Error al restaurar"
