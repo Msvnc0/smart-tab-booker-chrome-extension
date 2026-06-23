@@ -113,7 +113,10 @@
                            "message":  "Aucun onglet sélectionné !"
                        },
     "preserveGroups":  {
-                           "message":  "Conserver les groupes d\u0027onglets comme dossiers"
+                            "message":  "Conserver les groupes d\u0027onglets comme dossiers"
+                        },
+    "collapseGroups":  {
+                           "message":  "Restaurer les groupes comme réduits"
                        },
     "autoCleanup":  {
                         "message":  "Nettoyage automatique des anciennes sauvegardes"
@@ -175,7 +178,10 @@
                            "message":  "Groupes d'onglets créés."
                        },
     "zenFolderManualHint":  {
-                           "message":  "Créez des dossiers Zen manuellement à partir des onglets restaurés."
+                            "message":  "Créez des dossiers Zen manuellement à partir des onglets restaurés."
+                        },
+    "zenWorkspaceRestoreHint":  {
+                           "message":  "Attribuez un conteneur Firefox différent à chaque espace de travail Zen, puis activez zen.workspaces.force-container-workspace dans about:config."
                        },
     "restoreFailed":  {
                           "message":  "Échec de la restauration"

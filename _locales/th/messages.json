@@ -113,7 +113,10 @@
                            "message":  "ไม่มีแท็บที่เลือก!"
                        },
     "preserveGroups":  {
-                           "message":  "รักษากลุ่มแท็บเป็นโฟลเดอร์"
+                            "message":  "รักษากลุ่มแท็บเป็นโฟลเดอร์"
+                        },
+    "collapseGroups":  {
+                           "message":  "กู้คืนกลุ่มในสถานะย่อ"
                        },
     "autoCleanup":  {
                         "message":  "ล้างการสำรองข้อมูลเก่าโดยอัตโนมัติ"
@@ -175,7 +178,10 @@
                            "message":  "สร้างกลุ่มแท็บแล้ว"
                        },
     "zenFolderManualHint":  {
-                           "message":  "สร้างโฟลเดอร์ Zen ด้วยตนเองจากแท็บที่กู้คืนแล้ว"
+                            "message":  "สร้างโฟลเดอร์ Zen ด้วยตนเองจากแท็บที่กู้คืนแล้ว"
+                        },
+    "zenWorkspaceRestoreHint":  {
+                           "message":  "กำหนด Firefox container ที่แตกต่างกันให้กับ Zen workspace แต่ละอัน แล้วเปิดใช้งาน zen.workspaces.force-container-workspace ใน about:config"
                        },
     "restoreFailed":  {
                           "message":  "กู้คืนล้มเหลว"

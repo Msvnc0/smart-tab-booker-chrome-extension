@@ -113,7 +113,10 @@
                            "message":  "선택된 탭이 없습니다!"
                        },
     "preserveGroups":  {
-                           "message":  "탭 그룹을 폴더로 유지"
+                            "message":  "탭 그룹을 폴더로 유지"
+                        },
+    "collapseGroups":  {
+                           "message":  "그룹을 접힌 상태로 복원"
                        },
     "autoCleanup":  {
                         "message":  "오래된 백업 자동 정리"
@@ -175,7 +178,10 @@
                            "message":  "탭 그룹이 생성되었습니다."
                        },
     "zenFolderManualHint":  {
-                           "message":  "복원된 탭에서 수동으로 Zen 폴더를 만드세요."
+                            "message":  "복원된 탭에서 수동으로 Zen 폴더를 만드세요."
+                        },
+    "zenWorkspaceRestoreHint":  {
+                           "message":  "각 Zen 작업 공간에 다른 Firefox 컨테이너를 할당한 다음 about:config에서 zen.workspaces.force-container-workspace를 활성화하세요."
                        },
     "restoreFailed":  {
                           "message":  "복원 실패"

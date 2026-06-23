@@ -113,7 +113,10 @@
                            "message":  "Nessuna scheda selezionata!"
                        },
     "preserveGroups":  {
-                           "message":  "Mantieni gruppi di schede come cartelle"
+                            "message":  "Mantieni gruppi di schede come cartelle"
+                        },
+    "collapseGroups":  {
+                           "message":  "Ripristina i gruppi come compressi"
                        },
     "autoCleanup":  {
                         "message":  "Pulizia automatica vecchi backup"
@@ -175,7 +178,10 @@
                            "message":  "Gruppi di schede creati."
                        },
     "zenFolderManualHint":  {
-                           "message":  "Crea cartelle Zen manualmente dalle schede ripristinate."
+                            "message":  "Crea cartelle Zen manualmente dalle schede ripristinate."
+                        },
+    "zenWorkspaceRestoreHint":  {
+                           "message":  "Assegna un contenitore Firefox diverso a ciascun spazio di lavoro Zen, quindi abilita zen.workspaces.force-container-workspace in about:config."
                        },
     "restoreFailed":  {
                           "message":  "Ripristino fallito"

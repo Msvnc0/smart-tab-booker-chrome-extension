@@ -20,6 +20,8 @@ const CONSTANTS = {
         TIME_LIST: 'timeList',
         ADD_TIME_BTN: 'addTimeBtn',
         PRESERVE_GROUPS_TOGGLE: 'preserveGroupsToggle',
+    COLLAPSE_GROUPS_TOGGLE: 'collapseGroupsToggle',
+    COLLAPSE_GROUPS_ROW: 'collapseGroupsRow',
         AUTO_CLEANUP_TOGGLE: 'autoCleanupToggle',
         CLEANUP_SETTINGS: 'cleanupSettings',
         CLEANUP_DAYS: 'cleanupDays',
@@ -74,6 +76,7 @@ const CONSTANTS = {
         BACKUP_TIMES: 'backupTimes',
         INCLUDE_DUPLICATES: 'includeDuplicates',
         ALL_WINDOWS: 'allWindows',
+        COLLAPSE_GROUPS: 'collapseGroups',
         TAB_THRESHOLD: 'tabThreshold',
         TAB_THRESHOLD_ENABLED: 'tabThresholdEnabled',
         REMINDER_ENABLED: 'reminderEnabled',
@@ -861,6 +864,8 @@ const RestoreManager = {
             let msg = Localization.get("restoreSuccess", [response.tabsOpened]);
             if (response.groupsCreated > 0) {
                 msg += ' ' + Localization.get("tabGroupsCreated");
+            } else if (BrowserDetect.isZenBrowser) {
+                msg += ' ' + Localization.get("zenWorkspaceRestoreHint");
             }
             this.showStatus(msg, 'success');
         } else {
@@ -1196,6 +1201,11 @@ const UI = {
 
         DOM.get(CONSTANTS.SELECTORS.PRESERVE_GROUPS_TOGGLE).addEventListener('change', (e) => {
             SettingsManager.save({ [CONSTANTS.STORAGE.PRESERVE_TAB_GROUPS]: e.target.checked });
+            DOM.get(CONSTANTS.SELECTORS.COLLAPSE_GROUPS_ROW).style.display = e.target.checked ? 'block' : 'none';
+        });
+
+        DOM.get(CONSTANTS.SELECTORS.COLLAPSE_GROUPS_TOGGLE).addEventListener('change', (e) => {
+            SettingsManager.save({ [CONSTANTS.STORAGE.COLLAPSE_GROUPS]: e.target.checked });
         });
 
         DOM.get(CONSTANTS.SELECTORS.AUTO_CLEANUP_TOGGLE).addEventListener('change', (e) => {
@@ -1374,6 +1384,7 @@ const UI = {
         const customVal = DOM.get(CONSTANTS.SELECTORS.CUSTOM_INTERVAL_INPUT).value;
         const customUnit = DOM.get(CONSTANTS.SELECTORS.CUSTOM_INTERVAL_UNIT).value;
         const preserveGroups = DOM.get(CONSTANTS.SELECTORS.PRESERVE_GROUPS_TOGGLE).checked;
+        const collapseGroups = DOM.get(CONSTANTS.SELECTORS.COLLAPSE_GROUPS_TOGGLE).checked;
         const autoCleanup = DOM.get(CONSTANTS.SELECTORS.AUTO_CLEANUP_TOGGLE).checked;
         const cleanupDays = parseInt(DOM.get(CONSTANTS.SELECTORS.CLEANUP_DAYS).value) || 30;
         const includeDuplicates = DOM.get(CONSTANTS.SELECTORS.INCLUDE_DUPLICATES_TOGGLE).checked;
@@ -1387,6 +1398,7 @@ const UI = {
             [CONSTANTS.STORAGE.BACKUP_ENABLED]: enabled,
             [CONSTANTS.STORAGE.BACKUP_INTERVAL]: interval,
             [CONSTANTS.STORAGE.PRESERVE_TAB_GROUPS]: preserveGroups,
+            [CONSTANTS.STORAGE.COLLAPSE_GROUPS]: collapseGroups,
             [CONSTANTS.STORAGE.AUTO_CLEANUP_ENABLED]: autoCleanup,
             [CONSTANTS.STORAGE.AUTO_CLEANUP_DAYS]: cleanupDays,
             [CONSTANTS.STORAGE.INCLUDE_DUPLICATES]: includeDuplicates,
@@ -1479,6 +1491,8 @@ const UI = {
         }
 
         DOM.get(CONSTANTS.SELECTORS.PRESERVE_GROUPS_TOGGLE).checked = settings[CONSTANTS.STORAGE.PRESERVE_TAB_GROUPS] || false;
+        DOM.get(CONSTANTS.SELECTORS.COLLAPSE_GROUPS_TOGGLE).checked = settings[CONSTANTS.STORAGE.COLLAPSE_GROUPS] || false;
+        DOM.get(CONSTANTS.SELECTORS.COLLAPSE_GROUPS_ROW).style.display = (settings[CONSTANTS.STORAGE.PRESERVE_TAB_GROUPS]) ? 'block' : 'none';
 
         const cleanupEnabled = settings[CONSTANTS.STORAGE.AUTO_CLEANUP_ENABLED] || false;
         DOM.get(CONSTANTS.SELECTORS.AUTO_CLEANUP_TOGGLE).checked = cleanupEnabled;

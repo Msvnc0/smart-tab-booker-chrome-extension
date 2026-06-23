@@ -113,7 +113,10 @@
                            "message":  "Sekme seçilmedi!"
                        },
     "preserveGroups":  {
-                           "message":  "Sekme Gruplarını Klasör Olarak Koru"
+                            "message":  "Sekme Gruplarını Klasör Olarak Koru"
+                        },
+    "collapseGroups":  {
+                           "message":  "Grupları daraltılmış olarak geri yükle"
                        },
     "autoCleanup":  {
                         "message":  "Eski Yedekleri Otomatik Temizle"
@@ -170,7 +173,10 @@
                            "message":  "Sekme grupları oluşturuldu."
                        },
     "zenFolderManualHint":  {
-                           "message":  "Geri yüklenen sekmelerden Zen Klasörlerini manuel olarak oluşturun."
+                            "message":  "Geri yüklenen sekmelerden Zen Klasörlerini manuel olarak oluşturun."
+                        },
+    "zenWorkspaceRestoreHint":  {
+                           "message":  "Her Zen çalışma alanına farklı bir Firefox container atayın, ardından about:config'de zen.workspaces.force-container-workspace'ı etkinleştirin."
                        },
     "restoreFailed":  {
                           "message":  "Geri yükleme başarısız"

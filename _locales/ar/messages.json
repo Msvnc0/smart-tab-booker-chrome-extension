@@ -113,7 +113,10 @@
                            "message":  "لم يتم تحديد أي علامات تبويب!"
                        },
     "preserveGroups":  {
-                           "message":  "الحفاظ على مجموعات علامات التبويب كمجلدات"
+                            "message":  "الحفاظ على مجموعات علامات التبويب كمجلدات"
+                        },
+    "collapseGroups":  {
+                           "message":  "استعادة المجموعات مطوية"
                        },
     "autoCleanup":  {
                         "message":  "التنظيف التلقائي للنسخ الاحتياطية القديمة"
@@ -175,7 +178,10 @@
                            "message":  "تم إنشاء مجموعات علامات التبويب."
                        },
     "zenFolderManualHint":  {
-                           "message":  "أنشئ مجلدات Zen يدويًا من علامات التبويب المستعادة."
+                            "message":  "أنشئ مجلدات Zen يدويًا من علامات التبويب المستعادة."
+                        },
+    "zenWorkspaceRestoreHint":  {
+                           "message":  "Assign a different Firefox container to each Zen workspace, then enable zen.workspaces.force-container-workspace in about:config."
                        },
     "restoreFailed":  {
                           "message":  "فشلت الاستعادة"

@@ -113,7 +113,10 @@
                            "message":  "कोई टैब चयनित नहीं!"
                        },
     "preserveGroups":  {
-                           "message":  "टैब समूहों को फ़ोल्डर के रूप में संरक्षित करें"
+                            "message":  "टैब समूहों को फ़ोल्डर के रूप में संरक्षित करें"
+                        },
+    "collapseGroups":  {
+                           "message":  "समूहों को संकुचित के रूप में पुनर्स्थापित करें"
                        },
     "autoCleanup":  {
                         "message":  "पुराने बैकअप का स्वचालित सफायन"
@@ -175,7 +178,10 @@
                            "message":  "टैब समूह बनाए गए।"
                        },
     "zenFolderManualHint":  {
-                           "message":  "बहाल किए गए टैब से मैन्युअल रूप से Zen फ़ोल्डर बनाएं।"
+                            "message":  "बहाल किए गए टैब से मैन्युअल रूप से Zen फ़ोल्डर बनाएं।"
+                        },
+    "zenWorkspaceRestoreHint":  {
+                           "message":  "Zen कार्यस्थान को अलग Firefox कंटेनर दें, फिर about:config में zen.workspaces.force-container-workspace सक्षम करें।"
                        },
     "restoreFailed":  {
                           "message":  "पुनर्स्थापना विफल"

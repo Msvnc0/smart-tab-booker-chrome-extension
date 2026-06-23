@@ -113,7 +113,10 @@
                            "message":  "No tabs selected!"
                        },
     "preserveGroups":  {
-                           "message":  "Preserve Tab Groups as Folders"
+                            "message":  "Preserve Tab Groups as Folders"
+                        },
+    "collapseGroups":  {
+                           "message":  "Restore groups as collapsed"
                        },
     "autoCleanup":  {
                         "message":  "Auto Cleanup Old Backups"
@@ -170,7 +173,10 @@
                            "message":  "Tab groups created."
                        },
     "zenFolderManualHint":  {
-                           "message":  "Create Zen Folders manually from the restored tabs."
+                            "message":  "Create Zen Folders manually from the restored tabs."
+                        },
+    "zenWorkspaceRestoreHint":  {
+                           "message":  "Assign a different Firefox container to each Zen workspace, then enable zen.workspaces.force-container-workspace in about:config."
                        },
     "restoreFailed":  {
                           "message":  "Restore failed"

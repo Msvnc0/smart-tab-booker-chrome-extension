@@ -113,7 +113,10 @@
                            "message":  "Không có tab nào được chọn!"
                        },
     "preserveGroups":  {
-                           "message":  "Giữ Nhóm Tab Dưới Dạng Thư Mục"
+                            "message":  "Giữ Nhóm Tab Dưới Dạng Thư Mục"
+                        },
+    "collapseGroups":  {
+                           "message":  "Khôi phục nhóm ở trạng thái thu gọn"
                        },
     "autoCleanup":  {
                         "message":  "Tự Động Dọn Sạch Sao Lưu Cũ"
@@ -175,7 +178,10 @@
                            "message":  "Đã tạo nhóm tab."
                        },
     "zenFolderManualHint":  {
-                           "message":  "Tạo thư mục Zen thủ công từ các tab đã khôi phục."
+                            "message":  "Tạo thư mục Zen thủ công từ các tab đã khôi phục."
+                        },
+    "zenWorkspaceRestoreHint":  {
+                           "message":  "Gán một vùng chứa Firefox khác cho mỗi không gian làm việc Zen, sau đó bật zen.workspaces.force-container-workspace trong about:config."
                        },
     "restoreFailed":  {
                           "message":  "Khôi phục thất bại"

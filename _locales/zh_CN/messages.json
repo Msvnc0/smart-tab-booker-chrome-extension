@@ -113,7 +113,10 @@
                            "message":  "未选择标签页！"
                        },
     "preserveGroups":  {
-                           "message":  "将标签页组保存为文件夹"
+                            "message":  "将标签页组保存为文件夹"
+                        },
+    "collapseGroups":  {
+                           "message":  "恢复时折叠分组"
                        },
     "autoCleanup":  {
                         "message":  "自动清理旧备份"
@@ -175,7 +178,10 @@
                            "message":  "已创建标签页分组。"
                        },
     "zenFolderManualHint":  {
-                           "message":  "从恢复的标签页手动创建 Zen 文件夹。"
+                            "message":  "从恢复的标签页手动创建 Zen 文件夹。"
+                        },
+    "zenWorkspaceRestoreHint":  {
+                           "message":  "为每个 Zen 工作空间分配不同的 Firefox 容器，然后在 about:config 中启用 zen.workspaces.force-container-workspace。"
                        },
     "restoreFailed":  {
                           "message":  "恢复失败"

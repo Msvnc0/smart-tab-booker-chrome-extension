@@ -113,7 +113,10 @@
                            "message":  "タブが選択されていません！"
                        },
     "preserveGroups":  {
-                           "message":  "タブグループをフォルダとして保持"
+                            "message":  "タブグループをフォルダとして保持"
+                        },
+    "collapseGroups":  {
+                           "message":  "グループを折りたたんだ状態で復元"
                        },
     "autoCleanup":  {
                         "message":  "古いバックアップを自動削除"
@@ -175,7 +178,10 @@
                            "message":  "タブグループが作成されました。"
                        },
     "zenFolderManualHint":  {
-                           "message":  "復元したタブから手動でZenフォルダを作成してください。"
+                            "message":  "復元したタブから手動でZenフォルダを作成してください。"
+                        },
+    "zenWorkspaceRestoreHint":  {
+                           "message":  "各 Zen ワークスペースに異なる Firefox コンテナを割り当て、about:config で zen.workspaces.force-container-workspace を有効にしてください。"
                        },
     "restoreFailed":  {
                           "message":  "復元に失敗しました"

@@ -113,7 +113,10 @@
                            "message":  "Keine Tabs ausgewählt!"
                        },
     "preserveGroups":  {
-                           "message":  "Tab-Gruppen als Ordner beibehalten"
+                            "message":  "Tab-Gruppen als Ordner beibehalten"
+                        },
+    "collapseGroups":  {
+                           "message":  "Gruppen eingeklappt wiederherstellen"
                        },
     "autoCleanup":  {
                         "message":  "Alte Backups automatisch löschen"
@@ -175,7 +178,10 @@
                            "message":  "Tab-Gruppen erstellt."
                        },
     "zenFolderManualHint":  {
-                           "message":  "Erstellen Sie Zen-Ordner manuell aus den wiederhergestellten Tabs."
+                            "message":  "Erstellen Sie Zen-Ordner manuell aus den wiederhergestellten Tabs."
+                        },
+    "zenWorkspaceRestoreHint":  {
+                           "message":  "Weisen Sie jedem Zen-Arbeitsbereich einen anderen Firefox-Container zu und aktivieren Sie zen.workspaces.force-container-workspace in about:config."
                        },
     "restoreFailed":  {
                           "message":  "Wiederherstellung fehlgeschlagen"

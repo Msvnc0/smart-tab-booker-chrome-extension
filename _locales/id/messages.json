@@ -113,7 +113,10 @@
                            "message":  "Tidak ada tab yang dipilih!"
                        },
     "preserveGroups":  {
-                           "message":  "Pertahankan Grup Tab sebagai Folder"
+                            "message":  "Pertahankan Grup Tab sebagai Folder"
+                        },
+    "collapseGroups":  {
+                           "message":  "Pulihkan grup dalam keadaan diciutkan"
                        },
     "autoCleanup":  {
                         "message":  "Bersihkan Cadangan Lama Secara Otomatis"
@@ -175,7 +178,10 @@
                            "message":  "Grup tab dibuat."
                        },
     "zenFolderManualHint":  {
-                           "message":  "Buat Folder Zen secara manual dari tab yang dipulihkan."
+                            "message":  "Buat Folder Zen secara manual dari tab yang dipulihkan."
+                        },
+    "zenWorkspaceRestoreHint":  {
+                           "message":  "Tetapkan kontainer Firefox berbeda untuk setiap ruang kerja Zen, lalu aktifkan zen.workspaces.force-container-workspace di about:config."
                        },
     "restoreFailed":  {
                           "message":  "Pemulihan gagal"

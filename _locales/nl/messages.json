@@ -113,7 +113,10 @@
                            "message":  "Geen tabbladen geselecteerd!"
                        },
     "preserveGroups":  {
-                           "message":  "Tabbladgroepen behouden als mappen"
+                            "message":  "Tabbladgroepen behouden als mappen"
+                        },
+    "collapseGroups":  {
+                           "message":  "Herstel groepen als samengevouwen"
                        },
     "autoCleanup":  {
                         "message":  "Oude back-ups automatisch opschonen"
@@ -175,7 +178,10 @@
                            "message":  "Tabgroepen gemaakt."
                        },
     "zenFolderManualHint":  {
-                           "message":  "Maak handmatig Zen-mappen van de herstelde tabs."
+                            "message":  "Maak handmatig Zen-mappen van de herstelde tabs."
+                        },
+    "zenWorkspaceRestoreHint":  {
+                           "message":  "Wijs een andere Firefox-container toe aan elke Zen-werkruimte en schakel zen.workspaces.force-container-workspace in about:config in."
                        },
     "restoreFailed":  {
                           "message":  "Herstellen mislukt"

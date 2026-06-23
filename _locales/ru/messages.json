@@ -113,7 +113,10 @@
                            "message":  "Вкладки не выбраны!"
                        },
     "preserveGroups":  {
-                           "message":  "Сохранять группы вкладок как папки"
+                            "message":  "Сохранять группы вкладок как папки"
+                        },
+    "collapseGroups":  {
+                           "message":  "Восстановить группы свернутыми"
                        },
     "autoCleanup":  {
                         "message":  "Автоочистка старых резервных копий"
@@ -175,7 +178,10 @@
                            "message":  "Группы вкладок созданы."
                        },
     "zenFolderManualHint":  {
-                           "message":  "Создайте папки Zen вручную из восстановленных вкладок."
+                            "message":  "Создайте папки Zen вручную из восстановленных вкладок."
+                        },
+    "zenWorkspaceRestoreHint":  {
+                           "message":  "Назначьте отдельный контейнер Firefox каждому рабочему пространству Zen, затем включите zen.workspaces.force-container-workspace в about:config."
                        },
     "restoreFailed":  {
                           "message":  "Ошибка восстановления"

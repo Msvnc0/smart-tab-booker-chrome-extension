@@ -113,7 +113,10 @@
                            "message":  "Nie wybrano kart!"
                        },
     "preserveGroups":  {
-                           "message":  "Zachowaj grupy kart jako foldery"
+                            "message":  "Zachowaj grupy kart jako foldery"
+                        },
+    "collapseGroups":  {
+                           "message":  "Przywróć grupy jako zwinięte"
                        },
     "autoCleanup":  {
                         "message":  "Automatyczne czyszczenie starych kopii"
@@ -175,7 +178,10 @@
                            "message":  "Utworzono grupy kart."
                        },
     "zenFolderManualHint":  {
-                           "message":  "Utwórz foldery Zen ręcznie z przywróconych kart."
+                            "message":  "Utwórz foldery Zen ręcznie z przywróconych kart."
+                        },
+    "zenWorkspaceRestoreHint":  {
+                           "message":  "Przypisz inny kontener Firefox do każdej przestrzeni roboczej Zen, a następnie włącz zen.workspaces.force-container-workspace w about:config."
                        },
     "restoreFailed":  {
                           "message":  "Przywracanie nie powiodło się"

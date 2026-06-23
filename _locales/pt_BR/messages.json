@@ -113,7 +113,10 @@
                            "message":  "Nenhuma aba selecionada!"
                        },
     "preserveGroups":  {
-                           "message":  "Preservar grupos de abas como pastas"
+                            "message":  "Preservar grupos de abas como pastas"
+                        },
+    "collapseGroups":  {
+                           "message":  "Restaurar grupos como recolhidos"
                        },
     "autoCleanup":  {
                         "message":  "Limpeza automática de backups antigos"
@@ -175,7 +178,10 @@
                            "message":  "Grupos de abas criados."
                        },
     "zenFolderManualHint":  {
-                           "message":  "Crie pastas Zen manualmente a partir das abas restauradas."
+                            "message":  "Crie pastas Zen manualmente a partir das abas restauradas."
+                        },
+    "zenWorkspaceRestoreHint":  {
+                           "message":  "Atribua um contêiner Firefox diferente a cada espaço de trabalho do Zen e ative zen.workspaces.force-container-workspace em about:config."
                        },
     "restoreFailed":  {
                           "message":  "Falha na restauração"

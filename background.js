@@ -23,6 +23,7 @@ const CONSTANTS = {
         BACKUP_TIMES: 'backupTimes',
         INCLUDE_DUPLICATES: 'includeDuplicates',
         ALL_WINDOWS: 'allWindows',
+        COLLAPSE_GROUPS: 'collapseGroups',
         TAB_THRESHOLD: 'tabThreshold',
         TAB_THRESHOLD_ENABLED: 'tabThresholdEnabled',
         REMINDER_ENABLED: 'reminderEnabled',
@@ -425,7 +426,9 @@ async function performBackup(parentId, explicitTabs, note = '') {
         });
 
         try {
-            if (settings[CONSTANTS.STORAGE.PRESERVE_TAB_GROUPS]) {
+            if (BrowserDetect.isZenBrowser && settings[CONSTANTS.STORAGE.PRESERVE_TAB_GROUPS]) {
+                await saveTabsByContainer(backupFolder.id, tabs);
+            } else if (settings[CONSTANTS.STORAGE.PRESERVE_TAB_GROUPS]) {
                 await saveTabsWithGroups(backupFolder.id, tabs);
             } else {
                 await saveTabsAsBookmarks(backupFolder.id, tabs);
@@ -531,6 +534,43 @@ async function saveTabsWithGroups(parentId, tabs) {
 
     if (ungroupedTabs.length > 0) {
         await saveTabsAsBookmarks(parentId, ungroupedTabs);
+    }
+}
+
+async function getContainerName(cookieStoreId) {
+    if (!cookieStoreId || cookieStoreId === 'firefox-default') {
+        return 'Default';
+    }
+    try {
+        if (browser.contextualIdentities && browser.contextualIdentities.get) {
+            const identity = await browser.contextualIdentities.get(cookieStoreId);
+            return identity ? identity.name : cookieStoreId;
+        }
+    } catch (err) {
+        console.warn('contextualIdentities.get failed:', err);
+    }
+    return cookieStoreId;
+}
+
+async function saveTabsByContainer(parentId, tabs) {
+    const containerGroups = new Map();
+
+    for (const tab of tabs) {
+        const cookieStoreId = tab.cookieStoreId || 'firefox-default';
+        if (!containerGroups.has(cookieStoreId)) {
+            const name = await getContainerName(cookieStoreId);
+            containerGroups.set(cookieStoreId, { name, tabs: [] });
+        }
+        containerGroups.get(cookieStoreId).tabs.push(tab);
+    }
+
+    for (const [cookieStoreId, groupData] of containerGroups) {
+        const folderTitle = `[WS]${groupData.name}`;
+        const groupFolder = await browser.bookmarks.create({
+            parentId: parentId,
+            title: folderTitle
+        });
+        await saveTabsAsBookmarks(groupFolder.id, groupData.tabs);
     }
 }
 
@@ -680,11 +720,19 @@ async function restoreTabsWithGroups(windowId, bookmarks, firstUrl) {
 
             if (validTabs.length === 0) continue;
 
+            const isWorkspaceFolder = folder.title.startsWith('[WS]');
             const tabIds = [];
             for (const bm of validTabs) {
                 try {
                     const parsed = parseBookmarkTitle(bm.title);
-                    const tab = await browser.tabs.create({ windowId, url: bm.url, pinned: parsed.pinned });
+                    const tabOpts = { windowId, url: bm.url, pinned: parsed.pinned };
+                    if (isWorkspaceFolder && BrowserDetect.isZenBrowser) {
+                        const cookieStoreId = await resolveCookieStoreId(folder.title);
+                        if (cookieStoreId) {
+                            tabOpts.cookieStoreId = cookieStoreId;
+                        }
+                    }
+                    const tab = await browser.tabs.create(tabOpts);
                     tabIds.push(tab.id);
                     tabsOpened++;
                 } catch (err) {
@@ -692,7 +740,7 @@ async function restoreTabsWithGroups(windowId, bookmarks, firstUrl) {
                 }
             }
 
-            if (tabIds.length > 0) {
+            if (tabIds.length > 0 && !isWorkspaceFolder) {
                 try {
                     const groupId = await browser.tabs.group({ tabIds });
                     const color = extractGroupColor(folder.title);
@@ -700,6 +748,10 @@ async function restoreTabsWithGroups(windowId, bookmarks, firstUrl) {
                     const updateOpts = { title: cleanTitle };
                     if (color) {
                         updateOpts.color = color;
+                    }
+                    const settings = await browser.storage.local.get([CONSTANTS.STORAGE.COLLAPSE_GROUPS]);
+                    if (settings[CONSTANTS.STORAGE.COLLAPSE_GROUPS]) {
+                        updateOpts.collapsed = true;
                     }
                     await browser.tabGroups.update(groupId, updateOpts);
                     groupsCreated++;
@@ -717,6 +769,33 @@ async function restoreTabsWithGroups(windowId, bookmarks, firstUrl) {
     }
 
     return { groupsCreated, tabsOpened };
+}
+
+const _cookieStoreIdCache = new Map();
+
+async function resolveCookieStoreId(folderTitle) {
+    const containerName = folderTitle.replace(/^\[WS\]/, '').trim();
+    if (containerName === 'Default') return 'firefox-default';
+
+    if (_cookieStoreIdCache.has(containerName)) {
+        return _cookieStoreIdCache.get(containerName);
+    }
+
+    if (!browser.contextualIdentities || !browser.contextualIdentities.query) {
+        return null;
+    }
+
+    try {
+        const identities = await browser.contextualIdentities.query({ name: containerName });
+        if (identities && identities.length > 0) {
+            const id = identities[0].cookieStoreId;
+            _cookieStoreIdCache.set(containerName, id);
+            return id;
+        }
+    } catch (err) {
+        console.warn('contextualIdentities.query failed:', err);
+    }
+    return null;
 }
 
 let thresholdDebounce = null;

@@ -2,6 +2,37 @@
 
 All notable changes to Smart Tab Booker will be documented in this file.
 
+## [1.6.4] - 2026-06-23
+
+### Added
+- **Zen Browser Workspace Backup/Restore** — Each Zen workspace backed up as separate bookmark folder (`[WS]ContainerName`). Restore opens tabs with `cookieStoreId` so Zen routes them to correct workspace (requires `zen.workspaces.force-container-workspace = true` in about:config)
+- **Restore groups as collapsed** — New "Restore groups as collapsed" checkbox in Backup settings. Sets `collapsed: true` via `browser.tabGroups.update()` so Chrome/Firefox tab groups open collapsed
+- **`cookies` permission** — Added to both manifests for `browser.contextualIdentities.query()` to resolve container names
+- **i18n: `collapseGroups`** — 18 locales (TR: "Grupları daraltılmış olarak geri yükle")
+- **i18n: `zenWorkspaceRestoreHint`** — 18 locales with instructions for Zen workspace restore
+
+### Fixed
+- **Zen Browser tab group restore** — Groups now created via `browser.tabs.group()` even on Zen (previous code blocked this). Vanilla tab group is created; Zen Folder transformation not possible via extension API
+- **Zen Browser backup** — `tab.cookieStoreId` used to group tabs by container/workspace
+
+### Known Limitations
+- **Zen Folder creation impossible** — Zen Folder elements (`<zen-folder>`) require `document.createXULElement()` which is chrome-only API, not accessible from extensions. Extension-created groups are vanilla `<tab-group>`, not Zen Folders
+- **Zen collapse UI hidden** — Zen CSS does not style `.tab-group-label-container` for vanilla tab groups, so the collapse button is not visible in Zen's vertical tab layout (functionality works, UI missing)
+
+---
+
+## [1.6.3] - 2026-06-22
+
+### Added
+- **Zen Browser detection** — `BrowserDetect.isZenBrowser` via `navigator.userAgent`
+- **`saveTabsByContainer`** — Groups tabs by `cookieStoreId` for Zen workspace backup
+- **`resolveCookieStoreId`** — Resolves container name back to `cookieStoreId` on restore
+
+### Known Limitations
+- **Workspace grouping requires user setup** — User must assign different Firefox containers to each Zen workspace for `cookieStoreId` to distinguish them
+
+---
+
 ## [1.6.2] - 2026-06-20
 
 ### Added

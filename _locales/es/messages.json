@@ -113,7 +113,10 @@
                            "message":  "¡Ninguna pestaña seleccionada!"
                        },
     "preserveGroups":  {
-                           "message":  "Conservar grupos de pestañas como carpetas"
+                            "message":  "Conservar grupos de pestañas como carpetas"
+                        },
+    "collapseGroups":  {
+                           "message":  "Restaurar grupos como contraídos"
                        },
     "autoCleanup":  {
                         "message":  "Limpieza automática de respaldos antiguos"
@@ -175,7 +178,10 @@
                            "message":  "Grupos de pestañas creados."
                        },
     "zenFolderManualHint":  {
-                           "message":  "Crea carpetas Zen manualmente desde las pestañas restauradas."
+                            "message":  "Crea carpetas Zen manualmente desde las pestañas restauradas."
+                        },
+    "zenWorkspaceRestoreHint":  {
+                           "message":  "Asigna un contenedor de Firefox diferente a cada espacio de trabajo de Zen y luego activa zen.workspaces.force-container-workspace en about:config."
                        },
     "restoreFailed":  {
                           "message":  "Error al restaurar"
