@@ -74,7 +74,7 @@ async function handleInstalled() {
     if (!result[CONSTANTS.STORAGE.BACKUP_INTERVAL]) {
         await browser.storage.local.set({ [CONSTANTS.STORAGE.BACKUP_INTERVAL]: 'weekly' });
     }
-    setupAlarm();
+    await setupAlarm();
     browser.contextMenus.create({
         id: 'backup-current-tab',
         title: browser.i18n.getMessage('contextMenuBackupTab') || 'Backup this tab',
@@ -91,8 +91,10 @@ function handleAlarm(alarm) {
     if (alarm.name === CONSTANTS.ALARM.NAME || alarm.name.startsWith(CONSTANTS.ALARM.NAME_PREFIX)) {
         console.log('Auto backup alarm triggered:', alarm.name);
         performAutoBackup();
+        setupAlarm();
     } else if (alarm.name === CONSTANTS.ALARM.REMINDER) {
         checkBackupReminder();
+        setupAlarm();
     }
 }
 
@@ -260,23 +262,24 @@ async function setupAlarm(onComplete) {
     const settings = await getBackupSettings();
     if (!isBackupEnabled(settings)) {
         console.log('Auto backup is disabled.');
-        browser.alarms.create(CONSTANTS.ALARM.REMINDER, { periodInMinutes: 360 });
+        await browser.alarms.create(CONSTANTS.ALARM.REMINDER, { periodInMinutes: 360 });
         if (onComplete) onComplete();
         return;
     }
 
     const alarmInfos = calculateAlarmInfos(settings);
-    alarmInfos.forEach((alarmInfo, index) => {
+    for (let index = 0; index < alarmInfos.length; index++) {
+        const alarmInfo = alarmInfos[index];
         if (alarmInfo) {
             const alarmName = alarmInfos.length > 1
                 ? `${CONSTANTS.ALARM.NAME_PREFIX}${index}`
                 : CONSTANTS.ALARM.NAME;
             console.log(`Setting alarm [${alarmName}]:`, alarmInfo);
-            browser.alarms.create(alarmName, alarmInfo);
+            await browser.alarms.create(alarmName, alarmInfo);
         }
-    });
+    }
 
-    browser.alarms.create(CONSTANTS.ALARM.REMINDER, { periodInMinutes: 360 });
+    await browser.alarms.create(CONSTANTS.ALARM.REMINDER, { periodInMinutes: 360 });
     if (onComplete) onComplete();
 }
 

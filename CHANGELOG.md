@@ -2,6 +2,15 @@
 
 All notable changes to Smart Tab Booker will be documented in this file.
 
+## [1.6.5] - 2026-06-24
+
+### Fixed
+- **Firefox auto backup intermittent failure** — `handleAlarm` now calls `setupAlarm()` after each alarm fires, ensuring the next alarm is rescheduled. This addresses a Firefox MV3 service worker issue where alarm listener registration could be lost between sessions, causing periodic alarms (`periodInMinutes`) to silently stop firing.
+- **`browser.alarms.create()` await** — Changed from fire-and-forget to `await` in `setupAlarm` loop and `handleInstalled`. Firefox MV3 service worker can close before fire-and-forget `alarms.create()` calls resolve.
+- **`handleInstalled` await** — Added `await` before `setupAlarm()` to ensure alarm setup completes before the service worker potentially idles.
+
+---
+
 ## [1.6.4] - 2026-06-23
 
 ### Added
