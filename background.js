@@ -7,7 +7,9 @@ const CONSTANTS = {
         NAME: 'autoBackup',
         NAME_PREFIX: 'autoBackup_',
         DEFAULT_TIME: '09:00',
-        REMINDER: 'backupReminder'
+        REMINDER: 'backupReminder',
+        TICKER: 'autoBackupTicker',
+        TICKER_INTERVAL_MINUTES: 15
     },
     STORAGE: {
         BACKUP_INTERVAL: 'backupInterval',
@@ -62,6 +64,7 @@ function isValidUrl(url) {
 }
 
 browser.runtime.onInstalled.addListener(handleInstalled);
+browser.runtime.onStartup.addListener(handleStartup);
 browser.alarms.onAlarm.addListener(handleAlarm);
 browser.runtime.onMessage.addListener(handleMessage);
 browser.commands.onCommand.addListener(handleCommand);
@@ -87,11 +90,14 @@ async function handleInstalled() {
     });
 }
 
+async function handleStartup() {
+    console.log('Smart Tab Booker: browser startup, reinitializing alarms');
+    await setupAlarm();
+}
+
 function handleAlarm(alarm) {
-    if (alarm.name === CONSTANTS.ALARM.NAME || alarm.name.startsWith(CONSTANTS.ALARM.NAME_PREFIX)) {
-        console.log('Auto backup alarm triggered:', alarm.name);
-        performAutoBackup();
-        setupAlarm();
+    if (alarm.name === CONSTANTS.ALARM.TICKER) {
+        checkAndPerformScheduledBackup();
     } else if (alarm.name === CONSTANTS.ALARM.REMINDER) {
         checkBackupReminder();
         setupAlarm();
@@ -267,20 +273,45 @@ async function setupAlarm(onComplete) {
         return;
     }
 
-    const alarmInfos = calculateAlarmInfos(settings);
-    for (let index = 0; index < alarmInfos.length; index++) {
-        const alarmInfo = alarmInfos[index];
-        if (alarmInfo) {
-            const alarmName = alarmInfos.length > 1
-                ? `${CONSTANTS.ALARM.NAME_PREFIX}${index}`
-                : CONSTANTS.ALARM.NAME;
-            console.log(`Setting alarm [${alarmName}]:`, alarmInfo);
-            await browser.alarms.create(alarmName, alarmInfo);
-        }
-    }
+    await browser.alarms.create(CONSTANTS.ALARM.TICKER, {
+        periodInMinutes: CONSTANTS.ALARM.TICKER_INTERVAL_MINUTES
+    });
+    console.log(`Ticker alarm set: every ${CONSTANTS.ALARM.TICKER_INTERVAL_MINUTES} minutes`);
+
+    await checkAndPerformScheduledBackup();
 
     await browser.alarms.create(CONSTANTS.ALARM.REMINDER, { periodInMinutes: 360 });
     if (onComplete) onComplete();
+}
+
+async function checkAndPerformScheduledBackup() {
+    const settings = await getBackupSettings();
+    if (!isBackupEnabled(settings)) return;
+
+    const alarmInfos = calculateAlarmInfos(settings);
+    const now = new Date();
+    const currentHM = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+    const todayKey = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`;
+    const lastKey = await browser.storage.local.get(['_lastTickerKey']);
+    const lastKeyValue = lastKey._lastTickerKey || '';
+
+    for (const alarmInfo of alarmInfos) {
+        if (!alarmInfo) continue;
+        const slotKey = `${todayKey}-${alarmInfo.timeStr}`;
+
+        if (lastKeyValue === slotKey) continue;
+
+        const [hh, mm] = alarmInfo.timeStr.split(':').map(Number);
+        const slotMinutes = hh * 60 + mm;
+        const nowMinutes = now.getHours() * 60 + now.getMinutes();
+        const slotHasPassed = nowMinutes >= slotMinutes;
+
+        if (currentHM === alarmInfo.timeStr || (slotHasPassed && lastKeyValue < slotKey)) {
+            await browser.storage.local.set({ _lastTickerKey: slotKey });
+            console.log(`Auto backup triggered for slot ${alarmInfo.timeStr} (current=${currentHM}, catch-up=${currentHM !== alarmInfo.timeStr})`);
+            performAutoBackup();
+        }
+    }
 }
 
 async function getBackupSettings() {
@@ -304,58 +335,30 @@ function isBackupEnabled(settings) {
 function calculateAlarmInfos(settings) {
     const interval = settings[CONSTANTS.STORAGE.BACKUP_INTERVAL];
 
-    if (interval === 'custom') {
-        return [calculateCustomAlarm(settings)];
-    } else if (interval === 'daily') {
+    if (interval === 'daily') {
         return calculateDailyAlarms(settings);
-    } else {
-        return [calculateStandardAlarm(settings)];
     }
+    return [calculateCustomAlarm(settings)];
 }
 
 function calculateDailyAlarms(settings) {
     const backupTimes = settings[CONSTANTS.STORAGE.BACKUP_TIMES];
 
     if (backupTimes && Array.isArray(backupTimes) && backupTimes.length > 0) {
-        return backupTimes.map(timeStr => {
-            const nextFireTime = calculateNextFireTime(timeStr);
-            return {
-                when: nextFireTime,
-                periodInMinutes: CONSTANTS.INTERVALS.DAILY
-            };
-        });
+        return backupTimes.map(timeStr => ({ timeStr }));
     }
 
-    return [calculateStandardAlarm(settings)];
+    return [{ timeStr: settings[CONSTANTS.STORAGE.BACKUP_TIME] || CONSTANTS.ALARM.DEFAULT_TIME }];
 }
 
 function calculateCustomAlarm(settings) {
-    let multiplier = 1;
-    switch (settings[CONSTANTS.STORAGE.CUSTOM_UNIT]) {
-        case CONSTANTS.UNITS.HOURS: multiplier = 60; break;
-        case CONSTANTS.UNITS.DAYS: multiplier = 1440; break;
-        default: multiplier = 1;
-    }
-
-    const periodInMinutes = (parseInt(settings[CONSTANTS.STORAGE.CUSTOM_INTERVAL]) || 60) * multiplier;
-    return periodInMinutes > 0 ? { periodInMinutes } : null;
+    const timeStr = settings[CONSTANTS.STORAGE.BACKUP_TIME] || CONSTANTS.ALARM.DEFAULT_TIME;
+    return { timeStr };
 }
 
 function calculateStandardAlarm(settings) {
-    let periodInMinutes = CONSTANTS.INTERVALS.WEEKLY;
-
-    switch (settings[CONSTANTS.STORAGE.BACKUP_INTERVAL]) {
-        case 'daily': periodInMinutes = CONSTANTS.INTERVALS.DAILY; break;
-        case 'weekly': periodInMinutes = CONSTANTS.INTERVALS.WEEKLY; break;
-        case 'monthly': periodInMinutes = CONSTANTS.INTERVALS.MONTHLY; break;
-    }
-
-    const nextFireTime = calculateNextFireTime(settings[CONSTANTS.STORAGE.BACKUP_TIME]);
-
-    return {
-        when: nextFireTime,
-        periodInMinutes: periodInMinutes
-    };
+    const timeStr = settings[CONSTANTS.STORAGE.BACKUP_TIME] || CONSTANTS.ALARM.DEFAULT_TIME;
+    return { timeStr };
 }
 
 function calculateNextFireTime(targetTimeStr = CONSTANTS.ALARM.DEFAULT_TIME) {

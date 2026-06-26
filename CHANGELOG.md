@@ -2,6 +2,41 @@
 
 All notable changes to Smart Tab Booker will be documented in this file.
 
+## [1.6.10] - 2026-06-27
+
+### Changed
+- **Ticker interval reverted from 5 to 15 minutes** — User feedback: 15-minute tolerance is acceptable. Reduces alarm firings and battery/resource usage.
+
+---
+
+## [1.6.9] - 2026-06-27
+
+### Changed
+- **Ticker interval reduced from 15 to 5 minutes** — Backup fires within 5 minutes of the scheduled time (instead of 15 minutes). Trade-off: slightly more alarm firings, but backup accuracy is improved for time-sensitive users.
+
+---
+
+## [1.6.8] - 2026-06-26
+
+### Added
+- **Catch-up backup on browser startup** — If Firefox was closed during a scheduled backup time and reopened later, the extension will detect missed backup slots and perform a catch-up backup. For example, if backup is scheduled at 09:00 and Firefox is reopened at 14:00, a catch-up backup fires immediately.
+
+---
+
+## [1.6.7] - 2026-06-26
+
+### Fixed
+- **Firefox alarm lost after browser restart** — Added `browser.runtime.onStartup` listener that calls `setupAlarm()` when the browser starts. This restores the ticker alarm that Firefox MV3 sometimes loses on browser restart.
+
+---
+
+## [1.6.6] - 2026-06-25
+
+### Fixed
+- **Firefox auto backup intermittent failure (definitive fix)** — Replaced `periodInMinutes` based alarms with a "check-on-tick" pattern: a single `autoBackupTicker` alarm fires every 15 minutes and checks if the current time matches a configured backup time. Each ticker tick verifies the day/time match and only triggers `performAutoBackup()` once per day per slot (tracked via `_lastTickerKey`). This avoids Firefox MV3 service worker bug where `periodInMinutes` alarms can silently stop firing.
+
+---
+
 ## [1.6.5] - 2026-06-24
 
 ### Fixed
